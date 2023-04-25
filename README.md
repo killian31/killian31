@@ -1,7 +1,11 @@
 # killian31
+[![wakatime](https://wakatime.com/badge/user/bbd9925f-12e0-49e2-8105-c6d1db3de4e3.svg)](https://wakatime.com/@bbd9925f-12e0-49e2-8105-c6d1db3de4e3)
 ## Hi! I'm killian31.
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=killian31&label=Profile%20views&color=0e75b6&style=flat" alt="killian31" /> </p>
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=killian31" alt="killian31" /></a> </p>
+
+![Wwakatime stats](https://github-readme-stats-taupe-two.vercel.app/api/wakatime?username=killian31&hide_title=true&hide_border=true&langs_count=5&bg_color=00000000&text_color=777)
+
 
 ## Languages and Tools :
 
