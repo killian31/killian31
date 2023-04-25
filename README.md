@@ -6,6 +6,7 @@
 
 ![Wwakatime stats](https://github-readme-stats-taupe-two.vercel.app/api/wakatime?username=killian31&hide_title=true&hide_border=true&langs_count=5&bg_color=00000000&text_color=777)
 
+[![killian31's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=killian31)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
 ## Languages and Tools :
 
