@@ -4,8 +4,6 @@
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=killian31&label=Profile%20views&color=0e75b6&style=flat" alt="killian31" /> </p>
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=killian31" alt="killian31" /></a> </p>
 
-![Wwakatime stats](https://github-readme-stats-taupe-two.vercel.app/api/wakatime?username=killian31&hide_title=true&hide_border=true&langs_count=5&bg_color=00000000&text_color=777)
-
 [![killian31's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=killian31)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
 ## Languages and Tools :
