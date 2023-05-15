@@ -1,4 +1,5 @@
 # killian31
+[![wakatime](https://wakatime.com/badge/user/bbd9925f-12e0-49e2-8105-c6d1db3de4e3.svg)](https://wakatime.com/@bbd9925f-12e0-49e2-8105-c6d1db3de4e3)
 ## Hi! I'm killian31.
 Currently in Toulouse, France. MLE intern at @jolibrain.
 
