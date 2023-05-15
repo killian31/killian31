@@ -1,5 +1,6 @@
 # killian31
 ## Hi! I'm killian31.
+Currently in Toulouse, France. MLE intern at @jolibrain.
 
 ## Some stats
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=killian31&label=Profile%20views&color=0e75b6&style=flat" alt="killian31" /> </p>
