@@ -5,7 +5,7 @@ Currently in Toulouse, France. MLE intern at @jolibrain.
 
 ## Some stats
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=killian31&label=Profile%20views&color=0e75b6&style=flat" alt="killian31" /> </p>
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=killian31" alt="killian31" /></a> </p>
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=killian31&theme=onedark" alt="killian31" /></a> </p>
 
 [![wakatime](https://wakatime.com/share/@killian31/5fdc5608-b562-4ec1-856b-840b05116bb8.svg)](https://wakatime.com/share/@killian31/5fdc5608-b562-4ec1-856b-840b05116bb8)
 
