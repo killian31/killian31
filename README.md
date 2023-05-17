@@ -7,7 +7,7 @@ Currently in Toulouse, France. MLE intern at @jolibrain.
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=killian31&label=Profile%20views&color=0e75b6&style=flat" alt="killian31" /> </p>
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=killian31&theme=onedark" alt="killian31" /></a> </p>
 
-[![wakatime](https://wakatime.com/share/@killian31/5fdc5608-b562-4ec1-856b-840b05116bb8.svg)](https://wakatime.com/share/@killian31/5fdc5608-b562-4ec1-856b-840b05116bb8)
+[![wakatime](https://wakatime.com/share/@killian31/be67d3b1-d90a-4c2d-9a7f-a06b4d0f5d17.svg)](https://wakatime.com/share/@killian31/be67d3b1-d90a-4c2d-9a7f-a06b4d0f5d17)
 
 [![killian31's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=killian31&theme=tokyo-night)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
