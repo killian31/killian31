@@ -9,7 +9,7 @@ Currently in Toulouse, France. MLE intern at @jolibrain.
 
 [![wakatime](https://wakatime.com/share/@killian31/be67d3b1-d90a-4c2d-9a7f-a06b4d0f5d17.svg)](https://wakatime.com/share/@killian31/be67d3b1-d90a-4c2d-9a7f-a06b4d0f5d17)
 
-[![killian31's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=killian31&theme=tokyo-night)](https://github.com/ashutosh00710/github-readme-activity-graph)
+[![killian31's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=killian31&theme=tokyo-night)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=killian31&theme=dark" alt="killian31" /></p>
 
