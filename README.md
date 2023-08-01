@@ -1,7 +1,7 @@
 # killian31
 [![wakatime](https://wakatime.com/badge/user/bbd9925f-12e0-49e2-8105-c6d1db3de4e3.svg)](https://wakatime.com/@bbd9925f-12e0-49e2-8105-c6d1db3de4e3)
 ## Hi! I'm killian31.
-Currently in Toulouse, France. MLE intern at @jolibrain.
+Currently in Toulouse, France. Applied Mathematics and Statistics at TSE.
 
 ## Some stats
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=killian31&label=Profile%20views&color=0e75b6&style=flat" alt="killian31" /> </p>
