@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.social-links {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.social-link img {
+    height: 20px; /* Adjust as needed */
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.social-link:hover {
+    background-color: #005582; /* Darker shade for hover effect */
+}
+
+.social-link:nth-child(2) { /* Specific style for GitHub link */
+    background-color: #333; /* GitHub grey */
+}
+
+.social-link:nth-child(2):hover {
+    background-color: #1a1a1a; /* Darker shade for hover effect */
+}
+
+
+#about-me {
+    margin: 2em 5%;
+    padding: 1em;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+p {
+    line-height: 1.6;
+}
+
+#professional-experiences {
+    margin: 2em 5%;
+    padding: 1em;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.experience {
+    margin-bottom: 2em;
+}
+
+.experience h3 {
+    margin-top: 0;
+}
+
+.experience-duration {
+    font-style: italic;
+    color: #555;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+#academic-achievements {
+    margin: 2em 5%;
+    padding: 1em;
+    background-color: #f9f9f9; /* Slightly different background for contrast */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.achievement {
+    margin-bottom: 2em;
+}
+
+.achievement h3 {
+    margin-top: 0;
+}
+
+.achievement-duration {
+    font-style: italic;
+    color: #555;
+}
+
+#projects {
+    margin: 2em 5%;
+    padding: 1em;
+    background-color: #f4f4f4; /* Different background for visual variety */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.project {
+    margin-bottom: 2em;
+}
+
+.project h3 {
+    margin-top: 0;
+}
+
+.project-duration {
+    font-style: italic;
+    color: #555;
+}
+
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+header {
+    animation: slideDown 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#about-me {
+    animation: slideUp 0.5s ease-in-out forwards;
+}
