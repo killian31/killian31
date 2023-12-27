@@ -2,6 +2,7 @@
 [![wakatime](https://wakatime.com/badge/user/bbd9925f-12e0-49e2-8105-c6d1db3de4e3.svg)](https://wakatime.com/@bbd9925f-12e0-49e2-8105-c6d1db3de4e3)
 ## Hi! I'm killian31.
 Currently in Toulouse, France. MSc Applied Mathematics and Statistics.
+Come have a look at my [website](https://killian31.github.io/killian31/)!
 
 ## Some stats
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=killian31&label=Profile%20views&color=0e75b6&style=flat" alt="killian31" /> </p>
