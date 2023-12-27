@@ -8,6 +8,17 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <nav class="navbar">
+    <div class="navbar-logo">
+        <a href="#home">Killian Steunou</a>
+    </div>
+    <div class="navbar-links">
+        <a href="#about-me">About Me</a>
+        <a href="#professional-experiences">Experiences</a>
+        <a href="#academic-achievements">Academic</a>
+        <a href="#projects">Projects</a>
+    </div>
+    </nav>
     <header>
         <h1>Killian Steunou</h1>
         <div class="social-links">
@@ -25,11 +36,16 @@
          </a>
         </div>
     </header>
-    <section id="about-me">
-        <br>
-        <hr>
-        <br>
+    <section class="hero" id="home" data-aos="fade-up">
+    <div class="hero-content">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Embarking on a Journey in AI, Fueled by a Passion for Mathematics and Statistics.</p>
+        <a href="#projects" class="hero-btn">View Projects</a>
+    </div>
+    </section>
+    <section id="about-me" data-aos="fade-up">
         <h2>About Me</h2>
+        <img src="profile-picture.jpg" alt="Killian Steunou" class="profile-picture">
         <p>
             I'm a first-year master's student in Applied Mathematics and Statistics 
             at TSE. I'm passionate about combining mathematics, statistics, and 
@@ -53,9 +69,6 @@
             my skills and passion. It reflects my academic pursuits and reveals my 
             aspirations in the exciting field of AI and applied mathematics.
         </p>
-        <br>
-        <hr>
-        <br>
     </section>
     <section id="professional-experiences" data-aos="fade-up">
     <h2>Professional Experiences</h2>
@@ -83,7 +96,6 @@
                 user experience.</li>
         </ul>
     </div>
-    <!-- Repeat the above div block for each professional experience you want to list -->
     <div class="experience">
         <h3>Intern - Software Developer (R Shiny) - French Ministry of Agriculture</h3>
         <p class="experience-duration">May 2022 - August 2022</p>
@@ -122,7 +134,6 @@
             </li>
         </ul>
     </div>
-    <!-- Additional academic achievements can be listed in similar div blocks -->
     <div class="achievement">
         <h3>Gap Year - University of Copenhagen</h3>
         <p class="achievement-duration">September 2022 - January 2023</p>
@@ -145,33 +156,65 @@
     </section>
     <section id="projects" data-aos="fade-up">
     <h2>Projects</h2>
-    <div class="project">
-        <h3>Object Detection: Owl‐Vit for videos</h3>
-        <p class="project-duration">February 2023</p>
-        <p>Implementation of Google Owl-ViT's model for zero-shot object detection in
-        videos using natural language prompts.<p>
+    <p>Below are some of my projects.</p>
+    <div class="project-card">
+        <a href="https://github.com/killian31/VideoObjectDetection">
+        <div class="card-front">
+            <h3>Object Detection: Owl‐Vit for videos</h3>
+        </div>
+        <div class="card-back">
+            <p>Implementation of Google Owl-ViT's model for zero-shot object detection in
+            videos using natural language prompts.<p>
+        </div>
+        </a>
     </div>
-    <!-- Repeat the above div block for each project you want to showcase -->
-    <div class="project">
-        <h3>Image Generation: contribution to joliGEN</h3>
-        <p class="project-duration">February 2023 - July 2023</p>
-        <p>Advanced Edge Detection Methods: I implemented and integrated advanced 
-        edge detection methods into joliGEN. These enhancements substantially improved
-        the tool's image processing capabilities, enabling users to achieve more 
-        accurate results as described in the ControlNET paper.</p>
+    <div class="project-card">
+        <a href="https://github.com/jolibrain/joliGEN">
+        <div class="card-front">
+            <h3>Image Generation: contribution to joliGEN</h3>
+        </div>
+        <div class="card-back">
+            <p>I implemented and integrated advanced 
+            edge detection methods into joliGEN. These enhancements substantially improved
+            the tool's image processing capabilities, enabling users to achieve more 
+            accurate results as described in the ControlNET paper.</p>
+        </div>
+        </a>
     </div>
-    <div class="project">
-        <h3>Wikipedia Map</h3>
-        <p class="project-duration">2022</p>
-        <p>Scraping Wikipedia in order to create a map of the concepts around a base word (in French), using Gephi, an open source graph visualization platform</p>
+    <div class="project-card">
+        <a href="https://github.com/killian31/Wikipedia-Map">
+            <div class="card-front">
+                <h3>Wikipedia Map</h3>
+            </div>
+            <div class="card-back">
+                <p>Scraping Wikipedia in order to create a map of the concepts around a 
+                base word (in French), using Gephi, an open source graph visualization
+                platform.</p>
+            </div>
+        </a>
+    </div>
+    <div class="project-card">
+        <a href="https://github.com/killian31/Multilingual-Machine-Reading">
+        <div class="card-front">
+            <h3>Academic project: Multilingual Machine Reading</h3>
+        </div>
+        <div class="card-back">
+            <p> Development of a multilingual question answering system in English, Finnish
+            and Japanese.
+            </p>
+        </div>
+        </a>
     </div>
     </section>
-
+    <button id="back-to-top-btn" title="Go to top">↑</button>
+    <footer>
+        <p>© 2023 Killian Steunou</p>
+    </footer>
     <script src="script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 800,  // values in milliseconds
+            duration: 800, 
             easing: 'ease-in-out',
             once: false,     // whether animation should happen only once
             mirror: true,  // whether elements should animate out while scrolling past them

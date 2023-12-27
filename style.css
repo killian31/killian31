@@ -1,16 +1,32 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #1d1d1f;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    padding-top: 60px; 
+    background-color: #f8f8f7;
 }
 
+
 header {
-    background-color: #333;
+    background-color: #333333;
     color: white;
     text-align: center;
     padding: 1em 0;
+}
+
+header h1 {
+    color: white;
+}
+
+.profile-picture {
+    width: 150px; 
+    height: auto;
+    border-radius: 50%; 
+    margin-right: 20px;
 }
 
 .social-links {
@@ -27,47 +43,54 @@ header {
     padding: 10px 15px;
     margin: 0 10px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .social-link img {
-    height: 20px; /* Adjust as needed */
+    height: 20px; 
     vertical-align: middle;
     margin-right: 5px;
 }
 
 .social-link:hover {
-    background-color: #005582; /* Darker shade for hover effect */
+    background-color: #005582; 
+    transition: transform 0.5s ease-in-out;
 }
 
-.social-link:nth-child(2) { /* Specific style for GitHub link */
-    background-color: #333; /* GitHub grey */
+.social-link:nth-child(2) { 
+    background-color: #333; 
 }
 
 .social-link:nth-child(2):hover {
-    background-color: #1a1a1a; /* Darker shade for hover effect */
+    background-color: #1a1a1a; 
 }
 
 
 #about-me {
     margin: 2em 5%;
     padding: 1em;
-    background-color: white;
+    background-color: #f5f5f5;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-h1, h2 {
-    font-family: 'Times New Roman', Times, serif;
+
+h1, h2, h3 {
+    font-family: 'Merriweather', serif;
+    color: #2A2A2A;
+    font-weight: 300;
 }
 
 p {
+    line-height: 1.6;
+    margin-bottom: 1.2em;
+    font-size: 16px;
     line-height: 1.6;
 }
 
 #professional-experiences {
     margin: 2em 5%;
     padding: 1em;
-    background-color: white;
+    background-color: #f5f5f5;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -92,7 +115,7 @@ ul {
 #academic-achievements {
     margin: 2em 5%;
     padding: 1em;
-    background-color: #f9f9f9; /* Slightly different background for contrast */
+    background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -110,18 +133,70 @@ ul {
 }
 
 #projects {
-    margin: 2em 5%;
-    padding: 1em;
-    background-color: #f4f4f4; /* Different background for visual variety */
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
-.project {
-    margin-bottom: 2em;
+.project-card {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
 }
 
-.project h3 {
-    margin-top: 0;
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-front {
+    background: #fff;
+    text-align: center;
+}
+
+.card-front img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.card-front h3 {
+    margin-bottom: 10px; 
+}
+
+.card-back {
+    background: #007aff; 
+    color: white;
+    transform: rotateY(180deg); 
+    padding: 15px;
+}
+
+.project-card:hover .card-front {
+    transform: rotateY(-180deg);
+}
+
+.project-card:hover .card-back {
+    transform: rotateY(0deg);
+}
+
+.project-card {
+    position: relative;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
 }
 
 .project-duration {
@@ -129,13 +204,25 @@ ul {
     color: #555;
 }
 
+.project-content p {
+    font-size: 1em;
+    color: #333;
+}
+
+.card-link {
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+}
 
 @keyframes slideDown {
     from {
         transform: translateY(-100%);
+        opacity: 0;
     }
     to {
         transform: translateY(0);
+        opacity: 1;
     }
 }
 
@@ -156,4 +243,206 @@ header {
 
 #about-me {
     animation: slideUp 0.5s ease-in-out forwards;
+}
+
+a {
+    text-decoration: none;
+}
+
+#about-me, #professional-experiences, #academic-achievements, #projects {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 2em auto;
+    max-width: 800px;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+}
+
+button:hover {
+    background-color: #007aff;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fadeInElement {
+    animation: fadeIn 1s;
+}
+
+a, button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a:hover, button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+h2.typing-effect {
+    border-right: 2px solid;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+.navbar-logo a {
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar-links {
+    display: flex;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.navbar-links a:hover {
+    color: #007aff; 
+}
+
+body.scrolled .navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.scrolled .navbar-links a {
+    color: #333;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero {
+    position: relative;
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('hero-background.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    color: #333;
+    text-shadow: 
+        -1px -1px 0 #fff,
+         1px -1px 0 #000,
+         -1px  1px 0 #000,
+          1px  1px 0 #000;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+         -1px  1px 0 #000,
+          1px  1px 0 #000;
+}
+
+.hero-btn {
+    background-color: #007aff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: #0056b3;
+}
+
+#back-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+    display: none;
+}
+
+#back-to-top-btn:hover {
+    background-color: #555;
 }
