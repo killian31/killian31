@@ -132,10 +132,12 @@ ul {
     color: #555;
 }
 
+
+/*
 #projects {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 20px;
     padding: 20px;
     justify-content: center;
@@ -209,10 +211,53 @@ ul {
     color: #333;
 }
 
+
 .card-link {
     text-decoration: none; 
     color: inherit; 
     display: block; 
+}
+*/
+
+.projects {
+  background-color: var(--bg-color);
+  padding: 32px 0;
+  margin-top: 2rem;
+}
+
+.project-container p {
+  padding: 0.4rem;
+}
+
+.project-pic {
+  width: 65%;
+  height: 60%;
+}
+
+.projects-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 50 rem;
+  text-align: left;
+  padding: 1rem;
+}
+
+.projects-title {
+  text-align: center;
+  margin-bottom: var(--bottom-margin);
+}
+
+.project-details {
+  margin-bottom: var(--bottom-margin);
+}
+
+.project-card {
+  background-color: #fff;
+  border-radius: 11px;
+  box-shadow: 0 3px 10px var(--primary-shadow);
+  padding: 20px;
+  margin: 10px;
 }
 
 @keyframes slideDown {
@@ -255,7 +300,7 @@ a {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 2em auto;
-    max-width: 800px;
+    max-width: 1200px;
 }
 
 @media screen and (max-width: 768px) {
