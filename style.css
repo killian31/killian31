@@ -491,3 +491,72 @@ html {
 #back-to-top-btn:hover {
     background-color: #555;
 }
+
+.contact {
+    background-color: #f9f9f9;
+    padding: 2em 5%;
+    margin: 2em auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    max-width: 1200px;
+}
+
+.contact h2 {
+    text-align: center;
+    color: #2A2A2A;
+    margin-bottom: 1em;
+}
+
+.contact-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+.form-control {
+    margin-bottom: 1em;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+@media screen and (max-width: 768px) {
+    .contact-form-container {
+        flex-direction: column;
+    }
+}
