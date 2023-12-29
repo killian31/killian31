@@ -243,25 +243,103 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-    :root {
-        --font-size-normal: 14px;
+    body {
+        padding-top: 40px; /* Reduced padding */
+    }
+
+    header {
+        padding: 0.8em 0; /* Smaller header padding */
+    }
+
+    .profile-picture {
+        width: 120px; /* Smaller profile picture */
+    }
+
+    .social-link {
+        padding: 8px 12px; /* Smaller social link buttons */
+        margin: 0 8px; /* Reduced margin between buttons */
+    }
+
+    #about-me,
+    #professional-experiences,
+    #academic-achievements,
+    #projects,
+    #contact {
+        margin: 1em; /* Smaller margin for sections */
+        padding: 15px; /* Reduced padding for sections */
+    }
+
+    .projects-container {
+        flex-direction: column; /* Stack project containers */
     }
 
     .hero h1 {
-        font-size: 2em;
+        font-size: 1.8em; /* Smaller hero header size */
     }
 
     .hero p {
-        font-size: 1em;
+        font-size: 0.9em; /* Smaller hero paragraph size */
     }
+
+    h1, h2, h3 {
+        font-size: 20px; /* Smaller font size for headings */
+    }
+
+    p {
+        font-size: var(--font-size-small); /* Use smaller font size for paragraphs */
+    }
+
+    .navbar-links a {
+        margin-left: 15px; /* Reduce margin between navbar links */
+    }
+
     .contact-form-container {
-        flex-direction: column;
+        flex-direction: column; /* Stack form elements */
     }
-    .projects-container {
-        flex-direction: column;
-    }
+
     .contact-form {
-        padding: 15px;
+        padding: 15px; /* Reduced padding in contact form */
+    }
+
+    .submit-btn {
+        padding: 8px 16px; /* Smaller submit button */
+    }
+
+    .hero-content {
+        padding: 0 20px; /* Padding for hero content */
+    }
+
+    .navbar {
+        padding: 10px 15px; /* Reduced padding */
+    }
+
+    .navbar-logo a {
+        font-size: 18px; /* Smaller logo size */
+    }
+
+    .navbar-links {
+        display: none; /* Hide navbar links on small screens */
+    }
+
+    .navbar-toggle {
+        display: block; /* Show toggle button for menu */
+        cursor: pointer;
+    }
+
+    /* Styles for when the navbar is toggled open */
+    .navbar-links.responsive {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjust based on your navbar's height */
+        width: 100%;
+        background-color: #fff; /* Background color of navbar */
+    }
+
+    .navbar-links a {
+        padding: 10px 15px;
+        margin: 0;
+        border-bottom: 1px solid #eee; /* Adds a line between links */
     }
 }
 
@@ -340,6 +418,22 @@ h2.typing-effect {
     color: #333;
     margin-left: 20px;
     font-size: 16px;
+}
+
+.navbar-toggle {
+    display: none; /* Initially hidden */
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.navbar-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333;
+    transition: all 0.3s ease;
 }
 
 .navbar-links a:hover {
