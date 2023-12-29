@@ -1,18 +1,44 @@
+:root {
+    /* Color Scheme */
+    --primary-color: #1d1d1f;  /* Dark color for text */
+    --secondary-color: #333333;  /* Dark gray for headers, etc. */
+    --accent-color: #007aff;  /* Blue for buttons and links */
+    --background-color: #f8f8f7;  /* Off-white background */
+    --container-background: #f5f5f5;  /* Light gray for containers */
+    --hover-color: #005582;  /* Darker blue for hover states */
+    --border-color: #ddd;  /* Light gray for borders */
+    --shadow-color: rgba(0, 0, 0, 0.1);  /* Shadow color */
+
+    /* Typography */
+    --font-size-normal: 16px;
+    --font-size-small: 14px;
+    --font-size-large: 24px;
+
+    /* Spacing */
+    --container-padding: 20px;
+    --container-margin: 2em;
+    --button-padding: 10px 20px;
+
+    /* Misc */
+    --border-radius: 5px;
+    --box-shadow: 0 2px 5px var(--shadow-color);
+}
+
 body {
     font-family: 'Helvetica Neue', sans-serif;
-    color: #1d1d1f;
-    font-size: 16px;
+    color: var(--primary-color);
+    font-size: var(--font-size-normal);
     line-height: 1.6;
     letter-spacing: 0.02em;
     margin: 0;
     padding: 0;
     padding-top: 60px; 
-    background-color: #f8f8f7;
+    background-color: var(--background-color);
 }
 
 
 header {
-    background-color: #333333;
+    background-color: var(--secondary-color);
     color: white;
     text-align: center;
     padding: 1em 0;
@@ -40,6 +66,7 @@ header h1 {
     justify-content: center;
     text-decoration: none;
     color: white;
+    background-color: var(--secondary-color);
     padding: 10px 15px;
     margin: 0 10px;
     border-radius: 5px;
@@ -53,7 +80,7 @@ header h1 {
 }
 
 .social-link:hover {
-    background-color: #005582; 
+    background-color: var(--hover-color); 
     transition: transform 0.5s ease-in-out;
 }
 
@@ -69,22 +96,20 @@ header h1 {
 #about-me {
     margin: 2em 5%;
     padding: 1em;
-    background-color: #f5f5f5;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 
 h1, h2, h3 {
     font-family: 'Merriweather', serif;
-    color: #2A2A2A;
+    color: var(--primary-color);
     font-weight: 300;
 }
 
 p {
     line-height: 1.6;
     margin-bottom: 1.2em;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: var(--font-size-normal);
 }
 
 #professional-experiences {
@@ -207,25 +232,36 @@ a {
     text-decoration: none;
 }
 
-#about-me, #professional-experiences, #academic-achievements, #projects {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 2em auto;
+#about-me, #professional-experiences, #academic-achievements, #projects, #contact {
+    background-color: var(--container-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: var(--container-padding);
+    margin: var(--container-margin) auto;
     max-width: 1200px;
 }
 
 @media screen and (max-width: 768px) {
-    body {
-        font-size: 14px;
+    :root {
+        --font-size-normal: 14px;
     }
+
     .hero h1 {
         font-size: 2em;
     }
 
     .hero p {
         font-size: 1em;
+    }
+    .contact-form-container {
+        flex-direction: column;
+    }
+    .projects-container {
+        flex-direction: column;
+    }
+    .contact-form {
+        padding: 15px;
     }
 }
 
@@ -235,9 +271,14 @@ a {
     }
 }
 
+button {
+    padding: var(--button-padding);
+    backckground-color: var(--accent-color);
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
 button:hover {
-    background-color: #007aff;
-    transform: translateY(-2px);
+    background-color: #0056b3;
 }
 
 @keyframes fadeIn {
@@ -255,7 +296,6 @@ a, button {
 
 a:hover, button:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes typing {
@@ -269,11 +309,6 @@ h2.typing-effect {
     overflow: hidden;
     animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
 }
-
-@keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
 
 .navbar {
     display: flex;
@@ -338,7 +373,7 @@ html {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #fff;
+    color: var(--primary-color);
 }
 .hero::before {
     content: '';
@@ -414,15 +449,6 @@ html {
     background-color: #555;
 }
 
-.contact {
-    background-color: #f9f9f9;
-    padding: 2em 5%;
-    margin: 2em auto;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    max-width: 1200px;
-}
-
 .contact h2 {
     text-align: center;
     color: #2A2A2A;
@@ -475,12 +501,6 @@ html {
 
 .submit-btn:hover {
     background-color: #0056b3;
-}
-
-@media screen and (max-width: 768px) {
-    .contact-form-container {
-        flex-direction: column;
-    }
 }
 
 footer {
