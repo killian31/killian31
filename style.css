@@ -610,7 +610,6 @@ footer {
 #navbar-logo-img {
     height: 40px; /* Adjust the size as needed */
     width: auto; /* Maintains the aspect ratio of the image */
-    margin-right: 10px; /* Space between the logo and the text */
     margin: 5px 10px 5px 0;
     vertical-align: middle; /* Aligns the logo with the text */
 }
