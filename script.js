@@ -25,6 +25,24 @@ document.getElementById("back-to-top-btn").onclick = function() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
 };
 
-document.getElementById('navbar-toggle').addEventListener('click', function() {
-    document.querySelector('.navbar-links').classList.toggle('responsive');
+document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.getElementById('navbar-toggle');
+    var navbarLinks = document.getElementById('navbar-links');
+    var closeButton = document.getElementById('close-menu');
+
+    toggle.addEventListener('click', function() {
+        navbarLinks.classList.add('responsive');
+    });
+
+    closeButton.addEventListener('click', function() {
+        navbarLinks.classList.remove('responsive');
+    });
+
+    var links = navbarLinks.getElementsByTagName('a');
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function() {
+            navbarLinks.classList.remove('responsive');
+        });
+    }
 });
+
