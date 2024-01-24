@@ -403,7 +403,7 @@ html {
     background-image: url('hero-background2.png');
     background-size: cover;
     background-position: center;
-    filter: blur(5px);
+    filter: blur(7px);
     z-index: -1;
 }
 
@@ -416,22 +416,12 @@ html {
 .hero h1 {
     font-size: 3em;
     color: #fff;
-    text-shadow: 
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-         -1px  1px 0 #000,
-          1px  1px 0 #000;
 }
 
 .hero p {
     font-size: 1.2em;
     margin-bottom: 1em;
     color: #fff;
-    text-shadow: 
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-         -1px  1px 0 #000,
-          1px  1px 0 #000;
 }
 
 .hero-btn {
