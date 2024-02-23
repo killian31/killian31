@@ -8,6 +8,10 @@ Currently in Toulouse, France. MSc Applied Mathematics and Statistics.
 
 Come have a look at my [website](https://www.killian-steunou.com) for more information!
 
+<a href="https://github.com/killian31">
+  <img src="https://github-stats-alpha.vercel.app/api?username=killian31&cc=22272e&tc=37BCF6&ic=fff&bc=0000">
+</a>
+
 <details>
   <summary>Click to show my GitHub statistics</summary>
   
