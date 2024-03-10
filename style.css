@@ -239,7 +239,7 @@ a {
     text-decoration: none;
 }
 
-#about-me, #professional-experiences, #academic-achievements, #projects, #contact {
+#about-me, #professional-experiences, #academic-achievements, #projects, #research, #contact {
     background-color: var(--container-background);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
@@ -524,6 +524,22 @@ footer {
     margin: 5px 10px 5px 0;
     vertical-align: middle; /* Aligns the logo with the text */
 }
+#research {
+    margin: 2em 5%;
+    padding: 1em;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.research-item h3 {
+    margin-top: 0;
+}
+
+.research-title {
+  text-align: center;
+  margin-bottom: var(--bottom-margin);
+}
+
 
 @media screen and (max-width: 768px) {
     body {
@@ -547,6 +563,7 @@ footer {
     #professional-experiences,
     #academic-achievements,
     #projects,
+    #research,
     #contact {
         margin: 1em; /* Smaller margin for sections */
         padding: 15px; /* Reduced padding for sections */
