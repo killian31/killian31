@@ -98,6 +98,9 @@ header h1 {
     padding: 1em;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+#about-me p {
+    color: var(--primary-color);
+}
 
 
 h1, h2, h3 {
@@ -110,6 +113,10 @@ p {
     line-height: 1.6;
     margin-bottom: 1.2em;
     font-size: var(--font-size-normal);
+}
+
+#professional-experiences p {
+    color: var(--primary-color);
 }
 
 #professional-experiences {
@@ -528,6 +535,11 @@ footer a, p {
     margin: 5px 10px 5px 0;
     vertical-align: middle; /* Aligns the logo with the text */
 }
+
+#research p {
+    color: var(--primary-color);
+}
+
 #research {
     background-color: #f5f5f5;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
