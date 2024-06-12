@@ -246,6 +246,10 @@ a {
     text-decoration: none;
 }
 
+#projects p {
+    color: var(--primary-color);
+}
+
 #about-me, #professional-experiences, #academic-achievements, #projects, #research, #contact {
     background-color: var(--container-background);
     border: 1px solid var(--border-color);
