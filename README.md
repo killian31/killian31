@@ -4,7 +4,7 @@
 
 ## Hi! I'm killian31
 
-Currently in Toulouse, France. MSc Applied Mathematics and Statistics.
+Currently in Paris, France. MVA at ENS Paris-Saclay.
 
 Come have a look at my [website](https://www.killian-steunou.com) for more information!
 
