@@ -48,6 +48,11 @@ header h1 {
     color: white;
 }
 
+section {
+    scroll-margin-top: 200px; /* Adjust based on your navbar height */
+}
+
+
 .profile-picture {
     width: 150px; 
     height: auto;
@@ -212,6 +217,97 @@ ul {
   margin: 10px;
 }
 
+/* General styling for carousel container */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.carousel {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 250px;
+    max-width: 300px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.carousel-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.carousel-item p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.carousel-item a {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.carousel-item a:hover {
+    text-decoration: underline;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 5;
+    opacity: 1;
+    transition: opacity 1.0s;
+}
+
+.carousel-button.disabled {
+    opacity: 0.0; /* Dims the button */
+    pointer-events: none; /* Disables clicking */
+}
+
+.carousel-button.prev {
+    left: 20px;
+}
+
+.carousel-button.next {
+    right: 20px;
+}
+
+.carousel-button:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+
+
 @keyframes slideDown {
     from {
         transform: translateY(-100%);
@@ -321,19 +417,19 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 1); /* Semi-transparent background */
+    background-color: rgba(255, 255, 255, 1); 
     z-index: 9999; /* Ensure it's on top of other elements */
 }
 
 .navbar-links.responsive a {
     font-size: 24px;
     padding: 15px;
-    color: white; /* Adjust as needed */
+    color: white; 
     display: block;
 }
 
 .close-btn {
-    display: none; /* Hide the close button on larger screens */
+    display: none; 
 }
 
 button {
@@ -411,7 +507,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('assets/heroes/hero-background2.png');
+    background-image: url('assets/heroes/hero-background_last.webp');
     background-size: cover;
     background-position: center;
     filter: blur(7px);

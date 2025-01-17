@@ -46,3 +46,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const initializeCarousel = (carouselSelector, prevSelector, nextSelector) => {
+        const carousel = document.querySelector(carouselSelector);
+        const prevButton = document.querySelector(prevSelector);
+        const nextButton = document.querySelector(nextSelector);
+        const slideAmount = carousel.offsetWidth / 2;
+
+        let scrollPosition = 0;
+        const maxScroll = -(carousel.scrollWidth - carousel.offsetWidth);
+
+        const updateButtonState = () => {
+            prevButton.classList.toggle('disabled', scrollPosition >= 0);
+            nextButton.classList.toggle('disabled', scrollPosition <= maxScroll);
+        };
+
+        updateButtonState();
+
+        prevButton.addEventListener('click', () => {
+            scrollPosition += slideAmount;
+            if (scrollPosition > 0) scrollPosition = 0;
+            carousel.style.transform = `translateX(${scrollPosition}px)`;
+            updateButtonState();
+        });
+
+        nextButton.addEventListener('click', () => {
+            scrollPosition -= slideAmount;
+            if (scrollPosition < maxScroll) scrollPosition = maxScroll;
+            carousel.style.transform = `translateX(${scrollPosition}px)`;
+            updateButtonState();
+        });
+    };
+
+    // Initialize both carousels
+    initializeCarousel('.projects-carousel .carousel', '.projects-prev', '.projects-next');
+    initializeCarousel('.research-carousel .carousel', '.research-prev', '.research-next');
+});
+

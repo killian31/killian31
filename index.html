@@ -40,8 +40,8 @@
             <a href="#about-me">About</a>
             <a href="#professional-experiences">Experiences</a>
             <a href="#academic-achievements">Academic</a>
-            <a href="#projects">Projects</a>
             <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -56,7 +56,7 @@
             <img src="assets/logos/github-mark-white.png" alt="GitHub" style="height: 20px;">
             GitHub
         </a>
-        <a href="assets/CV_KS.pdf" download class="social-link">
+        <a href="assets/CV_KS.pdf" target="_blank" download class="social-link">
              <img src="assets/logos/download-icon.png" alt="Download Resume" style="height: 20px;">
             Download Resume
          </a>
@@ -66,7 +66,7 @@
     <div class="hero-content">
         <h1>Welcome to My Portfolio.</h1>
         <p>Embarking on a Journey in AI, Fueled by a Passion for Mathematics and Statistics.</p>
-        <a href="#projects" class="hero-btn">View Projects</a>
+        <a href="#research" class="hero-btn">View Projects</a>
     </div>
     </section>
     <section id="about-me" data-aos="fade-up">
@@ -205,12 +205,15 @@
         <p class="achievement-duration">September 2024 - March 2025</p>
         <ul>
             <li>
-                Computational Optimal Transport, Convex Optimization, Object Recognition and Computer
-                Vision, Probabilistic Graphical Models, Deep Learning and Signal Processing, AI Safety and Explainability.
+                Computational Optimal Transport, Convex Optimization, Turing Seminar 
+                (AI Safety), Object Recognition and Computer Vision, Introduction to 
+                Probabilistic Graphical Models, Deep Learning and Signal Processing.
+
             </li>
             <li>
-                Generative Models for Image, 3D Modeling, Representation Learning for
-                Computer Vision, Remote Sensing Data, Deep Learning for Image Synthesis.
+                Representation Learning for Computer Vision, Generative Models for 
+                Images, Data Generation in AI by Transport and Denoising, Regulating AI,
+                Point Clouds and 3D Modeling.
             </li>
         </ul>
     </div>
@@ -259,79 +262,158 @@
             </li>
         </ul>
     </section>
-    <section class="projects" id="projects" data-aos="fade-up">
-      <h2 class="projects-title">Some of my Recent Projects</h2>
-      <div class="projects-container">
-        <div class="project-container project-card">
-          <img
-            src="assets/projects/vbr.gif"
-            alt="video-background-removal"
-            loading="lazy"
-            class="project-pic"
-          />
-          <h3 class="project-title">Video Background Removal</h3>
-          <p class="project-details">
-            A video background removal tool using Mobile SAM (Segment-Anything Model)
-            to automatically segment and remove the background from videos.
-          </p>
-          <a href="https://video-background-removal.streamlit.app" target="_blank" class="project-link">Check it Out</a>
-        </div>
-        <div class="project-container project-card">
-          <img
-            src="assets/projects/balloon_opti.gif"
-            alt="object-detection"
-            loading="lazy"
-            class="project-pic"
-          />
-          <h3 class="project-title">Object Detection: Owl‐Vit for Videos</h3>
-          <p class="project-details">
-            Implementation of Google Owl-ViT's model for zero-shot object detection in
-            videos using natural language prompts.
-          </p>
-          <a href="https://github.com/killian31/VideoObjectDetection" target="_blank" class="project-link">Check it Out</a>
-        </div>
-        <div class="project-container project-card">
-          <img
-            src="assets/projects/joligen.svg"
-            alt="contrib-joligen"
-            loading="lazy"
-            class="project-pic"
-          />
-          <h3 class="project-title">Contribution to joliGEN</h3>
-          <p class="project-details">
-          I integrated edge detection methods into joliGEN (from ControlNET). I also added 
-          Segment-Anything Model from Meta for precise masking. 
-          </p>
-          <a href="https://github.com/jolibrain/joliGEN" target="_blank" class="project-link">Check it Out</a>
-        </div>
-        <div class="project-container project-card">
-          <img
-            src="assets/projects/multilingual-nlp.png"
-            alt="multilingual-machine-reading"
-            loading="lazy"
-            class="project-pic"
-          />
-          <h3 class="project-title">Multilingual Machine Reading</h3>
-          <p class="project-details">
-            Development of a multilingual question answering system in English, Finnish
-            and Japanese.
-          </p>
-          <a href="https://github.com/killian31/Multilingual-Machine-Reading" target="_blank" class="project-link">Check it Out</a>
-        </div>
-      </div>
-    </section>
     <section id="research" data-aos="fade-up">
-        <h2 class="research-title">Research</h2>
-        <div class="research-item">
-            <h3>About the Geometric Sensitivity of Adaptative Optimizers to Neural Networks' Structure</h3>
-            <p>
-                The goal is to understand the dependence between the structure of a 
-                neural network and the performance of adaptive optimizers. We aim to 
-                prove that a disalignment between the network's structure (for example 
-                by composing the loss with a rotation) and the optimizer's geometry can
-                lead to a significant decrease in performance for adaptive optimizers.
+        <h2 class="research-title">Research Projects</h2>
+        <p class="research-description">
+            Here are some of the research projects I've worked on.
+        <div class="carousel-container research-carousel">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <h3 class="research-title">Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
+                    <a href="https://arxiv.org/abs/2110.0323" target="_blank" class="source-article">Max Daniels, Tyler Maunu, and Paul Hand, 2022.</a>
+                    <p class="research-details">
+                        I performed several experiments to evaluate the 
+                        performance of the SCONES method on low-dimensional 
+                        distributions. 
+                    </p>
+                    <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" class="research-link">Download Report</a>
+                    <p></p>
+                    <a href= "https://github.com/killian31/scones-synthetic" target="_blank" class="research-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="research-badge">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <h3 class="research-title">Test Time Training with Masked Autoencoders</h3>
+                    <a href="https://arxiv.org/abs/2209.07522" target="_blank" class="source-article">Yossi Gandelsman, Yu Sun, Xinlei Chen, and Alexei A Efros, 2022</a>
+                    <p class="research-details">
+                        I extended the TTT-MAE method with an online
+                        version that shows better performance than the original method.
+                    </p>
+                    <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" class="research-link">Download Report</a>
+                    <p></p>
+                    <a href= "https://github.com/killian31/ttt_mae_online" target="_blank" class="research-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="research-badge">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <h3 class="research-title">Are Generative Classifiers More Robust to Adversarial Attacks?</h3>
+                    <a href="https://arxiv.org/abs/1802.06552" target="_blank" class="source-article">Yingzhen Li, John Bradshaw, and Yash Sharma, 2019</a>
+                    <p class="research-details">
+                        We compared the robustness of generative 
+                        classifiers to adversarial attacks with discriminative 
+                        classifiers, and verify the hypothesis on a real-world setting.
+                    </p>
+                    <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank" class="research-link">Download Report</a>
+                    <p></p>
+                    <a href= "https://github.com/killian31/DeepBayesTorch" target="_blank" class="research-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="research-badge">
+                    </a>
+                </div>
+            </div>
+            <button class="carousel-button prev research-prev">‹</button>
+            <button class="carousel-button next research-next">›</button>
         </div>
     </section>
+    </section>
+    <section id="projects" data-aos="fade-up">
+        <h2 class="projects-title">Some of my Recent Projects</h2>
+        <p class="projects-description">
+            Here are some of the projects I've worked on. Some are finished, some are
+            still in progress.
+        </p>
+        <div class="carousel-container projects-carousel">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="project-pic">
+                    <h3 class="project-title">Audio Visual Transcription</h3>
+                    <p class="project-details">
+                        AVT is a tool that allows you to precisely subtitle your audio
+                        or video content in minutes, using OpenAI Whisper model.
+                    </p>
+                    <a href="https://github.com/killian31/AudioVisualTranscription", target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                    <p></p>
+                    <a href= "https://huggingface.co/spaces/nelikCode/AudioVisualTranscription" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20Spaces-blue?style=for-the-badge&logo=huggingface" alt="Open in Spaces" class="project-badge">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/projects/balloon_opti.gif" alt="Object Detection" class="project-pic">
+                    <h3 class="project-title">Object Detection: Owl‐ViT for Videos</h3>
+                    <p class="project-details">
+                        Implementation of Google Owl-ViT's model for zero-shot object detection in
+                        videos using natural language prompts.
+                    </p> 
+                    <a href="https://github.com/killian31/VideoObjectDetection" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/projects/joligen.svg" alt="Contribution to joliGEN" class="project-pic">
+                    <h3 class="project-title">Contribution to joliGEN</h3>
+                    <p class="project-details">
+                        I integrated edge detection methods into joliGEN (from ControlNET). I also added
+                        Segment-Anything Model from Meta for precise masking.
+                    </p>
+                    <a href="https://github.com/jolibrain/joliGEN" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/projects/mathviz.png" alt="MathViz" class="project-pic">
+                    <h3 class="project-title">MathViz</h3>
+                    <p class="project-details">
+                        MathViz is a Streamlit app that allows you to visualize
+                        concepts from Mathematics, Statistics, Machine Learning or 
+                        Algorithms.
+                    </p>
+                    <a href="https://github.com/killian31/MathViz" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                    <p></p>
+                    <a href= "https://mathviz.streamlit.app" target="_blank" class="project-badge">
+                        <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit" class="project-badge">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/projects/wiki.jpg" alt="Wikipedia Graph" class="project-pic">
+                    <h3 class="project-title">Wikipedia Graph</h3>
+                    <p class="project-details">
+                        Scraping Wikipedia to create a structured graph of the concepts around a
+                        base word (in French). The output data can be loaded in Gephi 
+                        to visualize the graph.
+                    </p>
+                    <a href="https://github.com/killian31/Wikipedia-Map" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/projects/ladder.webp" alt="Word Ladder Generator" class="project-pic">
+                    <h3 class="project-title">Word Ladder Generator</h3>
+                    <p class="project-details">
+                        Word Ladder Generator is a game that generates the shortest path
+                        between two words by changing one letter at a time. In French.
+                    </p>
+                    <a href="https://github.com/killian31/Word-Ladder-Generator" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/projects/multilingual-nlp.png" alt="Multilingual Machine Reading" class="project-pic">
+                    <h3 class="project-title">Multilingual Machine Reading</h3>
+                    <p class="project-details">
+                        Development of a multilingual question answering system in English, Finnish,
+                        and Japanese.
+                    </p>
+                    <a href="https://github.com/killian31/Multilingual-Machine-Reading" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                    </a>
+                </div>
+            </div>
+            <button class="carousel-button prev projects-prev">‹</button>
+            <button class="carousel-button next projects-next">›</button>
+        </div>
+    </section>
+
     <section class="contact" id="contact" data-aos="fade-up">
       <h2>Get In Touch With Me</h2>
       <div class="contact-form-container">
