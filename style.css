@@ -49,7 +49,7 @@ header h1 {
 }
 
 section {
-    scroll-margin-top: 200px; /* Adjust based on your navbar height */
+    scroll-margin-top: 200px; 
 }
 
 
@@ -109,7 +109,7 @@ section {
 
 
 h1, h2, h3 {
-    font-family: 'Merriweather', serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--primary-color);
     font-weight: 300;
 }
@@ -150,7 +150,7 @@ ul {
 }
 
 .company-logo {
-    height: 30px; /* Adjust the size as needed */
+    height: 30px; 
     width: auto; /* Keeps the aspect ratio */
     margin-right: 10px; /* Space between the logo and text */
     vertical-align: middle; /* Aligns logo with the text */
@@ -217,7 +217,6 @@ ul {
   margin: 10px;
 }
 
-/* General styling for carousel container */
 .carousel-container {
     position: relative;
     overflow: hidden;
@@ -630,10 +629,10 @@ footer a, p {
 }
 
 .navbar-logo img {
-    height: 40px; /* Adjust the size as needed */
-    width: auto; /* Maintains the aspect ratio of the image */
+    height: 40px; 
+    width: auto; 
     margin: 5px 10px 5px 0;
-    vertical-align: middle; /* Aligns the logo with the text */
+    vertical-align: middle; 
 }
 
 #research p {
@@ -729,7 +728,6 @@ footer a, p {
     .navbar-links.responsive {
         display: flex;
         flex-direction: column;
-        /* Other styling as needed */
     }
 
     .navbar-toggle {
@@ -755,6 +753,6 @@ footer a, p {
         right: 20px;
         font-size: 30px;
         cursor: pointer;
-        color: #333; /* Or any color that suits your design */
+        color: #333; 
     }
 }
