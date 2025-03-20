@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">Killian Steunou</a>
+        </div>
+        <div class="navbar-links">
+            <a href="index.html#about-me">About</a>
+            <a href="index.html#professional-experiences">Experiences</a>
+            <a href="index.html#academic-achievements">Academic</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+    
+    <header>
+        <h1>Research Projects</h1>
+    </header>
+
+    <section id="research-container">
+        <div class="research-grid">
+            <div class="research-card">
+                <h3>Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
+                <p><strong>Authors:</strong> Max Daniels, Tyler Maunu, Paul Hand</p>
+                <a href="https://arxiv.org/abs/2110.03237" target="_blank">Original Paper</a>
+                <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank">Download Report</a>
+                <a href="https://github.com/killian31/scones-synthetic" target="_blank">GitHub Repository</a>
+                <p><strong>Abstract:</strong>
+This paper investigates the integration of score-based generative models into regularized optimal transport for addressing the computational challenges of large-scale OT problems. Optimal transport often becomes computationally intractable for large datasets. Regularized OT, using methods like the Sinkhorn algorithm, introduces entropy-based regularization to enhance efficiency. However, these methods suffer from limitations, including averaging artifacts when deriving transport maps.
+To address this, \cite{daniels2022scorebasedgenerativeneuralnetworks} propose a hybrid approach combining score-based generative models with regularized OT. Their method follows the work of \cite{seguy2018largescaleoptimaltransportmapping}, using neural networks to approximate optimal dual variables and employs Langevin dynamics \cite{langevinsampling} for conditional sampling, enabling direct sampling from the Sinkhorn coupling without averaging artifacts. The contributions of this work are both theoretical and practical: they build on existing formulations of $f$-divergence-regularized OT and introduce a novel numerical framework, SCONES (Sinkorn Conditional Neural Sampling), for efficiently approximating and sampling OT plans.
+We validate their approach through experiments on toy distributions, comparing its performance against barycentric projection method from \cite{seguy2018largescaleoptimaltransportmapping} in terms of accuracy and computational efficiency. Additionally, we analyze the effects of relevant hyperparameters parameters to understand their influence on the method's performance. This work extends the applicability of OT methods to large-scale, high-dimensional problems in machine learning.
+                </p>
+            </div>
+
+            <div class="research-card">
+                <h3>Test Time Training with Masked Autoencoders</h3>
+                <p><strong>Authors:</strong> Yossi Gandelsman, Yu Sun, Xinlei Chen, Alexei A Efros</p>
+                <a href="https://arxiv.org/abs/2209.07522" target="_blank">Original Paper</a>
+                <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank">Download Report</a>
+                <a href="https://github.com/killian31/ttt_mae_online" target="_blank">GitHub Repository</a>
+                <p><strong>Abstract:</strong>
+Generalization under distribution shifts remains a critical challenge in computer vision. Test-time training (TTT) addresses this by adapting models dynamically during deployment, using self-supervised learning to improve performance on unseen test distributions. This report evaluates the TTT-MAE framework, which integrates Masked Autoencoders into TTT, for its effectiveness on the ImageNet-C benchmark. Through experiments, we confirm TTT-MAE's capability to enhance robustness under all corruption types. We analyze failure cases, hypothesizing a decoupling between the reconstruction and classification tasks. \\Additionally, an online variant of TTT-MAE, where encoder weights are not reset between test samples, demonstrates notable improvements, suggesting potential for cumulative adaptation. Despite resource constraints influencing the evaluation protocol, the findings provide critical insights into TTT-MAE's strengths and limitations, paving the way for future refinements to optimize its performance in real-world applications.
+                </p>
+            </div>
+
+            <div class="research-card">
+                <h3>Are Generative Classifiers More Robust to Adversarial Attacks?</h3>
+                <p><strong>Authors:</strong> Yingzhen Li, John Bradshaw, Yash Sharma</p>
+                <a href="https://arxiv.org/abs/1802.06552" target="_blank">Original Paper</a>
+                <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank">Download Report</a>
+                <a href="https://github.com/killian31/DeepBayesTorch" target="_blank">GitHub Repository</a>
+                <p><strong>Abstract:</strong>
+This report presents our work on the article \textit{Are Generative Classifiers More Robust to Adversarial Attacks?} \cite{li2019generativeclassifiersrobustadversarial}. We implemented the authors experiment on MNIST \cite{deng2012mnist}, and applied the methods on the German Traffic Sign Recognition Benchmark dataset \cite{gtsrb}, under black-box adversarial attacks, and were unable to conclude on whether generative classifiers were more robust to adversarial attacks than discriminative classifiers.
+                </p>
+            </div>
+
+            <div class="research-card">
+                <h3>Toxic Gas Characterization</h3>
+                <p><strong>Authors:</strong> Killian Steunou</p>
+                <p><strong>Abstract:</strong>
+This paper addresses the challenge of toxic gas identification and characterization using sensor data significantly influenced by varying humidity levels, which present a notable distribution shift between training and test datasets. To bridge this domain gap, we explore and benchmark several modeling strategies, including strategic data partitioning that emulates test-set humidity distributions, standard machine learning models (Random Forest and XGBoost), a two-stage classification-regression approach, and an end-to-end deep learning architecture called RAMTNet, specifically designed for multi-task regression. Additionally, we implement Unsupervised Domain Adaptation through adversarial training, encouraging domain-invariant feature representations. Our experiments reveal that careful simulation of test conditions and domain adaptation substantially mitigate overfitting caused by humidity-induced distribution shifts. The best-performing approach, a two-stage model combining classification and regression, achieves a weighted RMSE of $0.154256$, surpassing the provided baseline ($0.1567$).
+                </p>
+                <a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true" target="_blank">Download Report</a>
+                <a href="https://github.com/killian31/IdGas" target="_blank">GitHub Repository</a>
+            </div>
+
+            <div class="research-card">
+                <h3>Convergence of SGD for Training Neural Networks with Sliced Wasserstein Losses</h3>
+                <p><strong>Authors:</strong> Eloi Tanguy</p>
+                <a href="https://arxiv.org/abs/2307.11714" target="_blank">Original Paper</a>
+                <a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true" target="_blank">Download Report</a>
+                <a href="https://github.com/francklaborde/Generative-modeling-project" target="_blank">GitHub Repository</a>
+                <p><strong>Abstract:</strong>
+In this report, we verify the theoretical results of \cite{tanguy2024convergencesgdtrainingneural} on the convergence of neural networks trained with the sliced Wasserstein distance by generating 2D data points and FashionMNIST images using the proposed algorithm. We also study and experiment the proposed alternative optimizer to SGD called Noise Projected SGD (NPSGD).
+                </p>
+            </div>
+
+            <div class="research-card">
+                <h3>An End-to-End Transformer Model for 3D Object Detection</h3>
+                <p><strong>Authors:</strong> Ishan Misra, Rohit Girdhar, Armand Joulin</p>
+                <a href="https://arxiv.org/abs/2109.08141" target="_blank">Original Paper</a>
+                <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank">Download Report</a>
+                <p><strong>Abstract:</strong>
+3DETR \cite{3detr} is an end-to-end Transformer based
+object detection model for 3D point clouds. It makes minimal modifications to the Transformer based on DETR \cite{detr}, a model for 2D images, to adapt it for 3D point data. At the same time, it is a one-step model, meaning it does not require a pretrained model as DETR does. Compared with other detection methods for 3D data, it uses fewer hand-tuned hyperparameters, fewer hand-designed inductive biases, and non-parametric queries, making the model much easier to implement. In this report, we explain the method, evaluate the performance of 3DETR, study the impact of the test-time number number of queries, and experiment a version of the model that uses RGB values of point clouds.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+

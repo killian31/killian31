@@ -653,7 +653,78 @@ footer a, p {
   margin-bottom: var(--bottom-margin);
 }
 
+#research-container {
+    max-width: 1200px;
+    margin: 2em auto;
+    padding: 20px;
+}
 
+.research-grid {
+    column-count: 2; 
+    column-gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.research-card {
+    display: inline-block; 
+    width: 93%; 
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px; 
+}
+
+.research-card:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out;
+}
+
+.research-card h3 {
+    font-size: var(--font-size-large);
+    margin-bottom: 10px;
+}
+
+.research-card a {
+    display: block;
+    color: var(--accent-color);
+    margin-top: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.research-card a:hover {
+    text-decoration: underline;
+}
+
+.research-card p {
+    color: var(--primary-color);
+    font-size: var(--font-size-normal);
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+
+.research-btn {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: var(--font-size-normal);
+    font-weight: bold;
+    text-align: center;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.research-btn:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
 
 
 @media screen and (max-width: 768px) {
@@ -756,5 +827,8 @@ footer a, p {
         font-size: 30px;
         cursor: pointer;
         color: #333; 
+    }
+    .research-grid {
+        grid-template-columns: 1fr;
     }
 }
