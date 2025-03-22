@@ -726,7 +726,6 @@ footer a, p {
     transform: scale(1.05);
 }
 
-
 @media screen and (max-width: 768px) {
     body {
         padding-top: 40px; /* Reduced padding */
@@ -830,11 +829,5 @@ footer a, p {
     }
     .research-grid {
         column-count: 1; /* Single column on smaller screens */
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .research-grid {
-        column-count: 2; /* Reduce to 2 columns on tablets */
     }
 }
