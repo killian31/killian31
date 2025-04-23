@@ -4,7 +4,7 @@
 
 ## Hi! I'm killian31
 
-Currently in Paris, France. MVA at ENS Paris-Saclay.
+Currently in Paris, France. AI Research intern to finish my M2 MVA at ENS Paris-Saclay.
 
 Come have a look at my [website](https://www.killian-steunou.com) for more information!
 
