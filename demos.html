@@ -5,43 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demos - Killian Steunou</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-logo">
-            <a href="index.html">Killian Steunou</a>
-        </div>
-        <div class="navbar-links">
-            <a href="index.html#about-me">About</a>
-            <a href="index.html#professional-experiences">Experiences</a>
-            <a href="index.html#academic-achievements">Academic</a>
-            <a href="index.html#research">Research</a>
-            <a href="index.html#projects">Projects</a>
-            <a href="index.html#contact">Contact</a>
-            <a href="demos.html">Demos</a>
+        <div class="nav-content">
+            <div class="navbar-logo">
+                <img src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
+                <a href="index.html#hero">Killian Steunou</a>
+            </div>
+            <div class="navbar-toggle" id="navbar-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#research">Research</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="demos.html">Demos</a></li>
+            </ul>
         </div>
     </nav>
 
-    <section id="demos" data-aos="fade-up">
-        <h1 class="project-title">Demos</h1>
-        <div class "carousel-container projects-carousel">
-            <div class="carousel">
-                <div class="carousel-item">
-                    <h3 class="project-title">Audio Visual Transcription</h3>
+    <section id="demos" class="section projects">
+        <div class="section-content">
+            <h2>Demos</h2>
+            <div class="demo-container">
+                <div class="demo-item">
                     <a href="demo_avt.html">
-                        <img src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription">
+                        <img src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="demo-image">
+                        <h3 class="demo-title">Audio Visual Transcription</h3>
                     </a>
                 </div>
-                <div class="carousel-item">
-                    <h3 class="project-title">Video Background Removal</h3>
+                <div class="demo-item">
                     <a href="demo_vbr.html">
-                        <img src="assets/projects/vbr.gif" alt="Video Background Removal">
+                        <img src="assets/projects/vbr.gif" alt="Video Background Removal" class="demo-image">
+                        <h3 class="demo-title">Video Background Removal</h3>
                     </a>
                 </div>
-                <div class="carousel-item">
-                    <h3 class="project-title">MathViz</h3>
+                <div class="demo-item">
                     <a href="demo_mathviz.html">
-                        <img src="assets/projects/mathviz.png" alt="MathViz">
+                        <img src="assets/projects/mathviz.png" alt="MathViz" class="demo-image">
+                        <h3 class="demo-title">MathViz</h3>
                     </a>
                 </div>
             </div>
@@ -51,5 +61,30 @@
     <footer>
         <p>&copy; 2025 Killian Steunou</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Glider(document.querySelector('#demos-glider'), {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                draggable: true,
+                arrows: {
+                    prev: '#demos-prev',
+                    next: '#demos-next'
+                },
+                responsive: [
+                    {
+                        breakpoint: 900,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
 </body>
 </html>
+

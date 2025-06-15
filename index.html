@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-04EMWV24G9"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -21,500 +20,555 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-logo">
-            <img src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img"> 
-            <a href="#">
-                Killian Steunou
-            </a>
-        </div>
-        <div class="navbar-toggle" id="navbar-toggle">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <div class="navbar-links" id="navbar-links">
-            <span class="close-btn" id="close-menu">X</span>
-            <a href="#about-me">About</a>
-            <a href="#professional-experiences">Experiences</a>
-            <a href="#academic-achievements">Academic</a>
-            <a href="#research">Research</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="demos.html">Demos</a>
+        <div class="nav-content">
+            <div class="navbar-logo">
+                <img src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
+                <a href="index.html#hero">Killian Steunou</a>
+            </div>
+            <div class="navbar-toggle" id="navbar-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="demos.html">Demos</a></li>
+            </ul>
         </div>
     </nav>
-    <header>
-        <h1>Killian Steunou</h1>
-        <div class="social-links">
-        <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" class="social-link">
-        <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" style="height: 20px;">
-        LinkedIn
-        </a>
-        <a href="https://github.com/killian31" target="_blank" class="social-link">
-            <img src="assets/logos/github-mark-white.png" alt="GitHub" style="height: 20px;">
-            GitHub
-        </a>
-        <a href="assets/CV_KS.pdf" target="_blank" download class="social-link">
-             <img src="assets/logos/download-icon.png" alt="Download Resume" style="height: 20px;">
-            Download Resume
-         </a>
+    <!-- Hero Section -->
+    <section id="hero" class="section hero" data-aos="fade-up">
+        <div class="section-content">
+            <h1>Welcome to my Portfolio</h1>
+            <p>Learn about my journey in Mathematics, Computer Vision and AI</p>
+            <a href="#about" class="cta-button">About me</a>
         </div>
-    </header>
-    <section class="hero" id="home" data-aos="fade-up">
-    <div class="hero-content">
-        <h1>Welcome to My Portfolio.</h1>
-        <p>Embarking on a Journey in AI, Fueled by a Passion for Mathematics and Statistics.</p>
-        <a href="#research" class="hero-btn">View Projects</a>
-    </div>
+        <div class="neural-network">
+            <svg class="network-svg">
+            </svg>
+            <div class="network-dots">
+                <div class="network-dot active" data-section="hero"></div>
+                <div class="network-dot" data-section="about"></div>
+                <div class="network-dot" data-section="experience"></div>
+                <div class="network-dot" data-section="education"></div>
+                <div class="network-dot" data-section="research"></div>
+                <div class="network-dot" data-section="projects"></div>
+                <div class="network-dot" data-section="contact"></div>
+            </div>
+        </div>
     </section>
-    <section id="about-me" data-aos="fade-up">
-        <h2>About Me</h2>
-        <img src="assets/profile/profile-picture.jpg" alt="Killian Steunou" class="profile-picture">
-        <p>
-        I'm currently pursuing a master's degree in Machine Learning and Computer Vision at ENS Paris-Saclay (Master MVA).
-        </p>
-        <p>
-        My research primarily focuses on computer vision, driven by the conviction that visual perception is fundamental to intelligence—both human and artificial.
-        </p>
-        <p>
-        I strongly support open-source practices, transparency, and reproducibility in research. Sharing my work openly to allow others to build upon it is central to my approach to science.
-        </p>
-    </section>
-    <section id="professional-experiences" data-aos="fade-up">
-    <h2>Professional Experiences</h2>
-    <div class="experience">
-        <h3>
-            <img src="assets/logos/logo_idemia.png" alt="Idemia Logo" class="company-logo">
-            Deep Learning Research Engineer (intern) - Idemia
-        </h3>
-        <p class="experience-duration">April 2025 - October 2025</p>
-        <ul>
-            <li>
-            <strong>Research on Multi Object Tracking and Segmentation.</strong>
-            </li>
-            <li>
-                I created an <strong>automatic video instance segmentation mask generator</strong>
-                from MOT data, using SAM2 model. Used it to augment datasets from the literature.
-            </li>
-            <li>
-                I used the augmented datasets to train an end-to-end tracker, with an additional
-                segmentation head, to improve the performance of the tracking with the instance 
-                segmentation task.
-            </li>
-        </ul>
-    </div>
-    <div class="experience">
-        <h3>
-            <img src="assets/logos/logo_cls.png" alt="CLS Logo" class="company-logo">
-            Intern - AI Research - CLS
-        </h3>
-        <p class="experience-duration">April 2024 - August 2024</p>
-        <ul>
-            <p>
-                 In charge of evaluating the relevance of using Foundation Models
-                 for remote sensing applications. For this purpose, I developed a
-                 library to fine-tune Foundation Models on remote sensing datasets, 
-                 used by coworkers at CLS. Key tasks include:
-            </p>
-            <li>
-                <strong>Literature Review</strong>: A comprehensive
-                review of the latest research on Foundation Models and their applications
-                in remote sensing. This involved analyzing existing studies, identifying
-                gaps in the literature, and determining the potential benefits of using
-                Foundation Models for remote sensing tasks.
-            </li>
-            <li>
-                <strong>Model Development</strong>: I developed a library to fine-tune
-                Foundation Models on remote sensing datasets. This included implementing
-                data preprocessing pipelines, training and evaluation scripts, and
-                fine-tuning algorithms to adapt Foundation Models to remote sensing tasks.
-            </li>
-            <li>
-                <strong>Performance Evaluation</strong>: I evaluated the performance
-                of fine-tuned Foundation Models on semantic segmentation, which is a key
-                task in remote sensing, by comparing key metrics and the computation time to
-                performance ratio with traditional models trained from random weights.
-            </li>
-        </ul>
-    </div>
-    <div class="experience">
-        <h3>
-            <img src="assets/logos/logo_jolibrain.png" alt="JoliBrain Logo" class="company-logo">
-            Intern - Machine Learning Engineer - JoliBrain
-        </h3>
-        <p class="experience-duration">February 2023 - July 2023</p>
-        <ul>
-            <li>
-                <strong>Contribution to 
-                <a href="https://github.com/jolibrain/joliGEN">joliGEN</a></strong>: 
-                 I implemented a range of advanced edge detection methods to 
-                 significantly enhance the capabilities and usability of the 
-                 open-source tool joliGEN. This included incorporating image generation
-                 controls (from the ControlNET paper) to provide users with greater 
-                 flexibility and control over their image generation tasks.
-            </li>
-            <li>
-                I implemented state‐of‐the‐art machine learning models such as Owl‐ViT
-                for zero‐shot object detection.
-            </li>
-            <li>I took charge of developing the entire documentation <a href="https://www.joligen.com/doc/">website</a> for the 
-                tool, using ReadTheDocs. This involved creating a user-friendly, 
-                comprehensive resource that enabled users to quickly understand and
-                utilize the tool's features and functionalities, enhancing the overall 
-                user experience.</li>
-        </ul>
-    </div>
-    <div class="experience">
-        <h3>
-            <img src="assets/logos/logo_ministere.png" alt="Ministère de l'Agriculture Logo" class="company-logo">
-            Intern - Software Developer (R Shiny) - French Ministry of Agriculture
-        </h3>
-        <p class="experience-duration">May 2022 - August 2022</p>
-        <ul>
-            <li>
-                I <strong>created  <a href="https://ksteunou.pages.lab.sspcloud.fr/agreste/">agreste </a></strong>: a comprehensive automation tool as an R package for 
-                streamlining the creation of statistical publications.
-            </li>
-            <li>
-                I took ownership of the project from initial requirements gathering to
-                final tool delivery, using Agile methodologies for efficient project
-                management.
-            </li>
-            <li>
-                I designed an intuitive user interface using R Shiny to facilitate 
-                data input and publication generation, enhancing user experience.
-            </li>
-        </ul>
-    </div>
-    </section>
-    <section id="academic-achievements" data-aos="fade-up">
-    <h2>Academic Background</h2>
-    <div class="achievement">
-        <h3>
-            <img src="assets/logos/logo_ens.jpg" alt="ENS Logo" class="company-logo">
-            Master 2 <strong>Mathématiques, Vision, Apprentissage</strong> - École Normale Supérieure Paris-Saclay
-        </h3>
-        <p class="achievement-duration">September 2024 - March 2025</p>
-        <ul>
-            <li>
-                Computational Optimal Transport, Convex Optimization, Turing Seminar 
-                (AI Safety), Object Recognition and Computer Vision, Introduction to 
-                Probabilistic Graphical Models, Deep Learning and Signal Processing.
 
-            </li>
-            <li>
-                Representation Learning for Computer Vision, Generative Models for 
-                Images, Data Generation in AI by Transport and Denoising, Regulating AI,
-                Point Clouds and 3D Modeling.
-            </li>
-        </ul>
-    </div>
-    <div class="achievement">
-        <h3>
-            <img src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="company-logo">
-            Master 1 <strong>Applied Mathematics and Statistics</strong> - Toulouse School of Economics
-        </h3>
-        <p class="achievement-duration">September 2023 - April 2024</p>
-        <ul>
-            <li>
-                Econometrics, Probability and Statistics, Functional Analysis, Convex 
-                Optimization for Machine Learning, Computational Data Science (Python).
-            </li>
-            <li>
-                Foundations of Machine Learning, Mathematical Game Theory, Advanced 
-                Optimization, Markov Decision Processes, High Dimensional Data Analysis 
-                and Machine Learning, Time series, Stochastic Methods for Optimization 
-                and Sampling.
-            </li>
-        </ul>
-    </div>
-    <div class="achievement">
-        <h3>
-            <img src="assets/logos/ku_logo_uk_h.png" alt="KU Logo" class="company-logo">
-            <strong>Gap Year</strong> - University of Copenhagen
-        </h3>
-        <p class="achievement-duration">September 2022 - January 2023</p>
-        <ul>
-            <li>
-                I took courses in Natural Language Processing, Blockchain Business
-                Development, Energy Economics, and Tax Policy.
-            </li>
-        </ul>
-    <div class="achievement">
-        <h3>
-            <img src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="company-logo">
-            Double Bachelor: <strong>Applied Mathematics and Economics</strong> - Toulouse School of Economics
-        </h3>
-        <p class="achievement-duration">September 2019 - April 2022</p>
-        <ul>
-            <li>
-                Linear Algebra, Analysis, Probability and Statistics, Numerical 
-                Analysis, Optimization, Econometrics, Computer Science (Python, R),
-                Microeconomics, Macroeconomics.
-            </li>
-        </ul>
+    <!-- About Section -->
+    <section id="about" class="section about" data-aos="fade-up">
+        <div class="section-content about-flex">
+            <div class="about-photo-col">
+              <img src="assets/profile/profile-picture.jpg" alt="Killian Steunou" class="profile-picture-neural">
+              <div class="about-social">
+                <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" class="about-social-btn linkedin">
+                  <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn"> LinkedIn
+                </a>
+                <a href="https://github.com/killian31" target="_blank" class="about-social-btn github">
+                  <img src="assets/logos/github-mark-white.png" alt="GitHub"> GitHub
+                </a>
+                <a href="assets/CV_KS.pdf" target="_blank" download class="about-social-btn cv">
+                  <img src="assets/logos/download-icon.png" alt="Resume"> CV
+                </a>
+              </div>
+            </div>
+            <div class="about-text-col">
+                <h2>About Me</h2>
+                <p style="text-align: justify;">
+                I'm currently pursuing a master's degree in Machine Learning and Computer
+                Vision at ENS Paris-Saclay (Master MVA).
+                </p>
+                <p style="text-align: justify;">
+                My research primarily focuses on computer vision, driven by the conviction 
+                that visual perception is fundamental to intelligence, both human and 
+                artificial.
+                </p>
+                <p style="text-align: justify;">
+                I strongly support open-source practices, transparency, and reproducibility
+                in research. Sharing my work openly to allow others to build upon it is 
+                central to my approach to science.
+                </p>
+            </div>
+        </div>
+        <div class="neural-network">
+            <svg class="network-svg"></svg>
+            <div class="network-dots">
+                <div class="network-dot" data-section="hero"></div>
+                <div class="network-dot active" data-section="about"></div>
+                <div class="network-dot" data-section="experience"></div>
+                <div class="network-dot" data-section="education"></div>
+                <div class="network-dot" data-section="research"></div>
+                <div class="network-dot" data-section="projects"></div>
+                <div class="network-dot" data-section="contact"></div>
+            </div>
+        </div>
     </section>
-    <section id="research" data-aos="fade-up">
-        <h2 class="research-title">Research Projects</h2>
-        <p class="research-description">
-            Here are some of the research school projects I've worked on (during my studies).
-        <a href="research.html" class="research-btn">View All Research Projects</a>
-        <div class="carousel-container research-carousel">
-            <div class="carousel">
+
+    <!-- Experience Section -->
+<section id="experience" class="section experience" data-aos="fade-up">
+    <div class="section-content">
+        <h2>Professional Experiences</h2>
+        <div class="experience-list">
+            <!-- EXPERIENCE 1 -->
+            <div class="experience-card">
+                <div class="exp-header">
+                    <img src="assets/logos/logo_idemia.png" alt="Idemia Logo" class="exp-logo">
+                    <div>
+                        <div class="exp-job">Deep Learning Research Engineer (intern)<br>
+                            <span class="at-company">Idemia</span>
+                        </div>
+                        <div class="exp-duration">April 2025 – October 2025</div>
+                    </div>
+                </div>
+                <div class="exp-role-title">Research on Multi Object Tracking and Segmentation.</div>
+                <ul>
+                    <li>Created an <b>automatic video instance segmentation mask generator</b> from MOT data, using SAM2 model. Used it to augment datasets from the literature.</li>
+                    <li>Used the augmented datasets to train an end-to-end tracker, with an additional segmentation head, to improve the performance of the tracking with the instance segmentation task.</li>
+                </ul>
+            </div>
+            <!-- EXPERIENCE 2 -->
+            <div class="experience-card">
+                <div class="exp-header">
+                    <img src="assets/logos/logo_cls.png" alt="CLS Logo" class="exp-logo">
+                    <div>
+                        <div class="exp-job">Intern – AI Research<br>
+                            <span class="at-company">CLS</span>
+                        </div>
+                        <div class="exp-duration">April 2024 – August 2024</div>
+                    </div>
+                </div>
+                <div class="exp-role-title">Foundation Models for remote sensing applications.</div>
+                <ul>
+                    <li>Developed a library to fine-tune Foundation Models on remote sensing datasets, used by coworkers at CLS.</li>
+                    <li><b>Literature Review:</b> Comprehensive review of latest research on Foundation Models in remote sensing.</li>
+                    <li><b>Model Development:</b> Developed a library for fine-tuning Foundation Models on remote sensing data.</li>
+                    <li><b>Performance Evaluation:</b> Evaluated fine-tuned Foundation Models for semantic segmentation tasks.</li>
+                </ul>
+            </div>
+            <!-- EXPERIENCE 3 -->
+            <div class="experience-card">
+                <div class="exp-header">
+                    <img src="assets/logos/logo_jolibrain.png" alt="JoliBrain Logo" class="exp-logo">
+                    <div>
+                        <div class="exp-job">Intern – Machine Learning Engineer<br>
+                            <span class="at-company">JoliBrain</span></div>
+                        <div class="exp-duration">February 2023 – July 2023</div>
+                    </div>
+                </div>
+                <ul>
+                    <li><b>Contribution to <a href="https://github.com/jolibrain/joliGEN" target="_blank">joliGEN</a>:</b> Implemented advanced edge detection and image generation controls from ControlNET.</li>
+                    <li>Implemented state-of-the-art models such as Owl-ViT for zero-shot object detection.</li>
+                    <li>Developed the documentation <a href="https://www.joligen.com/doc/" target="_blank">website</a> for the tool using ReadTheDocs.</li>
+                </ul>
+            </div>
+            <!-- EXPERIENCE 4 -->
+            <div class="experience-card">
+                <div class="exp-header">
+                    <img src="assets/logos/logo_ministere.png" alt="Ministère de l'Agriculture Logo" class="exp-logo">
+                    <div>
+                        <div class="exp-job">Intern – Software Developer (R Shiny)<br>
+                            <span class="at-company">French Ministry of Agriculture</span></div>
+                        <div class="exp-duration">May 2022 – August 2022</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Created <a href="https://ksteunou.pages.lab.sspcloud.fr/agreste/" target="_blank"><b>agreste</b></a>: automation tool as an R package for streamlining statistical publication creation.</li>
+                    <li>Managed project from requirements gathering to delivery, using Agile methodologies.</li>
+                    <li>Designed an intuitive R Shiny UI to facilitate data input and publication generation.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="neural-network">
+        <svg class="network-svg"></svg>
+        <div class="network-dots">
+            <div class="network-dot" data-section="hero"></div>
+            <div class="network-dot" data-section="about"></div>
+            <div class="network-dot active" data-section="experience"></div>
+            <div class="network-dot" data-section="education"></div>
+            <div class="network-dot" data-section="research"></div>
+            <div class="network-dot" data-section="projects"></div>
+            <div class="network-dot" data-section="contact"></div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Education Section -->
+<section id="education" class="section education" data-aos="fade-up">
+    <div class="section-content">
+        <h2>Academic Background</h2>
+        <div class="experience-list">
+            <div class="experience-card">
+                <div class="exp-header">
+                    <img src="assets/logos/logo_ens.jpg" alt="ENS Logo" class="exp-logo">
+                    <div>
+                        <div class="exp-job">
+                            Master 2 Mathématiques, Vision, Apprentissage<br>
+                            <span class="at-company">ENS Paris-Saclay</span>
+                        </div>
+                        <div class="exp-duration">Sep 2024 – Mar 2025</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Computational Optimal Transport, Convex Optimization, Turing Seminar (AI Safety)</li>
+                    <li>Object Recognition and Computer Vision, Probabilistic Graphical Models, Deep Learning</li>
+                    <li>Representation Learning, Generative Models, Data Generation by Transport/Denoising</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <div class="exp-header">
+                    <img src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="exp-logo">
+                    <div>
+                        <div class="exp-job">Master 1 Applied Mathematics and Statistics<br>
+                            <span class="at-company">Toulouse School of Economics</span></div>
+                        <div class="exp-duration">Sep 2023 – Apr 2024</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Econometrics, Probability and Statistics, Functional Analysis, Optimization for ML</li>
+                    <li>Data Science (Python), Machine Learning, Mathematical Game Theory, Time Series</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <div class="exp-header">
+                    <img src="assets/logos/ku_logo_uk_h.png" alt="KU Logo" class="exp-logo">
+                    <div>
+                        <div class="exp-job">Gap Year<br>
+                            <span class="at-company">University of Copenhagen</span></div>
+                        <div class="exp-duration">Sep 2022 – Jan 2023</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Courses: Natural Language Processing, Blockchain Business Development, Energy Economics, Tax Policy</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <div class="exp-header">
+                    <img src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="exp-logo">
+                    <div>
+                        <div class="exp-job">Double Bachelor: Applied Mathematics and Economics<br>
+                            <span class="at-company">Toulouse School of Economics</span></div>
+                        <div class="exp-duration">Sep 2019 – Apr 2022</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Linear Algebra, Analysis, Probability and Statistics, Optimization, Econometrics, Programming</li>
+                    <li>Microeconomics, Macroeconomics, Numerical Analysis, Computer Science (Python, R)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="neural-network">
+        <svg class="network-svg"></svg>
+        <div class="network-dots">
+            <div class="network-dot" data-section="hero"></div>
+            <div class="network-dot" data-section="about"></div>
+            <div class="network-dot" data-section="experience"></div>
+            <div class="network-dot active" data-section="education"></div>
+            <div class="network-dot" data-section="research"></div>
+            <div class="network-dot" data-section="projects"></div>
+            <div class="network-dot" data-section="contact"></div>
+        </div>
+    </div>
+</section>
+
+    <!-- Research Projects Section -->
+<section id="research" class="section research" data-aos="fade-up">
+    <div class="section-content">
+        <h2>Research Projects</h2>
+        <a href="research.html" class="cta-button">View all research projects</a>
+        <div class="glider-contain neural-carousel" id="research-carousel">
+            <button class="carousel-button prev" id="research-prev">‹</button>
+            <div class="glider" id="research-glider">
+                <!-- Carousel Item 1 -->
                 <div class="carousel-item">
-                    <h3 class="research-title">Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
-                    <a href="https://arxiv.org/abs/2110.03237" target="_blank" class="source-article">Max Daniels, Tyler Maunu, and Paul Hand, 2022.</a>
-                    <p class="research-details">
+                    <h3 class="project-title">Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
+                    <a href="https://arxiv.org/abs/2110.03237" target="_blank" class="source-article">
+                        Max Daniels, Tyler Maunu, and Paul Hand, 2022
+                    </a>
+                    <p>
                         I performed several experiments to evaluate the 
                         performance of the SCONES method on low-dimensional 
-                        distributions. 
+                        distributions.
                     </p>
-                    <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" class="research-link">Download Report</a>
-                    <p></p>
-                    <a href= "https://github.com/killian31/scones-synthetic" target="_blank" class="research-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="research-badge">
+                    <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                    </a>
+                    <a href="https://github.com/killian31/scones-synthetic" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
                     </a>
                 </div>
+                <!-- Carousel Item 2 -->
                 <div class="carousel-item">
-                    <h3 class="research-title">Test Time Training with Masked Autoencoders</h3>
-                    <a href="https://arxiv.org/abs/2209.07522" target="_blank" class="source-article">Yossi Gandelsman, Yu Sun, Xinlei Chen, and Alexei A Efros, 2022</a>
-                    <p class="research-details">
+                    <h3 class="project-title">Test Time Training with Masked Autoencoders</h3>
+                    <a href="https://arxiv.org/abs/2209.09522" target="_blank" class="source-article">
+                        Yossi Gandelsman, Yu Sun, Xinlei Chen, and Alexei A Efros, 2022
+                    </a>
+                    <p>
                         I extended the TTT-MAE method with an online
                         version that shows better performance than the original method.
                     </p>
-                    <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" class="research-link">Download Report</a>
-                    <p></p>
-                    <a href= "https://github.com/killian31/ttt_mae_online" target="_blank" class="research-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="research-badge">
+                    <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                    </a>
+                    <a href="https://github.com/killian31/ttt_mae_online" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
                     </a>
                 </div>
+                <!-- Carousel Item 3 -->
                 <div class="carousel-item">
-                    <h3 class="research-title">Are Generative Classifiers More Robust to Adversarial Attacks?</h3>
-                    <a href="https://arxiv.org/abs/1802.06552" target="_blank" class="source-article">Yingzhen Li, John Bradshaw, and Yash Sharma, 2019</a>
-                    <p class="research-details">
+                    <h3 class="project-title">Are Generative Classifiers More Robust to Adversarial Attacks?</h3>
+                    <a href="https://arxiv.org/abs/1802.06552" target="_blank" class="source-article">
+                        Yingzhen Li, John Bradshaw, and Yash Sharma, 2019
+                    </a>
+                    <p>
                         We compared the robustness of generative 
                         classifiers to adversarial attacks with discriminative 
                         classifiers, and verified the hypothesis on a real-world setting.
                     </p>
-                    <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank" class="research-link">Download Report</a>
-                    <p></p>
-                    <a href= "https://github.com/killian31/DeepBayesTorch" target="_blank" class="research-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="research-badge">
+                    <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                    </a>
+                    <a href="https://github.com/killian31/DeepBayesTorch" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
                     </a>
                 </div>
+                <!-- Carousel Item 4 -->
                 <div class="carousel-item">
-                    <h3 class="research-title">Toxic Gas Characterization</h3>
-                    <p class="research-details">
+                    <h3 class="project-title">Toxic Gas Characterization</h3>
+                    <p>
                         I worked on a project to characterize toxic gases 
                         using a deep learning model and adversarial unsupervised 
                         domain adaptation to improve the model's generalization.
                     </p>
-                    <a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true" target="_blank" class="research-link">Download Report</a>
-                    <p></p>
-                    <a href="https://github.com/killian31/IdGas" target="_blank" class="research-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="research-badge">
-                    </a>
+                <a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
+                    <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                </a>
+                <a href="https://github.com/killian31/IdGas" target="_blank" class="project-badge">
+                    <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
+                </a>
                 </div>
+                <!-- Carousel Item 5 -->
                 <div class="carousel-item">
-                    <h3 class="research-title">Convergence of SGD for Training Neural Networks with Sliced Wasserstein Losses</h3>
-                    <a href="https://arxiv.org/abs/2307.11714" target="_blank" class="source-article">Eloi Tanguy, 2024</a>
-                    <p class="research-details">
-                        We empirically verified the convergence of SGD for training
-                        generative neural networks on 2D distributions and 
-                        Fashion-MNIST using the Sliced Wasserstein loss.
-                    </p>
-                    <a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true" target="_blank" class="research-link">Download Report</a>
-                    <p></p>
-                    <a href= "https://github.com/francklaborde/Generative-modeling-project" target="_blank" class="research-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="research-badge">
-                    </a>
+                <h3 class="project-title">Convergence of SGD for Training Neural Networks with Sliced Wasserstein Losses</h3>
+                <a href="https://arxiv.org/abs/2307.11714" target="_blank" class="source-article">
+                    Eloi Tanguy, 2024
+                </a>
+                <p>
+                    We empirically verified the convergence of SGD for training
+                    generative neural networks on 2D distributions and 
+                    Fashion-MNIST using the Sliced Wasserstein loss.
+                </p>
+                <a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
+                    <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                </a>
+                <a href= "https://github.com/francklaborde/Generative-modeling-project" target="_blank" class="project-badge">
+                    <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
+                </a>
                 </div>
+                <!-- Carousel Item 6 -->
                 <div class="carousel-item">
-                    <h3 class="research-title"> An End-to-End Transformer Model for 3D Object Detection</h3>
-                    <a href="https://arxiv.org/abs/2109.08141" target="_blank" class="source-article">Ishan Misra, Rohit Girdhar, and Armand Joulin, 2021</a>
-                    <p class="research-details">
+                    <h3 class="project-title">An End-to-End Transformer Model for 3D Object Detection</h3>
+                    <a href="https://arxiv.org/abs/2109.08141" target="_blank" class="source-article">
+                        Ishan Misra, Rohit Girdhar, and Armand Joulin, 2021
+                    </a>
+                    <p>
                         We verified 3DETR's performance on the SUN RGB-D dataset. We
                         trained a RGB variant of 3DETR and compare it to the original 
                         model.
                     </p>
-                    <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" class="research-link">Download Report</a>
-                </div>
-            </div>
-            <button class="carousel-button prev research-prev">‹</button>
-            <button class="carousel-button next research-next">›</button>
-        </div>
-    </section>
-    </section>
-    <section id="projects" data-aos="fade-up">
-        <h2 class="projects-title">Some of my Recent Projects</h2>
-        <p class="projects-description">
-            Here are some of the projects I've worked on. Some are finished, some are
-            still in progress.
-        </p>
-        <div class="carousel-container projects-carousel">
-            <div class="carousel">
-                <div class="carousel-item">
-                    <img src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="project-pic">
-                    <h3 class="project-title">Audio Visual Transcription</h3>
-                    <img src="https://img.shields.io/github/stars/killian31/AudioVisualTranscription.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                    <p class="project-details">
-                        AVT is a tool that allows you to precisely subtitle your audio
-                        or video content in minutes, using OpenAI Whisper model.
-                    </p>
-                    <a href="https://github.com/killian31/AudioVisualTranscription", target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                    <p></p>
-                    <a href= "https://huggingface.co/spaces/nelikCode/AudioVisualTranscription" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20Spaces-blue?style=for-the-badge&logo=huggingface" alt="Open in Spaces" class="project-badge">
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/projects/vbr.gif" alt="video-background-removal" loading="lazy" class="project-pic"/>
-                    <h3 class="project-title">Video Background Removal</h3>
-                    <img src="https://img.shields.io/github/stars/killian31/VideoBackgroundRemoval.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                    <p class="project-details">
-                        A video background removal tool using Mobile SAM (Segment-Anything Model)
-                        to automatically segment and remove the background from videos.
-                    </p>
-                    <a href="https://github.com/killian31/VideoBackgroundRemoval" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/projects/balloon_opti.gif" alt="Object Detection" class="project-pic">
-                    <h3 class="project-title">Video Object Detection</h3>
-                    <img src="https://img.shields.io/github/stars/killian31/VideoObjectDetection.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                    <p class="project-details">
-                        Implementation of Google Owl-ViT's model for zero-shot object detection in
-                        videos using natural language prompts.
-                    </p> 
-                    <a href="https://github.com/killian31/VideoObjectDetection" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/projects/joligen.svg" alt="Contribution to joliGEN" class="project-pic">
-                    <h3 class="project-title">Contribution to joliGEN</h3>
-                    <img src="https://img.shields.io/github/stars/jolibrain/joliGEN.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                    <p class="project-details">
-                        I integrated edge detection methods into joliGEN (from ControlNET). I also added
-                        Segment-Anything Model from Meta for precise masking.
-                    </p>
-                    <a href="https://github.com/jolibrain/joliGEN" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/projects/mathviz.png" alt="MathViz" class="project-pic">
-                    <h3 class="project-title">MathViz</h3>
-                    <img src="https://img.shields.io/github/stars/killian31/MathViz.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                    <p class="project-details">
-                        MathViz is a Streamlit app that allows you to visualize
-                        concepts from Mathematics, Statistics, Machine Learning or 
-                        Algorithms.
-                    </p>
-                    <a href="https://github.com/killian31/MathViz" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                    </a>
-                    <p></p>
-                    <a href= "https://mathviz.streamlit.app" target="_blank" class="project-badge">
-                        <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit" class="project-badge">
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/projects/wiki.jpg" alt="Wikipedia Graph" class="project-pic">
-                    <h3 class="project-title">Wikipedia Graph</h3>
-                    <img src="https://img.shields.io/github/stars/killian31/Wikipedia-Map.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                    <p class="project-details">
-                        Scraping Wikipedia to create a structured graph of the concepts around a
-                        base word (in French). The output data can be loaded in Gephi 
-                        to visualize the graph.
-                    </p>
-                    <a href="https://github.com/killian31/Wikipedia-Map" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/projects/ladder.webp" alt="Word Ladder Generator" class="project-pic">
-                    <h3 class="project-title">Word Ladder Generator</h3>
-                    <img src="https://img.shields.io/github/stars/killian31/Word-Ladder-Generator.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                    <p class="project-details">
-                        Word Ladder Generator is a game that generates the shortest path
-                        between two words by changing one letter at a time. In French.
-                    </p>
-                    <a href="https://github.com/killian31/Word-Ladder-Generator" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                    <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
+                        <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
                     </a>
                 </div>
             </div>
-            <button class="carousel-button prev projects-prev">‹</button>
-            <button class="carousel-button next projects-next">›</button>
+            <button class="carousel-button next" id="research-next">›</button>
         </div>
-    </section>
+    </div>
+    <div class="neural-network">
+        <svg class="network-svg"></svg>
+        <div class="network-dots">
+            <div class="network-dot" data-section="hero"></div>
+            <div class="network-dot" data-section="about"></div>
+            <div class="network-dot" data-section="experience"></div>
+            <div class="network-dot" data-section="education"></div>
+            <div class="network-dot active" data-section="research"></div>
+            <div class="network-dot" data-section="projects"></div>
+            <div class="network-dot" data-section="contact"></div>
+        </div>
+    </div>
+</section>
 
-    <section class="contact" id="contact" data-aos="fade-up">
-      <h2>Get In Touch With Me</h2>
-      <div class="contact-form-container">
-        <div class="contact-form">
-          <form action="https://formspree.io/f/xdoqokzg" method="POST">
-            <div class="form-control">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="sender-name"
-                placeholder="Enter Your Name"
-                class="input-field"
-                required
-              />
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects" data-aos="fade-up">
+        <div class="section-content">
+            <h2>Some of my Recent Projects</h2>
+            <div class="glider-contain neural-carousel" id="projects-carousel">
+                <button class="carousel-button prev" id="projects-prev">‹</button>
+                <div class="glider" id="projects-glider">
+                    <div class="carousel-item">
+                        <img src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="project-pic">
+                        <h3 class="project-title">Audio Visual Transcription</h3>
+                        <p>
+                            AVT is a tool that lets you subtitle audio/video content in 
+                            minutes, powered by OpenAI Whisper.
+                        </p>
+                        <a href="https://github.com/killian31/AudioVisualTranscription" target="_blank" class="project-badge">
+                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
+                        </a>
+                        <a href="https://huggingface.co/spaces/nelikCode/AudioVisualTranscription" target="_blank" class="project-badge">
+                            <img src="https://img.shields.io/badge/Open%20in%20Spaces-blue?style=for-the-badge&logo=huggingface" alt="Open in Spaces">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/projects/vbr.gif" alt="video-background-removal" loading="lazy" class="project-pic"/>
+                        <h3 class="project-title">Video Background Removal</h3>
+                        <img src="https://img.shields.io/github/stars/killian31/VideoBackgroundRemoval.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <p class="project-details">
+                            A video background removal tool using Mobile SAM (Segment-Anything Model)
+                            to automatically segment and remove the background from videos.
+                        </p>
+                        <a href="https://github.com/killian31/VideoBackgroundRemoval" target="_blank" class="project-badge">
+                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/projects/balloon_opti.gif" alt="Object Detection" class="project-pic">
+                        <h3 class="project-title">Video Object Detection</h3>
+                        <img src="https://img.shields.io/github/stars/killian31/VideoObjectDetection.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <p class="project-details">
+                            Implementation of Google Owl-ViT's model for zero-shot object detection in
+                            videos using natural language prompts.
+                        </p>
+                        <a href="https://github.com/killian31/VideoObjectDetection" target="_blank" class="project-badge">
+                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/projects/joligen.svg" alt="Contribution to joliGEN" class="project-pic">
+                        <h3 class="project-title">Contribution to joliGEN</h3>
+                        <img src="https://img.shields.io/github/stars/jolibrain/joliGEN.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <p class="project-details">
+                            I integrated edge detection methods into joliGEN (from ControlNET). I also added
+                            Segment-Anything Model from Meta for precise masking.
+                        </p>
+                        <a href="https://github.com/jolibrain/joliGEN" target="_blank" class="project-badge">
+                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/projects/mathviz.png" alt="MathViz" class="project-pic">
+                        <h3 class="project-title">MathViz</h3>
+                        <img src="https://img.shields.io/github/stars/killian31/MathViz.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <p class="project-details">
+                            MathViz is a Streamlit app that allows you to visualize
+                            concepts from Mathematics, Statistics, Machine Learning or
+                            Algorithms.
+                        </p>
+                        <a href="https://github.com/killian31/MathViz" target="_blank" class="project-badge">
+                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                        </a>
+                        <p></p>
+                        <a href= "https://mathviz.streamlit.app" target="_blank" class="project-badge">
+                            <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit" class="project-badge">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/projects/wiki.jpg" alt="Wikipedia Graph" class="project-pic">
+                        <h3 class="project-title">Wikipedia Graph</h3>
+                        <img src="https://img.shields.io/github/stars/killian31/Wikipedia-Map.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <p class="project-details">
+                            Scraping Wikipedia to create a structured graph of the concepts around a
+                            base word (in French). The output data can be loaded in Gephi
+                            to visualize the graph.
+                        </p>
+                        <a href="https://github.com/killian31/Wikipedia-Map" target="_blank" class="project-badge">
+                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/projects/ladder.webp" alt="Word Ladder Generator" class="project-pic">
+                        <h3 class="project-title">Word Ladder Generator</h3>
+                        <img src="https://img.shields.io/github/stars/killian31/Word-Ladder-Generator.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <p class="project-details">
+                            Word Ladder Generator is a game that generates the shortest path
+                            between two words by changing one letter at a time. In French.
+                        </p>
+                        <a href="https://github.com/killian31/Word-Ladder-Generator" target="_blank" class="project-badge">
+                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                        </a>
+                    </div>
+                </div>
+                <button class="carousel-button next" id="projects-next">›</button>
             </div>
-            <div class="form-control">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="sender-email"
-                placeholder="Enter Your Email"
-                class="input-field"
-                required
-              />
+        </div>
+        <div class="neural-network">
+            <svg class="network-svg"></svg>
+            <div class="network-dots">
+                <div class="network-dot" data-section="hero"></div>
+                <div class="network-dot" data-section="about"></div>
+                <div class="network-dot" data-section="experience"></div>
+                <div class="network-dot" data-section="education"></div>
+                <div class="network-dot" data-section="research"></div>
+                <div class="network-dot active" data-section="projects"></div>
+                <div class="network-dot" data-section="contact"></div>
             </div>
-            <div class="form-control">
-              <label for="subject">Subject</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                placeholder="Enter Your Subject"
-                class="input-field"
-                required
-              />
-            <div class="form-control">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                cols="60"
-                rows="10"
-                placeholder="Enter Your Message"
-                name="message"
-                class="input-field"
-                required
-              ></textarea>
+        </div>
+    </section>
+    <section id="contact" class="section contact">
+      <div class="section-content">
+        <h2>Get In Touch With Me</h2>
+        <form action="https://formspree.io/f/xdoqokzg" method="POST" class="contact-form neural-form" autocomplete="on">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="sender-name" placeholder="Your Name" required>
             </div>
-            <input
-              type="submit"
-              value="Submit"
-              id="submit-btn"
-              class="submit-btn"
-            />
-          </form>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="sender-email" placeholder="Your Email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-subject">Subject</label>
+            <input type="text" id="contact-subject" name="subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" placeholder="Your Message" rows="7" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+      <div class="neural-network">
+        <svg class="network-svg"></svg>
+        <div class="network-dots">
+          <div class="network-dot" data-section="hero"></div>
+          <div class="network-dot" data-section="about"></div>
+          <div class="network-dot" data-section="experience"></div>
+          <div class="network-dot" data-section="education"></div>
+          <div class="network-dot" data-section="research"></div>
+          <div class="network-dot" data-section="projects"></div>
+          <div class="network-dot active" data-section="contact"></div>
         </div>
       </div>
     </section>
-    <button id="back-to-top-btn" title="Go to top">↑</button>
+
     <footer>
       <p class="copy">&copy; Copyright 2025</p>
       <p class="copy">
@@ -529,11 +583,12 @@
             <a href='https://clustrmaps.com/site/1c0xj'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=l-eulRo4m9kWX0-DiNfpf3VdUzMYdgScLET0G4NP4yQ&co=2d78ad&ct=ffffff'/></a>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
     <script src="script.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 800, 
+            duration: 800,
             easing: 'ease-in-out',
             once: false,     // whether animation should happen only once
             mirror: true,  // whether elements should animate out while scrolling past them
@@ -541,4 +596,3 @@
     </script>
 </body>
 </html>
-
