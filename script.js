@@ -2,14 +2,19 @@
 document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('navbar-toggle');
     const navLinks = document.getElementById('nav-links');
+    
     toggle.addEventListener('click', function () {
         navLinks.classList.toggle('open');
+        toggle.classList.toggle('active'); // Add this line for animation
     });
+    
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('open');
+            toggle.classList.remove('active'); // Add this line
         });
     });
+    
     document.addEventListener('click', function(event) {
         if (window.innerWidth <= 900) {
             if (
@@ -18,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 navLinks.classList.contains('open')
             ) {
                 navLinks.classList.remove('open');
+                toggle.classList.remove('active'); // Add this line
             }
         }
     });
