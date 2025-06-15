@@ -1,4 +1,123 @@
-// ------ Hamburger menu ------
+function setupGliderCarousel(gliderSelector, prevSelector, nextSelector, dotsSelector, slidesToShow = 2) {
+    const gliderElem = document.querySelector(gliderSelector);
+    if (!gliderElem) return;
+    
+    const prevBtn = document.querySelector(prevSelector);
+    const nextBtn = document.querySelector(nextSelector);
+
+    // Determine initial slides to show based on screen size
+    const getInitialSlidesToShow = () => {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 900) return 1;
+        return slidesToShow;
+    };
+
+    const glider = new Glider(gliderElem, {
+        slidesToShow: getInitialSlidesToShow(),
+        slidesToScroll: 1,
+        draggable: true,
+        dots: dotsSelector,
+        arrows: {
+            prev: prevSelector,
+            next: nextSelector
+        },
+        responsive: [
+            {
+                breakpoint: 900,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    draggable: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    draggable: true
+                }
+            }
+        ]
+    });
+
+    // Enhanced arrow disabling logic
+    function updateArrows() {
+        const currentSlide = glider.page;
+        const totalSlides = glider.slides.length;
+        const visibleSlides = glider.opt.slidesToShow;
+        
+        // Update button states
+        if (prevBtn) {
+            prevBtn.disabled = (currentSlide === 0);
+            prevBtn.classList.toggle('disabled', currentSlide === 0);
+        }
+        
+        if (nextBtn) {
+            const isAtEnd = (currentSlide + visibleSlides) >= totalSlides;
+            nextBtn.disabled = isAtEnd;
+            nextBtn.classList.toggle('disabled', isAtEnd);
+        }
+    }
+
+    // Event listeners for glider updates
+    gliderElem.addEventListener('glider-animated', function() {
+        setTimeout(updateArrows, 10);
+    });
+
+    gliderElem.addEventListener('glider-loaded', function() {
+        setTimeout(updateArrows, 10);
+    });
+
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Force glider to recalculate
+            glider.refresh(true);
+            setTimeout(updateArrows, 50);
+        }, 150);
+    });
+
+    // Initial setup
+    setTimeout(() => {
+        updateArrows();
+    }, 100);
+
+    // Touch event handling for better mobile experience
+    if (window.innerWidth <= 900) {
+        let startX = 0;
+        let scrollLeft = 0;
+        let isDown = false;
+
+        gliderElem.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - gliderElem.offsetLeft;
+            scrollLeft = gliderElem.scrollLeft;
+        });
+
+        gliderElem.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.touches[0].pageX - gliderElem.offsetLeft;
+            const walk = (x - startX) * 2;
+            gliderElem.scrollLeft = scrollLeft - walk;
+        });
+
+        gliderElem.addEventListener('touchend', () => {
+            isDown = false;
+        });
+
+        // Prevent context menu on long press
+        gliderElem.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+    }
+
+    return glider;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('navbar-toggle');
     const navLinks = document.getElementById('nav-links');
@@ -27,55 +146,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-
-    // ------ Glider.js Carousels ------
-    function setupGliderCarousel(gliderSelector, prevSelector, nextSelector, dotsSelector, slidesToShow=2) {
-        const gliderElem = document.querySelector(gliderSelector);
-        if (!gliderElem) return;
-        const prevBtn = document.querySelector(prevSelector);
-        const nextBtn = document.querySelector(nextSelector);
-
-        const glider = new Glider(gliderElem, {
-            slidesToShow: slidesToShow,
-            slidesToScroll: 1,
-            draggable: true,
-            dots: dotsSelector,
-            arrows: {
-                prev: prevSelector,
-                next: nextSelector
-            },
-            responsive: [
-                {
-                    breakpoint: 900,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                }
-            ]
-        });
-
-        // Arrow disabling logic:
-        function updateArrows() {
-            const left = glider.page * glider.opt.slidesToScroll;
-            const total = glider.slides.length;
-            // Responsive: slidesToShow
-            const visible = (window.innerWidth <= 900) ? 1 : slidesToShow;
-            if (prevBtn) prevBtn.disabled = (left === 0);
-            if (nextBtn) nextBtn.disabled = (left + visible >= total);
-        }
-
-        gliderElem.addEventListener('glider-animated', function () {
-            setTimeout(updateArrows, 5);
-        });
-        window.addEventListener('resize', function () {
-            setTimeout(updateArrows, 10);
-        });
-
-        // Initial arrow state
-        setTimeout(function () {
-            gliderElem.dispatchEvent(new Event('glider-animated'));
-        }, 30);
-    }
 
     // ------ Initialize Carousels ------
     if (window.Glider) {

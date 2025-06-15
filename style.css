@@ -519,12 +519,14 @@ h1, h2, h3 {
   margin: 0 auto 2rem auto;
   padding: 2.5rem 0 1.5rem 0;
   background: none;
+  overflow: visible;
 }
 
 .glider {
   min-height: 320px;
-  /* Hide scrollbars! */
   scrollbar-width: none;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .glider::-webkit-scrollbar {
   display: none;
@@ -547,6 +549,7 @@ h1, h2, h3 {
   position: relative;
   margin: 0 18px;
   cursor: default !important;
+  flex-shrink: 0;
 }
 .carousel-item:hover {
   box-shadow: 0 8px 40px #00f5ff66, 0 0 30px #ff00ff33;
@@ -909,25 +912,123 @@ footer {
 
 @media (max-width: 900px) {
   .glider-contain.neural-carousel {
-    padding: 1.2rem 0 0.5rem 0;
+    padding: 1.5rem 40px 1rem 40px; /* Add horizontal padding for arrows */
+    max-width: 100vw;
+    margin: 0 auto 2rem auto;
   }
-  .carousel-item {
-    min-width: 210px;
-    max-width: 96vw;
-    padding: 1.1rem 0.7rem;
-    margin: 0 7px;
-  }
-  .carousel-button {
-    padding: 10px 13px;
-    font-size: 1.2rem;
-    left: -14px;
-    right: -14px;
-  }
-  .carousel-item img.project-pic {
-    height: 90px;
-  }
+  
   .glider {
-    min-height: 180px;
+    min-height: 280px;
+    padding: 0;
+  }
+  
+  .carousel-item {
+    min-width: 260px;
+    max-width: 280px;
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    margin: 0 8px;
+    border-radius: 16px;
+  }
+  
+  .carousel-item img.project-pic {
+    height: 140px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+  
+  .carousel-item h3,
+  .carousel-item .project-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  
+  .carousel-item p {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(45deg, #00f5ff, #ff00ff);
+    color: #fff;
+    border: none;
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    font-size: 1.4rem;
+    opacity: 1;
+    transition: box-shadow 0.3s, background 0.3s, opacity 0.3s;
+    box-shadow: 0 0 18px #00f5ff77;
+    outline: none;
+    margin: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carousel-button.prev { 
+    left: 8px;
+  }
+  
+  .carousel-button.next { 
+    right: 8px;
+  }
+  
+  .carousel-button:disabled,
+  .carousel-button.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+  }
+  
+  .carousel-button:hover:not(:disabled) {
+    background: linear-gradient(45deg, #ff00ff, #00f5ff);
+    box-shadow: 0 0 25px #ff00ff77;
+    transform: translateY(-50%) scale(1.05);
+  }
+  
+  .dots {
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+  }
+  
+  .dots button {
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    border: none;
+    margin: 0 4px;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 245, 255, 0.2);
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+  }
+  
+  .dots button.active {
+    background: linear-gradient(45deg, #00f5ff, #ff00ff);
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
+    transform: scale(1.2);
+  }
+  
+  .dots button:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
   }
   .experience-card {
     padding: 1.3rem 1rem;
@@ -988,6 +1089,81 @@ footer {
   .form-row {
     flex-direction: column;
     gap: 0.5rem;
+  }
+  .glider-contain.neural-carousel {
+    padding: 1.2rem 35px 0.8rem 35px;
+  }
+  
+  .carousel-item {
+    min-width: 240px;
+    max-width: 260px;
+    padding: 1.2rem 1rem 1rem 1rem;
+    margin: 0 6px;
+  }
+  
+  .carousel-item img.project-pic {
+    height: 120px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .carousel-item h3,
+  .carousel-item .project-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .carousel-item p {
+    font-size: 0.9rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  .carousel-button {
+    padding: 10px 12px;
+    font-size: 1.2rem;
+    width: 38px;
+    height: 38px;
+  }
+  
+  .carousel-button.prev { 
+    left: 5px;
+  }
+  
+  .carousel-button.next { 
+    right: 5px;
+  }
+  
+  .dots {
+    margin-top: 1.2rem;
+    gap: 6px;
+  }
+  
+  .dots button {
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+  }
+}
+
+/* Ensure glider track doesn't overflow */
+.glider-track {
+  overflow: visible !important;
+}
+
+/* Fix for glider slide spacing */
+.glider > * {
+  flex-shrink: 0;
+}
+
+/* Prevent carousel content from being cut off */
+.carousel-item * {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 900px) {
+  .glider {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
 }
 
