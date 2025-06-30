@@ -515,6 +515,33 @@ h1, h2, h3 {
   line-height: 1.6;
 }
 
+/* Experience section links styling */
+.experience-card a {
+  color: #00f5ff;
+  text-decoration: underline;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 0 2px;
+  transition: color 0.19s, background 0.18s, box-shadow 0.18s;
+  text-underline-offset: 2.5px;
+  box-shadow: none;
+}
+.experience-card a:hover, 
+.experience-card a:focus {
+  color: #ff00ff;
+  background: rgba(0,245,255,0.11);
+  text-decoration-thickness: 2px;
+  box-shadow: 0 2px 16px #00f5ff44;
+  outline: none;
+}
+.experience-card a[target="_blank"]::after {
+  content: '↗';
+  margin-left: 3px;
+  font-size: 0.95em;
+  color: #00f5ff99;
+}
+
+
 /* ---- Carousel/Glider.js ---- */
 .glider-contain.neural-carousel {
   position: relative;

@@ -26,7 +26,7 @@
     <nav class="navbar">
         <div class="nav-content">
             <div class="navbar-logo">
-                <img src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
+                <img loading="lazy" src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
                 <a href="index.html#hero">Killian Steunou</a>
             </div>
             <div class="navbar-toggle" id="navbar-toggle">
@@ -49,8 +49,9 @@
     <!-- Hero Section -->
     <section id="hero" class="section hero" data-aos="fade-up">
         <div class="section-content">
-            <h1>Welcome to my Portfolio</h1>
-            <p>Learn about my journey in Mathematics, Computer Vision and AI</p>
+            <h1>Hi, I'm Killian!</h1>
+            <p>A deep learning research engineer who loves Computer Vision :)</p>
+            <p>Learn about my journey in Mathematics, Computer Vision and Deep Learning</p>
             <a href="#about" class="cta-button">About me</a>
         </div>
         <div class="neural-network">
@@ -72,27 +73,27 @@
     <section id="about" class="section about" data-aos="fade-up">
         <div class="section-content about-flex">
             <div class="about-photo-col">
-              <img src="assets/profile/profile-picture.jpg" alt="Killian Steunou" class="profile-picture-neural">
+              <img loading="lazy" src="assets/profile/profile-picture.jpg" alt="Killian Steunou" class="profile-picture-neural">
               <div class="about-social">
                 <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" class="about-social-btn linkedin">
-                  <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn"> LinkedIn
+                  <img loading="lazy" src="assets/logos/LI-In-Bug.png" alt="LinkedIn"> LinkedIn
                 </a>
                 <a href="https://github.com/killian31" target="_blank" class="about-social-btn github">
-                  <img src="assets/logos/github-mark-white.png" alt="GitHub"> GitHub
+                  <img loading="lazy" src="assets/logos/github-mark-white.png" alt="GitHub"> GitHub
                 </a>
                 <a href="assets/CV_KS.pdf" target="_blank" download class="about-social-btn cv">
-                  <img src="assets/logos/download-icon.png" alt="Resume"> CV
+                  <img loading="lazy" src="assets/logos/download-icon.png" alt="Resume"> CV
                 </a>
               </div>
             </div>
             <div class="about-text-col">
                 <h2>About Me</h2>
                 <p style="text-align: justify;">
-                I'm currently pursuing a master's degree in Machine Learning and Computer
-                Vision at ENS Paris-Saclay (Master MVA).
+                I'm currently working on end-to-end multi object tracking at Idemia as an intern, to complete my master's degree in Machine Learning and Computer
+                Vision at École Normale Supérieure Paris-Saclay (Master MVA). 
                 </p>
                 <p style="text-align: justify;">
-                My research primarily focuses on computer vision, driven by the conviction 
+                I am passionate about computer vision and deep learning, driven by the conviction 
                 that visual perception is fundamental to intelligence, both human and 
                 artificial.
                 </p>
@@ -125,7 +126,7 @@
             <!-- EXPERIENCE 1 -->
             <div class="experience-card">
                 <div class="exp-header">
-                    <img src="assets/logos/logo_idemia.png" alt="Idemia Logo" class="exp-logo">
+                    <img loading="lazy" src="assets/logos/logo_idemia.png" alt="Idemia Logo" class="exp-logo">
                     <div>
                         <div class="exp-job">Deep Learning Research Engineer (intern)<br>
                             <span class="at-company">Idemia</span>
@@ -133,16 +134,31 @@
                         <div class="exp-duration">April 2025 – October 2025</div>
                     </div>
                 </div>
-                <div class="exp-role-title">Research on Multi Object Tracking and Segmentation.</div>
+                <div class="exp-role-title">Enhancing end-to-end multi object tracking models by exploring various uses of <a href="https://arxiv.org/abs/2408.00714" target="_blank">SAM 2</a>.</div>
                 <ul>
-                    <li>Created an <b>automatic video instance segmentation mask generator</b> from MOT data, using SAM2 model. Used it to augment datasets from the literature.</li>
-                    <li>Used the augmented datasets to train an end-to-end tracker, with an additional segmentation head, to improve the performance of the tracking with the instance segmentation task.</li>
+                    <li>
+                        <b>Automatic video instance segmentation mask generator</b>:
+                        Use any MOT dataset and SAM 2 to automatically create high quality video instance
+                        segmentation masks for each tracklet.
+                    </li>
+                    <li>
+                        Used such augmented datasets to train an <b>end-to-end tracker (<a href="https://arxiv.org/abs/2403.16848" target="_blank">MOTIP</a>) with an 
+                        additional segmentation head</b>, exploring various architecture.
+                    </li>
+                    <li>
+                        Reproduced <a href="https://arxiv.org/abs/2504.04519" target="_blank">SAM2MOT</a>, 
+                        a zero-shot multi object tracker based on Grounding Dino and SAM2, 
+                        to label any video dataset.
+                    </li>
+                    <li>
+                        Explored ways to use SAM 2's embeddings to train a model based on <a href="https://arxiv.org/abs/2403.16848" target="_blank">MOTIP</a>.
+                    </li>
                 </ul>
             </div>
             <!-- EXPERIENCE 2 -->
             <div class="experience-card">
                 <div class="exp-header">
-                    <img src="assets/logos/logo_cls.png" alt="CLS Logo" class="exp-logo">
+                    <img loading="lazy" src="assets/logos/logo_cls.png" alt="CLS Logo" class="exp-logo">
                     <div>
                         <div class="exp-job">Intern – AI Research<br>
                             <span class="at-company">CLS</span>
@@ -161,7 +177,7 @@
             <!-- EXPERIENCE 3 -->
             <div class="experience-card">
                 <div class="exp-header">
-                    <img src="assets/logos/logo_jolibrain.png" alt="JoliBrain Logo" class="exp-logo">
+                    <img loading="lazy" src="assets/logos/logo_jolibrain.png" alt="JoliBrain Logo" class="exp-logo">
                     <div>
                         <div class="exp-job">Intern – Machine Learning Engineer<br>
                             <span class="at-company">JoliBrain</span></div>
@@ -177,7 +193,7 @@
             <!-- EXPERIENCE 4 -->
             <div class="experience-card">
                 <div class="exp-header">
-                    <img src="assets/logos/logo_ministere.png" alt="Ministère de l'Agriculture Logo" class="exp-logo">
+                    <img loading="lazy" src="assets/logos/logo_ministere.png" alt="Ministère de l'Agriculture Logo" class="exp-logo">
                     <div>
                         <div class="exp-job">Intern – Software Developer (R Shiny)<br>
                             <span class="at-company">French Ministry of Agriculture</span></div>
@@ -214,7 +230,7 @@
         <div class="experience-list">
             <div class="experience-card">
                 <div class="exp-header">
-                    <img src="assets/logos/logo_ens.jpg" alt="ENS Logo" class="exp-logo">
+                    <img loading="lazy" src="assets/logos/logo_ens.jpg" alt="ENS Logo" class="exp-logo">
                     <div>
                         <div class="exp-job">
                             Master 2 Mathématiques, Vision, Apprentissage<br>
@@ -231,7 +247,7 @@
             </div>
             <div class="experience-card">
                 <div class="exp-header">
-                    <img src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="exp-logo">
+                    <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="exp-logo">
                     <div>
                         <div class="exp-job">Master 1 Applied Mathematics and Statistics<br>
                             <span class="at-company">Toulouse School of Economics</span></div>
@@ -245,7 +261,7 @@
             </div>
             <div class="experience-card">
                 <div class="exp-header">
-                    <img src="assets/logos/ku_logo_uk_h.png" alt="KU Logo" class="exp-logo">
+                    <img loading="lazy" src="assets/logos/ku_logo_uk_h.png" alt="KU Logo" class="exp-logo">
                     <div>
                         <div class="exp-job">Gap Year<br>
                             <span class="at-company">University of Copenhagen</span></div>
@@ -258,7 +274,7 @@
             </div>
             <div class="experience-card">
                 <div class="exp-header">
-                    <img src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="exp-logo">
+                    <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="exp-logo">
                     <div>
                         <div class="exp-job">Double Bachelor: Applied Mathematics and Economics<br>
                             <span class="at-company">Toulouse School of Economics</span></div>
@@ -306,10 +322,10 @@
                         distributions.
                     </p>
                     <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                        <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
                     </a>
                     <a href="https://github.com/killian31/scones-synthetic" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
+                        <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
                     </a>
                 </div>
                 <!-- Carousel Item 2 -->
@@ -323,10 +339,10 @@
                         version that shows better performance than the original method.
                     </p>
                     <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                        <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
                     </a>
                     <a href="https://github.com/killian31/ttt_mae_online" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
+                        <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
                     </a>
                 </div>
                 <!-- Carousel Item 3 -->
@@ -341,10 +357,10 @@
                         classifiers, and verified the hypothesis on a real-world setting.
                     </p>
                     <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                        <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
                     </a>
                     <a href="https://github.com/killian31/DeepBayesTorch" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
+                        <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
                     </a>
                 </div>
                 <!-- Carousel Item 4 -->
@@ -356,10 +372,10 @@
                         domain adaptation to improve the model's generalization.
                     </p>
                 <a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
-                    <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                    <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
                 </a>
                 <a href="https://github.com/killian31/IdGas" target="_blank" class="project-badge">
-                    <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
+                    <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
                 </a>
                 </div>
                 <!-- Carousel Item 5 -->
@@ -374,10 +390,10 @@
                     Fashion-MNIST using the Sliced Wasserstein loss.
                 </p>
                 <a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
-                    <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                    <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
                 </a>
                 <a href= "https://github.com/francklaborde/Generative-modeling-project" target="_blank" class="project-badge">
-                    <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
+                    <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
                 </a>
                 </div>
                 <!-- Carousel Item 6 -->
@@ -392,7 +408,7 @@
                         model.
                     </p>
                     <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" class="project-badge">
-                        <img src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
+                        <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
                     </a>
                 </div>
             </div>
@@ -422,95 +438,95 @@
                 <button class="carousel-button prev" id="projects-prev">‹</button>
                 <div class="glider" id="projects-glider">
                     <div class="carousel-item">
-                        <img src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="project-pic">
+                        <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="project-pic">
                         <h3 class="project-title">Audio Visual Transcription</h3>
                         <p>
                             AVT is a tool that lets you subtitle audio/video content in 
                             minutes, powered by OpenAI Whisper.
                         </p>
                         <a href="https://github.com/killian31/AudioVisualTranscription" target="_blank" class="project-badge">
-                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
+                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
                         </a>
                         <a href="https://huggingface.co/spaces/nelikCode/AudioVisualTranscription" target="_blank" class="project-badge">
-                            <img src="https://img.shields.io/badge/Open%20in%20Spaces-blue?style=for-the-badge&logo=huggingface" alt="Open in Spaces">
+                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20Spaces-blue?style=for-the-badge&logo=huggingface" alt="Open in Spaces">
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <img src="assets/projects/vbr.gif" alt="video-background-removal" loading="lazy" class="project-pic"/>
+                        <img loading="lazy" src="assets/projects/vbr.gif" alt="video-background-removal" loading="lazy" class="project-pic"/>
                         <h3 class="project-title">Video Background Removal</h3>
-                        <img src="https://img.shields.io/github/stars/killian31/VideoBackgroundRemoval.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/VideoBackgroundRemoval.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
                         <p class="project-details">
                             A video background removal tool using Mobile SAM (Segment-Anything Model)
                             to automatically segment and remove the background from videos.
                         </p>
                         <a href="https://github.com/killian31/VideoBackgroundRemoval" target="_blank" class="project-badge">
-                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <img src="assets/projects/balloon_opti.gif" alt="Object Detection" class="project-pic">
+                        <img loading="lazy" src="assets/projects/balloon_opti.gif" alt="Object Detection" class="project-pic">
                         <h3 class="project-title">Video Object Detection</h3>
-                        <img src="https://img.shields.io/github/stars/killian31/VideoObjectDetection.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/VideoObjectDetection.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
                         <p class="project-details">
                             Implementation of Google Owl-ViT's model for zero-shot object detection in
                             videos using natural language prompts.
                         </p>
                         <a href="https://github.com/killian31/VideoObjectDetection" target="_blank" class="project-badge">
-                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <img src="assets/projects/joligen.svg" alt="Contribution to joliGEN" class="project-pic">
+                        <img loading="lazy" src="assets/projects/joligen.svg" alt="Contribution to joliGEN" class="project-pic">
                         <h3 class="project-title">Contribution to joliGEN</h3>
-                        <img src="https://img.shields.io/github/stars/jolibrain/joliGEN.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <img loading="lazy" src="https://img.shields.io/github/stars/jolibrain/joliGEN.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
                         <p class="project-details">
                             I integrated edge detection methods into joliGEN (from ControlNET). I also added
                             Segment-Anything Model from Meta for precise masking.
                         </p>
                         <a href="https://github.com/jolibrain/joliGEN" target="_blank" class="project-badge">
-                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <img src="assets/projects/mathviz.png" alt="MathViz" class="project-pic">
+                        <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz" class="project-pic">
                         <h3 class="project-title">MathViz</h3>
-                        <img src="https://img.shields.io/github/stars/killian31/MathViz.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/MathViz.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
                         <p class="project-details">
                             MathViz is a Streamlit app that allows you to visualize
                             concepts from Mathematics, Statistics, Machine Learning or
                             Algorithms.
                         </p>
                         <a href="https://github.com/killian31/MathViz" target="_blank" class="project-badge">
-                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
                         </a>
                         <p></p>
                         <a href= "https://mathviz.streamlit.app" target="_blank" class="project-badge">
-                            <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit" class="project-badge">
+                            <img loading="lazy" src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit" class="project-badge">
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <img src="assets/projects/wiki.jpg" alt="Wikipedia Graph" class="project-pic">
+                        <img loading="lazy" src="assets/projects/wiki.jpg" alt="Wikipedia Graph" class="project-pic">
                         <h3 class="project-title">Wikipedia Graph</h3>
-                        <img src="https://img.shields.io/github/stars/killian31/Wikipedia-Map.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/Wikipedia-Map.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
                         <p class="project-details">
                             Scraping Wikipedia to create a structured graph of the concepts around a
                             base word (in French). The output data can be loaded in Gephi
                             to visualize the graph.
                         </p>
                         <a href="https://github.com/killian31/Wikipedia-Map" target="_blank" class="project-badge">
-                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <img src="assets/projects/ladder.webp" alt="Word Ladder Generator" class="project-pic">
+                        <img loading="lazy" src="assets/projects/ladder.webp" alt="Word Ladder Generator" class="project-pic">
                         <h3 class="project-title">Word Ladder Generator</h3>
-                        <img src="https://img.shields.io/github/stars/killian31/Word-Ladder-Generator.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
+                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/Word-Ladder-Generator.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
                         <p class="project-details">
                             Word Ladder Generator is a game that generates the shortest path
                             between two words by changing one letter at a time. In French.
                         </p>
                         <a href="https://github.com/killian31/Word-Ladder-Generator" target="_blank" class="project-badge">
-                            <img src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
                         </a>
                     </div>
                 </div>
@@ -580,7 +596,7 @@
         <div id="wcb" class="carbonbadge wcb-d"></div>
         <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
         <div>
-            <a href='https://clustrmaps.com/site/1c0xj'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=l-eulRo4m9kWX0-DiNfpf3VdUzMYdgScLET0G4NP4yQ&co=2d78ad&ct=ffffff'/></a>
+            <a href='https://clustrmaps.com/site/1c0xj'  title='Visit tracker'><img loading="lazy" src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=l-eulRo4m9kWX0-DiNfpf3VdUzMYdgScLET0G4NP4yQ&co=2d78ad&ct=ffffff'/></a>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
