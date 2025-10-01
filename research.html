@@ -37,6 +37,33 @@
     <section id="research-container">
         <div class="research-grid">
             <div class="research-card">
+                <h3>Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
+                <p><strong>Authors:</strong> Killian Steunou, Théo Druilhe, Sigurd Saue</p>
+                <a href="https://arxiv.org/abs/2509.21130" target="_blank">arXiv Preprint</a>
+                <a href="https://github.com/killian31/SPCARobustness" target="_blank">GitHub Repository</a>
+                <p><strong>Abstract:</strong>
+                Deep neural networks perform remarkably well on image classification 
+                tasks but remain vulnerable to carefully crafted adversarial
+                perturbations. This work revisits linear dimensionality reduction as a 
+                simple, data-adapted defense. We empirically compare standard Principal 
+                Component Analysis (PCA) with its sparse variant (SPCA) as front-end 
+                feature extractors for downstream classifiers, and we complement these
+                experiments with a theoretical analysis. On the theory side, we derive 
+                exact robustness certificates for linear heads applied to SPCA 
+                features: for both l2 and l infinity threat models (binary and 
+                multiclass), the certified radius grows as the dual norms of  shrink, 
+                where  is the projection and  the head weights. We further show that
+                for general (non-linear) heads, sparsity reduces operator-norm bounds 
+                through a Lipschitz composition argument, predicting lower input 
+                sensitivity. Empirically, with a small non-linear network after the 
+                projection, SPCA consistently degrades more gracefully than PCA under 
+                strong white-box and black-box attacks while maintaining competitive
+                clean accuracy. Taken together, the theory identifies the mechanism 
+                (sparser projections reduce adversarial leverage) and the experiments 
+                verify that this benefit persists beyond the linear setting.
+                </p>
+            </div>
+            <div class="research-card">
                 <h3>Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
                 <p><strong>Authors:</strong> Max Daniels, Tyler Maunu, Paul Hand</p>
                 <a href="https://arxiv.org/abs/2110.03237" target="_blank">Original Paper</a>
