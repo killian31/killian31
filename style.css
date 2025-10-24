@@ -412,6 +412,9 @@ h1, h2, h3 {
 .about-social-btn.github {
   background: linear-gradient(90deg,#333 60%,#00f5ff77 100%);
 }
+.about-social-btn.google-scholar {
+  background: linear-gradient(90deg,#4285F4 40%,#34A853 100%);
+}
 .about-social-btn.cv {
   background: linear-gradient(90deg,#ff00ff55 40%,#00f5ff33 100%);
 }
