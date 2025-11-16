@@ -1266,6 +1266,15 @@ footer {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .glider {
+    scroll-behavior: auto;
+  }
+  .carousel-item {
+    scroll-snap-stop: normal;
+  }
+}
+
 /* ---- Custom Scrollbar ---- */
 ::-webkit-scrollbar {
   width: 10px;

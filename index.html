@@ -523,7 +523,7 @@
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <img loading="lazy" src="assets/projects/vbr.gif" alt="video-background-removal" loading="lazy" class="project-pic"/>
+                        <img loading="lazy" src="assets/projects/vbr.gif" alt="video-background-removal" class="project-pic"/>
                         <h3 class="project-title">Video Background Removal</h3>
                         <img loading="lazy" src="https://img.shields.io/github/stars/killian31/VideoBackgroundRemoval.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
                         <p class="project-details">
@@ -570,7 +570,6 @@
                         <a href="https://github.com/killian31/MathViz" target="_blank" rel="noopener noreferrer" class="project-badge">
                             <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
                         </a>
-                        <p></p>
                         <a href= "https://mathviz.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-badge">
                             <img loading="lazy" src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit" class="project-badge">
                         </a>
@@ -677,14 +676,30 @@
         </div>
     </footer>
     <script src="script.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: false,     // whether animation should happen only once
-            mirror: true,  // whether elements should animate out while scrolling past them
-    });
+        (function () {
+            if (!window.AOS) return;
+            const initAOS = (reduceMotion) => {
+                AOS.init({
+                    duration: reduceMotion ? 0 : 800,
+                    easing: 'ease-in-out',
+                    once: reduceMotion || false,
+                    mirror: reduceMotion ? false : true,
+                    disable: reduceMotion
+                });
+            };
+            const query = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+            initAOS(query ? query.matches : false);
+            if (query) {
+                const listener = (event) => initAOS(event.matches);
+                if (query.addEventListener) {
+                    query.addEventListener('change', listener);
+                } else if (query.addListener) {
+                    query.addListener(listener);
+                }
+            }
+        })();
     </script>
 </body>
 </html>
