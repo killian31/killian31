@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demos - Killian Steunou</title>
+    <meta name="description" content="Interactive demos that showcase Killian Steunou's applied machine learning work.">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-content">
             <div class="navbar-logo">
-                <img src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
+                <img loading="lazy" src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
                 <a href="index.html#hero">Killian Steunou</a>
             </div>
-            <div class="navbar-toggle" id="navbar-toggle">
+            <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html#hero">Home</a></li>
                 <li><a href="index.html#about">About</a></li>
@@ -31,60 +35,38 @@
             </ul>
         </div>
     </nav>
-
+    <main>
     <section id="demos" class="section projects">
         <div class="section-content">
             <h2>Demos</h2>
             <div class="demo-container">
                 <div class="demo-item">
                     <a href="demo_avt.html">
-                        <img src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="demo-image">
+                        <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="demo-image">
                         <h3 class="demo-title">Audio Visual Transcription</h3>
                     </a>
                 </div>
                 <div class="demo-item">
                     <a href="demo_vbr.html">
-                        <img src="assets/projects/vbr.gif" alt="Video Background Removal" class="demo-image">
+                        <img loading="lazy" src="assets/projects/vbr.gif" alt="Video Background Removal" class="demo-image">
                         <h3 class="demo-title">Video Background Removal</h3>
                     </a>
                 </div>
                 <div class="demo-item">
                     <a href="demo_mathviz.html">
-                        <img src="assets/projects/mathviz.png" alt="MathViz" class="demo-image">
+                        <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz" class="demo-image">
                         <h3 class="demo-title">MathViz</h3>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <footer>
         <p>&copy; 2025 Killian Steunou</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            new Glider(document.querySelector('#demos-glider'), {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                draggable: true,
-                arrows: {
-                    prev: '#demos-prev',
-                    next: '#demos-next'
-                },
-                responsive: [
-                    {
-                        breakpoint: 900,
-                        settings: {
-                            slidesToShow: 1
-                        }
-                    }
-                ]
-            });
-        });
-    </script>
 </body>
 </html>
-

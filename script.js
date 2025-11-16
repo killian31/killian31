@@ -122,30 +122,33 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('navbar-toggle');
     const navLinks = document.getElementById('nav-links');
     
-    toggle.addEventListener('click', function () {
-        navLinks.classList.toggle('open');
-        toggle.classList.toggle('active'); // Add this line for animation
-    });
-    
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            toggle.classList.remove('active'); // Add this line
+    if (toggle && navLinks) {
+        const setExpanded = (isOpen) => toggle.setAttribute('aria-expanded', String(isOpen));
+
+        toggle.addEventListener('click', function () {
+            navLinks.classList.toggle('open');
+            toggle.classList.toggle('active');
+            setExpanded(navLinks.classList.contains('open'));
         });
-    });
-    
-    document.addEventListener('click', function(event) {
-        if (window.innerWidth <= 900) {
-            if (
-                !navLinks.contains(event.target) &&
-                !toggle.contains(event.target) &&
-                navLinks.classList.contains('open')
-            ) {
+        
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
                 navLinks.classList.remove('open');
-                toggle.classList.remove('active'); // Add this line
+                toggle.classList.remove('active');
+                setExpanded(false);
+            });
+        });
+        
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 900 && navLinks.classList.contains('open')) {
+                if (!navLinks.contains(event.target) && !toggle.contains(event.target)) {
+                    navLinks.classList.remove('open');
+                    toggle.classList.remove('active');
+                    setExpanded(false);
+                }
             }
-        }
-    });
+        });
+    }
 
     // ------ Initialize Carousels ------
     if (window.Glider) {
@@ -168,7 +171,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (entry.isIntersecting) {
                 const sectionId = entry.target.id;
                 const sectionIndex = sectionNames.indexOf(sectionId);
-                updateActiveStates(sectionIndex);
+                if (sectionIndex !== -1) {
+                    updateActiveStates(sectionIndex);
+                }
             }
         });
     }, observerOptions);
@@ -179,6 +184,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Neural dots active state
     function updateActiveStates(currentSectionIndex) {
+        if (currentSectionIndex < 0) {
+            return;
+        }
         const allDots = document.querySelectorAll('.network-dot');
         const nextSectionIndex = (currentSectionIndex + 1) % sectionNames.length;
         allDots.forEach((dot, index) => {
@@ -186,8 +194,12 @@ document.addEventListener('DOMContentLoaded', function () {
             dot.classList.remove('active', 'next-active');
             if (globalIndex === currentSectionIndex) {
                 dot.classList.add('active');
+                dot.setAttribute('aria-pressed', 'true');
             } else if (globalIndex === nextSectionIndex) {
                 dot.classList.add('next-active');
+                dot.setAttribute('aria-pressed', 'false');
+            } else {
+                dot.setAttribute('aria-pressed', 'false');
             }
         });
     }
@@ -231,6 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const btn = document.createElement('button');
         btn.id = "back-to-top-btn";
         btn.innerHTML = "↑";
+        btn.type = "button";
         btn.style.position = "fixed";
         btn.style.bottom = "30px";
         btn.style.right = "30px";
@@ -244,6 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.style.borderRadius = "50%";
         btn.style.boxShadow = "0 4px 32px #00f5ff77";
         btn.style.cursor = "pointer";
+        btn.setAttribute('aria-label', 'Back to top');
         document.body.appendChild(btn);
     }
 
@@ -264,7 +278,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const networkSvgs = document.querySelectorAll('.network-svg');
         networkSvgs.forEach((svg, sectionIndex) => {
             svg.innerHTML = ''; // Clear existing lines
-            const dots = svg.parentElement.querySelectorAll('.network-dot');
+        const dots = svg.parentElement.querySelectorAll('.network-dot');
+        if (!dots.length) {
+            return;
+        }
             const svgRect = svg.getBoundingClientRect();
             const dotsContainer = svg.parentElement.querySelector('.network-dots');
             const dotsRect = dotsContainer.getBoundingClientRect();
@@ -301,4 +318,3 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('load', createConnectionLines);
     window.addEventListener('resize', () => setTimeout(createConnectionLines, 100));
 });
-

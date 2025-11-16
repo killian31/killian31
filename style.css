@@ -100,9 +100,22 @@ h1, h2, h3 {
 .navbar-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1001;
+  background: transparent;
+  border: none;
+  color: inherit;
+  border-radius: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.navbar-toggle:focus-visible {
+  outline: 2px solid #00f5ff;
+  outline-offset: 2px;
 }
 
 .navbar-toggle .bar {
@@ -263,6 +276,13 @@ h1, h2, h3 {
 .projects { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);}
 .contact { background: linear-gradient(135deg, #16213e 0%, #0f3460 50%, #0a0a0a 100%);}
 
+.section.research-page {
+  display: block;
+  min-height: auto;
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+}
+
 /* ---- Section Headings and Paragraphs ---- */
 .section h2, h2 {
   font-size: 3rem;
@@ -276,6 +296,23 @@ h1, h2, h3 {
   max-width: 800px;
   margin: 0 auto 1.4rem auto;
   color: #fff;
+}
+
+.page-header {
+  text-align: center;
+  padding: 8rem 2rem 2rem;
+}
+
+.page-header h1 {
+  font-size: 3.5rem;
+  color: #00f5ff;
+  margin-bottom: 0.8rem;
+}
+
+.page-header p {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #e8e8ff;
 }
 
 /* ---- Neural Network Dots ---- */
@@ -315,12 +352,21 @@ h1, h2, h3 {
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
 }
 
 .network-dot.active {
     background: rgba(0, 245, 255, 0.8);
     border-color: #00f5ff;
     box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+.network-dot:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
 }
 
 .network-dot.next-active {
@@ -1202,4 +1248,3 @@ footer {
   background: linear-gradient(135deg, #00f5ff, #ff00ff 80%);
   border-radius: 8px;
 }
-
