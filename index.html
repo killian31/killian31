@@ -20,7 +20,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
 </head>
 <body>
     <nav class="navbar" aria-label="Primary navigation">
@@ -341,9 +340,9 @@
     <div class="section-content">
         <h2>Research Projects</h2>
         <a href="research.html" class="cta-button">View all research projects</a>
-        <div class="glider-contain neural-carousel" id="research-carousel">
+        <div class="glider-contain neural-carousel" id="research-carousel" data-carousel-label="Research project">
             <button class="carousel-button prev" id="research-prev" aria-label="View previous research project">‹</button>
-            <div class="glider" id="research-glider">
+            <div class="glider" id="research-glider" role="region" aria-label="Research projects carousel" tabindex="0">
                 <div class="carousel-item">
                     <h3 class="project-title">Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
                     <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer" class="source-article">
@@ -464,6 +463,10 @@
                 </div>
             </div>
             <button class="carousel-button next" id="research-next" aria-label="View next research project">›</button>
+            <div class="carousel-meta">
+                <p class="carousel-status" id="research-status" aria-live="polite" data-label="Research project">Research projects carousel</p>
+                <div class="dots" id="research-dots" aria-label="Research project navigation" role="tablist"></div>
+            </div>
         </div>
     </div>
     <div class="neural-network">
@@ -485,9 +488,9 @@
     <section id="projects" class="section projects" data-aos="fade-up">
         <div class="section-content">
             <h2>Some of my Recent Projects</h2>
-            <div class="glider-contain neural-carousel" id="projects-carousel">
+            <div class="glider-contain neural-carousel" id="projects-carousel" data-carousel-label="Project">
                 <button class="carousel-button prev" id="projects-prev" aria-label="View previous project">‹</button>
-                <div class="glider" id="projects-glider">
+                <div class="glider" id="projects-glider" role="region" aria-label="Projects carousel" tabindex="0">
                     <div class="carousel-item">
                         <img loading="lazy" src="https://github.com/killian31/NailBiteMenu/blob/main/docs/logo.png?raw=true" alt="Nail Bite Menu App" class="project-pic">
                         <h3 class="project-title">Nail Bite Detection App</h3>
@@ -599,6 +602,10 @@
                     </div>
                 </div>
                 <button class="carousel-button next" id="projects-next" aria-label="View next project">›</button>
+                <div class="carousel-meta">
+                    <p class="carousel-status" id="projects-status" aria-live="polite" data-label="Project">Projects carousel</p>
+                    <div class="dots" id="projects-dots" aria-label="Project navigation" role="tablist"></div>
+                </div>
             </div>
         </div>
         <div class="neural-network">
@@ -669,7 +676,6 @@
             </a>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
     <script src="script.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

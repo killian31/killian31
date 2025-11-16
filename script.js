@@ -1,121 +1,99 @@
-function setupGliderCarousel(gliderSelector, prevSelector, nextSelector, dotsSelector, slidesToShow = 2) {
-    const gliderElem = document.querySelector(gliderSelector);
-    if (!gliderElem) return;
-    
-    const prevBtn = document.querySelector(prevSelector);
-    const nextBtn = document.querySelector(nextSelector);
+function setupCarousel(container) {
+    const track = container.querySelector('.glider');
+    if (!track) return;
 
-    // Determine initial slides to show based on screen size
-    const getInitialSlidesToShow = () => {
-        if (window.innerWidth <= 600) return 1;
-        if (window.innerWidth <= 900) return 1;
-        return slidesToShow;
+    const cards = Array.from(track.querySelectorAll('.carousel-item'));
+    if (!cards.length) return;
+
+    const statusEl = container.querySelector('.carousel-status');
+    const prevBtn = container.querySelector('.carousel-button.prev');
+    const nextBtn = container.querySelector('.carousel-button.next');
+    const dotsWrapper = container.querySelector('.dots');
+    const label = (statusEl?.dataset.label || container.dataset.carouselLabel || 'Item').trim() || 'Item';
+
+    const dots = [];
+    const scrollToIndex = (index) => {
+        const clampedIndex = Math.min(cards.length - 1, Math.max(0, index));
+        currentIndex = clampedIndex;
+        updateStatus();
+        updateDots();
+        const target = cards[clampedIndex];
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        }
+        requestAnimationFrame(updateButtons);
     };
 
-    const glider = new Glider(gliderElem, {
-        slidesToShow: getInitialSlidesToShow(),
-        slidesToScroll: 1,
-        draggable: true,
-        dots: dotsSelector,
-        arrows: {
-            prev: prevSelector,
-            next: nextSelector
-        },
-        responsive: [
-            {
-                breakpoint: 900,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    draggable: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    draggable: true
+    if (dotsWrapper) {
+        dotsWrapper.setAttribute('role', dotsWrapper.getAttribute('role') || 'tablist');
+        dotsWrapper.innerHTML = '';
+        cards.forEach((card, idx) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.setAttribute('aria-label', `Show ${label} ${idx + 1}`);
+            dot.setAttribute('role', 'tab');
+            dot.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+            dot.addEventListener('click', () => scrollToIndex(idx));
+            dotsWrapper.appendChild(dot);
+            dots.push(dot);
+        });
+    }
+
+    let currentIndex = 0;
+
+    const updateStatus = () => {
+        if (statusEl) {
+            statusEl.textContent = `${label} ${currentIndex + 1} of ${cards.length}`;
+        }
+    };
+
+    const updateDots = () => {
+        dots.forEach((dot, idx) => {
+            const isActive = idx === currentIndex;
+            dot.classList.toggle('active', isActive);
+            dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+    };
+
+    const updateButtons = () => {
+        const maxScroll = track.scrollWidth - track.clientWidth - 5;
+        const scrollLeft = track.scrollLeft;
+        if (prevBtn) {
+            prevBtn.disabled = scrollLeft <= 0;
+        }
+        if (nextBtn) {
+            nextBtn.disabled = scrollLeft >= maxScroll;
+        }
+    };
+
+    prevBtn?.addEventListener('click', () => scrollToIndex(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => scrollToIndex(currentIndex + 1));
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+                const idx = cards.indexOf(entry.target);
+                if (idx !== -1 && idx !== currentIndex) {
+                    currentIndex = idx;
+                    updateStatus();
+                    updateDots();
                 }
             }
-        ]
+        });
+    }, {
+        root: track,
+        threshold: 0.45
     });
 
-    // Enhanced arrow disabling logic
-    function updateArrows() {
-        const currentSlide = glider.page;
-        const totalSlides = glider.slides.length;
-        const visibleSlides = glider.opt.slidesToShow;
-        
-        // Update button states
-        if (prevBtn) {
-            prevBtn.disabled = (currentSlide === 0);
-            prevBtn.classList.toggle('disabled', currentSlide === 0);
-        }
-        
-        if (nextBtn) {
-            const isAtEnd = (currentSlide + visibleSlides) >= totalSlides;
-            nextBtn.disabled = isAtEnd;
-            nextBtn.classList.toggle('disabled', isAtEnd);
-        }
-    }
-
-    // Event listeners for glider updates
-    gliderElem.addEventListener('glider-animated', function() {
-        setTimeout(updateArrows, 10);
+    cards.forEach(card => observer.observe(card));
+    track.addEventListener('scroll', () => {
+        updateButtons();
     });
+    window.addEventListener('resize', updateButtons);
 
-    gliderElem.addEventListener('glider-loaded', function() {
-        setTimeout(updateArrows, 10);
-    });
-
-    // Handle window resize
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            // Force glider to recalculate
-            glider.refresh(true);
-            setTimeout(updateArrows, 50);
-        }, 150);
-    });
-
-    // Initial setup
-    setTimeout(() => {
-        updateArrows();
-    }, 100);
-
-    // Touch event handling for better mobile experience
-    if (window.innerWidth <= 900) {
-        let startX = 0;
-        let scrollLeft = 0;
-        let isDown = false;
-
-        gliderElem.addEventListener('touchstart', (e) => {
-            isDown = true;
-            startX = e.touches[0].pageX - gliderElem.offsetLeft;
-            scrollLeft = gliderElem.scrollLeft;
-        });
-
-        gliderElem.addEventListener('touchmove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.touches[0].pageX - gliderElem.offsetLeft;
-            const walk = (x - startX) * 2;
-            gliderElem.scrollLeft = scrollLeft - walk;
-        });
-
-        gliderElem.addEventListener('touchend', () => {
-            isDown = false;
-        });
-
-        // Prevent context menu on long press
-        gliderElem.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
-    }
-
-    return glider;
+    updateStatus();
+    updateDots();
+    updateButtons();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -151,10 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ------ Initialize Carousels ------
-    if (window.Glider) {
-        setupGliderCarousel('#research-glider', '#research-prev', '#research-next', '#research-dots', 2);
-        setupGliderCarousel('#projects-glider', '#projects-prev', '#projects-next', '#projects-dots', 2);
-    }
+    document.querySelectorAll('.glider-contain.neural-carousel').forEach(setupCarousel);
 
     // ------ Neural dots and smooth scrolling ------
     const sections = document.querySelectorAll('.section');
