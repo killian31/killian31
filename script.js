@@ -157,6 +157,13 @@ document.addEventListener('DOMContentLoaded', function () {
         currentTheme = mode === 'light' ? 'light' : 'dark';
         document.body.classList.toggle('light-mode', currentTheme === 'light');
         document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        const carbonBadge = document.getElementById('wcb');
+        if (carbonBadge) {
+            carbonBadge.classList.remove('wcb-d');
+            if (currentTheme === 'dark') {
+                carbonBadge.classList.add('wcb-d');
+            }
+        }
         if (themeToggleBtn) {
             themeToggleBtn.textContent = currentTheme === 'light' ? '☀️' : '🌙';
             themeToggleBtn.setAttribute('aria-label', currentTheme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
