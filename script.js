@@ -99,6 +99,21 @@ function setupCarousel(container) {
 document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('navbar-toggle');
     const navLinks = document.getElementById('nav-links');
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const navbar = document.querySelector('.navbar');
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const THEME_KEY = 'ks-theme';
+    const prefersDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)').matches : true;
+    let currentTheme = localStorage.getItem(THEME_KEY) || (prefersDark ? 'dark' : 'light');
+    const toggleViewButtons = document.querySelectorAll('.toggle-view-btn');
+    const forms = document.querySelectorAll('.neural-form');
+    const sendAnalyticsEvent = (action, label) => {
+        if (typeof gtag !== 'function' || !action) return;
+        gtag('event', action, {
+            event_category: 'interaction',
+            event_label: label || action
+        });
+    };
     
     if (toggle && navLinks) {
         const setExpanded = (isOpen) => toggle.setAttribute('aria-expanded', String(isOpen));
@@ -127,6 +142,37 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    function applyNavBackground() {
+        if (!navbar) return;
+        const scrolled = window.scrollY > 100;
+        if (currentTheme === 'light') {
+            navbar.style.background = scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.9)';
+        } else {
+            navbar.style.background = scrolled ? 'rgba(0, 0, 0, 0.95)' : 'rgba(0, 0, 0, 0.9)';
+        }
+    }
+
+    function applyTheme(mode) {
+        currentTheme = mode === 'light' ? 'light' : 'dark';
+        document.body.classList.toggle('light-mode', currentTheme === 'light');
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        if (themeToggleBtn) {
+            themeToggleBtn.textContent = currentTheme === 'light' ? '☀️' : '🌙';
+            themeToggleBtn.setAttribute('aria-label', currentTheme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+            themeToggleBtn.setAttribute('aria-pressed', currentTheme === 'light' ? 'true' : 'false');
+        }
+        localStorage.setItem(THEME_KEY, currentTheme);
+        applyNavBackground();
+    }
+
+    applyTheme(currentTheme);
+
+    themeToggleBtn?.addEventListener('click', () => {
+        applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+    });
+
+    window.addEventListener('scroll', applyNavBackground);
 
     // ------ Initialize Carousels ------
     document.querySelectorAll('.glider-contain.neural-carousel').forEach(setupCarousel);
@@ -179,13 +225,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    const getOffset = () => (navbar ? navbar.offsetHeight + 12 : 0);
+    const scrollToTarget = (target) => {
+        if (!target) return;
+        const top = target.getBoundingClientRect().top + window.scrollY - getOffset();
+        window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    };
+
     // Click handlers for neural dots
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('network-dot')) {
             const sectionName = e.target.dataset.section;
             const targetSection = document.getElementById(sectionName);
             if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth' });
+                e.preventDefault();
+                scrollToTarget(targetSection);
             }
         }
     });
@@ -197,19 +251,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 e.preventDefault();
-                targetSection.scrollIntoView({ behavior: 'smooth' });
+                scrollToTarget(targetSection);
             }
         });
-    });
-
-    // Navbar background on scroll
-    window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-        } else {
-            navbar.style.background = 'rgba(0, 0, 0, 0.9)';
-        }
     });
 
     // ------ Back to Top Button ------
@@ -292,4 +336,71 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     window.addEventListener('load', createConnectionLines);
     window.addEventListener('resize', () => setTimeout(createConnectionLines, 100));
+
+    // Compact view toggles
+    toggleViewButtons.forEach(btn => {
+        const targetId = btn.dataset.target;
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        btn.addEventListener('click', () => {
+            const isCompact = target.classList.toggle('compact-list');
+            btn.setAttribute('aria-pressed', String(isCompact));
+            btn.textContent = isCompact ? 'Carousel view' : 'Compact list';
+            if (btn.dataset.analytics) {
+                sendAnalyticsEvent(btn.dataset.analytics, isCompact ? 'compact' : 'carousel');
+            }
+        });
+    });
+
+    // Inline form validation
+    const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    const setError = (field, msg) => {
+        const group = field.closest('.form-group') || field.parentElement;
+        let errorEl = group.querySelector('.form-error');
+        if (!errorEl) {
+            errorEl = document.createElement('div');
+            errorEl.className = 'form-error';
+            group.appendChild(errorEl);
+        }
+        errorEl.textContent = msg;
+        field.classList.toggle('input-error', Boolean(msg));
+    };
+
+    forms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            const requiredFields = form.querySelectorAll('input[required], textarea[required]');
+            let hasError = false;
+            requiredFields.forEach(field => {
+                const value = field.value.trim();
+                let msg = '';
+                if (!value) {
+                    msg = 'Required';
+                } else if (field.type === 'email' && !emailRegex.test(value)) {
+                    msg = 'Enter a valid email';
+                } else if (field.name === 'subject' && value.length < 3) {
+                    msg = 'Subject is too short';
+                } else if (field.name === 'message' && value.length < 5) {
+                    msg = 'Message is too short';
+                }
+                setError(field, msg);
+                if (msg) {
+                    hasError = true;
+                }
+            });
+            if (hasError) {
+                e.preventDefault();
+                return;
+            }
+            sendAnalyticsEvent('contact_form_submit', 'contact form');
+        });
+    });
+
+    // Generic click analytics (buttons/links with data-analytics)
+    document.addEventListener('click', (event) => {
+        const target = event.target.closest('[data-analytics]');
+        if (!target) return;
+        const action = target.dataset.analytics;
+        const label = target.dataset.analyticsLabel || target.textContent.trim().slice(0, 80);
+        sendAnalyticsEvent(action, label);
+    });
 });

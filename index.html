@@ -43,6 +43,7 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="demos.html">Demos</a></li>
             </ul>
+            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark or light theme">🌙</button>
         </div>
     </nav>
     <main>
@@ -52,7 +53,7 @@
             <h1>Hi, I'm Killian!</h1>
             <p>A machine learning PhD student who loves Computer Vision :)</p>
             <p>Learn about my journey in Mathematics, Computer Vision and Deep Learning</p>
-            <a href="#about" class="cta-button">About me</a>
+            <a href="#about" class="cta-button" data-analytics="cta_about">About me</a>
         </div>
         <div class="neural-network">
             <svg class="network-svg">
@@ -336,13 +337,16 @@
 </section>
 
     <!-- Research Projects Section -->
-<section id="research" class="section research" data-aos="fade-up">
-    <div class="section-content">
+    <section id="research" class="section research" data-aos="fade-up">
+        <div class="section-content">
         <h2>Research Projects</h2>
-        <a href="research.html" class="cta-button">View all research projects</a>
-        <div class="glider-contain neural-carousel" id="research-carousel" data-carousel-label="Research project">
-            <button class="carousel-button prev" id="research-prev" aria-label="View previous research project">‹</button>
-            <div class="glider" id="research-glider" role="region" aria-label="Research projects carousel" tabindex="0">
+        <a href="research.html" class="cta-button" data-analytics="cta_view_all_research">View all research projects</a>
+        <div class="view-toggle">
+            <button type="button" class="toggle-view-btn" data-target="research-carousel" data-analytics="toggle_research_view">Compact list</button>
+            </div>
+            <div class="glider-contain neural-carousel" id="research-carousel" data-carousel-label="Research project">
+                <button class="carousel-button prev" id="research-prev" aria-label="View previous research project">‹</button>
+                <div class="glider" id="research-glider" role="region" aria-label="Research projects carousel" tabindex="0">
                 <div class="carousel-item">
                     <h3 class="project-title">Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
                     <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer" class="source-article">
@@ -488,6 +492,9 @@
     <section id="projects" class="section projects" data-aos="fade-up">
         <div class="section-content">
             <h2>Some of my Recent Projects</h2>
+            <div class="view-toggle">
+                <button type="button" class="toggle-view-btn" data-target="projects-carousel" data-analytics="toggle_projects_view">Compact list</button>
+            </div>
             <div class="glider-contain neural-carousel" id="projects-carousel" data-carousel-label="Project">
                 <button class="carousel-button prev" id="projects-prev" aria-label="View previous project">‹</button>
                 <div class="glider" id="projects-glider" role="region" aria-label="Projects carousel" tabindex="0">
@@ -642,7 +649,7 @@
             <label for="contact-message">Message</label>
             <textarea id="contact-message" name="message" placeholder="Your Message" rows="7" required></textarea>
           </div>
-          <button type="submit" class="submit-btn">Send Message</button>
+          <button type="submit" class="submit-btn" data-analytics="contact_submit_attempt">Send Message</button>
         </form>
       </div>
       <div class="neural-network">
