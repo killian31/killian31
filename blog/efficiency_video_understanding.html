@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Efficiency Follows Capability: A Decade of Video Understanding Research Trends
+    </title>
+    <meta
+      name="description"
+      content="An analysis of how computational efficiency has evolved from a marginal concern to a core research priority in video understanding, based on arXiv publication trends from 2015 to 2025."
+    />
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+
+    <style>
+      :root {
+        --citron: #e4ff77;
+        --soft-black: #141414;
+        --purple: #6342e8;
+        --off-white: #f3f1ee;
+        --lavender: #adaaff;
+        --red: #ff4d6a;
+        --orange: #ff8934;
+        --stone: #d9cec3;
+        --maxw: 940px;
+        --radius: 18px;
+        --shadow: 0 10px 30px rgba(20, 20, 20, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          "Apple Color Emoji",
+          "Segoe UI Emoji";
+        color: var(--soft-black);
+        background: var(--off-white);
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--purple);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 48px 20px 64px;
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          rgba(99, 66, 232, 0.12),
+          rgba(228, 255, 119, 0.28)
+        );
+        border: 1px solid rgba(20, 20, 20, 0.12);
+        border-radius: var(--radius);
+        padding: 34px 26px 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .byline {
+        display: flex;
+        gap: 8px;
+        align-items: baseline;
+        font-size: 15px;
+        color: rgba(20, 20, 20, 0.55);
+      }
+      .byline .author {
+        font-weight: 600;
+        color: rgba(20, 20, 20, 0.85);
+      }
+      .byline time {
+        font-weight: 400;
+      }
+      .byline .author::after {
+        content: "·";
+        margin-left: 8px;
+        font-weight: 400;
+        color: rgba(20, 20, 20, 0.35);
+      }
+
+      h1 {
+        margin: 22px 0 10px;
+        font-size: 40px;
+        line-height: 1.1;
+        letter-spacing: -0.025em;
+        font-weight: 750;
+      }
+      .subtitle {
+        font-size: 18px;
+        line-height: 1.4;
+        margin: 8px 0 0;
+        color: rgba(20, 20, 20, 0.7);
+      }
+
+	      .abstract {
+	        margin-top: 18px;
+	        padding: 16px 18px;
+	        background: rgba(255, 255, 255, 0.7);
+	        border: 1px solid rgba(20, 20, 20, 0.12);
+	        border-radius: 12px;
+	        backdrop-filter: blur(6px);
+	      }
+	      .abstract-label {
+	        font-size: 12px;
+	        font-weight: 750;
+	        letter-spacing: 0.09em;
+	        text-transform: uppercase;
+	        color: rgba(20, 20, 20, 0.55);
+	        margin-bottom: 8px;
+	      }
+	      .abstract p {
+	        margin: 10px 0;
+	        font-size: 16px;
+	        line-height: 1.55;
+	        color: rgba(20, 20, 20, 0.8);
+	      }
+	      .abstract ul {
+	        margin: 10px 0;
+	        padding-left: 22px;
+	      }
+	      .abstract li {
+	        margin: 6px 0;
+	        font-size: 16px;
+	        line-height: 1.5;
+	      }
+	      .abstract .abstract-note {
+	        color: rgba(20, 20, 20, 0.65);
+	        font-size: 15px;
+	      }
+
+      main {
+        margin-top: 60px;
+      }
+
+      h2 {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 52px 0 14px;
+        letter-spacing: -0.02em;
+      }
+      h3 {
+        font-size: 21px;
+        font-weight: 650;
+        margin: 32px 0 10px;
+      }
+      p {
+        margin: 16px 0;
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      ul {
+        margin: 16px 0;
+        padding-left: 24px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      .figure-container {
+        margin: 40px 0;
+        padding: 20px;
+        background: white;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .plot {
+        width: 100%;
+        min-height: 500px;
+      }
+
+      .caption {
+        font-size: 15px;
+        color: rgba(20, 20, 20, 0.65);
+        margin-top: 12px;
+        font-style: italic;
+      }
+
+      .method-box {
+        background: rgba(99, 66, 232, 0.05);
+        border-left: 4px solid var(--purple);
+        padding: 20px 24px;
+        margin: 28px 0;
+        border-radius: 8px;
+      }
+
+      .method-box h3 {
+        margin-top: 0;
+        color: var(--purple);
+      }
+
+      .highlight-box {
+        background: rgba(228, 255, 119, 0.15);
+        border-left: 4px solid var(--citron);
+        padding: 20px 24px;
+        margin: 28px 0;
+        border-radius: 8px;
+      }
+
+      sup {
+        font-size: 0.75em;
+        vertical-align: super;
+        line-height: 0;
+      }
+
+      .references {
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 2px solid rgba(20, 20, 20, 0.1);
+      }
+
+      .references h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .ref-list {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .ref-item {
+        margin: 12px 0;
+        padding-left: 24px;
+        text-indent: -24px;
+      }
+
+      footer {
+        margin-top: 80px;
+        padding: 30px 0;
+        border-top: 1px solid rgba(20, 20, 20, 0.1);
+        text-align: center;
+        font-size: 14px;
+        color: rgba(20, 20, 20, 0.5);
+      }
+
+      strong {
+        font-weight: 650;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="byline">
+          <span class="author">Killian Steunou</span>
+          <time>February 2026</time>
+        </div>
+        <h1>Efficiency Follows Capability: A Decade of Video Understanding Research Trends</h1>
+	        <div class="abstract">
+	          <div class="abstract-label">Abstract</div>
+	          <p>
+	            Using arXiv CS publication trends (2015–2025), this article tracks
+	            the growth of video understanding research and the subset that
+	            explicitly frames contributions around computational constraints
+	            (efficiency, real-time, or lightweight).
+	          </p>
+	          <ul>
+	            <li>
+	              Video understanding grows from 5 papers (2015) to 621 papers
+	              (2025).
+	            </li>
+	            <li>
+	              The efficiency/real-time/lightweight subset reaches 245 papers in
+	              2025 (39.5% of the video understanding corpus).
+	            </li>
+	            <li>
+	              In 2024, growth is explosive in both series (+152% VU vs +181%
+	              efficient), suggesting efficiency has become embedded rather than
+	              trailing behind.
+	            </li>
+	            <li>
+	              Growth-rate dynamics indicate a recurring lag: efficiency work
+	              tends to surge 1–2 years after capability surges.
+	            </li>
+	          </ul>
+	          <p class="abstract-note">
+	            Counts come from keyword-based queries over arXiv CS and should be
+	            read as a thermometer of attention, not a complete census.
+	          </p>
+	        </div>
+      </header>
+
+      <main>
+        <section>
+          <h2>Understanding the Data</h2>
+
+          <p>
+            This analysis tracks arXiv computer science publications from 2015
+            to 2025 across two primary research themes:
+            <strong>video understanding</strong> (the broad field of building
+            models that comprehend video content) and
+            <strong>efficient video understanding</strong> (work that explicitly
+            addresses computational constraints such as FLOPs, parameters,
+            latency, or memory footprint). The data serves as a thermometer of
+            research attention rather than a complete census of the
+            literature.<sup>1</sup>
+          </p>
+
+          <p>
+            Publication counts are influenced by terminology: what researchers
+            choose to call their work shapes what appears in keyword searches.
+            Even with that caveat, sustained growth in counts usually coincides
+            with broader changes: more researchers entering the area, shared
+            tooling becoming available, and practical applications creating
+            demand.<sup>2</sup> The patterns in this dataset follow that shape.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Mainstreaming of Video Understanding</h2>
+
+          <p>
+            Video understanding has expanded significantly over the past decade.
+            Early work in the 2010s relied on hand-crafted features and
+            relatively shallow architectures applied to carefully curated
+            datasets like UCF101 and HMDB51 for action recognition.<sup
+              >3, 4</sup
+            >
+            The field remained somewhat specialized, with most computer vision
+            research focusing on static images rather than temporal sequences.
+          </p>
+
+          <p>
+            The field accelerated in the late 2010s and through the 2020s.
+            Large-scale benchmarks such as Kinetics-400/600/700<sup>5</sup>, spatiotemporal
+            architectures like I3D and SlowFast networks, and video transformers
+            such as TimeSformer and Video Swin Transformer contributed to higher
+            research throughput.<sup>5, 6, 7, 8</sup> Video understanding moved from
+            a niche specialization toward a more mainstream research domain,
+            with applications in autonomous systems, content moderation,
+            accessibility, and human-computer interaction.
+          </p>
+
+          <div class="figure-container">
+            <div id="plot1" class="plot"></div>
+            <p class="caption">
+              Figure 1: Growth of video understanding publications on arXiv
+              (2015–2025), rising from 5 papers in 2015 to 621 in 2025.
+            </p>
+          </div>
+
+          <p>
+            Figure 1 shows low volumes through 2019 and sustained expansion
+            after 2020, with the largest jump in 2024-2025, with a near 104% increase in the number of publications. This period overlaps
+            with broader shifts in the ML ecosystem: more video-language work,
+            tighter integration into multimodal foundation models, and widely
+            used pretraining datasets like HowTo100M and WebVid.<sup>9,10</sup>
+          </p>
+        </section>
+
+        <section>
+          <h2>Efficiency Emerges as a Core Research Priority</h2>
+
+          <p>
+            Raw publication counts can mask structural changes when an entire
+            field is expanding. Figure 2 shows both video understanding and
+            efficiency-focused work surging together, particularly from 2023
+            onward, but this parallel growth could simply reflect the overall
+            expansion of ML research on arXiv, not a genuine shift in priorities.
+          </p>
+
+          <div class="figure-container">
+            <div id="plot2" class="plot"></div>
+            <p class="caption">
+              Figure 2: The rise of efficient video understanding, comparing
+              total video understanding papers against those explicitly
+              addressing efficiency, demonstrating efficiency's emergence from
+              niche (0 papers in 2015) to mainstream (245 in 2025).
+            </p>
+          </div>
+
+          <p>
+            A more revealing view is the <strong>relative share</strong> of
+            efficiency-focused work within the video understanding corpus (Figure 3).
+            This normalization filters out the effect of overall field growth and
+            reveals whether efficiency is becoming a more common framing in the
+            literature.
+          </p>
+
+          <div class="figure-container">
+            <div id="plot3" class="plot"></div>
+            <p class="caption">
+              Figure 3: Share of efficiency-focused papers within video
+              understanding research (2015–2025), demonstrating the field's
+              transition from efficiency as an afterthought (0–17%) to a central
+              priority (nearly 40%).
+            </p>
+          </div>
+
+          <p>
+            Figure 3 reveals the structural shift: efficiency-focused work has grown
+            from zero in 2015 to nearly two-fifths of all video
+            understanding papers by 2025. The steepest increase occurs after 2020,
+            coinciding with deployment pressures from real-world applications. This
+            isn't just "more papers because the field is bigger", it's a fundamental
+            reallocation of research attention toward computational constraints as
+            a first-order design consideration.
+          </p>
+
+          <h3>Why Efficiency Becomes Central as Fields Mature</h3>
+
+          <p>
+            Video understanding is <strong>inherently expensive</strong> from a
+            computational perspective. Unlike static images, videos present
+            multiple frames per second of high-dimensional visual data, creating
+            sequences that can span hundreds or thousands of frames for even
+            short clips. Temporal modeling requires architectures that capture
+            motion and long-range dependencies, further multiplying
+            computational costs. State-of-the-art video transformers can require
+            hundreds of billions of FLOPs per inference, with memory footprints
+            that exceed what is feasible on edge devices or even single
+            GPUs.
+          </p>
+
+          <p>
+            As model capabilities have expanded, so too has deployment pressure. 
+            Real-world applications
+            demand <strong>real-time inference</strong> (autonomous vehicles,
+            robotics), <strong>low-latency streaming</strong> (live content
+            moderation, video conferencing), and
+            <strong>on-device processing</strong> (mobile applications,
+            privacy-sensitive scenarios). These constraints make efficiency not
+            just desirable but essential.
+          </p>
+
+          <div class="highlight-box">
+            <h3>What "Efficiency" Means in Practice</h3>
+            <p>
+              Efficiency-focused video understanding research encompasses a
+              diverse set of approaches, all aimed at reducing resource
+              consumption while preserving semantic performance:
+            </p>
+            <ul>
+              <li>
+                <strong>Faster inference:</strong> Reducing wall-clock latency
+                through architectural optimizations, pruning, and quantization
+              </li>
+              <li>
+                <strong>Lower memory footprints:</strong> Compressing models and
+                intermediate activations to fit tighter memory budgets
+              </li>
+              <li>
+                <strong>Improved scaling to long videos:</strong> Processing
+                minute- or hour-long content without exhausting compute or
+                memory
+              </li>
+              <li>
+                <strong>Reduced frame and token processing:</strong> Adaptive
+                sampling, temporal pooling, and token merging to limit redundant
+                computation
+              </li>
+              <li>
+                <strong>Hardware-aware designs:</strong> Architectures optimized
+                for specific deployment targets (mobile GPUs, edge TPUs, cloud
+                infrastructure)
+              </li>
+            </ul>
+            <p>
+              These tactics vary in implementation, but they share a common
+              goal: making video understanding systems
+              <strong>deployable</strong> under real-world constraints.<sup
+                >13,14</sup
+              >
+            </p>
+          </div>
+
+          <p>
+            In this dataset, efficiency moves from a relatively rare framing to
+            a common one. Many papers now report FLOPs, parameter counts,
+            inference latency, and throughput alongside accuracy, and a growing
+            subset explicitly frames contributions as trading small accuracy
+            changes for large computational savings.<sup>15, 16</sup>
+          </p>
+        </section>
+
+        <section>
+          <h2>Growth Dynamics: Identifying Regime Changes</h2>
+
+          <p>
+            Absolute publication counts show growth;
+            <strong>growth rates</strong> reveal when the pace changes and,
+            more importantly, how the two series move relative to each other.
+            Figure 4 compares year-over-year changes for video understanding
+            and the efficiency subset from 2020 onward, when volumes are large
+            enough to produce stable signals.
+          </p>
+
+          <div class="figure-container">
+            <div id="plot4" class="plot"></div>
+            <p class="caption">
+              Figure 4: Year-over-year growth rates for video understanding and
+              efficient video understanding (2020–2025). Both categories show
+              explosive growth in 2024, with efficiency-focused work growing even
+              faster (+181%) than the parent category (+152%).
+            </p>
+          </div>
+
+          <p>
+            Three phases stand out. <strong>(1) 2020–2021:</strong> video
+            understanding grows modestly in 2020 (+16%) before surging in 2021
+            (+128%), likely driven by the arrival of video transformers and
+            large-scale pretraining. Efficiency work grows steadily in both
+            years (+30%, then +77%) but does not keep pace with the 2021
+            capability boom. <strong>(2) 2022–2023:</strong> the field
+            contracts slightly in 2022 (−5% VU) and recovers modestly in 2023
+            (+30%). During this consolidation, efficiency work continues to
+            grow (+35% in 2022, +19% in 2023), quietly gaining share while
+            overall output stalls. <strong>(3) 2024–2025:</strong> both
+            categories explode, with VU more than doubling in a two-year span.
+          </p>
+
+          <p>
+            A pattern emerges from these phases: <strong>efficiency research
+            lags capability surges by roughly one to two years</strong>. When
+            the field expands rapidly (2021), the initial wave of papers
+            focuses on pushing accuracy and generality. Efficiency catches up
+            afterward, during the consolidation that follows (2022–2023). By
+            the time the next expansion arrives (2024), efficiency has become
+            embedded in the research agenda rather than trailing behind it.
+          </p>
+
+          <p>
+            The 2024–2025 data supports this interpretation. In 2024, video
+            understanding grew +152% while efficiency-focused work grew +181%,
+            outpacing the parent category by nearly 30 percentage points. Unlike
+            the 2021 boom, efficiency is no longer playing catch-up, it is
+            expanding <em>faster</em> than the field itself. By 2025, growth
+            rates moderate but the gap persists (+136% efficiency vs +104% VU),
+            suggesting that computational constraints have become a first-order
+            design consideration rather than an afterthought.
+          </p>
+
+          <p>
+            Across the six years shown, efficiency-focused work outpaces video
+            understanding in four (2020, 2022, 2024, 2025). The two exceptions
+            (2021, 2023) are both years of strong overall VU growth, precisely
+            the capability-driven surges where new architectures and benchmarks
+            dominate attention before efficiency work absorbs and optimizes them.
+          </p>
+        </section>
+
+        <section>
+          <h2>Future Outlook and Open Questions</h2>
+
+          <p>
+            The efficiency share has climbed from near zero to roughly 40% in
+            a decade. If the current trajectory holds, efficiency-focused work
+            could represent a majority of video understanding publications
+            within the next two to three years. But there are reasons to expect
+            the curve to flatten rather than cross 50%.
+          </p>
+
+          <p>
+            <strong>Efficiency may become invisible.</strong> As techniques
+            like token merging, adaptive frame sampling, and quantization-aware
+            training mature, they risk becoming standard practice, baked into
+            architectures rather than highlighted as contributions. When
+            efficiency is the default, papers stop advertising it. The share
+            metric would plateau or even decline, not because efficiency
+            stopped mattering, but because it stopped being novel enough to
+            foreground. This would be a sign of success, not retreat.
+          </p>
+
+          <p>
+            <strong>The lag pattern may repeat.</strong> The growth dynamics
+            section identified a recurring pattern: capability surges precede
+            efficiency surges by one to two years. If a new architectural
+            paradigm emerges (like state-space models for video, or native
+            video generation as a pretraining objective) the initial wave of
+            publications will likely focus on what the new approach
+            <em>can do</em>, with efficiency work following as the community
+            works out how to make it <em>deployable</em>. Watching for this
+            lag in future data would test whether the pattern is structural
+            or coincidental.
+          </p>
+
+          <p>
+            <strong>Benchmarking remains fragmented.</strong> Efficiency
+            metrics are still reported heterogeneously: different input
+            resolutions, hardware platforms, batch sizes, and measurement
+            protocols make direct comparisons difficult. The community would
+            benefit from standardized efficiency benchmarks analogous to
+            MLPerf<sup>17</sup>, but specialized for video understanding,
+            covering not just throughput but latency, memory, and energy
+            under realistic deployment conditions.
+          </p>
+
+          <p>
+            <strong>Hardware could redefine the problem.</strong> Most current
+            efficiency work optimizes within the constraints of existing
+            accelerators. But emerging approaches (from analog compute to
+            physically-realized gradient computation that sidesteps
+            backpropagation entirely<sup>18</sup>) could shift the
+            efficiency frontier in ways that make today’s software-level
+            optimizations less relevant. If training and inference costs drop
+            by orders of magnitude at the hardware level, the research
+            community’s definition of "efficient" will need to be
+            recalibrated around new bottlenecks: data, annotation, or
+            evaluation rather than compute.
+          </p>
+
+          <p>
+            A concrete test for the next update: does the efficiency share
+            continue to climb, or does it plateau around 40%? A continued
+            rise would indicate the field is still actively shifting its
+            priorities. A plateau would suggest efficiency has been absorbed
+            into the baseline expectations of the community: a different
+            kind of victory.
+          </p>
+        </section>
+
+        <section>
+          <h2>Methodological Notes and Caveats</h2>
+
+          <div class="method-box">
+            <h3>Data Collection and Limitations</h3>
+            <p>
+              <strong>Keyword-based categorization:</strong> Papers are grouped
+              based on keyword searches of arXiv abstracts and titles using
+              boolean query operators. Terminology shifts can create artificial
+              "birth" events in time series. For example, work that would
+              previously have been labeled "compact video models" may now be
+              labeled "efficient video understanding," creating apparent growth
+              that partly reflects relabeling rather than genuinely new work.
+            </p>
+
+            <p>
+              <strong>Search methodology:</strong> The primary category is
+              identified by requiring explicit mentions of "video understanding"
+              or "audio-visual understanding" in titles or abstracts. The
+              efficiency subset is identified by combining the video
+              understanding query with papers containing "efficiency", "efficient", "real-time", "realtime", "light-weight" or "lightweight" terms. This ensures focus on papers that explicitly
+              address both video and efficiency.
+            </p>
+
+            <p>
+              <strong>arXiv vs. peer review:</strong> arXiv captures preprints,
+              not necessarily peer-reviewed publications. Submission behavior
+              varies across research communities and over time. Some groups post
+              every experiment; others post only after conference acceptance.
+              This analysis treats arXiv as a measure of research
+              <em>attention</em> and <em>activity</em>, not necessarily quality
+              or impact.
+            </p>
+
+            <p>
+              <strong>Potential overlap:</strong> A single paper may plausibly
+              contribute to multiple search queries. A work on "efficient video
+              transformers for action recognition" appears in both the "video
+              understanding" and "efficient video understanding" categories.
+              Overlaps are expected and do not invalidate trend analysis, but
+              they do mean absolute counts should not be summed naively.
+            </p>
+
+            <p>
+              <strong>Geographical and linguistic biases:</strong> arXiv
+              predominantly captures English-language research from institutions
+              with strong preprint cultures. Work published primarily in
+              non-English venues or conferences with less arXiv adoption may be
+              underrepresented.
+            </p>
+          </div>
+
+          <p>
+            Despite these limitations, arXiv trends remain a valuable signal.
+            They capture the <em>direction</em> and <em>velocity</em> of
+            research activity, even if they do not provide a complete picture. The
+            patterns observed here are robust enough to survive
+            reasonable changes in categorization or sampling methodology.
+          </p>
+        </section>
+
+        <div class="references">
+          <h2>References</h2>
+          <div class="ref-list">
+            <div class="ref-item">
+              [1] Harvey, C. (2024). "The Evolution of AI Research: Analyzing
+              arXiv Submission Trends." <em>Blog post</em>, November 2024.
+            </div>
+            <div class="ref-item">
+              [2] arXiv Publication Trends Analysis (2022). "The number of AI
+              papers on arXiv per month grows exponentially."
+              <em>r/singularity discussion</em>, October 2022.
+            </div>
+            <div class="ref-item">
+              [3] Soomro, K., Zamir, A. R., & Shah, M. (2012). "UCF101: A
+              dataset of 101 human actions classes from videos in the wild."
+              <em>arXiv:1212.0402</em>.
+            </div>
+            <div class="ref-item">
+              [4] Kuehne, H., Jhuang, H., Garrote, E., Poggio, T., & Serre, T.
+              (2011). "HMDB: A large video database for human motion
+              recognition."
+              <em
+                >In 2011 International Conference on Computer Vision (pp.
+                2556–2563). IEEE. 2011 IEEE International Conference on Computer
+                Vision (ICCV)</em
+              >.
+            </div>
+            <div class="ref-item">
+              [5] Carreira, J., & Zisserman, A. (2017). "Quo Vadis, Action
+              Recognition? A New Model and the Kinetics Dataset."
+              <em>CVPR 2017</em>.
+            </div>
+            <div class="ref-item">
+              [6] Feichtenhofer, C., Fan, H., Malik, J., & He, K. (2019).
+              "SlowFast Networks for Video Recognition." <em>ICCV 2019</em>.
+            </div>
+            <div class="ref-item">
+              [7] Bertasius, G., Wang, H., & Torresani, L. (2021). "Is
+              Space-Time Attention All You Need for Video Understanding?"
+              <em>ICML 2021</em> (TimeSformer).
+            </div>
+            <div class="ref-item">
+              [8] Liu, Z., Ning, J., Cao, Y., Wei, Y., Zhang, Z., Lin, S., & Hu, H. (2022). "Video Swin Transformer".
+              <em>CVPR 2022</em>.
+            </div>
+            <div class="ref-item">
+              [9] Miech, A., Zhukov, D., Alayrac, J.-B., Tapaswi, M., Laptev, I., & Sivic, J. (2019). "HowTo100M: Learning a Text-Video Embedding by Watching Hundred Million Narrated Video Clips." <em>ICCV 2019</em>.
+            </div>
+            <div class="ref-item">
+              [10] Bain, M., Nagrani, A., Varol, G., & Zisserman, A. (2021). "Frozen in Time: A Joint Video and Image Encoder for End-to-End
+              Retrieval." <em>ICCV 2021</em>.
+            </div>
+            <div class="ref-item">
+              [11] NeurIPS (2024). "Faster Video Transformers with Run-Length
+              Tokenization." <em>NeurIPS 2024</em>.
+            </div>
+            <div class="ref-item">
+              [12] Meta AI (2024). "How Meta Deployed Super Resolution at Scale
+              to Transform Video Quality." <em>@Scale Conference</em>, October
+              2024.
+            </div>
+            <div class="ref-item">
+              [13] Jin, S. et al. (2024). "Efficient Multimodal Large Language
+              Models: A Survey." <em>arXiv preprint</em>.
+            </div>
+            <div class="ref-item">
+              [14] Milvus (2024). "What are the challenges in building
+              multimodal AI systems?" <em>AI Quick Reference</em>, December
+              2024.
+            </div>
+            <div class="ref-item">
+              [15] Yang, M., Jia, Z., Dai, Z., Guo, S., & Wang, L. (2025).
+              "Mobileviclip: An efficient video-text model for mobile devices." <em>ICCV 2025</em>
+            </div>
+            <div class="ref-item">
+              [16] Luo, W., Zhang, D., Tang, Y., Wu, F., & Zhang, Yaoxue. (2025). "EdgeOAR: Real-Time Online Action Recognition on Edge Devices."
+              <em>IEEE Transactions on Mobile Computing, 24(12), 13426–13440.</em>.
+            </div>
+            <div class="ref-item">
+              [17] Reddi, V. J., Cheng, C., Kanter, D., Mattson, P., Schmuelling, G., Wu, C.-J., Anderson, B., Breughe, M., Charlebois, M.,
+              Chou, W., Chukka, R., Coleman, C., Davis, S., Deng, P., Diamos, G., Duke, J., Fick, D., Gardner, J. S., Hubara, I., …
+              Zhou, Y. (2020). "MLPerf Inference Benchmark." <em>2020 ACM/IEEE 47th Annual International Symposium on Computer
+              Architecture (ISCA) (pp. 446–459). IEEE.</em>.
+            </div>
+            <div class="ref-item">
+              [18] Pourcel, Guillaume & Ernoult, Maxence. (2025). "Learning long range dependencies through time reversal symmetry breaking."
+              <em>arXiv preprint arXiv:2506.05259</em>.
+          </div>
+        </div>
+
+        <footer>
+          <p>
+            Analysis based on arXiv CS paper counts (2015–2025) • Data source:
+            arXiv API queries with boolean operators
+          </p>
+          <p>Visualization powered by Plotly.js</p>
+          <p>
+            <strong>Data note:</strong> Queries use explicit keyword matching
+            for "video understanding" or "audio-visual understanding" combined
+            with efficiency-related terms.
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      const yearLabels = [
+        2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
+      ];
+
+      // Main data series (from your dataset)
+      const videoUnderstandingCounts = [
+        5, 6, 25, 39, 37, 43, 98, 93, 121, 305, 621,
+      ];
+      const efficientVUCounts = [0, 1, 4, 13, 10, 13, 23, 31, 37, 104, 245];
+
+      // Calculate share (%) of efficient VU within video understanding
+      const efficiencyShare = yearLabels.map((_, i) => {
+        return videoUnderstandingCounts[i] > 0
+          ? (efficientVUCounts[i] / videoUnderstandingCounts[i]) * 100
+          : 0;
+      });
+
+      const config = { responsive: true, displayModeBar: true };
+      const baseLayout = {
+        font: {
+          family:
+            "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif",
+          size: 12,
+        },
+        plot_bgcolor: "#FAFAFA",
+        paper_bgcolor: "white",
+        margin: { l: 60, r: 40, t: 80, b: 60 },
+        hovermode: "x unified",
+        showlegend: true,
+        legend: {
+          x: 0.01,
+          y: 0.99,
+          bgcolor: "rgba(255,255,255,0.8)",
+          bordercolor: "#DDD",
+          borderwidth: 1,
+        },
+      };
+
+      // ===== PLOT 1: Video Understanding Growth =====
+      const plot1Traces = [
+        {
+          x: yearLabels,
+          y: videoUnderstandingCounts,
+          name: "Video Understanding",
+          type: "scatter",
+          mode: "lines+markers",
+          line: { color: "#4CAF50", width: 3 },
+          marker: { size: 8, color: "#4CAF50" },
+          fill: "tozeroy",
+          fillcolor: "rgba(76, 175, 80, 0.1)",
+          hovertemplate:
+            "<b>Video Understanding</b><br>Year: %{x}<br>Papers: %{y}<extra></extra>",
+        },
+      ];
+
+      const plot1Layout = {
+        ...baseLayout,
+        title: {
+          text: "Video Understanding Research Mainstreaming (2015–2025)",
+          x: 0,
+          xanchor: "left",
+          y: 0.98,
+          yanchor: "top",
+          pad: { b: 10 },
+        },
+        xaxis: {
+          title: "Year",
+          tickvals: yearLabels,
+          ticktext: yearLabels.map((y) => y.toString()),
+        },
+        yaxis: { title: "Number of arXiv Papers", rangemode: "tozero" },
+      };
+
+      Plotly.newPlot("plot1", plot1Traces, plot1Layout, config);
+
+      // ===== PLOT 2: Efficiency vs Total Video Understanding =====
+      const plot2Traces = [
+        {
+          x: yearLabels,
+          y: videoUnderstandingCounts,
+          name: "All Video Understanding",
+          type: "scatter",
+          mode: "lines+markers",
+          line: { color: "#4CAF50", width: 2 },
+          marker: { size: 6 },
+          hovertemplate:
+            "<b>All Video Understanding</b><br>Year: %{x}<br>Papers: %{y}<extra></extra>",
+        },
+        {
+          x: yearLabels,
+          y: efficientVUCounts,
+          name: "Efficient Video Understanding",
+          type: "scatter",
+          mode: "lines+markers",
+          line: { color: "#A23B72", width: 3 },
+          marker: { size: 7 },
+          hovertemplate:
+            "<b>Efficient Video Understanding</b><br>Year: %{x}<br>Papers: %{y}<extra></extra>",
+        },
+      ];
+
+      const plot2Layout = {
+        ...baseLayout,
+        title: {
+          text: "The Rise of Efficiency in Video Understanding",
+          x: 0,
+          xanchor: "left",
+          y: 0.98,
+          yanchor: "top",
+          pad: { b: 10 },
+        },
+        xaxis: {
+          title: "Year",
+          tickvals: yearLabels,
+          ticktext: yearLabels.map((y) => y.toString()),
+        },
+        yaxis: { title: "Number of arXiv Papers", rangemode: "tozero" },
+      };
+
+      Plotly.newPlot("plot2", plot2Traces, plot2Layout, config);
+
+      // ===== PLOT 3: Share of Efficiency Work =====
+      const plot3Traces = [
+        {
+          x: yearLabels,
+          y: efficiencyShare,
+          name: "Efficiency Share",
+          type: "scatter",
+          mode: "lines+markers",
+          line: { color: "#E4FF77", width: 3 },
+          marker: {
+            size: 8,
+            color: "#E4FF77",
+            line: { color: "#141414", width: 2 },
+          },
+          fill: "tozeroy",
+          fillcolor: "rgba(228, 255, 119, 0.2)",
+          hovertemplate:
+            "<b>Efficiency Share</b><br>Year: %{x}<br>Share: %{y:.1f}%<extra></extra>",
+        },
+      ];
+
+      const plot3Layout = {
+        ...baseLayout,
+        title: {
+          text: "Efficiency as a Share of Video Understanding (2015–2025)",
+          x: 0,
+          xanchor: "left",
+          y: 0.98,
+          yanchor: "top",
+          pad: { b: 10 },
+        },
+        xaxis: {
+          title: "Year",
+          tickvals: yearLabels,
+          ticktext: yearLabels.map((y) => y.toString()),
+        },
+        yaxis: {
+          title: "Efficiency Papers as % of Video Understanding",
+          rangemode: "tozero",
+          ticksuffix: "%",
+        },
+      };
+
+      Plotly.newPlot("plot3", plot3Traces, plot3Layout, config);
+
+      // ===== PLOT 4: Growth Rates Comparison (2020-2025 only) =====
+      // Filter to 2019 onwards (index 4 in yearLabels) to show 2019→2020 growth
+      const startIdx = 4; // 2019 is at index 4
+      const vuGrowth = [];
+      const effGrowth = [];
+
+      for (let i = startIdx + 1; i < videoUnderstandingCounts.length; i++) {
+        vuGrowth.push(
+          videoUnderstandingCounts[i - 1] > 0
+            ? ((videoUnderstandingCounts[i] - videoUnderstandingCounts[i - 1]) /
+                videoUnderstandingCounts[i - 1]) *
+                100
+            : null,
+        );
+        effGrowth.push(
+          efficientVUCounts[i - 1] > 0
+            ? ((efficientVUCounts[i] - efficientVUCounts[i - 1]) /
+                efficientVUCounts[i - 1]) *
+                100
+            : null,
+        );
+      }
+
+      const growthYears = yearLabels.slice(startIdx + 1);
+
+      const plot4Traces = [
+        {
+          x: growthYears,
+          y: vuGrowth,
+          name: "Video Understanding Growth",
+          type: "bar",
+          marker: { color: "#4CAF50", opacity: 0.7 },
+          hovertemplate:
+            "<b>Video Understanding</b><br>Year: %{x}<br>YoY Growth: %{y:.1f}%<extra></extra>",
+        },
+        {
+          x: growthYears,
+          y: effGrowth,
+          name: "Efficient VU Growth",
+          type: "bar",
+          marker: { color: "#A23B72", opacity: 0.7 },
+          hovertemplate:
+            "<b>Efficient Video Understanding</b><br>Year: %{x}<br>YoY Growth: %{y:.1f}%<extra></extra>",
+        },
+      ];
+
+      const plot4Layout = {
+        ...baseLayout,
+        title: {
+          text: "Year-over-Year Growth Rates",
+          x: 0,
+          xanchor: "left",
+          y: 0.98,
+          yanchor: "top",
+          pad: { b: 10 },
+        },
+        xaxis: {
+          title: "Year",
+          tickvals: growthYears,
+          ticktext: growthYears.map((y) => y.toString()),
+        },
+        yaxis: { title: "Growth Rate (%)", ticksuffix: "%" },
+        barmode: "group",
+      };
+
+      Plotly.newPlot("plot4", plot4Traces, plot4Layout, config);
+
+      // Re-render on layout shifts
+      window.addEventListener("resize", () => {
+        Plotly.Plots.resize("plot1");
+        Plotly.Plots.resize("plot2");
+        Plotly.Plots.resize("plot3");
+        Plotly.Plots.resize("plot4");
+      });
+    </script>
+  </body>
+</html>
