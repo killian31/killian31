@@ -460,4 +460,190 @@ document.addEventListener('DOMContentLoaded', function () {
             el.classList.add('revealed');
         });
     }
+
+    // ====== EASTER EGGS ======
+
+    // --- Console Easter Egg ---
+    console.log('%c🧠 Hey, fellow developer! Looking under the hood?', 'font-size: 16px; color: #7776bc; font-weight: bold;');
+    console.log('%cThis site was built with vanilla HTML/CSS/JS — no frameworks needed.', 'font-size: 12px; color: #689d71;');
+    console.log('%c' + [
+        '    ○───○───○',
+        '   /|\\  |  /|\\',
+        '  ○ ○ ○ ○ ○ ○ ○',
+        '   \\|/ \\|/ \\|/',
+        '    ○───○───○',
+        '       |',
+        '       ○  output',
+    ].join('\n'), 'font-family: monospace; color: #d9d0de; font-size: 11px;');
+
+    // --- Konami Code Easter Egg ---
+    const konamiSequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let konamiIndex = 0;
+    document.addEventListener('keydown', (e) => {
+        if (e.key === konamiSequence[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiSequence.length) {
+                konamiIndex = 0;
+                triggerKonami();
+            }
+        } else {
+            konamiIndex = e.key === konamiSequence[0] ? 1 : 0;
+        }
+    });
+
+    function triggerKonami() {
+        let overlay = document.querySelector('.konami-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'konami-overlay';
+            overlay.innerHTML = '<div class="konami-msg">You found a secret! 🧠<br><span style="font-size:1rem;opacity:0.7;">↑↑↓↓←→←→BA</span></div>';
+            document.body.appendChild(overlay);
+            overlay.addEventListener('click', () => overlay.classList.remove('active'));
+        }
+        requestAnimationFrame(() => {
+            overlay.classList.add('active');
+            setTimeout(() => overlay.classList.remove('active'), 3000);
+        });
+    }
+
+    // --- Profile Picture Easter Egg (5 rapid clicks) ---
+    const profilePic = document.getElementById('profile-pic');
+    if (profilePic) {
+        let clickCount = 0;
+        let clickTimer = null;
+        profilePic.addEventListener('click', () => {
+            clickCount++;
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => { clickCount = 0; }, 800);
+            if (clickCount >= 5) {
+                clickCount = 0;
+                profilePic.classList.add('profile-pic-spin');
+                profilePic.addEventListener('animationend', () => {
+                    profilePic.classList.remove('profile-pic-spin');
+                }, { once: true });
+            }
+        });
+    }
+
+    // --- Logo Hover Secret (3+ seconds) ---
+    const logoImg = document.getElementById('navbar-logo-img');
+    if (logoImg) {
+        let hoverTimer = null;
+        logoImg.addEventListener('mouseenter', () => {
+            hoverTimer = setTimeout(() => {
+                logoImg.classList.add('logo-glitch');
+                logoImg.addEventListener('animationend', () => {
+                    logoImg.classList.remove('logo-glitch');
+                }, { once: true });
+            }, 3000);
+        });
+        logoImg.addEventListener('mouseleave', () => {
+            clearTimeout(hoverTimer);
+        });
+    }
+
+    // ====== NEURAL NETWORK PARTICLE CANVAS ======
+    if (!prefersReducedMotion) {
+        const canvas = document.getElementById('neural-bg');
+        const heroSection = document.getElementById('hero');
+        if (canvas && heroSection) {
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let animId = null;
+            let isVisible = false;
+            const PARTICLE_COUNT = 50;
+            const CONNECTION_DIST = 120;
+
+            function resizeCanvas() {
+                canvas.width = heroSection.offsetWidth;
+                canvas.height = heroSection.offsetHeight;
+            }
+
+            function createParticles() {
+                particles = [];
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        r: Math.random() * 2 + 1.5
+                    });
+                }
+            }
+
+            function getColors() {
+                const isLight = document.body.classList.contains('light-mode');
+                return {
+                    node: isLight ? 'rgba(102, 101, 168, 0.6)' : 'rgba(119, 118, 188, 0.6)',
+                    line: isLight ? 'rgba(102, 101, 168, 0.12)' : 'rgba(217, 208, 222, 0.1)'
+                };
+            }
+
+            function drawParticles() {
+                if (!isVisible) return;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const colors = getColors();
+
+                // Draw connections
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < CONNECTION_DIST) {
+                            const alpha = 1 - dist / CONNECTION_DIST;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = colors.line.replace(/[\d.]+\)$/, (alpha * 0.15).toFixed(2) + ')');
+                            ctx.lineWidth = 0.8;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Draw nodes
+                for (const p of particles) {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = colors.node;
+                    ctx.fill();
+                }
+
+                // Update positions
+                for (const p of particles) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                }
+
+                animId = requestAnimationFrame(drawParticles);
+            }
+
+            // Only animate when hero is in viewport
+            const canvasObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isVisible = entry.isIntersecting;
+                    if (isVisible && !animId) {
+                        drawParticles();
+                    } else if (!isVisible && animId) {
+                        cancelAnimationFrame(animId);
+                        animId = null;
+                    }
+                });
+            }, { threshold: 0.05 });
+
+            canvasObserver.observe(heroSection);
+
+            resizeCanvas();
+            createParticles();
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                createParticles();
+            });
+        }
+    }
 });
