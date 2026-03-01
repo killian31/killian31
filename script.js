@@ -276,12 +276,12 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.style.display = "none";
         btn.style.zIndex = "9999";
         btn.style.border = "none";
-        btn.style.background = "linear-gradient(45deg,#00f5ff,#ff00ff)";
+        btn.style.background = "linear-gradient(45deg,#7776bc,#eb5e28)";
         btn.style.color = "#fff";
         btn.style.fontSize = "2rem";
         btn.style.padding = "0.7em 1em";
         btn.style.borderRadius = "50%";
-        btn.style.boxShadow = "0 4px 32px #00f5ff77";
+        btn.style.boxShadow = "0 4px 32px #7776bc77";
         btn.style.cursor = "pointer";
         btn.setAttribute('aria-label', 'Back to top');
         document.body.appendChild(btn);
