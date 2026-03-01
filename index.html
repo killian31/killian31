@@ -15,7 +15,7 @@
     <title>Killian Steunou</title>
     <meta name="description" content="Killian Steunou's personal portfolio showcasing expertise in AI, Mathematics, and Statistics.">
     <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -49,7 +49,8 @@
     </nav>
     <main>
     <!-- Hero Section -->
-    <section id="hero" class="section hero" data-aos="fade-up">
+    <div id="scroll-progress-bar"></div>
+    <section id="hero" class="section hero reveal" data-reveal="fade-up">
         <div class="section-content">
             <h1>Hi, I'm Killian!</h1>
             <p>A machine learning PhD student who loves Computer Vision :)</p>
@@ -72,9 +73,9 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about" data-aos="fade-up">
+    <section id="about" class="section about reveal" data-reveal="fade-up">
         <div class="section-content about-flex">
-            <div class="about-photo-col">
+            <div class="about-photo-col reveal" data-reveal="fade-left">
               <img loading="lazy" src="assets/profile/profile-picture.jpg" alt="Killian Steunou" class="profile-picture-neural">
               <div class="about-social">
                 <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" class="about-social-btn linkedin">
@@ -91,7 +92,7 @@
                 </a>
               </div>
             </div>
-            <div class="about-text-col">
+            <div class="about-text-col reveal" data-reveal="fade-right">
                 <h2>About Me</h2>
                 <p style="text-align: justify;">
                 I'm currently pursuing an industrial PhD in Machine Learning at Institut Polytechnique de Paris and Moments Lab,
@@ -124,10 +125,10 @@
     </section>
 
     <!-- Experience Section -->
-<section id="experience" class="section experience" data-aos="fade-up">
+<section id="experience" class="section experience reveal" data-reveal="fade-up">
     <div class="section-content">
         <h2>Professional Experiences</h2>
-        <div class="experience-list">
+        <div class="experience-list reveal" data-reveal="stagger">
             <!-- EXPERIENCE 5 -->
             <div class="experience-card">
                 <div class="exp-header">
@@ -247,10 +248,10 @@
 
 
     <!-- Education Section -->
-<section id="education" class="section education" data-aos="fade-up">
+<section id="education" class="section education reveal" data-reveal="fade-up">
     <div class="section-content">
         <h2>Academic Background</h2>
-        <div class="experience-list">
+        <div class="experience-list reveal" data-reveal="stagger">
             <div class="experience-card">
                 <div class="exp-header">
                     <a href="https://www.ip-paris.fr" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="assets/logos/logo_ip_paris.png" alt="IP Paris Logo" class="exp-logo"></a>
@@ -338,14 +339,14 @@
 </section>
 
     <!-- Research Projects Section -->
-    <section id="research" class="section research" data-aos="fade-up">
+    <section id="research" class="section research reveal" data-reveal="fade-up">
         <div class="section-content">
         <h2>Research Projects</h2>
         <a href="research.html" class="cta-button" data-analytics="cta_view_all_research">View all research projects</a>
         <div class="view-toggle">
             <button type="button" class="toggle-view-btn" data-target="research-carousel" data-analytics="toggle_research_view">Compact list</button>
             </div>
-            <div class="glider-contain neural-carousel" id="research-carousel" data-carousel-label="Research project">
+            <div class="glider-contain neural-carousel reveal" data-reveal="fade-up" id="research-carousel" data-carousel-label="Research project">
                 <button class="carousel-button prev" id="research-prev" aria-label="View previous research project">‹</button>
                 <div class="glider" id="research-glider" role="region" aria-label="Research projects carousel" tabindex="0">
                 <div class="carousel-item">
@@ -490,13 +491,13 @@
 
 
     <!-- Projects Section -->
-    <section id="projects" class="section projects" data-aos="fade-up">
+    <section id="projects" class="section projects reveal" data-reveal="fade-up">
         <div class="section-content">
             <h2>Some of my Recent Projects</h2>
             <div class="view-toggle">
                 <button type="button" class="toggle-view-btn" data-target="projects-carousel" data-analytics="toggle_projects_view">Compact list</button>
             </div>
-            <div class="glider-contain neural-carousel" id="projects-carousel" data-carousel-label="Project">
+            <div class="glider-contain neural-carousel reveal" data-reveal="fade-up" id="projects-carousel" data-carousel-label="Project">
                 <button class="carousel-button prev" id="projects-prev" aria-label="View previous project">‹</button>
                 <div class="glider" id="projects-glider" role="region" aria-label="Projects carousel" tabindex="0">
                     <div class="carousel-item">
@@ -628,7 +629,7 @@
         </div>
         </div>
     </section>
-    <section id="contact" class="section contact">
+    <section id="contact" class="section contact reveal" data-reveal="fade-up">
       <div class="section-content">
         <h2>Get In Touch With Me</h2>
         <form action="https://formspree.io/f/xdoqokzg" method="POST" class="contact-form neural-form" autocomplete="on">
@@ -667,7 +668,7 @@
       </div>
     </section>
     </main>
-    <footer>
+    <footer class="reveal" data-reveal="fade-up">
       <p class="copy">&copy; Copyright 2025</p>
       <p class="copy">
         Built with &#x2661; by
@@ -684,30 +685,6 @@
         </div>
     </footer>
     <script src="script.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        (function () {
-            if (!window.AOS) return;
-            const initAOS = (reduceMotion) => {
-                AOS.init({
-                    duration: reduceMotion ? 0 : 800,
-                    easing: 'ease-in-out',
-                    once: reduceMotion || false,
-                    mirror: reduceMotion ? false : true,
-                    disable: reduceMotion
-                });
-            };
-            const query = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-            initAOS(query ? query.matches : false);
-            if (query) {
-                const listener = (event) => initAOS(event.matches);
-                if (query.addEventListener) {
-                    query.addEventListener('change', listener);
-                } else if (query.addListener) {
-                    query.addListener(listener);
-                }
-            }
-        })();
-    </script>
+
 </body>
 </html>

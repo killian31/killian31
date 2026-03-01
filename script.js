@@ -410,4 +410,54 @@ document.addEventListener('DOMContentLoaded', function () {
         const label = target.dataset.analyticsLabel || target.textContent.trim().slice(0, 80);
         sendAnalyticsEvent(action, label);
     });
+
+    // ------ Scroll Progress Bar ------
+    const scrollProgressBar = document.getElementById('scroll-progress-bar');
+    if (scrollProgressBar && !prefersReducedMotion) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgressBar.style.width = scrollPercent + '%';
+        });
+    }
+
+    // ------ Custom Scroll Reveal Animations ------
+    if (!prefersReducedMotion) {
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const el = entry.target;
+                if (entry.isIntersecting) {
+                    el.classList.add('revealed');
+                    // Handle stagger children
+                    if (el.dataset.reveal === 'stagger') {
+                        const children = Array.from(el.children);
+                        children.forEach((child, i) => {
+                            child.style.transitionDelay = (i * 100) + 'ms';
+                        });
+                    }
+                } else {
+                    // Bidirectional: remove revealed when out of view
+                    el.classList.remove('revealed');
+                    if (el.dataset.reveal === 'stagger') {
+                        const children = Array.from(el.children);
+                        children.forEach(child => {
+                            child.style.transitionDelay = '0ms';
+                        });
+                    }
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        // If reduced motion, make everything visible immediately
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.classList.add('revealed');
+        });
+    }
 });
