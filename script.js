@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (el.dataset.reveal === 'stagger') {
                         const children = Array.from(el.children);
                         children.forEach((child, i) => {
-                            child.style.transitionDelay = (i * 100) + 'ms';
+                            child.style.transitionDelay = (i * 120) + 'ms';
                         });
                     }
                 } else {
@@ -355,6 +355,24 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.reveal').forEach(el => {
             el.classList.add('revealed');
         });
+    }
+
+    // ====== MORPHING HERO TAGLINE ======
+    if (!prefersReducedMotion) {
+        const taglines = ['Computer Vision', 'Deep Learning', 'Video Understanding', 'Efficient AI'];
+        let taglineIndex = 0;
+        const taglineEl = document.getElementById('hero-tagline');
+        if (taglineEl) {
+            function morphTagline() {
+                taglineEl.style.opacity = 0;
+                setTimeout(() => {
+                    taglineIndex = (taglineIndex + 1) % taglines.length;
+                    taglineEl.textContent = taglines[taglineIndex];
+                    taglineEl.style.opacity = 1;
+                }, 400);
+            }
+            setInterval(morphTagline, 3000);
+        }
     }
 
     // ====== EASTER EGGS ======
