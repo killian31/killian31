@@ -10,260 +10,45 @@
       name="description"
       content="An analysis of how computational efficiency has evolved from a marginal concern to a core research priority in video understanding, based on arXiv publication trends from 2015 to 2025."
     />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
-
-    <style>
-      :root {
-        --citron: #e4ff77;
-        --soft-black: #141414;
-        --purple: #6342e8;
-        --off-white: #f3f1ee;
-        --lavender: #adaaff;
-        --red: #ff4d6a;
-        --orange: #ff8934;
-        --stone: #d9cec3;
-        --maxw: 940px;
-        --radius: 18px;
-        --shadow: 0 10px 30px rgba(20, 20, 20, 0.1);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family:
-          ui-sans-serif,
-          system-ui,
-          -apple-system,
-          Segoe UI,
-          Roboto,
-          Helvetica,
-          Arial,
-          "Apple Color Emoji",
-          "Segoe UI Emoji";
-        color: var(--soft-black);
-        background: var(--off-white);
-        line-height: 1.65;
-      }
-
-      a {
-        color: var(--purple);
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-
-      .wrap {
-        max-width: var(--maxw);
-        margin: 0 auto;
-        padding: 48px 20px 64px;
-      }
-
-      header {
-        background: linear-gradient(
-          135deg,
-          rgba(99, 66, 232, 0.12),
-          rgba(228, 255, 119, 0.28)
-        );
-        border: 1px solid rgba(20, 20, 20, 0.12);
-        border-radius: var(--radius);
-        padding: 34px 26px 28px;
-        box-shadow: var(--shadow);
-      }
-
-      .byline {
-        display: flex;
-        gap: 8px;
-        align-items: baseline;
-        font-size: 15px;
-        color: rgba(20, 20, 20, 0.55);
-      }
-      .byline .author {
-        font-weight: 600;
-        color: rgba(20, 20, 20, 0.85);
-      }
-      .byline time {
-        font-weight: 400;
-      }
-      .byline .author::after {
-        content: "·";
-        margin-left: 8px;
-        font-weight: 400;
-        color: rgba(20, 20, 20, 0.35);
-      }
-
-      h1 {
-        margin: 22px 0 10px;
-        font-size: 40px;
-        line-height: 1.1;
-        letter-spacing: -0.025em;
-        font-weight: 750;
-      }
-      .subtitle {
-        font-size: 18px;
-        line-height: 1.4;
-        margin: 8px 0 0;
-        color: rgba(20, 20, 20, 0.7);
-      }
-
-	      .abstract {
-	        margin-top: 18px;
-	        padding: 16px 18px;
-	        background: rgba(255, 255, 255, 0.7);
-	        border: 1px solid rgba(20, 20, 20, 0.12);
-	        border-radius: 12px;
-	        backdrop-filter: blur(6px);
-	      }
-	      .abstract-label {
-	        font-size: 12px;
-	        font-weight: 750;
-	        letter-spacing: 0.09em;
-	        text-transform: uppercase;
-	        color: rgba(20, 20, 20, 0.55);
-	        margin-bottom: 8px;
-	      }
-	      .abstract p {
-	        margin: 10px 0;
-	        font-size: 16px;
-	        line-height: 1.55;
-	        color: rgba(20, 20, 20, 0.8);
-	      }
-	      .abstract ul {
-	        margin: 10px 0;
-	        padding-left: 22px;
-	      }
-	      .abstract li {
-	        margin: 6px 0;
-	        font-size: 16px;
-	        line-height: 1.5;
-	      }
-	      .abstract .abstract-note {
-	        color: rgba(20, 20, 20, 0.65);
-	        font-size: 15px;
-	      }
-
-      main {
-        margin-top: 60px;
-      }
-
-      h2 {
-        font-size: 28px;
-        font-weight: 700;
-        margin: 52px 0 14px;
-        letter-spacing: -0.02em;
-      }
-      h3 {
-        font-size: 21px;
-        font-weight: 650;
-        margin: 32px 0 10px;
-      }
-      p {
-        margin: 16px 0;
-        font-size: 17px;
-        line-height: 1.7;
-      }
-
-      ul {
-        margin: 16px 0;
-        padding-left: 24px;
-      }
-
-      li {
-        margin: 8px 0;
-      }
-
-      .figure-container {
-        margin: 40px 0;
-        padding: 20px;
-        background: white;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-      }
-
-      .plot {
-        width: 100%;
-        min-height: 500px;
-      }
-
-      .caption {
-        font-size: 15px;
-        color: rgba(20, 20, 20, 0.65);
-        margin-top: 12px;
-        font-style: italic;
-      }
-
-      .method-box {
-        background: rgba(99, 66, 232, 0.05);
-        border-left: 4px solid var(--purple);
-        padding: 20px 24px;
-        margin: 28px 0;
-        border-radius: 8px;
-      }
-
-      .method-box h3 {
-        margin-top: 0;
-        color: var(--purple);
-      }
-
-      .highlight-box {
-        background: rgba(228, 255, 119, 0.15);
-        border-left: 4px solid var(--citron);
-        padding: 20px 24px;
-        margin: 28px 0;
-        border-radius: 8px;
-      }
-
-      sup {
-        font-size: 0.75em;
-        vertical-align: super;
-        line-height: 0;
-      }
-
-      .references {
-        margin-top: 60px;
-        padding-top: 40px;
-        border-top: 2px solid rgba(20, 20, 20, 0.1);
-      }
-
-      .references h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-
-      .ref-list {
-        font-size: 14px;
-        line-height: 1.6;
-      }
-
-      .ref-item {
-        margin: 12px 0;
-        padding-left: 24px;
-        text-indent: -24px;
-      }
-
-      footer {
-        margin-top: 80px;
-        padding: 30px 0;
-        border-top: 1px solid rgba(20, 20, 20, 0.1);
-        text-align: center;
-        font-size: 14px;
-        color: rgba(20, 20, 20, 0.5);
-      }
-
-      strong {
-        font-weight: 650;
-      }
-    </style>
   </head>
   <body>
-    <div class="wrap">
-      <header>
+    <nav class="navbar" aria-label="Primary navigation">
+      <div class="nav-content">
+        <div class="navbar-logo">
+          <img loading="lazy" src="../assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
+          <a href="../index.html#hero">Killian Steunou</a>
+        </div>
+        <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="../index.html#hero">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#education">Education</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#projects">Projects</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../demos.html">Demos</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark or light theme">🌙</button>
+      </div>
+    </nav>
+
+    <div class="blog-article">
+      <a href="../blog.html" class="back-to-blog">Back to Blog</a>
+
+      <header class="hero-banner">
         <div class="byline">
           <span class="author">Killian Steunou</span>
           <time>February 2026</time>
@@ -303,7 +88,6 @@
 	        </div>
       </header>
 
-      <main>
         <section>
           <h2>Understanding the Data</h2>
 
@@ -783,9 +567,9 @@
           </div>
         </div>
 
-        <footer>
+        <div class="blog-article-footer">
           <p>
-            Analysis based on arXiv CS paper counts (2015–2025) • Data source:
+            Analysis based on arXiv CS paper counts (2015–2025) · Data source:
             arXiv API queries with boolean operators
           </p>
           <p>Visualization powered by Plotly.js</p>
@@ -794,10 +578,14 @@
             for "video understanding" or "audio-visual understanding" combined
             with efficiency-related terms.
           </p>
-        </footer>
-      </main>
-    </div>
+        </div>
+    </div><!-- /.blog-article -->
 
+    <footer>
+      <p>&copy; 2025 Killian Steunou</p>
+    </footer>
+
+    <script src="../script.js"></script>
     <script>
       const yearLabels = [
         2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
@@ -816,25 +604,36 @@
           : 0;
       });
 
+      // Detect theme for chart colors
+      const isDark = !document.body.classList.contains('light-mode');
+      const chartBg = isDark ? 'rgba(55, 52, 53, 0.95)' : '#ffffff';
+      const chartPlotBg = isDark ? 'rgba(47, 45, 46, 0.6)' : '#FAFAFA';
+      const chartFont = isDark ? '#d9d0de' : '#2f2d2e';
+      const chartGrid = isDark ? 'rgba(217,208,222,0.1)' : '#eee';
+
       const config = { responsive: true, displayModeBar: true };
       const baseLayout = {
         font: {
           family:
-            "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif",
+            "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
           size: 12,
+          color: chartFont,
         },
-        plot_bgcolor: "#FAFAFA",
-        paper_bgcolor: "white",
+        plot_bgcolor: chartPlotBg,
+        paper_bgcolor: chartBg,
         margin: { l: 60, r: 40, t: 80, b: 60 },
         hovermode: "x unified",
         showlegend: true,
         legend: {
           x: 0.01,
           y: 0.99,
-          bgcolor: "rgba(255,255,255,0.8)",
-          bordercolor: "#DDD",
+          bgcolor: isDark ? 'rgba(55,52,53,0.8)' : 'rgba(255,255,255,0.8)',
+          bordercolor: isDark ? 'rgba(217,208,222,0.15)' : '#DDD',
           borderwidth: 1,
+          font: { color: chartFont },
         },
+        xaxis: { gridcolor: chartGrid, zerolinecolor: chartGrid },
+        yaxis: { gridcolor: chartGrid, zerolinecolor: chartGrid },
       };
 
       // ===== PLOT 1: Video Understanding Growth =====
@@ -845,10 +644,10 @@
           name: "Video Understanding",
           type: "scatter",
           mode: "lines+markers",
-          line: { color: "#4CAF50", width: 3 },
-          marker: { size: 8, color: "#4CAF50" },
+          line: { color: "#689d71", width: 3 },
+          marker: { size: 8, color: "#689d71" },
           fill: "tozeroy",
-          fillcolor: "rgba(76, 175, 80, 0.1)",
+          fillcolor: "rgba(104, 157, 113, 0.1)",
           hovertemplate:
             "<b>Video Understanding</b><br>Year: %{x}<br>Papers: %{y}<extra></extra>",
         },
@@ -882,7 +681,7 @@
           name: "All Video Understanding",
           type: "scatter",
           mode: "lines+markers",
-          line: { color: "#4CAF50", width: 2 },
+          line: { color: "#689d71", width: 2 },
           marker: { size: 6 },
           hovertemplate:
             "<b>All Video Understanding</b><br>Year: %{x}<br>Papers: %{y}<extra></extra>",
@@ -893,7 +692,7 @@
           name: "Efficient Video Understanding",
           type: "scatter",
           mode: "lines+markers",
-          line: { color: "#A23B72", width: 3 },
+          line: { color: "#7776bc", width: 3 },
           marker: { size: 7 },
           hovertemplate:
             "<b>Efficient Video Understanding</b><br>Year: %{x}<br>Papers: %{y}<extra></extra>",
@@ -928,14 +727,14 @@
           name: "Efficiency Share",
           type: "scatter",
           mode: "lines+markers",
-          line: { color: "#E4FF77", width: 3 },
+          line: { color: "#eb5e28", width: 3 },
           marker: {
             size: 8,
-            color: "#E4FF77",
-            line: { color: "#141414", width: 2 },
+            color: "#eb5e28",
+            line: { color: isDark ? '#2f2d2e' : '#ffffff', width: 2 },
           },
           fill: "tozeroy",
-          fillcolor: "rgba(228, 255, 119, 0.2)",
+          fillcolor: "rgba(235, 94, 40, 0.15)",
           hovertemplate:
             "<b>Efficiency Share</b><br>Year: %{x}<br>Share: %{y:.1f}%<extra></extra>",
         },
@@ -996,7 +795,7 @@
           y: vuGrowth,
           name: "Video Understanding Growth",
           type: "bar",
-          marker: { color: "#4CAF50", opacity: 0.7 },
+          marker: { color: "#689d71", opacity: 0.7 },
           hovertemplate:
             "<b>Video Understanding</b><br>Year: %{x}<br>YoY Growth: %{y:.1f}%<extra></extra>",
         },
@@ -1005,7 +804,7 @@
           y: effGrowth,
           name: "Efficient VU Growth",
           type: "bar",
-          marker: { color: "#A23B72", opacity: 0.7 },
+          marker: { color: "#7776bc", opacity: 0.7 },
           hovertemplate:
             "<b>Efficient Video Understanding</b><br>Year: %{x}<br>YoY Growth: %{y:.1f}%<extra></extra>",
         },
