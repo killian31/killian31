@@ -184,72 +184,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // ------ Initialize Carousels ------
     document.querySelectorAll('.glider-contain.neural-carousel').forEach(setupCarousel);
 
-    // ------ Neural dots and smooth scrolling ------
-    const sections = document.querySelectorAll('.section');
-    const sectionNames = ['hero', 'about', 'experience', 'education', 'research', 'projects', 'contact'];
-
-    // Intersection Observer for active section
-    const observerOptions = {
-        root: null,
-        rootMargin: '-50% 0px -50% 0px',
-        threshold: 0
-    };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                const sectionIndex = sectionNames.indexOf(sectionId);
-                if (sectionIndex !== -1) {
-                    updateActiveStates(sectionIndex);
-                }
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // Neural dots active state
-    function updateActiveStates(currentSectionIndex) {
-        if (currentSectionIndex < 0) {
-            return;
-        }
-        const allDots = document.querySelectorAll('.network-dot');
-        const nextSectionIndex = (currentSectionIndex + 1) % sectionNames.length;
-        allDots.forEach((dot, index) => {
-            const globalIndex = index % sectionNames.length;
-            dot.classList.remove('active', 'next-active');
-            if (globalIndex === currentSectionIndex) {
-                dot.classList.add('active');
-                dot.setAttribute('aria-pressed', 'true');
-            } else if (globalIndex === nextSectionIndex) {
-                dot.classList.add('next-active');
-                dot.setAttribute('aria-pressed', 'false');
-            } else {
-                dot.setAttribute('aria-pressed', 'false');
-            }
-        });
-    }
-
+    // ------ Smooth scrolling ------
     const getOffset = () => (navbar ? navbar.offsetHeight + 12 : 0);
     const scrollToTarget = (target) => {
         if (!target) return;
         const top = target.getBoundingClientRect().top + window.scrollY - getOffset();
         window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     };
-
-    // Click handlers for neural dots
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('network-dot')) {
-            const sectionName = e.target.dataset.section;
-            const targetSection = document.getElementById(sectionName);
-            if (targetSection) {
-                e.preventDefault();
-                scrollToTarget(targetSection);
-            }
-        }
-    });
 
     // Smooth scrolling for nav links
     document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -298,51 +239,6 @@ document.addEventListener('DOMContentLoaded', function () {
     backToTopBtn.onclick = function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-
-    // ------ Neural connection lines (if needed) ------
-    function createConnectionLines() {
-        const networkSvgs = document.querySelectorAll('.network-svg');
-        networkSvgs.forEach((svg, sectionIndex) => {
-            svg.innerHTML = ''; // Clear existing lines
-        const dots = svg.parentElement.querySelectorAll('.network-dot');
-        if (!dots.length) {
-            return;
-        }
-            const svgRect = svg.getBoundingClientRect();
-            const dotsContainer = svg.parentElement.querySelector('.network-dots');
-            const dotsRect = dotsContainer.getBoundingClientRect();
-            // Calculate positions relative to SVG
-            const dotPositions = Array.from(dots).map((dot, index) => {
-                const dotRect = dot.getBoundingClientRect();
-                return {
-                    x: dotRect.left - svgRect.left + dotRect.width / 2,
-                    y: dotsRect.top - svgRect.top + dotRect.height / 2
-                };
-            });
-            // Create connections from current section to next section
-            const currentDotIndex = sectionIndex;
-            const nextSectionIndex = (sectionIndex + 1) % sectionNames.length;
-            if (currentDotIndex !== nextSectionIndex) {
-                for (let i = 0; i < 3; i++) {
-                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                    const startX = dotPositions[currentDotIndex].x;
-                    const startY = dotPositions[currentDotIndex].y;
-                    const endX = dotPositions[nextSectionIndex].x;
-                    const endY = dotPositions[nextSectionIndex].y;
-                    const controlY = startY - 60 - (i * 20);
-                    const pathData = `M ${startX} ${startY} Q ${(startX + endX) / 2} ${controlY} ${endX} ${endY}`;
-                    line.setAttribute('d', pathData);
-                    line.classList.add('connection-line');
-                    if (i === 1) {
-                        line.classList.add('active');
-                    }
-                    svg.appendChild(line);
-                }
-            }
-        });
-    }
-    window.addEventListener('load', createConnectionLines);
-    window.addEventListener('resize', () => setTimeout(createConnectionLines, 100));
 
     // Compact view toggles
     toggleViewButtons.forEach(btn => {
