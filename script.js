@@ -459,26 +459,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // ====== NEURAL NETWORK PARTICLE CANVAS ======
     if (!prefersReducedMotion) {
         const canvas = document.getElementById('neural-bg');
-        const heroSection = document.getElementById('hero');
-        if (canvas && heroSection) {
+        if (canvas) {
             const ctx = canvas.getContext('2d');
             let particles = [];
             let animId = null;
-            let isVisible = false;
-            const PARTICLE_COUNT = 50;
+            const PARTICLE_COUNT = 80;
             const CONNECTION_DIST = 120;
+            const dpr = window.devicePixelRatio || 1;
 
             function resizeCanvas() {
-                canvas.width = heroSection.offsetWidth;
-                canvas.height = heroSection.offsetHeight;
+                canvas.width = window.innerWidth * dpr;
+                canvas.height = window.innerHeight * dpr;
+                canvas.style.width = window.innerWidth + 'px';
+                canvas.style.height = window.innerHeight + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
 
             function createParticles() {
                 particles = [];
                 for (let i = 0; i < PARTICLE_COUNT; i++) {
                     particles.push({
-                        x: Math.random() * canvas.width,
-                        y: Math.random() * canvas.height,
+                        x: Math.random() * window.innerWidth,
+                        y: Math.random() * window.innerHeight,
                         vx: (Math.random() - 0.5) * 0.5,
                         vy: (Math.random() - 0.5) * 0.5,
                         r: Math.random() * 2 + 1.5
@@ -489,15 +491,16 @@ document.addEventListener('DOMContentLoaded', function () {
             function getColors() {
                 const isLight = document.body.classList.contains('light-mode');
                 return {
-                    node: isLight ? 'rgba(102, 101, 168, 0.6)' : 'rgba(119, 118, 188, 0.6)',
-                    line: isLight ? 'rgba(102, 101, 168, 0.12)' : 'rgba(217, 208, 222, 0.1)'
+                    node: isLight ? 'rgba(102, 101, 168, 0.35)' : 'rgba(119, 118, 188, 0.35)',
+                    line: isLight ? 'rgba(102, 101, 168, 0.15)' : 'rgba(119, 118, 188, 0.15)'
                 };
             }
 
             function drawParticles() {
-                if (!isVisible) return;
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
                 const colors = getColors();
+                const w = window.innerWidth;
+                const h = window.innerHeight;
 
                 // Draw connections
                 for (let i = 0; i < particles.length; i++) {
@@ -506,18 +509,18 @@ document.addEventListener('DOMContentLoaded', function () {
                         const dy = particles[i].y - particles[j].y;
                         const dist = Math.sqrt(dx * dx + dy * dy);
                         if (dist < CONNECTION_DIST) {
-                            const alpha = 1 - dist / CONNECTION_DIST;
+                            const alpha = (1 - dist / CONNECTION_DIST) * 0.15;
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = colors.line.replace(/[\d.]+\)$/, (alpha * 0.15).toFixed(2) + ')');
+                            ctx.strokeStyle = colors.line.replace(/[\d.]+\)$/, alpha.toFixed(2) + ')');
                             ctx.lineWidth = 0.8;
                             ctx.stroke();
                         }
                     }
                 }
 
-                // Draw nodes
+                // Draw nodes (perfectly round)
                 for (const p of particles) {
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -525,34 +528,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     ctx.fill();
                 }
 
-                // Update positions
+                // Update positions (bounce off viewport edges)
                 for (const p of particles) {
                     p.x += p.vx;
                     p.y += p.vy;
-                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    if (p.x < 0 || p.x > w) p.vx *= -1;
+                    if (p.y < 0 || p.y > h) p.vy *= -1;
                 }
 
                 animId = requestAnimationFrame(drawParticles);
             }
 
-            // Only animate when hero is in viewport
-            const canvasObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    isVisible = entry.isIntersecting;
-                    if (isVisible && !animId) {
-                        drawParticles();
-                    } else if (!isVisible && animId) {
-                        cancelAnimationFrame(animId);
-                        animId = null;
-                    }
-                });
-            }, { threshold: 0.05 });
-
-            canvasObserver.observe(heroSection);
-
             resizeCanvas();
             createParticles();
+            drawParticles();
 
             window.addEventListener('resize', () => {
                 resizeCanvas();
