@@ -406,18 +406,169 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function triggerKonami() {
-        let overlay = document.querySelector('.konami-overlay');
-        if (!overlay) {
-            overlay = document.createElement('div');
-            overlay.className = 'konami-overlay';
-            overlay.innerHTML = '<div class="konami-msg">You found a secret! 🧠<br><span style="font-size:1rem;opacity:0.7;">↑↑↓↓←→←→BA</span></div>';
-            document.body.appendChild(overlay);
-            overlay.addEventListener('click', () => overlay.classList.remove('active'));
-        }
-        requestAnimationFrame(() => {
-            overlay.classList.add('active');
-            setTimeout(() => overlay.classList.remove('active'), 3000);
+        if (window.__gravityActive) return;
+        window.__gravityActive = true;
+
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js';
+        script.onload = () => initGravity();
+        document.head.appendChild(script);
+    }
+
+    function initGravity() {
+        const { Engine, Render, Runner, Bodies, Body, Composite, Mouse, MouseConstraint, Events } = Matter;
+
+        // Disable animations that would interfere
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.transition = 'none';
         });
+
+        document.body.style.overflow = 'visible';
+
+        const engine = Engine.create();
+        engine.gravity.y = 1.5;
+
+        const pageWidth = document.documentElement.scrollWidth;
+        const pageHeight = Math.max(document.documentElement.scrollHeight, window.innerHeight * 3);
+
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
+        const canvas = document.createElement('canvas');
+        canvas.id = 'gravity-canvas';
+        canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;pointer-events:none;z-index:-1;opacity:0;';
+        document.body.appendChild(canvas);
+
+        const render = Render.create({
+            canvas: canvas,
+            engine: engine,
+            options: {
+                width: pageWidth,
+                height: pageHeight,
+                wireframes: false,
+                background: 'transparent'
+            }
+        });
+
+        const floor = Bodies.rectangle(pageWidth / 2, pageHeight + 30, pageWidth * 2, 60, { isStatic: true });
+        const wallLeft = Bodies.rectangle(-30, pageHeight / 2, 60, pageHeight * 2, { isStatic: true });
+        const wallRight = Bodies.rectangle(pageWidth + 30, pageHeight / 2, 60, pageHeight * 2, { isStatic: true });
+        Composite.add(engine.world, [floor, wallLeft, wallRight]);
+
+        const selectors = [
+            '.experience-card',
+            '.carousel-item',
+            '.research-card',
+            '.about-social-btn',
+            '.cta-button',
+            '.section-content > h2',
+            '.section-content > p',
+            '.profile-picture-neural',
+            '.about-text-col',
+            '.footer-content',
+            '.footer-social a',
+            '.navbar',
+            '#hero-tagline',
+            '.hero h1',
+            '.view-toggle',
+            '.submit-btn',
+            'form',
+            '.toggle-view-btn',
+            '.theme-toggle',
+            '.exp-header',
+        ];
+
+        const elements = [];
+        selectors.forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => {
+                if (!el.closest('#gravity-canvas') && !elements.includes(el)) {
+                    elements.push(el);
+                }
+            });
+        });
+
+        if (elements.length < 15) {
+            document.querySelectorAll('section > .section-content > *').forEach(el => {
+                if (!elements.includes(el)) elements.push(el);
+            });
+        }
+
+        const domBodies = [];
+
+        elements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            const scrollY = window.scrollY;
+            const scrollX = window.scrollX;
+
+            if (rect.width < 10 || rect.height < 10) return;
+
+            const x = rect.left + scrollX + rect.width / 2;
+            const y = rect.top + scrollY + rect.height / 2;
+
+            const body = Bodies.rectangle(x, y, rect.width, rect.height, {
+                restitution: 0.3,
+                friction: 0.5,
+                frictionAir: 0.01,
+                density: 0.001,
+                angle: (Math.random() - 0.5) * 0.1,
+            });
+
+            Body.setVelocity(body, {
+                x: (Math.random() - 0.5) * 5,
+                y: 0
+            });
+
+            Composite.add(engine.world, body);
+
+            el.style.position = 'fixed';
+            el.style.left = rect.left + 'px';
+            el.style.top = rect.top + 'px';
+            el.style.width = rect.width + 'px';
+            el.style.height = rect.height + 'px';
+            el.style.zIndex = '10000';
+            el.style.margin = '0';
+            el.style.transition = 'none';
+            el.style.willChange = 'transform';
+
+            domBodies.push({ el, body, origLeft: rect.left, origTop: rect.top });
+        });
+
+        const mouse = Mouse.create(document.body);
+        mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
+        mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
+
+        const mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.2,
+                render: { visible: false }
+            }
+        });
+        Composite.add(engine.world, mouseConstraint);
+
+        document.body.addEventListener('mousemove', (e) => {
+            mouse.position.x = e.pageX;
+            mouse.position.y = e.pageY;
+            mouse.absolute.x = e.pageX;
+            mouse.absolute.y = e.pageY;
+        });
+
+        function update() {
+            Engine.update(engine, 1000 / 60);
+
+            domBodies.forEach(({ el, body, origLeft, origTop }) => {
+                const dx = body.position.x - (origLeft + parseFloat(el.style.width) / 2);
+                const dy = body.position.y - (origTop + parseFloat(el.style.height) / 2);
+                const angle = body.angle;
+
+                el.style.transform = `translate(${dx}px, ${dy}px) rotate(${angle}rad)`;
+            });
+
+            requestAnimationFrame(update);
+        }
+
+        update();
     }
 
     // --- Profile Picture Easter Egg (5 rapid clicks) ---
