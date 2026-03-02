@@ -565,6 +565,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 el.style.transform = `translate(${dx}px, ${dy}px) rotate(${angle}rad)`;
             });
 
+            // Auto-scroll to follow falling elements
+            // Find the lowest visible element
+            let maxY = 0;
+            domBodies.forEach(({ body }) => {
+                if (body.position.y > maxY) maxY = body.position.y;
+            });
+
+            // Smoothly scroll to keep the action visible
+            // Target: bottom of lowest element minus most of the viewport height
+            const targetScroll = maxY - window.innerHeight * 0.6;
+            if (targetScroll > window.scrollY) {
+                window.scrollTo({
+                    top: targetScroll,
+                    behavior: 'instant'
+                });
+            }
+
             requestAnimationFrame(update);
         }
 
