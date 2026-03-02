@@ -19,7 +19,10 @@ function setupCarousel(container) {
         updateDots();
         const target = cards[clampedIndex];
         if (target) {
-            target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+            const containerRect = track.getBoundingClientRect();
+            const targetRect = target.getBoundingClientRect();
+            const scrollTarget = track.scrollLeft + (targetRect.left - containerRect.left);
+            track.scrollTo({ left: scrollTarget, behavior: 'smooth' });
         }
         requestAnimationFrame(updateButtons);
     };
