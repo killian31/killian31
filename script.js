@@ -425,13 +425,14 @@ document.addEventListener('DOMContentLoaded', function () {
             el.style.transition = 'none';
         });
 
-        document.body.style.overflow = 'visible';
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
 
         const engine = Engine.create();
         engine.gravity.y = 1.5;
 
-        const pageWidth = document.documentElement.scrollWidth;
-        const pageHeight = Math.max(document.documentElement.scrollHeight, window.innerHeight * 3);
+        const pageWidth = window.innerWidth;
+        const pageHeight = window.innerHeight;
 
         window.scrollTo({ top: 0, behavior: 'instant' });
 
@@ -451,9 +452,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        const floor = Bodies.rectangle(pageWidth / 2, pageHeight + 30, pageWidth * 2, 60, { isStatic: true });
-        const wallLeft = Bodies.rectangle(-30, pageHeight / 2, 60, pageHeight * 2, { isStatic: true });
-        const wallRight = Bodies.rectangle(pageWidth + 30, pageHeight / 2, 60, pageHeight * 2, { isStatic: true });
+        const floor = Bodies.rectangle(pageWidth / 2, pageHeight - 5, pageWidth * 2, 60, { isStatic: true });
+        const wallLeft = Bodies.rectangle(-25, pageHeight / 2, 60, pageHeight * 3, { isStatic: true });
+        const wallRight = Bodies.rectangle(pageWidth + 25, pageHeight / 2, 60, pageHeight * 3, { isStatic: true });
         Composite.add(engine.world, [floor, wallLeft, wallRight]);
 
         const selectors = [
@@ -498,13 +499,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         elements.forEach((el) => {
             const rect = el.getBoundingClientRect();
-            const scrollY = window.scrollY;
-            const scrollX = window.scrollX;
 
             if (rect.width < 10 || rect.height < 10) return;
 
-            const x = rect.left + scrollX + rect.width / 2;
-            const y = rect.top + scrollY + rect.height / 2;
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
 
             const body = Bodies.rectangle(x, y, rect.width, rect.height, {
                 restitution: 0.3,
@@ -548,10 +547,10 @@ document.addEventListener('DOMContentLoaded', function () {
         Composite.add(engine.world, mouseConstraint);
 
         document.body.addEventListener('mousemove', (e) => {
-            mouse.position.x = e.pageX;
-            mouse.position.y = e.pageY;
-            mouse.absolute.x = e.pageX;
-            mouse.absolute.y = e.pageY;
+            mouse.position.x = e.clientX;
+            mouse.position.y = e.clientY;
+            mouse.absolute.x = e.clientX;
+            mouse.absolute.y = e.clientY;
         });
 
         function update() {
@@ -564,23 +563,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 el.style.transform = `translate(${dx}px, ${dy}px) rotate(${angle}rad)`;
             });
-
-            // Auto-scroll to follow falling elements
-            // Find the lowest visible element
-            let maxY = 0;
-            domBodies.forEach(({ body }) => {
-                if (body.position.y > maxY) maxY = body.position.y;
-            });
-
-            // Smoothly scroll to keep the action visible
-            // Target: bottom of lowest element minus most of the viewport height
-            const targetScroll = maxY - window.innerHeight * 0.6;
-            if (targetScroll > window.scrollY) {
-                window.scrollTo({
-                    top: targetScroll,
-                    behavior: 'instant'
-                });
-            }
 
             requestAnimationFrame(update);
         }
