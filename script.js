@@ -419,70 +419,56 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function initGravity() {
-        const { Engine, Render, Runner, Bodies, Body, Composite, Mouse, MouseConstraint, Events } = Matter;
+        const { Engine, Bodies, Body, Composite, Mouse, MouseConstraint } = Matter;
 
-        // Disable animations that would interfere
+        // Disable animations
         document.querySelectorAll('.reveal').forEach(el => {
             el.style.opacity = '1';
             el.style.transform = 'none';
             el.style.transition = 'none';
         });
 
-        // Do NOT hide overflow — let user scroll to see the pile at the bottom
+        // Lock scrolling
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
 
-        const engine = Engine.create();
-        engine.gravity.y = 1.5;
-
-        // Use full page dimensions so the physics world covers the entire document
-        const pageWidth = document.documentElement.clientWidth;
-        const pageHeight = document.documentElement.scrollHeight;
-
-        const canvas = document.createElement('canvas');
-        canvas.id = 'gravity-canvas';
-        canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;pointer-events:none;z-index:-1;opacity:0;';
-        document.body.appendChild(canvas);
-
-        const render = Render.create({
-            canvas: canvas,
-            engine: engine,
-            options: {
-                width: pageWidth,
-                height: pageHeight,
-                wireframes: false,
-                background: 'transparent'
-            }
-        });
-
-        // Floor just below page content, walls on edges, NO ceiling
-        const floor = Bodies.rectangle(pageWidth / 2, pageHeight + 30, pageWidth * 3, 60, { isStatic: true });
-        const wallLeft = Bodies.rectangle(-25, pageHeight / 2, 60, pageHeight * 4, { isStatic: true });
-        const wallRight = Bodies.rectangle(pageWidth + 25, pageHeight / 2, 60, pageHeight * 4, { isStatic: true });
-        Composite.add(engine.world, [floor, wallLeft, wallRight]);
-
-        // Free carousel items from their scrollable containers so they can fall
-        document.querySelectorAll('.glider').forEach(glider => {
-            glider.style.overflow = 'visible';
-            glider.style.display = 'block';
+        // Free carousel items from clipped containers
+        document.querySelectorAll('.glider').forEach(g => {
+            g.style.overflow = 'visible';
+            g.style.display = 'block';
         });
         document.querySelectorAll('.glider-contain').forEach(c => {
             c.style.overflow = 'visible';
         });
 
+        const engine = Engine.create();
+        engine.gravity.y = 2;
+
+        const W = window.innerWidth;
+        const H = window.innerHeight;
+
+        // Boundaries: floor at bottom of viewport, walls at edges, no ceiling
+        const wallThickness = 60;
+        const floor = Bodies.rectangle(W / 2, H + wallThickness / 2 - 5, W * 3, wallThickness, { isStatic: true });
+        const wallL = Bodies.rectangle(-wallThickness / 2, H / 2, wallThickness, H * 3, { isStatic: true });
+        const wallR = Bodies.rectangle(W + wallThickness / 2, H / 2, wallThickness, H * 3, { isStatic: true });
+        Composite.add(engine.world, [floor, wallL, wallR]);
+
+        // Collect ONLY elements visible in the viewport
         const selectors = [
             '.experience-card',
             '.carousel-item',
             '.research-card',
             '.about-social-btn',
             '.cta-button',
-            '.section-content > h2',
-            '.section-content > p:not(#hero-tagline)',
+            'h1', 'h2',
+            '.section-content > p',
             '.profile-picture-neural',
             '.about-text-col',
             '.footer-content',
             '.footer-social a',
             '.navbar',
             '#hero-tagline',
-            '.hero h1',
             '.view-toggle',
             '.submit-btn',
             'form',
@@ -492,70 +478,75 @@ document.addEventListener('DOMContentLoaded', function () {
             '#back-to-top-btn',
             '.carousel-button',
             '.carousel-meta',
-            '.dots',
             '.exp-role-title',
             '.about-photo-col',
             'footer',
-            '.blog-link-card',
         ];
 
         const elements = [];
         selectors.forEach(sel => {
             document.querySelectorAll(sel).forEach(el => {
-                if (!el.closest('#gravity-canvas') && !elements.includes(el)) {
-                    elements.push(el);
-                }
+                if (elements.includes(el)) return;
+                const rect = el.getBoundingClientRect();
+                // Only include elements that are at least partially visible in viewport
+                if (rect.width < 10 || rect.height < 10) return;
+                if (rect.bottom < 0 || rect.top > H) return; // off-screen vertically
+                if (rect.right < 0 || rect.left > W) return; // off-screen horizontally
+                elements.push(el);
             });
         });
 
-        if (elements.length < 15) {
+        // Also grab generic content if we didn't get enough
+        if (elements.length < 10) {
             document.querySelectorAll('section > .section-content > *').forEach(el => {
-                if (!elements.includes(el)) elements.push(el);
+                if (!elements.includes(el)) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.width >= 10 && rect.height >= 10 && rect.bottom > 0 && rect.top < H) {
+                        elements.push(el);
+                    }
+                }
             });
         }
 
         const domBodies = [];
 
-        elements.forEach((el) => {
+        elements.forEach(el => {
             const rect = el.getBoundingClientRect();
 
-            if (rect.width < 10 || rect.height < 10) return;
-
-            // Use page-relative coordinates (account for scroll offset)
-            const absLeft = rect.left + window.scrollX;
-            const absTop = rect.top + window.scrollY;
-            const x = absLeft + rect.width / 2;
-            const y = absTop + rect.height / 2;
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
 
             const body = Bodies.rectangle(x, y, rect.width, rect.height, {
                 restitution: 0.3,
                 friction: 0.5,
-                frictionAir: 0.01,
+                frictionAir: 0.008,
                 density: 0.001,
-                angle: (Math.random() - 0.5) * 0.1,
+                angle: (Math.random() - 0.5) * 0.05,
             });
 
             Body.setVelocity(body, {
-                x: (Math.random() - 0.5) * 5,
+                x: (Math.random() - 0.5) * 3,
                 y: 0
             });
 
             Composite.add(engine.world, body);
 
-            // Use absolute positioning (page-relative) so elements work with scrolling
-            el.style.position = 'absolute';
-            el.style.left = absLeft + 'px';
-            el.style.top = absTop + 'px';
+            // Use FIXED positioning — viewport-relative
+            el.style.position = 'fixed';
+            el.style.left = rect.left + 'px';
+            el.style.top = rect.top + 'px';
             el.style.width = rect.width + 'px';
             el.style.height = rect.height + 'px';
             el.style.zIndex = '10000';
             el.style.margin = '0';
             el.style.transition = 'none';
             el.style.willChange = 'transform';
+            el.style.pointerEvents = 'auto';
 
-            domBodies.push({ el, body, origLeft: absLeft, origTop: absTop });
+            domBodies.push({ el, body, startX: rect.left, startY: rect.top });
         });
 
+        // Mouse constraint
         const mouse = Mouse.create(document.body);
         mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
         mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
@@ -569,23 +560,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         Composite.add(engine.world, mouseConstraint);
 
-        // Use page-relative coordinates for mouse (matches absolute positioning)
-        document.body.addEventListener('mousemove', (e) => {
-            mouse.position.x = e.pageX;
-            mouse.position.y = e.pageY;
-            mouse.absolute.x = e.pageX;
-            mouse.absolute.y = e.pageY;
+        // Track mouse in viewport coordinates
+        document.addEventListener('mousemove', (e) => {
+            mouse.position.x = e.clientX;
+            mouse.position.y = e.clientY;
+            mouse.absolute.x = e.clientX;
+            mouse.absolute.y = e.clientY;
         });
 
+        // Animation loop
         function update() {
             Engine.update(engine, 1000 / 60);
 
-            domBodies.forEach(({ el, body, origLeft, origTop }) => {
-                const dx = body.position.x - (origLeft + parseFloat(el.style.width) / 2);
-                const dy = body.position.y - (origTop + parseFloat(el.style.height) / 2);
-                const angle = body.angle;
-
-                el.style.transform = `translate(${dx}px, ${dy}px) rotate(${angle}rad)`;
+            domBodies.forEach(({ el, body, startX, startY }) => {
+                const w = parseFloat(el.style.width);
+                const h = parseFloat(el.style.height);
+                const dx = body.position.x - (startX + w / 2);
+                const dy = body.position.y - (startY + h / 2);
+                el.style.transform = `translate(${dx}px, ${dy}px) rotate(${body.angle}rad)`;
             });
 
             requestAnimationFrame(update);
