@@ -428,16 +428,14 @@ document.addEventListener('DOMContentLoaded', function () {
             el.style.transition = 'none';
         });
 
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden';
+        // Do NOT hide overflow — let user scroll to see the pile at the bottom
 
         const engine = Engine.create();
         engine.gravity.y = 1.5;
 
-        const pageWidth = window.innerWidth;
-        const pageHeight = window.innerHeight;
-
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        // Use full page dimensions so the physics world covers the entire document
+        const pageWidth = document.documentElement.clientWidth;
+        const pageHeight = document.documentElement.scrollHeight;
 
         const canvas = document.createElement('canvas');
         canvas.id = 'gravity-canvas';
@@ -455,10 +453,20 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        const floor = Bodies.rectangle(pageWidth / 2, pageHeight - 5, pageWidth * 2, 60, { isStatic: true });
-        const wallLeft = Bodies.rectangle(-25, pageHeight / 2, 60, pageHeight * 3, { isStatic: true });
-        const wallRight = Bodies.rectangle(pageWidth + 25, pageHeight / 2, 60, pageHeight * 3, { isStatic: true });
+        // Floor just below page content, walls on edges, NO ceiling
+        const floor = Bodies.rectangle(pageWidth / 2, pageHeight + 30, pageWidth * 3, 60, { isStatic: true });
+        const wallLeft = Bodies.rectangle(-25, pageHeight / 2, 60, pageHeight * 4, { isStatic: true });
+        const wallRight = Bodies.rectangle(pageWidth + 25, pageHeight / 2, 60, pageHeight * 4, { isStatic: true });
         Composite.add(engine.world, [floor, wallLeft, wallRight]);
+
+        // Free carousel items from their scrollable containers so they can fall
+        document.querySelectorAll('.glider').forEach(glider => {
+            glider.style.overflow = 'visible';
+            glider.style.display = 'block';
+        });
+        document.querySelectorAll('.glider-contain').forEach(c => {
+            c.style.overflow = 'visible';
+        });
 
         const selectors = [
             '.experience-card',
@@ -467,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '.about-social-btn',
             '.cta-button',
             '.section-content > h2',
-            '.section-content > p',
+            '.section-content > p:not(#hero-tagline)',
             '.profile-picture-neural',
             '.about-text-col',
             '.footer-content',
@@ -481,6 +489,14 @@ document.addEventListener('DOMContentLoaded', function () {
             '.toggle-view-btn',
             '.theme-toggle',
             '.exp-header',
+            '#back-to-top-btn',
+            '.carousel-button',
+            '.carousel-meta',
+            '.dots',
+            '.exp-role-title',
+            '.about-photo-col',
+            'footer',
+            '.blog-link-card',
         ];
 
         const elements = [];
@@ -505,8 +521,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (rect.width < 10 || rect.height < 10) return;
 
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
+            // Use page-relative coordinates (account for scroll offset)
+            const absLeft = rect.left + window.scrollX;
+            const absTop = rect.top + window.scrollY;
+            const x = absLeft + rect.width / 2;
+            const y = absTop + rect.height / 2;
 
             const body = Bodies.rectangle(x, y, rect.width, rect.height, {
                 restitution: 0.3,
@@ -523,9 +542,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             Composite.add(engine.world, body);
 
-            el.style.position = 'fixed';
-            el.style.left = rect.left + 'px';
-            el.style.top = rect.top + 'px';
+            // Use absolute positioning (page-relative) so elements work with scrolling
+            el.style.position = 'absolute';
+            el.style.left = absLeft + 'px';
+            el.style.top = absTop + 'px';
             el.style.width = rect.width + 'px';
             el.style.height = rect.height + 'px';
             el.style.zIndex = '10000';
@@ -533,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function () {
             el.style.transition = 'none';
             el.style.willChange = 'transform';
 
-            domBodies.push({ el, body, origLeft: rect.left, origTop: rect.top });
+            domBodies.push({ el, body, origLeft: absLeft, origTop: absTop });
         });
 
         const mouse = Mouse.create(document.body);
@@ -543,17 +563,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
             constraint: {
-                stiffness: 0.2,
+                stiffness: 0.6,
                 render: { visible: false }
             }
         });
         Composite.add(engine.world, mouseConstraint);
 
+        // Use page-relative coordinates for mouse (matches absolute positioning)
         document.body.addEventListener('mousemove', (e) => {
-            mouse.position.x = e.clientX;
-            mouse.position.y = e.clientY;
-            mouse.absolute.x = e.clientX;
-            mouse.absolute.y = e.clientY;
+            mouse.position.x = e.pageX;
+            mouse.position.y = e.pageY;
+            mouse.absolute.x = e.pageX;
+            mouse.absolute.y = e.pageY;
         });
 
         function update() {
