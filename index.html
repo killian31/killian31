@@ -15,13 +15,14 @@
     <title>Killian Steunou</title>
     <meta name="description" content="Killian Steunou's personal portfolio showcasing expertise in AI, Mathematics, and Statistics.">
     <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
+    <canvas id="neural-bg" aria-hidden="true"></canvas>
     <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-content">
             <div class="navbar-logo">
@@ -40,42 +41,30 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blog.html">Blog <span class="nav-external" aria-hidden="true">↗</span></a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="demos.html">Demos</a></li>
+                <li><a href="demos.html">Demos <span class="nav-external" aria-hidden="true">↗</span></a></li>
             </ul>
             <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark or light theme">🌙</button>
         </div>
     </nav>
     <main>
     <!-- Hero Section -->
-    <section id="hero" class="section hero" data-aos="fade-up">
+    <div id="scroll-progress-bar"></div>
+    <section id="hero" class="section hero reveal" data-reveal="fade-up">
         <div class="section-content">
             <h1>Hi, I'm Killian!</h1>
-            <p>A machine learning PhD student who loves Computer Vision :)</p>
-            <p>Learn about my journey in Mathematics, Computer Vision and Deep Learning</p>
+            <p id="hero-tagline">Computer Vision</p>
+            <p>A machine learning PhD student passionate about building intelligent visual systems</p>
             <a href="#about" class="cta-button" data-analytics="cta_about">About me</a>
-        </div>
-        <div class="neural-network">
-            <svg class="network-svg">
-            </svg>
-            <div class="network-dots">
-                <button type="button" class="network-dot active" data-section="hero" aria-label="Scroll to Hero section"></button>
-                <button type="button" class="network-dot" data-section="about" aria-label="Scroll to About section"></button>
-                <button type="button" class="network-dot" data-section="experience" aria-label="Scroll to Experience section"></button>
-                <button type="button" class="network-dot" data-section="education" aria-label="Scroll to Education section"></button>
-                <button type="button" class="network-dot" data-section="research" aria-label="Scroll to Research section"></button>
-                <button type="button" class="network-dot" data-section="projects" aria-label="Scroll to Projects section"></button>
-                <button type="button" class="network-dot" data-section="contact" aria-label="Scroll to Contact section"></button>
-            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about" data-aos="fade-up">
+    <section id="about" class="section about reveal" data-reveal="fade-up">
         <div class="section-content about-flex">
-            <div class="about-photo-col">
-              <img loading="lazy" src="assets/profile/profile-picture.jpg" alt="Killian Steunou" class="profile-picture-neural">
+            <div class="about-photo-col reveal" data-reveal="fade-left">
+              <img loading="lazy" src="assets/profile/profile-picture.jpg" alt="Killian Steunou" class="profile-picture-neural" id="profile-pic">
               <div class="about-social">
                 <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" class="about-social-btn linkedin">
                   <img loading="lazy" src="assets/logos/LI-In-Bug.png" alt="LinkedIn"> LinkedIn
@@ -91,7 +80,7 @@
                 </a>
               </div>
             </div>
-            <div class="about-text-col">
+            <div class="about-text-col reveal" data-reveal="fade-right">
                 <h2>About Me</h2>
                 <p style="text-align: justify;">
                 I'm currently pursuing an industrial PhD in Machine Learning at Institut Polytechnique de Paris and Moments Lab,
@@ -109,25 +98,13 @@
                 </p>
             </div>
         </div>
-        <div class="neural-network">
-            <svg class="network-svg"></svg>
-            <div class="network-dots">
-                <button type="button" class="network-dot" data-section="hero" aria-label="Scroll to Hero section"></button>
-                <button type="button" class="network-dot active" data-section="about" aria-label="Scroll to About section"></button>
-                <button type="button" class="network-dot" data-section="experience" aria-label="Scroll to Experience section"></button>
-                <button type="button" class="network-dot" data-section="education" aria-label="Scroll to Education section"></button>
-                <button type="button" class="network-dot" data-section="research" aria-label="Scroll to Research section"></button>
-                <button type="button" class="network-dot" data-section="projects" aria-label="Scroll to Projects section"></button>
-                <button type="button" class="network-dot" data-section="contact" aria-label="Scroll to Contact section"></button>
-            </div>
-        </div>
     </section>
 
     <!-- Experience Section -->
-<section id="experience" class="section experience" data-aos="fade-up">
+<section id="experience" class="section experience reveal" data-reveal="fade-up">
     <div class="section-content">
         <h2>Professional Experiences</h2>
-        <div class="experience-list">
+        <div class="experience-list reveal" data-reveal="stagger">
             <!-- EXPERIENCE 5 -->
             <div class="experience-card">
                 <div class="exp-header">
@@ -231,26 +208,14 @@
             </div>
         </div>
     </div>
-    <div class="neural-network">
-        <svg class="network-svg"></svg>
-        <div class="network-dots">
-            <button type="button" class="network-dot" data-section="hero" aria-label="Scroll to Hero section"></button>
-            <button type="button" class="network-dot" data-section="about" aria-label="Scroll to About section"></button>
-            <button type="button" class="network-dot active" data-section="experience" aria-label="Scroll to Experience section"></button>
-            <button type="button" class="network-dot" data-section="education" aria-label="Scroll to Education section"></button>
-            <button type="button" class="network-dot" data-section="research" aria-label="Scroll to Research section"></button>
-            <button type="button" class="network-dot" data-section="projects" aria-label="Scroll to Projects section"></button>
-            <button type="button" class="network-dot" data-section="contact" aria-label="Scroll to Contact section"></button>
-        </div>
-    </div>
 </section>
 
 
     <!-- Education Section -->
-<section id="education" class="section education" data-aos="fade-up">
+<section id="education" class="section education reveal" data-reveal="fade-up">
     <div class="section-content">
         <h2>Academic Background</h2>
-        <div class="experience-list">
+        <div class="experience-list reveal" data-reveal="stagger">
             <div class="experience-card">
                 <div class="exp-header">
                     <a href="https://www.ip-paris.fr" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="assets/logos/logo_ip_paris.png" alt="IP Paris Logo" class="exp-logo"></a>
@@ -323,29 +288,17 @@
             </div>
         </div>
     </div>
-    <div class="neural-network">
-        <svg class="network-svg"></svg>
-        <div class="network-dots">
-            <button type="button" class="network-dot" data-section="hero" aria-label="Scroll to Hero section"></button>
-            <button type="button" class="network-dot" data-section="about" aria-label="Scroll to About section"></button>
-            <button type="button" class="network-dot" data-section="experience" aria-label="Scroll to Experience section"></button>
-            <button type="button" class="network-dot active" data-section="education" aria-label="Scroll to Education section"></button>
-            <button type="button" class="network-dot" data-section="research" aria-label="Scroll to Research section"></button>
-            <button type="button" class="network-dot" data-section="projects" aria-label="Scroll to Projects section"></button>
-            <button type="button" class="network-dot" data-section="contact" aria-label="Scroll to Contact section"></button>
-        </div>
-    </div>
 </section>
 
     <!-- Research Projects Section -->
-    <section id="research" class="section research" data-aos="fade-up">
+    <section id="research" class="section research reveal" data-reveal="fade-up">
         <div class="section-content">
         <h2>Research Projects</h2>
         <a href="research.html" class="cta-button" data-analytics="cta_view_all_research">View all research projects</a>
         <div class="view-toggle">
             <button type="button" class="toggle-view-btn" data-target="research-carousel" data-analytics="toggle_research_view">Compact list</button>
             </div>
-            <div class="glider-contain neural-carousel" id="research-carousel" data-carousel-label="Research project">
+            <div class="glider-contain neural-carousel reveal" data-reveal="fade-up" id="research-carousel" data-carousel-label="Research project">
                 <button class="carousel-button prev" id="research-prev" aria-label="View previous research project">‹</button>
                 <div class="glider" id="research-glider" role="region" aria-label="Research projects carousel" tabindex="0">
                 <div class="carousel-item">
@@ -474,29 +427,17 @@
             </div>
         </div>
     </div>
-    <div class="neural-network">
-        <svg class="network-svg"></svg>
-        <div class="network-dots">
-            <button type="button" class="network-dot" data-section="hero" aria-label="Scroll to Hero section"></button>
-            <button type="button" class="network-dot" data-section="about" aria-label="Scroll to About section"></button>
-            <button type="button" class="network-dot" data-section="experience" aria-label="Scroll to Experience section"></button>
-            <button type="button" class="network-dot" data-section="education" aria-label="Scroll to Education section"></button>
-            <button type="button" class="network-dot active" data-section="research" aria-label="Scroll to Research section"></button>
-            <button type="button" class="network-dot" data-section="projects" aria-label="Scroll to Projects section"></button>
-            <button type="button" class="network-dot" data-section="contact" aria-label="Scroll to Contact section"></button>
-        </div>
-    </div>
 </section>
 
 
     <!-- Projects Section -->
-    <section id="projects" class="section projects" data-aos="fade-up">
+    <section id="projects" class="section projects reveal" data-reveal="fade-up">
         <div class="section-content">
             <h2>Some of my Recent Projects</h2>
             <div class="view-toggle">
                 <button type="button" class="toggle-view-btn" data-target="projects-carousel" data-analytics="toggle_projects_view">Compact list</button>
             </div>
-            <div class="glider-contain neural-carousel" id="projects-carousel" data-carousel-label="Project">
+            <div class="glider-contain neural-carousel reveal" data-reveal="fade-up" id="projects-carousel" data-carousel-label="Project">
                 <button class="carousel-button prev" id="projects-prev" aria-label="View previous project">‹</button>
                 <div class="glider" id="projects-glider" role="region" aria-label="Projects carousel" tabindex="0">
                     <div class="carousel-item">
@@ -615,20 +556,8 @@
                 </div>
             </div>
         </div>
-        <div class="neural-network">
-            <svg class="network-svg"></svg>
-        <div class="network-dots">
-            <button type="button" class="network-dot" data-section="hero" aria-label="Scroll to Hero section"></button>
-            <button type="button" class="network-dot" data-section="about" aria-label="Scroll to About section"></button>
-            <button type="button" class="network-dot" data-section="experience" aria-label="Scroll to Experience section"></button>
-            <button type="button" class="network-dot" data-section="education" aria-label="Scroll to Education section"></button>
-            <button type="button" class="network-dot" data-section="research" aria-label="Scroll to Research section"></button>
-            <button type="button" class="network-dot active" data-section="projects" aria-label="Scroll to Projects section"></button>
-            <button type="button" class="network-dot" data-section="contact" aria-label="Scroll to Contact section"></button>
-        </div>
-        </div>
     </section>
-    <section id="contact" class="section contact">
+    <section id="contact" class="section contact reveal" data-reveal="fade-up">
       <div class="section-content">
         <h2>Get In Touch With Me</h2>
         <form action="https://formspree.io/f/xdoqokzg" method="POST" class="contact-form neural-form" autocomplete="on">
@@ -653,28 +582,23 @@
           <button type="submit" class="submit-btn" data-analytics="contact_submit_attempt">Send Message</button>
         </form>
       </div>
-      <div class="neural-network">
-        <svg class="network-svg"></svg>
-        <div class="network-dots">
-          <button type="button" class="network-dot" data-section="hero" aria-label="Scroll to Hero section"></button>
-          <button type="button" class="network-dot" data-section="about" aria-label="Scroll to About section"></button>
-          <button type="button" class="network-dot" data-section="experience" aria-label="Scroll to Experience section"></button>
-          <button type="button" class="network-dot" data-section="education" aria-label="Scroll to Education section"></button>
-          <button type="button" class="network-dot" data-section="research" aria-label="Scroll to Research section"></button>
-          <button type="button" class="network-dot" data-section="projects" aria-label="Scroll to Projects section"></button>
-          <button type="button" class="network-dot active" data-section="contact" aria-label="Scroll to Contact section"></button>
-        </div>
-      </div>
     </section>
     </main>
-    <footer>
-      <p class="copy">&copy; Copyright 2025</p>
-      <p class="copy">
-        Built with &#x2661; by
-        <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer"
-          >Killian Steunou</a
-        >
-      </p>
+    <footer class="reveal" data-reveal="fade-up">
+      <div class="footer-content">
+        <div class="footer-social">
+          <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
+          </a>
+          <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
+          </a>
+          <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+            <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
+          </a>
+        </div>
+        <p>&copy; 2025 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
+        <p class="footer-note">Built with ❤️ and vanilla JS</p>
         <div id="wcb" class="carbonbadge"></div>
         <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
         <div>
@@ -682,32 +606,9 @@
                 <img loading="lazy" src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=l-eulRo4m9kWX0-DiNfpf3VdUzMYdgScLET0G4NP4yQ&co=2d78ad&ct=ffffff' alt="Visitor map for Killian Steunou's site">
             </a>
         </div>
+      </div>
     </footer>
     <script src="script.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        (function () {
-            if (!window.AOS) return;
-            const initAOS = (reduceMotion) => {
-                AOS.init({
-                    duration: reduceMotion ? 0 : 800,
-                    easing: 'ease-in-out',
-                    once: reduceMotion || false,
-                    mirror: reduceMotion ? false : true,
-                    disable: reduceMotion
-                });
-            };
-            const query = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-            initAOS(query ? query.matches : false);
-            if (query) {
-                const listener = (event) => initAOS(event.matches);
-                if (query.addEventListener) {
-                    query.addEventListener('change', listener);
-                } else if (query.addListener) {
-                    query.addListener(listener);
-                }
-            }
-        })();
-    </script>
+
 </body>
 </html>

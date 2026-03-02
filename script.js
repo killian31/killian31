@@ -19,7 +19,10 @@ function setupCarousel(container) {
         updateDots();
         const target = cards[clampedIndex];
         if (target) {
-            target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+            const containerRect = track.getBoundingClientRect();
+            const targetRect = target.getBoundingClientRect();
+            const scrollTarget = track.scrollLeft + (targetRect.left - containerRect.left);
+            track.scrollTo({ left: scrollTarget, behavior: 'smooth' });
         }
         requestAnimationFrame(updateButtons);
     };
@@ -184,72 +187,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // ------ Initialize Carousels ------
     document.querySelectorAll('.glider-contain.neural-carousel').forEach(setupCarousel);
 
-    // ------ Neural dots and smooth scrolling ------
-    const sections = document.querySelectorAll('.section');
-    const sectionNames = ['hero', 'about', 'experience', 'education', 'research', 'projects', 'contact'];
-
-    // Intersection Observer for active section
-    const observerOptions = {
-        root: null,
-        rootMargin: '-50% 0px -50% 0px',
-        threshold: 0
-    };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                const sectionIndex = sectionNames.indexOf(sectionId);
-                if (sectionIndex !== -1) {
-                    updateActiveStates(sectionIndex);
-                }
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // Neural dots active state
-    function updateActiveStates(currentSectionIndex) {
-        if (currentSectionIndex < 0) {
-            return;
-        }
-        const allDots = document.querySelectorAll('.network-dot');
-        const nextSectionIndex = (currentSectionIndex + 1) % sectionNames.length;
-        allDots.forEach((dot, index) => {
-            const globalIndex = index % sectionNames.length;
-            dot.classList.remove('active', 'next-active');
-            if (globalIndex === currentSectionIndex) {
-                dot.classList.add('active');
-                dot.setAttribute('aria-pressed', 'true');
-            } else if (globalIndex === nextSectionIndex) {
-                dot.classList.add('next-active');
-                dot.setAttribute('aria-pressed', 'false');
-            } else {
-                dot.setAttribute('aria-pressed', 'false');
-            }
-        });
-    }
-
+    // ------ Smooth scrolling ------
     const getOffset = () => (navbar ? navbar.offsetHeight + 12 : 0);
     const scrollToTarget = (target) => {
         if (!target) return;
         const top = target.getBoundingClientRect().top + window.scrollY - getOffset();
         window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     };
-
-    // Click handlers for neural dots
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('network-dot')) {
-            const sectionName = e.target.dataset.section;
-            const targetSection = document.getElementById(sectionName);
-            if (targetSection) {
-                e.preventDefault();
-                scrollToTarget(targetSection);
-            }
-        }
-    });
 
     // Smooth scrolling for nav links
     document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -276,12 +220,12 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.style.display = "none";
         btn.style.zIndex = "9999";
         btn.style.border = "none";
-        btn.style.background = "linear-gradient(45deg,#00f5ff,#ff00ff)";
+        btn.style.background = "linear-gradient(45deg,#7776bc,#eb5e28)";
         btn.style.color = "#fff";
         btn.style.fontSize = "2rem";
         btn.style.padding = "0.7em 1em";
         btn.style.borderRadius = "50%";
-        btn.style.boxShadow = "0 4px 32px #00f5ff77";
+        btn.style.boxShadow = "0 4px 32px #7776bc77";
         btn.style.cursor = "pointer";
         btn.setAttribute('aria-label', 'Back to top');
         document.body.appendChild(btn);
@@ -298,51 +242,6 @@ document.addEventListener('DOMContentLoaded', function () {
     backToTopBtn.onclick = function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-
-    // ------ Neural connection lines (if needed) ------
-    function createConnectionLines() {
-        const networkSvgs = document.querySelectorAll('.network-svg');
-        networkSvgs.forEach((svg, sectionIndex) => {
-            svg.innerHTML = ''; // Clear existing lines
-        const dots = svg.parentElement.querySelectorAll('.network-dot');
-        if (!dots.length) {
-            return;
-        }
-            const svgRect = svg.getBoundingClientRect();
-            const dotsContainer = svg.parentElement.querySelector('.network-dots');
-            const dotsRect = dotsContainer.getBoundingClientRect();
-            // Calculate positions relative to SVG
-            const dotPositions = Array.from(dots).map((dot, index) => {
-                const dotRect = dot.getBoundingClientRect();
-                return {
-                    x: dotRect.left - svgRect.left + dotRect.width / 2,
-                    y: dotsRect.top - svgRect.top + dotRect.height / 2
-                };
-            });
-            // Create connections from current section to next section
-            const currentDotIndex = sectionIndex;
-            const nextSectionIndex = (sectionIndex + 1) % sectionNames.length;
-            if (currentDotIndex !== nextSectionIndex) {
-                for (let i = 0; i < 3; i++) {
-                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                    const startX = dotPositions[currentDotIndex].x;
-                    const startY = dotPositions[currentDotIndex].y;
-                    const endX = dotPositions[nextSectionIndex].x;
-                    const endY = dotPositions[nextSectionIndex].y;
-                    const controlY = startY - 60 - (i * 20);
-                    const pathData = `M ${startX} ${startY} Q ${(startX + endX) / 2} ${controlY} ${endX} ${endY}`;
-                    line.setAttribute('d', pathData);
-                    line.classList.add('connection-line');
-                    if (i === 1) {
-                        line.classList.add('active');
-                    }
-                    svg.appendChild(line);
-                }
-            }
-        });
-    }
-    window.addEventListener('load', createConnectionLines);
-    window.addEventListener('resize', () => setTimeout(createConnectionLines, 100));
 
     // Compact view toggles
     toggleViewButtons.forEach(btn => {
@@ -410,4 +309,410 @@ document.addEventListener('DOMContentLoaded', function () {
         const label = target.dataset.analyticsLabel || target.textContent.trim().slice(0, 80);
         sendAnalyticsEvent(action, label);
     });
+
+    // ------ Scroll Progress Bar ------
+    const scrollProgressBar = document.getElementById('scroll-progress-bar');
+    if (scrollProgressBar && !prefersReducedMotion) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgressBar.style.width = scrollPercent + '%';
+        });
+    }
+
+    // ------ Custom Scroll Reveal Animations ------
+    if (!prefersReducedMotion) {
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const el = entry.target;
+                if (entry.isIntersecting) {
+                    el.classList.add('revealed');
+                    // Handle stagger children
+                    if (el.dataset.reveal === 'stagger') {
+                        const children = Array.from(el.children);
+                        children.forEach((child, i) => {
+                            child.style.transitionDelay = (i * 120) + 'ms';
+                        });
+                    }
+                } else {
+                    // Bidirectional: remove revealed when out of view
+                    el.classList.remove('revealed');
+                    if (el.dataset.reveal === 'stagger') {
+                        const children = Array.from(el.children);
+                        children.forEach(child => {
+                            child.style.transitionDelay = '0ms';
+                        });
+                    }
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        // If reduced motion, make everything visible immediately
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.classList.add('revealed');
+        });
+    }
+
+    // ====== MORPHING HERO TAGLINE ======
+    if (!prefersReducedMotion) {
+        const taglines = ['Computer Vision', 'Deep Learning', 'Video Understanding', 'Efficient AI'];
+        let taglineIndex = 0;
+        const taglineEl = document.getElementById('hero-tagline');
+        if (taglineEl) {
+            function morphTagline() {
+                taglineEl.style.opacity = 0;
+                setTimeout(() => {
+                    taglineIndex = (taglineIndex + 1) % taglines.length;
+                    taglineEl.textContent = taglines[taglineIndex];
+                    taglineEl.style.opacity = 1;
+                }, 400);
+            }
+            setInterval(morphTagline, 3000);
+        }
+    }
+
+    // ====== EASTER EGGS ======
+
+    // --- Console Easter Egg ---
+    console.log('%c🧠 Hey, fellow developer! Looking under the hood?', 'font-size: 16px; color: #7776bc; font-weight: bold;');
+    console.log('%cThis site was built with vanilla HTML/CSS/JS — no frameworks needed.', 'font-size: 12px; color: #689d71;');
+    console.log('%c' + [
+        '    ○───○───○',
+        '   /|\\  |  /|\\',
+        '  ○ ○ ○ ○ ○ ○ ○',
+        '   \\|/ \\|/ \\|/',
+        '    ○───○───○',
+        '       |',
+        '       ○  output',
+    ].join('\n'), 'font-family: monospace; color: #d9d0de; font-size: 11px;');
+
+    // --- Konami Code Easter Egg ---
+    const konamiSequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let konamiIndex = 0;
+    document.addEventListener('keydown', (e) => {
+        if (e.key === konamiSequence[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiSequence.length) {
+                konamiIndex = 0;
+                triggerKonami();
+            }
+        } else {
+            konamiIndex = e.key === konamiSequence[0] ? 1 : 0;
+        }
+    });
+
+    function triggerKonami() {
+        if (window.__gravityActive) return;
+        window.__gravityActive = true;
+
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js';
+        script.onload = () => initGravity();
+        document.head.appendChild(script);
+    }
+
+    function initGravity() {
+        const { Engine, Bodies, Body, Composite, Mouse, MouseConstraint } = Matter;
+
+        // Disable animations
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.transition = 'none';
+        });
+
+        // Lock scrolling
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+
+        // Free carousel items from clipped containers
+        document.querySelectorAll('.glider').forEach(g => {
+            g.style.overflow = 'visible';
+            g.style.display = 'block';
+        });
+        document.querySelectorAll('.glider-contain').forEach(c => {
+            c.style.overflow = 'visible';
+        });
+
+        const engine = Engine.create();
+        engine.gravity.y = 2;
+
+        const W = window.innerWidth;
+        const H = window.innerHeight;
+
+        // Boundaries: floor at bottom of viewport, walls at edges, no ceiling
+        const wallThickness = 60;
+        const floor = Bodies.rectangle(W / 2, H + wallThickness / 2 - 5, W * 3, wallThickness, { isStatic: true });
+        const wallL = Bodies.rectangle(-wallThickness / 2, H / 2, wallThickness, H * 3, { isStatic: true });
+        const wallR = Bodies.rectangle(W + wallThickness / 2, H / 2, wallThickness, H * 3, { isStatic: true });
+        Composite.add(engine.world, [floor, wallL, wallR]);
+
+        // Collect ONLY elements visible in the viewport
+        const selectors = [
+            '.experience-card',
+            '.carousel-item',
+            '.research-card',
+            '.about-social-btn',
+            '.cta-button',
+            'h1', 'h2',
+            '.section-content > p',
+            '.profile-picture-neural',
+            '.about-text-col',
+            '.footer-content',
+            '.footer-social a',
+            '.navbar',
+            '#hero-tagline',
+            '.view-toggle',
+            '.submit-btn',
+            'form',
+            '.toggle-view-btn',
+            '.theme-toggle',
+            '.exp-header',
+            '#back-to-top-btn',
+            '.carousel-button',
+            '.carousel-meta',
+            '.exp-role-title',
+            '.about-photo-col',
+            'footer',
+        ];
+
+        const elements = [];
+        selectors.forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => {
+                if (elements.includes(el)) return;
+                const rect = el.getBoundingClientRect();
+                // Only include elements that are at least partially visible in viewport
+                if (rect.width < 10 || rect.height < 10) return;
+                if (rect.bottom < 0 || rect.top > H) return; // off-screen vertically
+                if (rect.right < 0 || rect.left > W) return; // off-screen horizontally
+                elements.push(el);
+            });
+        });
+
+        // Also grab generic content if we didn't get enough
+        if (elements.length < 10) {
+            document.querySelectorAll('section > .section-content > *').forEach(el => {
+                if (!elements.includes(el)) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.width >= 10 && rect.height >= 10 && rect.bottom > 0 && rect.top < H) {
+                        elements.push(el);
+                    }
+                }
+            });
+        }
+
+        const domBodies = [];
+
+        elements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            const body = Bodies.rectangle(x, y, rect.width, rect.height, {
+                restitution: 0.3,
+                friction: 0.5,
+                frictionAir: 0.008,
+                density: 0.001,
+                angle: (Math.random() - 0.5) * 0.05,
+            });
+
+            Body.setVelocity(body, {
+                x: (Math.random() - 0.5) * 3,
+                y: 0
+            });
+
+            Composite.add(engine.world, body);
+
+            // Use FIXED positioning — viewport-relative
+            el.style.position = 'fixed';
+            el.style.left = rect.left + 'px';
+            el.style.top = rect.top + 'px';
+            el.style.width = rect.width + 'px';
+            el.style.height = rect.height + 'px';
+            el.style.zIndex = '10000';
+            el.style.margin = '0';
+            el.style.transition = 'none';
+            el.style.willChange = 'transform';
+            el.style.pointerEvents = 'auto';
+
+            domBodies.push({ el, body, startX: rect.left, startY: rect.top });
+        });
+
+        // Mouse constraint
+        const mouse = Mouse.create(document.body);
+        mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
+        mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
+
+        const mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.6,
+                render: { visible: false }
+            }
+        });
+        Composite.add(engine.world, mouseConstraint);
+
+        // Track mouse in viewport coordinates
+        document.addEventListener('mousemove', (e) => {
+            mouse.position.x = e.clientX;
+            mouse.position.y = e.clientY;
+            mouse.absolute.x = e.clientX;
+            mouse.absolute.y = e.clientY;
+        });
+
+        // Animation loop
+        function update() {
+            Engine.update(engine, 1000 / 60);
+
+            domBodies.forEach(({ el, body, startX, startY }) => {
+                const w = parseFloat(el.style.width);
+                const h = parseFloat(el.style.height);
+                const dx = body.position.x - (startX + w / 2);
+                const dy = body.position.y - (startY + h / 2);
+                el.style.transform = `translate(${dx}px, ${dy}px) rotate(${body.angle}rad)`;
+            });
+
+            requestAnimationFrame(update);
+        }
+
+        update();
+    }
+
+    // --- Profile Picture Easter Egg (5 rapid clicks) ---
+    const profilePic = document.getElementById('profile-pic');
+    if (profilePic) {
+        let clickCount = 0;
+        let clickTimer = null;
+        profilePic.addEventListener('click', () => {
+            clickCount++;
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => { clickCount = 0; }, 800);
+            if (clickCount >= 5) {
+                clickCount = 0;
+                profilePic.classList.add('profile-pic-spin');
+                profilePic.addEventListener('animationend', () => {
+                    profilePic.classList.remove('profile-pic-spin');
+                }, { once: true });
+            }
+        });
+    }
+
+    // --- Logo Hover Secret (3+ seconds) ---
+    const logoImg = document.getElementById('navbar-logo-img');
+    if (logoImg) {
+        let hoverTimer = null;
+        logoImg.addEventListener('mouseenter', () => {
+            hoverTimer = setTimeout(() => {
+                logoImg.classList.add('logo-glitch');
+                logoImg.addEventListener('animationend', () => {
+                    logoImg.classList.remove('logo-glitch');
+                }, { once: true });
+            }, 3000);
+        });
+        logoImg.addEventListener('mouseleave', () => {
+            clearTimeout(hoverTimer);
+        });
+    }
+
+    // ====== NEURAL NETWORK PARTICLE CANVAS ======
+    if (!prefersReducedMotion) {
+        const canvas = document.getElementById('neural-bg');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let animId = null;
+            const PARTICLE_COUNT = 80;
+            const CONNECTION_DIST = 120;
+            const dpr = window.devicePixelRatio || 1;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth * dpr;
+                canvas.height = window.innerHeight * dpr;
+                canvas.style.width = window.innerWidth + 'px';
+                canvas.style.height = window.innerHeight + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+
+            function createParticles() {
+                particles = [];
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    particles.push({
+                        x: Math.random() * window.innerWidth,
+                        y: Math.random() * window.innerHeight,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        r: Math.random() * 2 + 1.5
+                    });
+                }
+            }
+
+            function getColors() {
+                const isLight = document.body.classList.contains('light-mode');
+                return {
+                    node: isLight ? 'rgba(102, 101, 168, 0.35)' : 'rgba(119, 118, 188, 0.35)',
+                    line: isLight ? 'rgba(102, 101, 168, 0.15)' : 'rgba(119, 118, 188, 0.15)'
+                };
+            }
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+                const colors = getColors();
+                const w = window.innerWidth;
+                const h = window.innerHeight;
+
+                // Draw connections
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < CONNECTION_DIST) {
+                            const alpha = (1 - dist / CONNECTION_DIST) * 0.15;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = colors.line.replace(/[\d.]+\)$/, alpha.toFixed(2) + ')');
+                            ctx.lineWidth = 0.8;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Draw nodes (perfectly round)
+                for (const p of particles) {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = colors.node;
+                    ctx.fill();
+                }
+
+                // Update positions (bounce off viewport edges)
+                for (const p of particles) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0 || p.x > w) p.vx *= -1;
+                    if (p.y < 0 || p.y > h) p.vy *= -1;
+                }
+
+                animId = requestAnimationFrame(drawParticles);
+            }
+
+            resizeCanvas();
+            createParticles();
+            drawParticles();
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                createParticles();
+            });
+        }
+    }
 });
