@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NLP Metrics for Captioning — A Visual Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e1117;
+  --surface: #161b22;
+  --surface2: #1c2230;
+  --border: #2a3140;
+  --text: #e2e8f0;
+  --text-dim: #8896ab;
+  --accent: #f59e0b;
+  --accent2: #3b82f6;
+  --accent3: #10b981;
+  --accent4: #ef4444;
+  --accent5: #a78bfa;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: rgba(14,17,23,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 32px;
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+}
+nav a {
+  color: var(--text-dim); text-decoration: none; font-size: 13px;
+  font-family: var(--mono); padding: 4px 10px; border-radius: 6px; transition: all 0.2s;
+}
+nav a:hover, nav a.active { color: var(--accent); background: rgba(245,158,11,0.1); }
+nav .nav-title {
+  font-family: var(--serif); color: var(--text); font-size: 15px;
+  margin-right: 16px; padding-right: 16px; border-right: 1px solid var(--border);
+}
+
+section { max-width: 860px; margin: 0 auto; padding: 100px 32px 60px; }
+section:first-of-type { padding-top: 120px; }
+h1 {
+  font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); line-height: 1.15; margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--accent), #fbbf24);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+h2 {
+  font-family: var(--serif); font-size: 32px; margin-bottom: 24px; color: var(--text);
+  display: flex; align-items: center; gap: 14px;
+}
+h2 .num {
+  font-family: var(--mono); font-size: 14px; color: var(--accent);
+  background: rgba(245,158,11,0.12); padding: 4px 10px; border-radius: 6px;
+}
+h3 { font-family: var(--sans); font-weight: 600; font-size: 20px; margin: 32px 0 12px; color: var(--accent2); }
+p { margin-bottom: 16px; color: var(--text); }
+.dim { color: var(--text-dim); }
+.subtitle { font-size: 19px; color: var(--text-dim); font-weight: 300; margin-bottom: 40px; line-height: 1.6; }
+.vis-box {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 28px; margin: 24px 0; position: relative; overflow: hidden;
+}
+.vis-box::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+}
+.vis-box .label {
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--accent); margin-bottom: 16px;
+}
+.token-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.token {
+  display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 8px;
+  font-family: var(--mono); font-size: 14px; font-weight: 500;
+}
+.token.word { background: rgba(59,130,246,0.15); color: var(--accent2); border: 1px solid rgba(59,130,246,0.25); }
+.ngram-group { display: inline-flex; gap: 0; margin: 4px 6px 4px 0; }
+.ngram-group .token { border-radius: 0; border-right: none; }
+.ngram-group .token:first-child { border-radius: 8px 0 0 8px; }
+.ngram-group .token:last-child { border-radius: 0 8px 8px 0; border-right: 1px solid; }
+.ngram-1 .token { background: rgba(59,130,246,0.15); color: var(--accent2); border-color: rgba(59,130,246,0.3); }
+.ngram-2 .token { background: rgba(16,185,129,0.15); color: var(--accent3); border-color: rgba(16,185,129,0.3); }
+.ngram-3 .token { background: rgba(245,158,11,0.15); color: var(--accent); border-color: rgba(245,158,11,0.3); }
+.ngram-4 .token { background: rgba(167,139,250,0.15); color: var(--accent5); border-color: rgba(167,139,250,0.3); }
+.metric-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+.metric-table th {
+  font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--accent); text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--border);
+}
+.metric-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+.metric-table tr:hover td { color: var(--text); background: rgba(255,255,255,0.02); }
+.formula {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px 24px; margin: 16px 0; font-family: var(--mono); font-size: 15px;
+  color: var(--accent); overflow-x: auto; line-height: 2;
+}
+.formula .comment { color: var(--text-dim); font-size: 13px; }
+.steps { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
+.step { display: flex; gap: 16px; align-items: flex-start; position: relative; padding: 16px 0; }
+.step-num {
+  width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-family: var(--mono); font-size: 14px; font-weight: 600;
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.step-line { position: absolute; left: 17px; top: 52px; bottom: -16px; width: 2px; background: var(--border); }
+.step:last-child .step-line { display: none; }
+.step-content { flex: 1; padding-top: 6px; }
+.step-content strong { color: var(--text); }
+.match-vis { display: flex; flex-direction: column; gap: 20px; margin: 16px 0; align-items: flex-start; }
+.match-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.match-word {
+  padding: 6px 12px; border-radius: 6px; font-family: var(--mono); font-size: 14px;
+  border: 1px solid var(--border); background: var(--surface2); color: var(--text-dim);
+}
+.match-word.hit { border-color: var(--accent3); color: var(--accent3); background: rgba(16,185,129,0.1); }
+.match-word.stem { border-color: var(--accent); color: var(--accent); background: rgba(245,158,11,0.1); }
+.match-word.syn { border-color: var(--accent5); color: var(--accent5); background: rgba(167,139,250,0.1); }
+.match-word.miss { border-color: var(--accent4); color: var(--accent4); background: rgba(239,68,68,0.06); text-decoration: line-through; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 12px 0; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-dim); }
+.legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+.bar-chart { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+.bar-row { display: flex; align-items: center; gap: 12px; }
+.bar-label { font-family: var(--mono); font-size: 13px; width: 100px; text-align: right; color: var(--text-dim); flex-shrink: 0; }
+.bar-track { flex: 1; height: 26px; background: var(--surface2); border-radius: 6px; overflow: hidden; }
+.bar-fill {
+  height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px;
+  font-family: var(--mono); font-size: 12px; color: var(--bg); font-weight: 600;
+}
+.compare-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0; }
+.compare-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px; text-align: center;
+}
+.compare-card .metric-name { font-family: var(--serif); font-size: 20px; margin-bottom: 8px; }
+.compare-card .metric-basis {
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+  padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px;
+}
+.compare-card p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+.vec-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-family: var(--mono); font-size: 13px; }
+.vec-table th {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim);
+  text-align: center; padding: 8px 6px; border-bottom: 2px solid var(--border); font-weight: 500;
+}
+.vec-table td { text-align: center; padding: 8px 6px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+.vec-table .row-label { text-align: left; color: var(--text); font-weight: 500; }
+.vec-table .highlight { color: var(--accent3); font-weight: 600; }
+.vec-table .zero { color: rgba(136,150,171,0.35); }
+.callout {
+  background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 10px; padding: 16px 20px; margin: 20px 0; font-size: 15px; line-height: 1.65;
+}
+.callout strong { color: var(--accent2); }
+.warning-callout {
+  background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 10px; padding: 16px 20px; margin: 20px 0; font-size: 15px; line-height: 1.65;
+}
+.warning-callout strong { color: var(--accent); }
+@media (max-width: 700px) {
+  section { padding: 80px 18px 40px; }
+  .compare-grid { grid-template-columns: 1fr 1fr; }
+  nav { padding: 10px 16px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../blog.html" style="margin-right:8px; border-right:1px solid var(--border); padding-right:16px;">← Blog</a>
+  <span class="nav-title">NLP Metrics</span>
+  <a href="#ngrams">N-grams</a>
+  <a href="#tfidf">TF-IDF</a>
+  <a href="#bleu">BLEU</a>
+  <a href="#rouge">ROUGE-L</a>
+  <a href="#meteor">METEOR</a>
+  <a href="#cider">CIDEr</a>
+  <a href="#compare">Compare</a>
+</nav>
+<section>
+  <h1>NLP Metrics for Image & Video Captioning</h1>
+  <p class="subtitle">A visual guide to the building blocks — n-grams and TF-IDF — and the four metrics used in every captioning paper: BLEU, ROUGE-L, METEOR, and CIDEr.</p>
+  <p>Every metric below answers the same question in a different way: <em>"How close is a generated caption to the ground truth?"</em> They differ in what they count, how they weight it, and what failure modes they have.</p>
+</section>
+
+<!-- N-GRAMS -->
+<section id="ngrams">
+  <h2><span class="num">01</span> N-grams</h2>
+  <p>An <strong>n-gram</strong> is a contiguous sequence of n words extracted from a sentence. All four metrics below rely on comparing n-gram sets between a candidate caption and a reference caption.</p>
+  <div class="vis-box">
+    <div class="label">Example sentence</div>
+    <div class="token-row">
+      <span class="token word">a</span><span class="token word">cat</span><span class="token word">sits</span>
+      <span class="token word">on</span><span class="token word">the</span><span class="token word">mat</span>
+    </div>
+    <div style="margin-top: 24px;">
+      <div class="label" style="color: var(--accent2);">Unigrams (n=1) — individual words</div>
+      <div class="token-row">
+        <span class="ngram-group ngram-1"><span class="token">a</span></span>
+        <span class="ngram-group ngram-1"><span class="token">cat</span></span>
+        <span class="ngram-group ngram-1"><span class="token">sits</span></span>
+        <span class="ngram-group ngram-1"><span class="token">on</span></span>
+        <span class="ngram-group ngram-1"><span class="token">the</span></span>
+        <span class="ngram-group ngram-1"><span class="token">mat</span></span>
+      </div>
+    </div>
+    <div style="margin-top: 16px;">
+      <div class="label" style="color: var(--accent3);">Bigrams (n=2) — consecutive pairs</div>
+      <div class="token-row">
+        <span class="ngram-group ngram-2"><span class="token">a</span><span class="token">cat</span></span>
+        <span class="ngram-group ngram-2"><span class="token">cat</span><span class="token">sits</span></span>
+        <span class="ngram-group ngram-2"><span class="token">sits</span><span class="token">on</span></span>
+        <span class="ngram-group ngram-2"><span class="token">on</span><span class="token">the</span></span>
+        <span class="ngram-group ngram-2"><span class="token">the</span><span class="token">mat</span></span>
+      </div>
+    </div>
+    <div style="margin-top: 16px;">
+      <div class="label" style="color: var(--accent);">Trigrams (n=3)</div>
+      <div class="token-row">
+        <span class="ngram-group ngram-3"><span class="token">a</span><span class="token">cat</span><span class="token">sits</span></span>
+        <span class="ngram-group ngram-3"><span class="token">cat</span><span class="token">sits</span><span class="token">on</span></span>
+        <span class="ngram-group ngram-3"><span class="token">sits</span><span class="token">on</span><span class="token">the</span></span>
+        <span class="ngram-group ngram-3"><span class="token">on</span><span class="token">the</span><span class="token">mat</span></span>
+      </div>
+    </div>
+    <div style="margin-top: 16px;">
+      <div class="label" style="color: var(--accent5);">4-grams (n=4)</div>
+      <div class="token-row">
+        <span class="ngram-group ngram-4"><span class="token">a</span><span class="token">cat</span><span class="token">sits</span><span class="token">on</span></span>
+        <span class="ngram-group ngram-4"><span class="token">cat</span><span class="token">sits</span><span class="token">on</span><span class="token">the</span></span>
+        <span class="ngram-group ngram-4"><span class="token">sits</span><span class="token">on</span><span class="token">the</span><span class="token">mat</span></span>
+      </div>
+    </div>
+  </div>
+  <p>A sentence of length L has <strong>L − n + 1</strong> n-grams. Higher-order n-grams capture more specific phrases — matching a 4-gram is strong evidence the candidate phrased something the same way as the reference.</p>
+</section>
+
+<!-- TF-IDF -->
+<section id="tfidf">
+  <h2><span class="num">02</span> TF-IDF</h2>
+  <p><strong>Term Frequency × Inverse Document Frequency</strong> — a weighting scheme that asks: <em>"Is this word important in this specific sentence, and is it rare across the whole corpus?"</em></p>
+
+  <h3>TF — Term Frequency</h3>
+  <p>How often a word (or n-gram) appears in this sentence, normalized by total count.</p>
+  <div class="vis-box">
+    <div class="label">TF for "the cat sat on the mat"</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">"the"</span><span class="bar-track"><span class="bar-fill" style="width:55%; background: var(--accent2);">2/6 = 0.33</span></span></div>
+      <div class="bar-row"><span class="bar-label">"cat"</span><span class="bar-track"><span class="bar-fill" style="width:28%; background: var(--accent3);">1/6 = 0.17</span></span></div>
+      <div class="bar-row"><span class="bar-label">"sat"</span><span class="bar-track"><span class="bar-fill" style="width:28%; background: var(--accent3);">1/6 = 0.17</span></span></div>
+      <div class="bar-row"><span class="bar-label">"on"</span><span class="bar-track"><span class="bar-fill" style="width:28%; background: var(--accent);">1/6 = 0.17</span></span></div>
+      <div class="bar-row"><span class="bar-label">"mat"</span><span class="bar-track"><span class="bar-fill" style="width:28%; background: var(--accent5);">1/6 = 0.17</span></span></div>
+    </div>
+  </div>
+
+  <h3>IDF — Inverse Document Frequency</h3>
+  <p>How rare is this word across <em>all</em> documents (captions) in the evaluation corpus? Words appearing everywhere get crushed; rare words get boosted.</p>
+  <div class="formula">
+    IDF(ω) = log( |corpus| / number of docs containing ω )<br>
+    <span class="comment">// "the" appears in 950/1000 captions → IDF ≈ 0.05 (near zero, boring)</span><br>
+    <span class="comment">// "skateboard" appears in 12/1000 captions → IDF ≈ 4.4 (rare, distinctive!)</span>
+  </div>
+
+  <div class="warning-callout">
+    <strong>⚠ Corpus size matters.</strong> IDF is estimated from the evaluation corpus itself. With only 50 captions, IDF estimates are very noisy — a word appearing in 1 vs 2 captions changes the weight by 2×. With 1000+ captions, IDF stabilizes and gives reliable weights. This is a practical concern when using CIDEr (which relies on TF-IDF) on small evaluation sets.
+  </div>
+
+  <h3>TF × IDF: the full picture</h3>
+  <p>Multiply them together. A word scores high only if it's <strong>frequent in this sentence AND rare in the corpus</strong>.</p>
+  <div class="vis-box">
+    <div class="label">TF-IDF weights for a captioning corpus</div>
+    <div class="bar-chart">
+      <div class="bar-row"><span class="bar-label">"skateboard"</span><span class="bar-track"><span class="bar-fill" style="width:90%; background: linear-gradient(90deg, var(--accent), var(--accent3));">high TF-IDF ★</span></span></div>
+      <div class="bar-row"><span class="bar-label">"grinding"</span><span class="bar-track"><span class="bar-fill" style="width:72%; background: linear-gradient(90deg, var(--accent), var(--accent3));">high TF-IDF</span></span></div>
+      <div class="bar-row"><span class="bar-label">"person"</span><span class="bar-track"><span class="bar-fill" style="width:20%; background: var(--accent2);">low — very common</span></span></div>
+      <div class="bar-row"><span class="bar-label">"the"</span><span class="bar-track"><span class="bar-fill" style="width:5%; background: var(--text-dim);">≈0</span></span></div>
+      <div class="bar-row"><span class="bar-label">"a"</span><span class="bar-track"><span class="bar-fill" style="width:4%; background: var(--text-dim);">≈0</span></span></div>
+    </div>
+    <p style="margin-top:12px; font-size:14px;" class="dim">The caption "a person is skateboarding" is dominated by "skateboarding" — the only word that actually identifies the content.</p>
+  </div>
+
+  <h3>From scalar to vector</h3>
+  <p>TF-IDF gives a single number per n-gram. But to compare two entire sentences, we need to compare <em>all</em> their n-gram weights at once. The idea: treat every unique n-gram in the corpus vocabulary as a dimension of a vector space. Each sentence becomes a sparse vector — one entry per possible n-gram, with TF-IDF as the value (zero if that n-gram doesn't appear in the sentence).</p>
+
+  <div class="vis-box">
+    <div class="label">Two sentences as TF-IDF vectors (unigrams only, simplified)</div>
+    <p class="dim" style="margin-bottom: 16px; font-size: 14px;">Each row is a vector. Each column is one dimension — a unique word from the corpus vocabulary. The value in each cell is the TF-IDF weight of that word in that sentence (0 if absent).</p>
+    <table class="vec-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;"></th>
+          <th>"a"</th>
+          <th>"person"</th>
+          <th>"skate-<br>board"</th>
+          <th>"on"</th>
+          <th>"railing"</th>
+          <th>"cat"</th>
+          <th>"the"</th>
+          <th>"mat"</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">Candidate<br><span class="dim" style="font-size:12px;">"a person skateboards on a railing"</span></td>
+          <td class="zero">0.01</td><td>0.18</td><td class="highlight">1.42</td><td class="zero">0.03</td>
+          <td class="highlight">1.85</td><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td>
+        </tr>
+        <tr>
+          <td class="row-label">Reference<br><span class="dim" style="font-size:12px;">"a person is skateboarding on the railing"</span></td>
+          <td class="zero">0.01</td><td>0.15</td><td class="highlight">1.30</td><td class="zero">0.02</td>
+          <td class="highlight">1.65</td><td class="zero">0</td><td class="zero">0.01</td><td class="zero">0</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 16px; font-size: 14px;">Both vectors "point in the same direction" — their largest values are in the same dimensions (<span style="color:var(--accent3);">skateboard, railing</span>). The near-zero entries ("a", "on", "the") barely affect the direction. <strong>Cosine similarity</strong> measures the angle between these two vectors: close to 1.0 if they emphasize the same distinctive words, close to 0.0 if they don't.</p>
+  </div>
+
+  <div class="callout">
+    <strong>Key insight:</strong> Each sentence is a point in a high-dimensional space where the axes are n-grams. TF-IDF determines the coordinates. Cosine similarity compares directions rather than magnitudes — so a 5-word candidate and a 20-word reference can still score well if they emphasize the same distinctive n-grams. This is exactly what CIDEr computes.
+  </div>
+</section>
+
+<!-- BLEU -->
+<section id="bleu">
+  <h2><span class="num">03</span> BLEU</h2>
+  <p><strong>Bilingual Evaluation Understudy</strong> (Papineni et al., 2002). Originally from machine translation. Asks: <em>"What fraction of the candidate's n-grams appear in the reference?"</em> — it's a <strong>precision</strong>-focused metric.</p>
+  <div class="vis-box">
+    <div class="label">How BLEU works</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background: rgba(59,130,246,0.2); color: var(--accent2);">1</div>
+        <div class="step-line"></div>
+        <div class="step-content"><strong>Count n-gram matches (clipped).</strong><br><span class="dim">For each n-gram in the candidate, check if it appears in the reference. Clip the count so you can't get credit for repeating a word more times than it appears in the reference. This prevents gaming by repetition — generating "the the the the" can't score high.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background: rgba(16,185,129,0.2); color: var(--accent3);">2</div>
+        <div class="step-line"></div>
+        <div class="step-content"><strong>Compute precision per n-gram order.</strong><br><span class="dim">p<sub>n</sub> = (clipped matches for n-grams of length n) / (total n-grams of length n in candidate). Do this for n = 1, 2, 3, 4.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background: rgba(245,158,11,0.2); color: var(--accent);">3</div>
+        <div class="step-line"></div>
+        <div class="step-content"><strong>Brevity Penalty (BP).</strong><br><span class="dim">If the candidate is shorter than the reference, apply an exponential penalty. This stops the metric from being gamed by very short, safe outputs.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background: rgba(167,139,250,0.2); color: var(--accent5);">4</div>
+        <div class="step-content"><strong>Combine with geometric mean.</strong><br><span class="dim">BLEU is the product of BP and the geometric mean of all p<sub>n</sub>. The geometric mean means if any p<sub>n</sub> = 0, BLEU = 0.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="formula">
+    BLEU = BP · exp( Σ (1/4) · log p<sub>n</sub> )   for n = 1..4<br><br>
+    BP = 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if candidate_len ≥ ref_len<br>
+    BP = exp(1 − ref_len/candidate_len) &nbsp; otherwise
+  </div>
+  <div class="vis-box">
+    <div class="label">Worked example</div>
+    <p><strong>Reference:</strong> "a cat sits on the mat"</p>
+    <p><strong>Candidate:</strong> "a cat is on the mat"</p>
+    <p style="margin-top: 12px; font-size: 14px;">
+      Unigram matches: <span style="color:var(--accent3);">a ✓ cat ✓</span> is <span style="color:var(--accent4);">✗</span> <span style="color:var(--accent3);">on ✓ the ✓ mat ✓</span> → p<sub>1</sub> = 5/6<br>
+      Bigram matches: "a cat" ✓, "cat is" ✗, "is on" ✗, "on the" ✓, "the mat" ✓ → p<sub>2</sub> = 3/5<br>
+      Trigrams: "a cat is" ✗, "cat is on" ✗, "is on the" ✗, "on the mat" ✓ → p<sub>3</sub> = 1/4<br>
+      4-grams: none match → p<sub>4</sub> = 0<br><br>
+      BLEU = 0 because p<sub>4</sub> = 0 kills the geometric mean. In practice, smoothing is applied to avoid this.
+    </p>
+  </div>
+  <p><strong>Weakness for captioning:</strong> BLEU is precision-only — it doesn't penalize missing important reference words. A candidate that says "a cat" gets perfect unigram precision despite ignoring "sits on the mat." The brevity penalty partially compensates but it's a blunt instrument. BLEU also treats all n-grams equally — "the" counts the same as "skateboard."</p>
+</section>
+
+<!-- ROUGE-L -->
+<section id="rouge">
+  <h2><span class="num">04</span> ROUGE-L</h2>
+  <p><strong>Recall-Oriented Understudy for Gisting Evaluation</strong> (Lin, 2004). The ROUGE-L variant uses the <strong>Longest Common Subsequence (LCS)</strong>. Unlike n-grams, a subsequence doesn't need to be contiguous — words just need to appear in the same order.</p>
+  <div class="vis-box">
+    <div class="label">LCS example</div>
+    <p><strong>Reference:</strong> "a cat sits on the mat"</p>
+    <p><strong>Candidate:</strong> "the cat was sitting on a mat"</p>
+    <p style="margin-top: 8px;"><strong>LCS:</strong></p>
+    <div class="match-row" style="margin: 8px 0;">
+      <span class="match-word" style="border-color: var(--accent3); color: var(--accent3); background: rgba(16,185,129,0.1);">cat</span>
+      <span style="color: var(--text-dim); font-size: 14px;">···</span>
+      <span class="match-word" style="border-color: var(--accent3); color: var(--accent3); background: rgba(16,185,129,0.1);">on</span>
+      <span style="color: var(--text-dim); font-size: 14px;">···</span>
+      <span class="match-word" style="border-color: var(--accent3); color: var(--accent3); background: rgba(16,185,129,0.1);">mat</span>
+    </div>
+    <p style="font-size: 14px;" class="dim">LCS length = 3 (could also be "a … on … mat" — same length). These words appear in both sentences in the same relative order, but not necessarily next to each other.</p>
+  </div>
+  <div class="formula">
+    P<sub>lcs</sub> = LCS(c, r) / len(c) &nbsp;&nbsp; <span class="comment">// precision — what fraction of the candidate is "in order"</span><br>
+    R<sub>lcs</sub> = LCS(c, r) / len(r) &nbsp;&nbsp; <span class="comment">// recall — what fraction of the reference is covered</span><br><br>
+    ROUGE-L = (1 + β²) · P · R / (R + β² · P) &nbsp;&nbsp; <span class="comment">// F-measure, β typically 1.2</span>
+  </div>
+  <p><strong>Intuition:</strong> LCS captures structural similarity — are the same words appearing in roughly the same order? — without demanding exact contiguous matches. It's more forgiving than n-gram overlap but coarser than the other metrics. It treats all words equally and doesn't understand synonyms ("sits" ≠ "sitting") or word importance.</p>
+</section>
+
+<!-- METEOR -->
+<section id="meteor">
+  <h2><span class="num">05</span> METEOR</h2>
+  <p><strong>Metric for Evaluation of Translation with Explicit ORdering</strong> (Banerjee &amp; Lavie, 2005). The most linguistically aware of these metrics. It aligns words between candidate and reference using three levels of matching, then scores the quality and order of that alignment.</p>
+
+  <h3>Stage 1 — Word Alignment</h3>
+  <p>Find the best one-to-one alignment between candidate and reference words, trying matchers in priority order:</p>
+  <div class="vis-box">
+    <div class="label">Three match types (in priority order)</div>
+    <p><strong>Ref:</strong> "the team <strong>wins</strong> a <strong>goal</strong> and they <strong>celebrate</strong>"</p>
+    <p><strong>Cand:</strong> "the team <strong>won</strong> a <strong>goal</strong> and they are <strong>celebrating</strong>"</p>
+    <div style="margin-top: 16px;">
+      <div class="match-vis">
+        <div class="match-row">
+          <span class="match-word hit">the</span>
+          <span class="match-word hit">team</span>
+          <span class="match-word stem">won</span>
+          <span class="match-word hit">a</span>
+          <span class="match-word hit">goal</span>
+          <span class="match-word hit">and</span>
+          <span class="match-word hit">they</span>
+          <span class="match-word miss">are</span>
+          <span class="match-word stem">celebrating</span>
+        </div>
+      </div>
+    </div>
+    <div class="legend" style="margin-top: 16px;">
+      <div class="legend-item"><span class="legend-dot" style="background: var(--accent3);"></span> Exact match</div>
+      <div class="legend-item"><span class="legend-dot" style="background: var(--accent);"></span> Stem match (won→win = wins→win, celebrating→celebrate)</div>
+      <div class="legend-item"><span class="legend-dot" style="background: var(--accent5);"></span> Synonym match (via WordNet, e.g. "car" ↔ "automobile")</div>
+      <div class="legend-item"><span class="legend-dot" style="background: var(--accent4);"></span> No match</div>
+    </div>
+  </div>
+
+  <h3>Stage 2 — Scoring</h3>
+  <div class="formula">
+    P = matched / len(candidate)<br>
+    R = matched / len(reference)<br><br>
+    F = (10 · P · R) / (R + 9·P) &nbsp;&nbsp; <span class="comment">// recall-weighted harmonic mean</span><br>
+    <span class="comment">// 9:1 ratio means missing a reference word hurts ~9× more than an extra candidate word</span><br><br>
+    <span class="comment">// Fragmentation penalty — fewer chunks = better word order preservation</span><br>
+    Pen = 0.5 · (chunks / matched)³<br><br>
+    METEOR = F · (1 − Pen)
+  </div>
+  <div class="vis-box">
+    <div class="label">Chunks — why word order matters</div>
+    <p>After alignment, group the matched words into contiguous "chunks" — maximal runs of adjacent aligned words. Fewer chunks means the matched words appear in the original order without interruptions.</p>
+    <p style="margin-top: 12px;"><strong>Good order (1 chunk):</strong> <span style="color:var(--accent3);">[the cat sits on the mat]</span> → Pen ≈ 0.08</p>
+    <p><strong>Scrambled (3 chunks):</strong> <span style="color:var(--accent3);">[the mat]</span> is where <span style="color:var(--accent3);">[the cat]</span> always <span style="color:var(--accent3);">[sits]</span> → Pen ≈ 0.19</p>
+    <p style="margin-top: 12px; font-size: 14px;" class="dim">The cubic exponent makes this penalty gentle for small reorderings but harsh for major scrambles.</p>
+  </div>
+  <p><strong>Key advantages:</strong> Stem and synonym matching make METEOR robust to paraphrasing. "The person is <em>drumming</em>" partially matches "she <em>plays</em> the <em>drums</em>" (stem: drumming→drum), where pure n-gram metrics would see zero overlap. The recall-heavy weighting means missing reference content hurts much more than generating extra words — appropriate for captioning where completeness matters.</p>
+</section>
+
+<!-- CIDEr -->
+<section id="cider">
+  <h2><span class="num">06</span> CIDEr</h2>
+  <p><strong>Consensus-based Image Description Evaluation</strong> (Vedantam et al., 2015). The only metric here designed specifically for image/video captioning. It combines TF-IDF weighting (from Section 02) with cosine similarity. The core idea: <em>reward n-grams that are specific to this image, not generic filler.</em></p>
+  <div class="vis-box">
+    <div class="label">How CIDEr works</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background: rgba(59,130,246,0.2); color: var(--accent2);">1</div>
+        <div class="step-line"></div>
+        <div class="step-content"><strong>Build TF-IDF vectors for n = 1, 2, 3, 4.</strong><br><span class="dim">For each n-gram order, represent both the candidate and reference as vectors (see Section 02 — "From scalar to vector"). Each dimension is one unique n-gram from the corpus vocabulary; its value is the TF-IDF weight of that n-gram in the sentence (0 if absent). "A person" gets low weight; "skateboard on a railing" gets high weight.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background: rgba(16,185,129,0.2); color: var(--accent3);">2</div>
+        <div class="step-line"></div>
+        <div class="step-content"><strong>Cosine similarity per n-gram order.</strong><br><span class="dim">CIDEr<sub>n</sub> = cosine(candidate vector, reference vector). Are the two sparse vectors pointing in the same direction in n-gram space? With multiple references, average the cosine over all refs.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background: rgba(245,158,11,0.2); color: var(--accent);">3</div>
+        <div class="step-content"><strong>Average over n-gram orders, scale by 10.</strong><br><span class="dim">CIDEr = 10 × (1/4) × Σ CIDEr<sub>n</sub> for n=1..4. Perfect score = 10.0.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="formula">
+    <span class="comment">// For n-gram ω in sentence s, corpus D:</span><br>
+    g<sub>ω</sub>(s) = TF(ω, s) · IDF(ω, D)<br><br>
+    <span class="comment">// Collect all g_ω(s) into a vector <b>g</b><sub>n</sub>(s) — one entry per unique n-gram in the vocabulary</span><br><br>
+    <span class="comment">// Per n-gram order, cosine similarity (averaged over references):</span><br>
+    CIDEr<sub>n</sub>(c, R) = (1/|R|) Σ<sub>r∈R</sub> ( <b>g</b><sub>n</sub>(c) · <b>g</b><sub>n</sub>(r) ) / ( ‖<b>g</b><sub>n</sub>(c)‖ · ‖<b>g</b><sub>n</sub>(r)‖ )<br><br>
+    <span class="comment">// Final score:</span><br>
+    CIDEr(c, R) = (10/4) Σ<sub>n=1..4</sub> CIDEr<sub>n</sub>(c, R)
+  </div>
+  <div class="callout">
+    <strong>Why cosine similarity?</strong> Cosine measures the angle between two vectors, ignoring their magnitude. This makes it length-invariant — a verbose 30-word candidate and a terse 8-word reference can still score well if they emphasize the same distinctive n-grams. This is a major advantage over BLEU, where length mismatch directly penalizes precision.
+  </div>
+  <div class="warning-callout">
+    <strong>⚠ The IDF dependency.</strong> Because IDF is computed from the evaluation corpus, CIDEr scores are only meaningful when the corpus is large enough for reliable frequency estimates. With a few dozen captions, the difference between a word appearing in 1 vs 2 captions causes a 2× swing in IDF weight. With thousands of captions, the IDF landscape stabilizes and CIDEr becomes the most informative captioning metric.
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare">
+  <h2><span class="num">07</span> Side-by-Side Comparison</h2>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <div class="metric-name" style="color: var(--accent2);">BLEU</div>
+      <div class="metric-basis" style="background: rgba(59,130,246,0.15); color: var(--accent2);">n-gram precision</div>
+      <p>"What fraction of the candidate's n-grams appear in the reference?"</p>
+    </div>
+    <div class="compare-card">
+      <div class="metric-name" style="color: var(--accent3);">ROUGE-L</div>
+      <div class="metric-basis" style="background: rgba(16,185,129,0.15); color: var(--accent3);">subsequence</div>
+      <p>"What's the longest in-order word overlap?"</p>
+    </div>
+    <div class="compare-card">
+      <div class="metric-name" style="color: var(--accent);">METEOR</div>
+      <div class="metric-basis" style="background: rgba(245,158,11,0.15); color: var(--accent);">alignment</div>
+      <p>"Can we align words using stems and synonyms, preserving order?"</p>
+    </div>
+    <div class="compare-card">
+      <div class="metric-name" style="color: var(--accent5);">CIDEr</div>
+      <div class="metric-basis" style="background: rgba(167,139,250,0.15); color: var(--accent5);">TF-IDF cosine</div>
+      <p>"Do the candidate and reference share the same <em>distinctive</em> n-grams?"</p>
+    </div>
+  </div>
+  <div class="vis-box">
+    <div class="label">Properties at a glance</div>
+    <table class="metric-table">
+      <thead>
+        <tr><th>Property</th><th>BLEU</th><th>ROUGE-L</th><th>METEOR</th><th>CIDEr</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Based on</strong></td><td>n-gram precision</td><td>LCS (F-measure)</td><td>word alignment</td><td>TF-IDF cosine</td></tr>
+        <tr><td><strong>Precision vs Recall</strong></td><td>Precision-heavy</td><td>Recall-weighted</td><td>Recall-heavy (9:1)</td><td>Balanced (cosine)</td></tr>
+        <tr><td><strong>Handles synonyms?</strong></td><td style="color: var(--accent4);">No</td><td style="color: var(--accent4);">No</td><td style="color: var(--accent3);">Yes (WordNet + stems)</td><td style="color: var(--accent4);">No</td></tr>
+        <tr><td><strong>Word order?</strong></td><td>Via higher n-grams</td><td>Yes (subsequence)</td><td>Yes (chunk penalty)</td><td>Via higher n-grams</td></tr>
+        <tr><td><strong>Weighs word importance?</strong></td><td style="color: var(--accent4);">No — all equal</td><td style="color: var(--accent4);">No — all equal</td><td style="color: var(--accent4);">No — all equal</td><td style="color: var(--accent3);">Yes — via IDF</td></tr>
+        <tr><td><strong>Needs large corpus?</strong></td><td style="color: var(--accent3);">No</td><td style="color: var(--accent3);">No</td><td style="color: var(--accent3);">No</td><td style="color: var(--accent);">Yes (for stable IDF)</td></tr>
+        <tr><td><strong>Length-invariant?</strong></td><td style="color: var(--accent4);">No (BP is crude)</td><td>Partially (F-measure)</td><td>Partially (F-measure)</td><td style="color: var(--accent3);">Yes (cosine)</td></tr>
+        <tr><td><strong>Scale</strong></td><td>0 – 1</td><td>0 – 1</td><td>0 – 1</td><td>0 – 10</td></tr>
+        <tr><td><strong>Originally designed for</strong></td><td>Machine translation</td><td>Summarization</td><td>Machine translation</td><td>Image captioning ★</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Which metric to trust for captioning?</h3>
+  <p><strong>CIDEr</strong> is the standard primary metric in image and video captioning — it's the only one here designed for this task, and its TF-IDF weighting directly rewards content-specific descriptions over safe generic text. <strong>METEOR</strong> is a strong secondary metric — robust at any corpus size and handles paraphrasing through stem and synonym matching. <strong>ROUGE-L</strong> is useful as a sanity check for structural overlap. <strong>BLEU</strong> is worth reporting for completeness and cross-paper comparison, but is generally the least informative for captioning evaluation.</p>
+</section>
+
+<section style="padding-bottom: 120px;">
+  <hr class="divider">
+  <p class="dim" style="text-align: center; font-size: 14px;">A visual guide to NLP evaluation metrics for image and video captioning.</p>
+</section>
+
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+});
+</script>
+</body>
+</html>
