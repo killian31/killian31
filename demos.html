@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demos - Killian Steunou</title>
-    <meta name="description" content="Interactive demos that showcase Killian Steunou's applied machine learning work.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Interactive demos showcasing machine learning projects by Killian Steunou.">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -16,8 +15,8 @@
     <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-content">
             <div class="navbar-logo">
-                <img loading="lazy" src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
-                <a href="index.html#hero">Killian Steunou</a>
+                <img loading="lazy" src="assets/logos/logo_K.png" alt="Killian Steunou logo" id="navbar-logo-img">
+                <a href="index.html">Killian Steunou</a>
             </div>
             <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
                 <span class="bar"></span>
@@ -29,63 +28,92 @@
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#experience">Experience</a></li>
                 <li><a href="index.html#education">Education</a></li>
-                <li><a href="index.html#research">Research</a></li>
+                <li><a href="research.html">Research</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="blog.html">Blog <span class="nav-external" aria-hidden="true">↗</span></a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="demos.html">Demos</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="demos.html">Demos <span class="nav-external" aria-hidden="true">↗</span></a></li>
             </ul>
-            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark or light theme">🌙</button>
-        </div>
-    </nav>
-    <main>
-        <header class="page-header">
-            <h1>Demos</h1>
-            <p>Interactive demos that showcase applied machine learning work.</p>
-        </header>
-
-    <section id="demos" class="section projects">
-        <div class="section-content">
-            <div class="demo-container">
-                <div class="demo-item">
-                    <a href="demo_avt.html">
-                        <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="demo-image">
-                        <h3 class="demo-title">Audio Visual Transcription</h3>
-                    </a>
-                </div>
-                <div class="demo-item">
-                    <a href="demo_vbr.html">
-                        <img loading="lazy" src="assets/projects/vbr.gif" alt="Video Background Removal" class="demo-image">
-                        <h3 class="demo-title">Video Background Removal</h3>
-                    </a>
-                </div>
-                <div class="demo-item">
-                    <a href="demo_mathviz.html">
-                        <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz" class="demo-image">
-                        <h3 class="demo-title">MathViz</h3>
-                    </a>
-                </div>
+            <div class="nav-actions">
+                <a class="nav-pill" href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Dark</button>
             </div>
         </div>
-    </section>
+    </nav>
+
+    <main>
+        <header class="page-hero">
+            <div class="page-shell">
+                <p class="eyebrow">Demos</p>
+                <h1>Interactive surfaces for testing models, workflows, and ideas outside the paper.</h1>
+                <p class="page-copy">
+                    These demos are meant to make the work tangible: interfaces where you can try the underlying model,
+                    understand the user-facing tradeoffs, and see what the project feels like when it stops being abstract.
+                </p>
+            </div>
+        </header>
+
+        <section class="scene scene-muted">
+            <div class="page-shell">
+                <div class="demo-container">
+                    <article class="demo-item reveal">
+                        <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription demo preview" class="demo-image">
+                        <h3 class="demo-title">Audio Visual Transcription</h3>
+                        <p>Subtitle audio and video content quickly with a Whisper-powered demo workflow.</p>
+                        <div class="inline-actions">
+                            <a href="demo_avt.html">Open demo</a>
+                            <a href="https://github.com/killian31/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </article>
+
+                    <article class="demo-item reveal">
+                        <img loading="lazy" src="assets/projects/vbr.gif" alt="Video Background Removal demo preview" class="demo-image">
+                        <h3 class="demo-title">Video Background Removal</h3>
+                        <p>Segment and remove video backgrounds with a lightweight, interactive interface.</p>
+                        <div class="inline-actions">
+                            <a href="demo_vbr.html">Open demo</a>
+                            <a href="https://github.com/killian31/VideoBackgroundRemoval" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </article>
+
+                    <article class="demo-item reveal">
+                        <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz demo preview" class="demo-image">
+                        <h3 class="demo-title">MathViz</h3>
+                        <p>Visual explanations for mathematics, statistics, machine learning, and algorithms.</p>
+                        <div class="inline-actions">
+                            <a href="demo_mathviz.html">Open demo</a>
+                            <a href="https://github.com/killian31/MathViz" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-      <div class="footer-content">
-        <div class="footer-social">
-          <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
-          </a>
-          <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
-          </a>
-          <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-            <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
-          </a>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div>
+                    <p class="footer-brand">Killian Steunou</p>
+                    <p class="footer-note">Demos are where research starts to feel real.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+                        <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <p>&copy; 2026 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
+                <p class="footer-note">Built with plain HTML, CSS, and JavaScript.</p>
+            </div>
         </div>
-        <p>&copy; 2025 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
-        <p class="footer-note">Built with ❤️ and vanilla JS</p>
-      </div>
     </footer>
 
     <script src="script.js"></script>

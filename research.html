@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Projects</title>
-    <meta name="description" content="Detailed research projects and replications completed by Killian Steunou.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Research - Killian Steunou</title>
+    <meta name="description" content="Research projects and replications by Killian Steunou across robustness, generative modeling, adaptation, and multimodal learning.">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -16,8 +15,8 @@
     <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-content">
             <div class="navbar-logo">
-                <img loading="lazy" src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
-                <a href="index.html#hero">Killian Steunou</a>
+                <img loading="lazy" src="assets/logos/logo_K.png" alt="Killian Steunou logo" id="navbar-logo-img">
+                <a href="index.html">Killian Steunou</a>
             </div>
             <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
                 <span class="bar"></span>
@@ -29,142 +28,151 @@
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#experience">Experience</a></li>
                 <li><a href="index.html#education">Education</a></li>
-                <li><a href="index.html#research">Research</a></li>
+                <li><a href="research.html">Research</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="blog.html">Blog <span class="nav-external" aria-hidden="true">↗</span></a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="demos.html">Demos</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="demos.html">Demos <span class="nav-external" aria-hidden="true">↗</span></a></li>
             </ul>
-            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark or light theme">🌙</button>
+            <div class="nav-actions">
+                <a class="nav-pill" href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Dark</button>
+            </div>
         </div>
     </nav>
+
     <main>
-    <header class="page-header">
-        <h1>Research Projects</h1>
-        <p>Replications, reports, and original research that explore trustworthy, efficient, and accessible machine learning.</p>
-    </header>
+        <header class="page-hero">
+            <div class="page-shell">
+                <p class="eyebrow">Research</p>
+                <h1>Replications, reports, and original work across robustness, adaptation, and generative modeling.</h1>
+                <p class="page-copy">
+                    This page collects the projects where I used research as a craft: reading closely, reproducing carefully,
+                    testing assumptions, and trying to understand what really changes when a method leaves the paper.
+                </p>
+                <div class="stat-row">
+                    <span class="stat-chip">Robustness</span>
+                    <span class="stat-chip">Optimal transport</span>
+                    <span class="stat-chip">Adaptation</span>
+                    <span class="stat-chip">3D detection</span>
+                </div>
+            </div>
+        </header>
 
-    <section id="research-container" class="section research research-page">
-        <div class="research-grid">
-            <div class="research-card">
-                <h3>Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
-                <p><strong>Authors:</strong> Killian Steunou, Théo Druilhe, Sigurd Saue</p>
-                <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer">arXiv Preprint</a>
-                <a href="https://github.com/killian31/SPCARobustness" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                <p><strong>Abstract:</strong>
-                Deep neural networks perform remarkably well on image classification tasks but remain fragile under adversarial perturbations.
-                We revisit linear dimensionality reduction as a data-adapted defense and compare standard Principal Component Analysis (PCA) with
-                Sparse PCA (SPCA) as front-end feature extractors. The project combines theory and practice: we derive robustness certificates for
-                linear heads in both L2 and L∞ threat models and show that sparsity tightens Lipschitz bounds for non-linear heads, thereby lowering
-                input sensitivity. Empirically, SPCA paired with a lightweight classifier degrades more gracefully than PCA under strong white-box and
-                black-box attacks while keeping competitive clean accuracy.
-                </p>
-            </div>
-            <div class="research-card">
-                <h3>Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
-                <p><strong>Authors:</strong> Max Daniels, Tyler Maunu, Paul Hand</p>
-                <a href="https://arxiv.org/abs/2110.03237" target="_blank" rel="noopener noreferrer">Original Paper</a>
-                <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Download Report</a>
-                <a href="https://github.com/killian31/scones-synthetic" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                <p><strong>Abstract:</strong>
-                We reproduced the hybrid approach that injects score-based generative models into regularized optimal transport to handle
-                large-scale datasets. Classical Sinkhorn-style regularization accelerates computation but tends to blur transport maps. By
-                parameterizing dual variables with neural networks and sampling through Langevin dynamics (the SCONES framework), the method
-                recovers sharper couplings without exploding compute budgets. Our experiments on synthetic distributions confirm the reported
-                gains over barycentric projection baselines and highlight how regularization strength and sampler noise control the quality of
-                the recovered maps.
-                </p>
-            </div>
+        <section class="scene scene-muted">
+            <div class="page-shell">
+                <div class="research-grid">
+                    <article class="research-card reveal">
+                        <div class="story-meta">2025 / Original work</div>
+                        <h3>Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
+                        <p>Killian Steunou, Théo Druilhe, Sigurd Saue</p>
+                        <p>We revisit linear dimensionality reduction as a defense and compare PCA with Sparse PCA as front-end feature extractors for adversarial robustness.</p>
+                        <div class="story-links">
+                            <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer">Preprint</a>
+                            <a href="https://github.com/killian31/SPCARobustness" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </article>
 
-            <div class="research-card">
-                <h3>Test Time Training with Masked Autoencoders</h3>
-                <p><strong>Authors:</strong> Yossi Gandelsman, Yu Sun, Xinlei Chen, Alexei A Efros</p>
-                <a href="https://arxiv.org/abs/2209.07522" target="_blank" rel="noopener noreferrer">Original Paper</a>
-                <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Download Report</a>
-                <a href="https://github.com/killian31/ttt_mae_online" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                <p><strong>Abstract:</strong>
-                Test-time training (TTT) adapts models on the fly to fight distribution shift. We evaluated TTT-MAE, which pairs Masked
-                Autoencoders with TTT, on the ImageNet-C benchmark. The method consistently improved robustness across all corruption types and
-                highlighted an interesting failure mode: the reconstruction and classification objectives can decouple if the masking ratio is
-                poorly tuned. We also explored an online variant that keeps encoder weights between samples and observed steady cumulative
-                improvements, suggesting that lightweight adaptation during deployment is a practical path forward.
-                </p>
-            </div>
+                    <article class="research-card reveal">
+                        <div class="story-meta">2024 / Reproduction</div>
+                        <h3>Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
+                        <p>Original paper by Max Daniels, Tyler Maunu, Paul Hand</p>
+                        <p>I reproduced the hybrid score-based transport approach and studied how regularization and sampling affect the quality of recovered maps.</p>
+                        <div class="story-links">
+                            <a href="https://arxiv.org/abs/2110.03237" target="_blank" rel="noopener noreferrer">Original paper</a>
+                            <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                            <a href="https://github.com/killian31/scones-synthetic" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </article>
 
-            <div class="research-card">
-                <h3>Are Generative Classifiers More Robust to Adversarial Attacks?</h3>
-                <p><strong>Authors:</strong> Yingzhen Li, John Bradshaw, Yash Sharma</p>
-                <a href="https://arxiv.org/abs/1802.06552" target="_blank" rel="noopener noreferrer">Original Paper</a>
-                <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Download Report</a>
-                <a href="https://github.com/killian31/DeepBayesTorch" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                <p><strong>Abstract:</strong>
-                We revisited the question “Are generative classifiers more robust to adversarial attacks?” by reimplementing the original MNIST
-                experiments and extending them to the German Traffic Sign Recognition Benchmark. Despite the theoretical appeal of generative
-                models, our empirical evaluation under black-box attacks could not establish a clear robustness advantage over carefully tuned
-                discriminative baselines, reinforcing how nuanced adversarial robustness claims can be.
-                </p>
-            </div>
+                    <article class="research-card reveal">
+                        <div class="story-meta">2024 / Adaptation</div>
+                        <h3>Test Time Training with Masked Autoencoders</h3>
+                        <p>Original paper by Yossi Gandelsman, Yu Sun, Xinlei Chen, Alexei A. Efros</p>
+                        <p>I evaluated TTT-MAE on corruption benchmarks and explored an online variant that retains encoder updates between samples.</p>
+                        <div class="story-links">
+                            <a href="https://arxiv.org/abs/2209.07522" target="_blank" rel="noopener noreferrer">Original paper</a>
+                            <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                            <a href="https://github.com/killian31/ttt_mae_online" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </article>
 
-            <div class="research-card">
-                <h3>Toxic Gas Characterization</h3>
-                <p><strong>Authors:</strong> Killian Steunou</p>
-                <p><strong>Abstract:</strong>
-                Toxic gas characterization is hampered by sensor drift caused by humidity shifts between training and deployment. We benchmarked a
-                range of strategies—from Random Forests and XGBoost to a custom RAMTNet multi-task network—and combined them with adversarial
-                domain adaptation. Simulating test humidity inside the training split and using a two-stage classification/regression pipeline
-                delivered the best trade-off, reaching a weighted RMSE of 0.154 (vs. the 0.157 baseline) while remaining stable across humidity
-                regimes.
-                </p>
-                <a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Download Report</a>
-                <a href="https://github.com/killian31/IdGas" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-            </div>
+                    <article class="research-card reveal">
+                        <div class="story-meta">2023 / Robustness</div>
+                        <h3>Are Generative Classifiers More Robust to Adversarial Attacks?</h3>
+                        <p>Original paper by Yingzhen Li, John Bradshaw, Yash Sharma</p>
+                        <p>I revisited the robustness claims around generative classifiers and extended the original setup beyond MNIST to a more realistic dataset.</p>
+                        <div class="story-links">
+                            <a href="https://arxiv.org/abs/1802.06552" target="_blank" rel="noopener noreferrer">Original paper</a>
+                            <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                            <a href="https://github.com/killian31/DeepBayesTorch" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </article>
 
-            <div class="research-card">
-                <h3>Convergence of SGD for Training Neural Networks with Sliced Wasserstein Losses</h3>
-                <p><strong>Authors:</strong> Eloi Tanguy</p>
-                <a href="https://arxiv.org/abs/2307.11714" target="_blank" rel="noopener noreferrer">Original Paper</a>
-                <a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Download Report</a>
-                <a href="https://github.com/francklaborde/Generative-modeling-project" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                <p><strong>Abstract:</strong>
-We verified the convergence guarantees presented for training neural networks with sliced Wasserstein losses by recreating the experiments on
-both 2D distributions and Fashion-MNIST. The study also covers Noise Projected SGD, an alternative optimizer that projects gradient noise onto
-the tangent space to stabilize updates. Our reproduction confirms the empirical convergence rates claimed in the paper and highlights scenarios
-where NPSGD enjoys faster progress than vanilla SGD.
-                </p>
-            </div>
+                    <article class="research-card reveal">
+                        <div class="story-meta">2023 / Applied ML</div>
+                        <h3>Toxic Gas Characterization</h3>
+                        <p>Independent applied project</p>
+                        <p>I studied domain shift caused by humidity changes and combined multi-task learning with adversarial adaptation for more stable gas characterization.</p>
+                        <div class="story-links">
+                            <a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                            <a href="https://github.com/killian31/IdGas" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </article>
 
-            <div class="research-card">
-                <h3>An End-to-End Transformer Model for 3D Object Detection</h3>
-                <p><strong>Authors:</strong> Ishan Misra, Rohit Girdhar, Armand Joulin</p>
-                <a href="https://arxiv.org/abs/2109.08141" target="_blank" rel="noopener noreferrer">Original Paper</a>
-                <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Download Report</a>
-                <p><strong>Abstract:</strong>
-                3DETR extends DETR’s transformer architecture to 3D point clouds with minimal inductive bias and without the need for hand-crafted
-                proposals or pretraining. We reproduced the method, evaluated it on SUN RGB-D, and studied how query count impacts performance.
-                We also prototyped an RGB-enhanced variant that consumes colorized point clouds. The experiments confirmed that a streamlined
-                transformer pipeline can remain competitive with heavily engineered 3D detectors.
-                </p>
+                    <article class="research-card reveal">
+                        <div class="story-meta">2023 / Optimization</div>
+                        <h3>Convergence of SGD for Training Neural Networks with Sliced Wasserstein Losses</h3>
+                        <p>Original paper by Eloi Tanguy</p>
+                        <p>We verified convergence behavior for sliced Wasserstein training on toy distributions and Fashion-MNIST, including a look at Noise Projected SGD.</p>
+                        <div class="story-links">
+                            <a href="https://arxiv.org/abs/2307.11714" target="_blank" rel="noopener noreferrer">Original paper</a>
+                            <a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                            <a href="https://github.com/francklaborde/Generative-modeling-project" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </article>
+
+                    <article class="research-card reveal">
+                        <div class="story-meta">2023 / 3D Vision</div>
+                        <h3>An End-to-End Transformer Model for 3D Object Detection</h3>
+                        <p>Original paper by Ishan Misra, Rohit Girdhar, Armand Joulin</p>
+                        <p>I reproduced 3DETR on SUN RGB-D and explored how an RGB-enhanced variant compares to the original point-cloud-only pipeline.</p>
+                        <div class="story-links">
+                            <a href="https://arxiv.org/abs/2109.08141" target="_blank" rel="noopener noreferrer">Original paper</a>
+                            <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                        </div>
+                    </article>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
     </main>
+
     <footer>
-      <div class="footer-content">
-        <div class="footer-social">
-          <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
-          </a>
-          <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
-          </a>
-          <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-            <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
-          </a>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div>
+                    <p class="footer-brand">Killian Steunou</p>
+                    <p class="footer-note">Research work that tries to stay both rigorous and useful.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+                        <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <p>&copy; 2026 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
+                <p class="footer-note">Built with plain HTML, CSS, and JavaScript.</p>
+            </div>
         </div>
-        <p>&copy; 2025 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
-        <p class="footer-note">Built with ❤️ and vanilla JS</p>
-      </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

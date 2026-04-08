@@ -7,17 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0e1117;
-  --surface: #161b22;
-  --surface2: #1c2230;
-  --border: #2a3140;
-  --text: #e2e8f0;
-  --text-dim: #8896ab;
-  --accent: #f59e0b;
-  --accent2: #3b82f6;
-  --accent3: #10b981;
-  --accent4: #ef4444;
-  --accent5: #a78bfa;
+  --bg: #151311;
+  --surface: #1f1b18;
+  --surface2: #27221e;
+  --border: #3c342d;
+  --text: #f3e7da;
+  --text-dim: #b9aa9a;
+  --accent: #d18468;
+  --accent2: #a5b49e;
+  --accent3: #d2ab73;
+  --accent4: #d78973;
+  --accent5: #bba0c8;
   --serif: 'DM Serif Display', Georgia, serif;
   --sans: 'IBM Plex Sans', -apple-system, sans-serif;
   --mono: 'IBM Plex Mono', monospace;
@@ -34,7 +34,7 @@ body {
 }
 nav {
   position: fixed; top:0; left:0; right:0; z-index:100;
-  background: rgba(14,17,23,0.85);
+  background: rgba(21,19,17,0.86);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 12px 32px;
@@ -44,7 +44,7 @@ nav a {
   color: var(--text-dim); text-decoration: none; font-size: 13px;
   font-family: var(--mono); padding: 4px 10px; border-radius: 6px; transition: all 0.2s;
 }
-nav a:hover, nav a.active { color: var(--accent); background: rgba(245,158,11,0.1); }
+nav a:hover, nav a.active { color: var(--accent); background: rgba(209,132,104,0.1); }
 nav .nav-title {
   font-family: var(--serif); color: var(--text); font-size: 15px;
   margin-right: 16px; padding-right: 16px; border-right: 1px solid var(--border);
@@ -54,7 +54,7 @@ section { max-width: 860px; margin: 0 auto; padding: 100px 32px 60px; }
 section:first-of-type { padding-top: 120px; }
 h1 {
   font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); line-height: 1.15; margin-bottom: 20px;
-  background: linear-gradient(135deg, var(--accent), #fbbf24);
+  background: linear-gradient(135deg, var(--accent), #efb394);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 h2 {
@@ -63,7 +63,7 @@ h2 {
 }
 h2 .num {
   font-family: var(--mono); font-size: 14px; color: var(--accent);
-  background: rgba(245,158,11,0.12); padding: 4px 10px; border-radius: 6px;
+  background: rgba(209,132,104,0.12); padding: 4px 10px; border-radius: 6px;
 }
 h3 { font-family: var(--sans); font-weight: 600; font-size: 20px; margin: 32px 0 12px; color: var(--accent2); }
 p { margin-bottom: 16px; color: var(--text); }

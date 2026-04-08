@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Killian Steunou</title>
-    <meta name="description" content="Articles and long-form notes by Killian Steunou on machine learning and video understanding.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Long-form writing by Killian Steunou on machine learning, evaluation, and video understanding.">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -16,8 +15,8 @@
     <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-content">
             <div class="navbar-logo">
-                <img loading="lazy" src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
-                <a href="index.html#hero">Killian Steunou</a>
+                <img loading="lazy" src="assets/logos/logo_K.png" alt="Killian Steunou logo" id="navbar-logo-img">
+                <a href="index.html">Killian Steunou</a>
             </div>
             <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
                 <span class="bar"></span>
@@ -31,64 +30,92 @@
                 <li><a href="index.html#education">Education</a></li>
                 <li><a href="index.html#research">Research</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="blog.html">Blog <span class="nav-external" aria-hidden="true">↗</span></a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="demos.html">Demos</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="demos.html">Demos <span class="nav-external" aria-hidden="true">↗</span></a></li>
             </ul>
-            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark or light theme">🌙</button>
+            <div class="nav-actions">
+                <a class="nav-pill" href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Dark</button>
+            </div>
         </div>
     </nav>
 
     <main>
-        <header class="page-header">
-            <h1>Blog</h1>
-            <p>Long-form writing and analysis on machine learning research, trends, and practical deployment constraints.</p>
+        <header class="page-hero">
+            <div class="page-shell">
+                <p class="eyebrow">Writing</p>
+                <h1>Research notes, visual explainers, and deployment-oriented analysis.</h1>
+                <p class="page-copy">
+                    I use this space for long-form pieces that clarify how ideas move from papers and metrics into actual reasoning tools.
+                    The focus is usually machine learning, video understanding, and the constraints that shape useful systems.
+                </p>
+                <div class="stat-row">
+                    <span class="stat-chip">2 published articles</span>
+                    <span class="stat-chip">Research analysis</span>
+                    <span class="stat-chip">Visual explainers</span>
+                </div>
+            </div>
         </header>
 
-        <div class="blog-listing">
-            <article class="blog-card featured reveal" data-reveal="fade-up">
-                <div class="blog-card-meta">
-                    <span class="blog-card-tag">Research Analysis</span>
-                    <span class="blog-card-date">February 2026</span>
-                    <span class="blog-card-reading-time">📖 12 min read</span>
+        <section class="scene scene-muted">
+            <div class="page-shell">
+                <div class="blog-listing">
+                    <article class="blog-card featured reveal">
+                        <div class="blog-card-meta">
+                            <span class="blog-card-tag">Research Analysis</span>
+                            <span>February 2026</span>
+                            <span>12 min read</span>
+                        </div>
+                        <h3><a href="blog/efficiency_video_understanding.html">Efficiency Follows Capability: A Decade of Video Understanding Research Trends</a></h3>
+                        <p>
+                            An analysis of how computational efficiency evolved from a marginal concern to a central research objective in video understanding,
+                            using arXiv publication trends from 2015 to 2025.
+                        </p>
+                        <a href="blog/efficiency_video_understanding.html" class="blog-card-link">Read article</a>
+                    </article>
+
+                    <article class="blog-card featured reveal">
+                        <div class="blog-card-meta">
+                            <span class="blog-card-tag">Visual Guide</span>
+                            <span>April 2026</span>
+                            <span>15 min read</span>
+                        </div>
+                        <h3><a href="blog/nlp_metrics_visual_guide.html">NLP Metrics for Image &amp; Video Captioning: A Visual Guide</a></h3>
+                        <p>
+                            A visual walkthrough of n-grams, TF-IDF, BLEU, ROUGE-L, METEOR, and CIDEr, with worked examples aimed at image and video captioning research.
+                        </p>
+                        <a href="blog/nlp_metrics_visual_guide.html" class="blog-card-link">Read article</a>
+                    </article>
                 </div>
-                <h3><a href="blog/efficiency_video_understanding.html">Efficiency Follows Capability: A Decade of Video Understanding Research Trends</a></h3>
-                <p>
-                    An analysis of how computational efficiency evolved from a marginal concern to a central research objective in video understanding, based on arXiv publication trends from 2015 to 2025. Includes interactive charts tracking the rise of efficiency-focused work from 0% to nearly 40% of the field.
-                </p>
-                <a href="blog/efficiency_video_understanding.html" class="blog-card-link">Read article</a>
-            </article>
-            <article class="blog-card featured reveal" data-reveal="fade-up">
-                <div class="blog-card-meta">
-                    <span class="blog-card-tag">Visual Guide</span>
-                    <span class="blog-card-date">April 2026</span>
-                    <span class="blog-card-reading-time">📖 15 min read</span>
-                </div>
-                <h3><a href="blog/nlp_metrics_visual_guide.html">NLP Metrics for Image & Video Captioning: A Visual Guide</a></h3>
-                <p>
-                    An interactive walkthrough of the building blocks — n-grams and TF-IDF — and the four evaluation metrics used in every captioning paper: BLEU, ROUGE-L, METEOR, and CIDEr. Includes worked examples, visual explanations of TF-IDF vectors and cosine similarity, and a side-by-side comparison table.
-                </p>
-                <a href="blog/nlp_metrics_visual_guide.html" class="blog-card-link">Read article</a>
-            </article>
-        </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-      <div class="footer-content">
-        <div class="footer-social">
-          <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
-          </a>
-          <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
-          </a>
-          <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-            <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
-          </a>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div>
+                    <p class="footer-brand">Killian Steunou</p>
+                    <p class="footer-note">Writing about machine learning with the same rigor I expect from code and experiments.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+                        <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <p>&copy; 2026 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
+                <p class="footer-note">Built with plain HTML, CSS, and JavaScript.</p>
+            </div>
         </div>
-        <p>&copy; 2025 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
-        <p class="footer-note">Built with ❤️ and vanilla JS</p>
-      </div>
     </footer>
 
     <script src="script.js"></script>

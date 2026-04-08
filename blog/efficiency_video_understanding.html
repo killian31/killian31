@@ -594,8 +594,8 @@
             <img src="../assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
           </a>
         </div>
-        <p>&copy; 2025 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
-        <p class="footer-note">Built with ❤️ and vanilla JS</p>
+        <p>&copy; 2026 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
+        <p class="footer-note">Built with plain HTML, CSS, and JavaScript.</p>
       </div>
     </footer>
 
@@ -620,16 +620,18 @@
 
       // Detect theme for chart colors
       const isDark = !document.body.classList.contains('light-mode');
-      const chartBg = isDark ? 'rgba(55, 52, 53, 0.95)' : '#ffffff';
-      const chartPlotBg = isDark ? 'rgba(47, 45, 46, 0.6)' : '#FAFAFA';
-      const chartFont = isDark ? '#d9d0de' : '#2f2d2e';
-      const chartGrid = isDark ? 'rgba(217,208,222,0.1)' : '#eee';
+      const sage = isDark ? '#a5b49e' : '#7f9279';
+      const terracotta = isDark ? '#d18468' : '#b65d48';
+      const chartBg = isDark ? 'rgba(28, 24, 21, 0.96)' : '#fffaf4';
+      const chartPlotBg = isDark ? 'rgba(19, 17, 15, 0.88)' : '#f7f1ea';
+      const chartFont = isDark ? '#f2e7db' : '#1f1b18';
+      const chartGrid = isDark ? 'rgba(242,231,219,0.08)' : 'rgba(31,27,24,0.08)';
 
       const config = { responsive: true, displayModeBar: true };
       const baseLayout = {
         font: {
           family:
-            "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
+            "Manrope, Helvetica Neue, Arial, sans-serif",
           size: 12,
           color: chartFont,
         },
@@ -641,8 +643,8 @@
         legend: {
           x: 0.01,
           y: 0.99,
-          bgcolor: isDark ? 'rgba(55,52,53,0.8)' : 'rgba(255,255,255,0.8)',
-          bordercolor: isDark ? 'rgba(217,208,222,0.15)' : '#DDD',
+          bgcolor: isDark ? 'rgba(28,24,21,0.84)' : 'rgba(255,250,244,0.9)',
+          bordercolor: isDark ? 'rgba(242,231,219,0.12)' : 'rgba(31,27,24,0.12)',
           borderwidth: 1,
           font: { color: chartFont },
         },
@@ -658,10 +660,10 @@
           name: "Video Understanding",
           type: "scatter",
           mode: "lines+markers",
-          line: { color: "#689d71", width: 3 },
-          marker: { size: 8, color: "#689d71" },
+          line: { color: sage, width: 3 },
+          marker: { size: 8, color: sage },
           fill: "tozeroy",
-          fillcolor: "rgba(104, 157, 113, 0.1)",
+          fillcolor: isDark ? "rgba(165, 180, 158, 0.12)" : "rgba(127, 146, 121, 0.12)",
           hovertemplate:
             "<b>Video Understanding</b><br>Year: %{x}<br>Papers: %{y}<extra></extra>",
         },
@@ -695,7 +697,7 @@
           name: "All Video Understanding",
           type: "scatter",
           mode: "lines+markers",
-          line: { color: "#689d71", width: 2 },
+          line: { color: sage, width: 2 },
           marker: { size: 6 },
           hovertemplate:
             "<b>All Video Understanding</b><br>Year: %{x}<br>Papers: %{y}<extra></extra>",
@@ -706,7 +708,7 @@
           name: "Efficient Video Understanding",
           type: "scatter",
           mode: "lines+markers",
-          line: { color: "#7776bc", width: 3 },
+          line: { color: terracotta, width: 3 },
           marker: { size: 7 },
           hovertemplate:
             "<b>Efficient Video Understanding</b><br>Year: %{x}<br>Papers: %{y}<extra></extra>",
@@ -741,14 +743,14 @@
           name: "Efficiency Share",
           type: "scatter",
           mode: "lines+markers",
-          line: { color: "#eb5e28", width: 3 },
+          line: { color: terracotta, width: 3 },
           marker: {
             size: 8,
-            color: "#eb5e28",
-            line: { color: isDark ? '#2f2d2e' : '#ffffff', width: 2 },
+            color: terracotta,
+            line: { color: isDark ? '#171513' : '#fffaf4', width: 2 },
           },
           fill: "tozeroy",
-          fillcolor: "rgba(235, 94, 40, 0.15)",
+          fillcolor: isDark ? "rgba(209, 132, 104, 0.18)" : "rgba(182, 93, 72, 0.14)",
           hovertemplate:
             "<b>Efficiency Share</b><br>Year: %{x}<br>Share: %{y:.1f}%<extra></extra>",
         },
@@ -809,7 +811,7 @@
           y: vuGrowth,
           name: "Video Understanding Growth",
           type: "bar",
-          marker: { color: "#689d71", opacity: 0.7 },
+          marker: { color: sage, opacity: 0.76 },
           hovertemplate:
             "<b>Video Understanding</b><br>Year: %{x}<br>YoY Growth: %{y:.1f}%<extra></extra>",
         },
@@ -818,7 +820,7 @@
           y: effGrowth,
           name: "Efficient VU Growth",
           type: "bar",
-          marker: { color: "#7776bc", opacity: 0.7 },
+          marker: { color: terracotta, opacity: 0.76 },
           hovertemplate:
             "<b>Efficient Video Understanding</b><br>Year: %{x}<br>YoY Growth: %{y:.1f}%<extra></extra>",
         },

@@ -6,28 +6,25 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-04EMWV24G9');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Killian Steunou, Killian, Steunou, AI, Artificial Intelligence, Machine Learning, Deep Learning, Data Science, Data Scientist, Data Analyst, Data Analysis, Data, Analyst, Analysis, Mathematics, Statistics, Applied Mathematics, Applied Statistics, Mathematics and Statistics, TSE, Toulouse School of Economics, Toulouse, France, French, English, French and English, French and English speaker, French speaker, English speaker, French and English speaking, French speaking, English speaking.">
+    <meta name="keywords" content="Killian Steunou, machine learning, computer vision, multimodal learning, deep learning, statistics, applied mathematics, video understanding, research engineer, portfolio">
     <title>Killian Steunou</title>
-    <meta name="description" content="Killian Steunou's personal portfolio showcasing expertise in AI, Mathematics, and Statistics.">
+    <meta name="description" content="Killian Steunou's portfolio. Industrial PhD student in machine learning focused on efficient multimodal learning and generalized video understanding.">
     <link rel="stylesheet" href="style.css">
-
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-    <canvas id="neural-bg" aria-hidden="true"></canvas>
     <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-content">
             <div class="navbar-logo">
-                <img loading="lazy" src="assets/logos/logo_K.png" alt="Logo Killian Steunou" id="navbar-logo-img">
-                <a href="index.html#hero">Killian Steunou</a>
+                <img loading="lazy" src="assets/logos/logo_K.png" alt="Killian Steunou logo" id="navbar-logo-img">
+                <a href="index.html">Killian Steunou</a>
             </div>
             <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
                 <span class="bar"></span>
@@ -42,573 +39,650 @@
                 <li><a href="#research">Research</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="blog.html">Blog <span class="nav-external" aria-hidden="true">↗</span></a></li>
-                <li><a href="#contact">Contact</a></li>
                 <li><a href="demos.html">Demos <span class="nav-external" aria-hidden="true">↗</span></a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark or light theme">🌙</button>
+            <div class="nav-actions">
+                <a class="nav-pill" href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Dark</button>
+            </div>
         </div>
     </nav>
+
     <main>
-    <!-- Hero Section -->
-    <div id="scroll-progress-bar"></div>
-    <section id="hero" class="section hero reveal" data-reveal="fade-up">
-        <div class="section-content">
-            <h1>Hi, I'm Killian!</h1>
-            <p id="hero-tagline">Computer Vision</p>
-            <p>A machine learning PhD student passionate about building intelligent visual systems</p>
-            <a href="#about" class="cta-button" data-analytics="cta_about">About me</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about reveal" data-reveal="fade-up">
-        <div class="section-content about-flex">
-            <div class="about-photo-col reveal" data-reveal="fade-left">
-              <img loading="lazy" src="assets/profile/profile-picture.jpg" alt="Killian Steunou" class="profile-picture-neural" id="profile-pic">
-              <div class="about-social">
-                <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" class="about-social-btn linkedin">
-                  <img loading="lazy" src="assets/logos/LI-In-Bug.png" alt="LinkedIn"> LinkedIn
-                </a>
-                <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" class="about-social-btn github">
-                  <img loading="lazy" src="assets/logos/github-mark-white.png" alt="GitHub"> GitHub
-                </a>
-                <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" class="about-social-btn google-scholar">
-                  <img loading="lazy" src="assets/logos/logo_google_scholar.png" alt="Google Scholar"> Google Scholar
-                </a>
-                <a href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer" download class="about-social-btn cv">
-                  <img loading="lazy" src="assets/logos/download-icon.png" alt="Resume"> CV
-                </a>
-              </div>
-            </div>
-            <div class="about-text-col reveal" data-reveal="fade-right">
-                <h2>About Me</h2>
-                <p style="text-align: justify;">
-                I'm currently pursuing an industrial PhD in Machine Learning at Institut Polytechnique de Paris and Moments Lab,
-                focusing on efficient omni-modal learning for generalized video understanding.
-                </p>
-                <p style="text-align: justify;">
-                I am passionate about computer vision and deep learning, driven by the conviction 
-                that visual perception is fundamental to intelligence, both human and 
-                artificial.
-                </p>
-                <p style="text-align: justify;">
-                I strongly support open-source practices, transparency, and reproducibility
-                in research. Sharing my work openly to allow others to build upon it is 
-                central to my approach to science.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-<section id="experience" class="section experience reveal" data-reveal="fade-up">
-    <div class="section-content">
-        <h2>Professional Experiences</h2>
-        <div class="experience-list reveal" data-reveal="stagger">
-            <!-- EXPERIENCE 5 -->
-            <div class="experience-card">
-                <div class="exp-header">
-                    <a href="https://www.momentslab.com" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="assets/logos/logo_moments_lab.png" alt="Moments Lab Logo" class="exp-logo"></a>
-                    <div>
-                        <div class="exp-job">Machine Learning PhD Student<br>
-                            <span class="at-company"><a href="https://www.momentslab.com" target="_blank" rel="noopener noreferrer">Moments Lab</a></span>
+        <section id="hero" class="scene hero-scene">
+            <div class="scene-shell hero-grid">
+                <div class="hero-copy reveal">
+                    <span class="eyebrow-chip">Industrial PhD / Computer Vision / Multimodal Learning</span>
+                    <p class="eyebrow">Killian Steunou</p>
+                    <h1 class="display">Building efficient visual systems for the messy, multimodal world.</h1>
+                    <p class="hero-lead">
+                        I am an industrial PhD student at Institut Polytechnique de Paris and Moments Lab,
+                        working on efficient omni-modal learning for generalized video understanding.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#research" class="button button-primary">View research</a>
+                        <a href="#contact" class="button button-secondary">Start a conversation</a>
+                    </div>
+                    <div class="hero-facts">
+                        <div class="fact-card">
+                            <strong>PhD</strong>
+                            <span>Industry and academia, since November 2025</span>
                         </div>
-                        <div class="exp-duration">November 2025 - Present</div>
-                    </div>
-                </div>
-                <div class="exp-role-title">Efficient Omni-Modal Learning for Generalized Video Understanding</div>
-            </div>
-            <!-- EXPERIENCE 4 -->
-            <div class="experience-card">
-                <div class="exp-header">
-                    <a href="https://www.idemia.com/business/idemia-public-security" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="assets/logos/logo_idemia.png" alt="Idemia Logo" class="exp-logo"></a>
-                    <div>
-                        <div class="exp-job">Deep Learning Research Engineer Intern<br>
-                            <span class="at-company"><a href="https://www.idemia.com/business/idemia-public-security" target="_blank" rel="noopener noreferrer">Idemia</a></span>
+                        <div class="fact-card">
+                            <strong>Vision</strong>
+                            <span>Video understanding, tracking, representation learning</span>
                         </div>
-                        <div class="exp-duration">April 2025 - October 2025</div>
-                    </div>
-                </div>
-                <div class="exp-role-title">Enhancing end-to-end multi object tracking models by exploring various uses of <a href="https://arxiv.org/abs/2408.00714" target="_blank" rel="noopener noreferrer">SAM 2</a>.</div>
-                <ul>
-                    <li>
-                        <b>Automatic video instance segmentation mask generator</b>:
-                        Use any MOT dataset and SAM 2 to automatically create high quality video instance
-                        segmentation masks for each tracklet.
-                    </li>
-                    <li>
-                        Used such augmented datasets to train an <b>end-to-end tracker (<a href="https://arxiv.org/abs/2403.16848" target="_blank" rel="noopener noreferrer">MOTIP</a>) with an 
-                        additional segmentation head</b>, exploring various architecture.
-                    </li>
-                    <li>
-                        Reproduced <a href="https://arxiv.org/abs/2504.04519" target="_blank" rel="noopener noreferrer">SAM2MOT</a>, 
-                        a zero-shot multi object tracker based on Grounding Dino and SAM2, 
-                        to label any video dataset.
-                    </li>
-                    <li>
-                        Explored ways to use SAM 2's embeddings to train a model based on MOTIP.
-                    </li>
-                    <li>
-                        Implemented a proposal-aware MOT model based on MOTIP, which 
-                        is trained to refine identity proposals, achieving state-of-the-art 
-                        results on DanceTrack.
-                    </li>
-                </ul>
-            </div>
-            <!-- EXPERIENCE 3 -->
-            <div class="experience-card">
-                <div class="exp-header">
-                    <a href="https://www.cls.fr" target="blank"><img loading="lazy" src="assets/logos/logo_cls.png" alt="CLS Logo" class="exp-logo"></a>
-                    <div>
-                        <div class="exp-job">AI Research Intern<br>
-                            <span class="at-company"><a href="https://www.cls.fr" target="blank">Collecte Localisation Satellites (CLS)</a></span>
+                        <div class="fact-card">
+                            <strong>Open</strong>
+                            <span>Reproducible research and transparent engineering</span>
                         </div>
-                        <div class="exp-duration">April 2024 - August 2024</div>
                     </div>
                 </div>
-                <div class="exp-role-title">Foundation Models for remote sensing applications.</div>
-                <ul>
-                    <li>Developed a library to fine-tune Foundation Models on remote sensing datasets, used by coworkers at CLS.</li>
-                    <li><b>Literature Review:</b> Comprehensive review of latest research on Foundation Models in remote sensing.</li>
-                    <li><b>Model Development:</b> Developed a library for fine-tuning Foundation Models on remote sensing data.</li>
-                    <li><b>Performance Evaluation:</b> Evaluated fine-tuned Foundation Models for semantic segmentation tasks.</li>
-                </ul>
-            </div>
-            <!-- EXPERIENCE 2 -->
-            <div class="experience-card">
-                <div class="exp-header">
-                    <a href="https://www.jolibrain.com" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="assets/logos/logo_jolibrain.png" alt="JoliBrain Logo" class="exp-logo"></a>
-                    <div>
-                        <div class="exp-job">Machine Learning Engineer Intern<br>
-                            <span class="at-company"><a href="https://www.jolibrain.com" target="_blank" rel="noopener noreferrer">JoliBrain</a></span></div>
-                        <div class="exp-duration">February 2023 - July 2023</div>
-                    </div>
-                </div>
-                <ul>
-                    <li><b>Contribution to <a href="https://github.com/jolibrain/joliGEN" target="_blank" rel="noopener noreferrer">joliGEN</a>:</b> Implemented advanced edge detection and image generation controls from ControlNET.</li>
-                    <li>Implemented state-of-the-art models such as Owl-ViT for zero-shot object detection.</li>
-                    <li>Developed the documentation <a href="https://www.joligen.com/doc/" target="_blank" rel="noopener noreferrer">website</a> for the tool using ReadTheDocs.</li>
-                </ul>
-            </div>
-            <!-- EXPERIENCE 1 -->
-            <div class="experience-card">
-                <div class="exp-header">
-                    <a href="https://www.agreste.agriculture.gouv.fr/agreste-web/" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="assets/logos/logo_ministere.png" alt="Ministère de l'Agriculture Logo" class="exp-logo"></a>
-                    <div>
-                        <div class="exp-job">Software Developer (R Shiny) Intern<br>
-                            <span class="at-company"><a href="https://www.agreste.agriculture.gouv.fr/agreste-web/" target="_blank" rel="noopener noreferrer">French Ministry of Agriculture</a></span></div>
-                        <div class="exp-duration">May 2022 - August 2022</div>
-                    </div>
-                </div>
-                <ul>
-                    <li>Created <a href="https://ksteunou.pages.lab.sspcloud.fr/agreste/" target="_blank" rel="noopener noreferrer"><b>agreste</b></a>: automation tool as an R package for streamlining statistical publication creation.</li>
-                    <li>Managed project from requirements gathering to delivery, using Agile methodologies.</li>
-                    <li>Designed an intuitive R Shiny UI to facilitate data input and publication generation.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <!-- Education Section -->
-<section id="education" class="section education reveal" data-reveal="fade-up">
-    <div class="section-content">
-        <h2>Academic Background</h2>
-        <div class="experience-list reveal" data-reveal="stagger">
-            <div class="experience-card">
-                <div class="exp-header">
-                    <a href="https://www.ip-paris.fr" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="assets/logos/logo_ip_paris.png" alt="IP Paris Logo" class="exp-logo"></a>
-                    <div>
-                        <div class="exp-job">Machine Learning PhD Student<br>
-                            <span class="at-company"><a href="https://www.ip-paris.fr" target="_blank" rel="noopener noreferrer">Institut Polytechnique de Paris</a></span>
+                <div class="hero-visual reveal" data-reveal="fade-left">
+                    <div class="portrait-orb" aria-hidden="true"></div>
+                    <div class="portrait-card">
+                        <img loading="lazy" src="assets/profile/profile-picture.jpg" alt="Portrait of Killian Steunou">
+                        <div class="portrait-caption">
+                            <strong>Current thesis</strong>
+                            <p>Efficient omni-modal learning for generalized video understanding.</p>
                         </div>
-                        <div class="exp-duration">November 2025 - Present</div>
+                    </div>
+                    <div class="signal-card signal-card-a">
+                        <strong>Research themes</strong>
+                        <p>Efficiency, multimodal learning, tracking, and deployment-aware model design.</p>
+                    </div>
+                    <div class="signal-card signal-card-b">
+                        <strong>Working style</strong>
+                        <p>Scientific rigor, clear writing, reproducible pipelines, and pragmatic engineering.</p>
                     </div>
                 </div>
-                <div class="exp-role-title">Efficient Omni-Modal Learning for Generalized Video Understanding</div>
             </div>
-            <div class="experience-card">
-                <div class="exp-header">
-                    <img loading="lazy" src="assets/logos/logo_ens.jpg" alt="ENS Logo" class="exp-logo">
+        </section>
+
+        <section id="about" class="scene scene-dark">
+            <div class="scene-shell split-layout">
+                <div class="reveal">
+                    <p class="eyebrow">About</p>
+                    <h2 class="section-title">A research practice shaped by efficiency, clarity, and deployment constraints.</h2>
+                    <p class="section-copy">
+                        I am currently pursuing an industrial PhD in machine learning at Institut Polytechnique de Paris and Moments Lab.
+                        The work sits at the intersection of modern multimodal models and the practical limits that define whether they remain useful in the real world.
+                    </p>
+                    <p class="section-copy">
+                        I am especially drawn to problems in computer vision and deep learning because visual perception feels foundational to intelligence,
+                        both human and artificial. I like models that can scale, adapt, and still remain legible enough to improve.
+                    </p>
+                </div>
+                <div class="panel-stack reveal" data-reveal="fade-right">
+                    <article class="panel-card">
+                        <h3>Current focus</h3>
+                        <p>Efficient omni-modal learning for generalized video understanding, with an emphasis on scalable training and practical inference.</p>
+                    </article>
+                    <article class="panel-card">
+                        <h3>Research values</h3>
+                        <p>Open-source practices, transparent experimentation, and reproducible pipelines that other researchers can meaningfully build on.</p>
+                    </article>
+                    <div class="social-pills">
+                        <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img loading="lazy" src="assets/logos/LI-In-Bug.png" alt="LinkedIn"> LinkedIn
+                        </a>
+                        <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img loading="lazy" src="assets/logos/github-mark-white.png" alt="GitHub"> GitHub
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img loading="lazy" src="assets/logos/logo_google_scholar.png" alt="Google Scholar"> Scholar
+                        </a>
+                        <a href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer" download class="social-link">
+                            <img loading="lazy" src="assets/logos/download-icon.png" alt="Curriculum vitae"> CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="scene">
+            <div class="scene-shell">
+                <div class="section-head">
                     <div>
-                        <div class="exp-job">
-                            Master 2 Mathématiques, Vision, Apprentissage<br>
-                            <span class="at-company">ENS Paris-Saclay</span>
+                        <p class="eyebrow">Experience</p>
+                        <h2 class="section-title">Industrial research, product-minded experimentation, and model-building in production settings.</h2>
+                    </div>
+                    <a href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer" class="button button-secondary">Download CV</a>
+                </div>
+                <div class="timeline-grid">
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <a href="https://www.momentslab.com" target="_blank" rel="noopener noreferrer">
+                                <img loading="lazy" src="assets/logos/logo_moments_lab.png" alt="Moments Lab logo" class="timeline-logo">
+                            </a>
+                            <div>
+                                <h3>Machine Learning PhD Student</h3>
+                                <p class="timeline-subtitle">Moments Lab</p>
+                                <p class="timeline-meta">November 2025 - Present</p>
+                            </div>
                         </div>
-                        <div class="exp-duration">Sep 2024 – Mar 2025</div>
-                    </div>
-                </div>
-                <ul>
-                    <li>Computational Optimal Transport, Convex Optimization, Turing Seminar (AI Safety)</li>
-                    <li>Object Recognition and Computer Vision, Probabilistic Graphical Models, Deep Learning</li>
-                    <li>Representation Learning, Generative Models, Data Generation by Transport/Denoising</li>
-                </ul>
-            </div>
-            <div class="experience-card">
-                <div class="exp-header">
-                    <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="exp-logo">
-                    <div>
-                        <div class="exp-job">Master 1 Applied Mathematics and Statistics<br>
-                            <span class="at-company">Toulouse School of Economics</span></div>
-                        <div class="exp-duration">Sep 2023 – Apr 2024</div>
-                    </div>
-                </div>
-                <ul>
-                    <li>Econometrics, Probability and Statistics, Functional Analysis, Optimization for ML</li>
-                    <li>Data Science (Python), Machine Learning, Mathematical Game Theory, Time Series</li>
-                </ul>
-            </div>
-            <div class="experience-card">
-                <div class="exp-header">
-                    <img loading="lazy" src="assets/logos/ku_logo_uk_h.png" alt="KU Logo" class="exp-logo">
-                    <div>
-                        <div class="exp-job">Gap Year<br>
-                            <span class="at-company">University of Copenhagen</span></div>
-                        <div class="exp-duration">Sep 2022 – Jan 2023</div>
-                    </div>
-                </div>
-                <ul>
-                    <li>Courses: Natural Language Processing, Blockchain Business Development, Energy Economics, Tax Policy</li>
-                </ul>
-            </div>
-            <div class="experience-card">
-                <div class="exp-header">
-                    <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="TSE Logo" class="exp-logo">
-                    <div>
-                        <div class="exp-job">Double Bachelor: Applied Mathematics and Economics<br>
-                            <span class="at-company">Toulouse School of Economics</span></div>
-                        <div class="exp-duration">Sep 2019 – Apr 2022</div>
-                    </div>
-                </div>
-                <ul>
-                    <li>Linear Algebra, Analysis, Probability and Statistics, Optimization, Econometrics, Programming</li>
-                    <li>Microeconomics, Macroeconomics, Numerical Analysis, Computer Science (Python, R)</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+                        <ul class="detail-list">
+                            <li>Researching efficient omni-modal learning strategies for generalized video understanding.</li>
+                            <li>Working on problems where representation quality, inference cost, and deployment realism all matter.</li>
+                        </ul>
+                    </article>
 
-    <!-- Research Projects Section -->
-    <section id="research" class="section research reveal" data-reveal="fade-up">
-        <div class="section-content">
-        <h2>Research Projects</h2>
-        <a href="research.html" class="cta-button" data-analytics="cta_view_all_research">View all research projects</a>
-        <div class="view-toggle">
-            <button type="button" class="toggle-view-btn" data-target="research-carousel" data-analytics="toggle_research_view">Compact list</button>
-            </div>
-            <div class="glider-contain neural-carousel reveal" data-reveal="fade-up" id="research-carousel" data-carousel-label="Research project">
-                <button class="carousel-button prev" id="research-prev" aria-label="View previous research project">‹</button>
-                <div class="glider" id="research-glider" role="region" aria-label="Research projects carousel" tabindex="0">
-                <div class="carousel-item">
-                    <h3 class="project-title">Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
-                    <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer" class="source-article">
-                        Killian Steunou, Théo Druilhe, Sigurd Saue, 2025
-                    </a>
-                    <p>
-                        We show (theoretically and empirically) that SPCA-based 
-                        classifiers are more robust to adversarial attacks than 
-                        PCA-based detectors.
-                    </p>
-                    <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer" class="project-badge">
-                        <img loading="lazy" src="https://img.shields.io/badge/View%20Preprint-blue?style=for-the-badge&logo=arxiv" alt="Download Report">
-                    </a>
-                    <a href="https://github.com/killian31/SPCARobustness" target="_blank" rel="noopener noreferrer" class="project-badge">
-                        <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
-                    </a>
-                </div>
-                <!-- Carousel Item 1 -->
-                <div class="carousel-item">
-                    <h3 class="project-title">Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
-                    <a href="https://arxiv.org/abs/2110.03237" target="_blank" rel="noopener noreferrer" class="source-article">
-                        Max Daniels, Tyler Maunu, and Paul Hand, 2022
-                    </a>
-                    <p>
-                        I performed several experiments to evaluate the 
-                        performance of the SCONES method on low-dimensional 
-                        distributions.
-                    </p>
-                    <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer" class="project-badge">
-                        <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
-                    </a>
-                    <a href="https://github.com/killian31/scones-synthetic" target="_blank" rel="noopener noreferrer" class="project-badge">
-                        <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
-                    </a>
-                </div>
-                <!-- Carousel Item 2 -->
-                <div class="carousel-item">
-                    <h3 class="project-title">Test Time Training with Masked Autoencoders</h3>
-                    <a href="https://arxiv.org/abs/2209.07522" target="_blank" rel="noopener noreferrer" class="source-article">
-                        Yossi Gandelsman, Yu Sun, Xinlei Chen, and Alexei A Efros, 2022
-                    </a>
-                    <p>
-                        I extended the TTT-MAE method with an online
-                        version that shows better performance than the original method.
-                    </p>
-                    <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" rel="noopener noreferrer" class="project-badge">
-                        <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
-                    </a>
-                    <a href="https://github.com/killian31/ttt_mae_online" target="_blank" rel="noopener noreferrer" class="project-badge">
-                        <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
-                    </a>
-                </div>
-                <!-- Carousel Item 3 -->
-                <div class="carousel-item">
-                    <h3 class="project-title">Are Generative Classifiers More Robust to Adversarial Attacks?</h3>
-                    <a href="https://arxiv.org/abs/1802.06552" target="_blank" rel="noopener noreferrer" class="source-article">
-                        Yingzhen Li, John Bradshaw, and Yash Sharma, 2019
-                    </a>
-                    <p>
-                        We compared the robustness of generative 
-                        classifiers to adversarial attacks with discriminative 
-                        classifiers, and verified the hypothesis on a real-world setting.
-                    </p>
-                    <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer" class="project-badge">
-                        <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
-                    </a>
-                    <a href="https://github.com/killian31/DeepBayesTorch" target="_blank" rel="noopener noreferrer" class="project-badge">
-                        <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
-                    </a>
-                </div>
-                <!-- Carousel Item 4 -->
-                <div class="carousel-item">
-                    <h3 class="project-title">Toxic Gas Characterization</h3>
-                    <p>
-                        I worked on a project to characterize toxic gases 
-                        using a deep learning model and adversarial unsupervised 
-                        domain adaptation to improve the model's generalization.
-                    </p>
-                <a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer" class="project-badge">
-                    <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
-                </a>
-                <a href="https://github.com/killian31/IdGas" target="_blank" rel="noopener noreferrer" class="project-badge">
-                    <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
-                </a>
-                </div>
-                <!-- Carousel Item 5 -->
-                <div class="carousel-item">
-                <h3 class="project-title">Convergence of SGD for Training Neural Networks with Sliced Wasserstein Losses</h3>
-                <a href="https://arxiv.org/abs/2307.11714" target="_blank" rel="noopener noreferrer" class="source-article">
-                    Eloi Tanguy, 2024
-                </a>
-                <p>
-                    We empirically verified the convergence of SGD for training
-                    generative neural networks on 2D distributions and 
-                    Fashion-MNIST using the Sliced Wasserstein loss.
-                </p>
-                <a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer" class="project-badge">
-                    <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
-                </a>
-                <a href= "https://github.com/francklaborde/Generative-modeling-project" target="_blank" rel="noopener noreferrer" class="project-badge">
-                    <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
-                </a>
-                </div>
-                <!-- Carousel Item 6 -->
-                <div class="carousel-item">
-                    <h3 class="project-title">An End-to-End Transformer Model for 3D Object Detection</h3>
-                    <a href="https://arxiv.org/abs/2109.08141" target="_blank" rel="noopener noreferrer" class="source-article">
-                        Ishan Misra, Rohit Girdhar, and Armand Joulin, 2021
-                    </a>
-                    <p>
-                        We verified 3DETR's performance on the SUN RGB-D dataset. We
-                        trained a RGB variant of 3DETR and compared it to the original 
-                        model.
-                    </p>
-                    <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer" class="project-badge">
-                        <img loading="lazy" src="https://img.shields.io/badge/Download%20Report-blue?style=for-the-badge&logo=github" alt="Download Report">
-                    </a>
-                </div>
-            </div>
-            <button class="carousel-button next" id="research-next" aria-label="View next research project">›</button>
-            <div class="carousel-meta">
-                <p class="carousel-status" id="research-status" aria-live="polite" data-label="Research project">Research projects carousel</p>
-                <div class="dots" id="research-dots" aria-label="Research project navigation" role="tablist"></div>
-            </div>
-        </div>
-    </div>
-</section>
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <a href="https://www.idemia.com/business/idemia-public-security" target="_blank" rel="noopener noreferrer">
+                                <img loading="lazy" src="assets/logos/logo_idemia.png" alt="Idemia logo" class="timeline-logo">
+                            </a>
+                            <div>
+                                <h3>Deep Learning Research Engineer Intern</h3>
+                                <p class="timeline-subtitle">Idemia</p>
+                                <p class="timeline-meta">April 2025 - October 2025</p>
+                            </div>
+                        </div>
+                        <ul class="detail-list">
+                            <li>Explored how SAM 2 can strengthen end-to-end multi-object tracking systems.</li>
+                            <li>Built segmentation-aware and proposal-aware tracking variants around MOTIP-style models.</li>
+                        </ul>
+                    </article>
 
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <a href="https://www.cls.fr" target="_blank" rel="noopener noreferrer">
+                                <img loading="lazy" src="assets/logos/logo_cls.png" alt="CLS logo" class="timeline-logo">
+                            </a>
+                            <div>
+                                <h3>AI Research Intern</h3>
+                                <p class="timeline-subtitle">Collecte Localisation Satellites</p>
+                                <p class="timeline-meta">April 2024 - August 2024</p>
+                            </div>
+                        </div>
+                        <ul class="detail-list">
+                            <li>Developed tooling to fine-tune foundation models on remote sensing datasets.</li>
+                            <li>Benchmarked segmentation performance and summarized the rapidly changing literature.</li>
+                        </ul>
+                    </article>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section projects reveal" data-reveal="fade-up">
-        <div class="section-content">
-            <h2>Some of my Recent Projects</h2>
-            <div class="view-toggle">
-                <button type="button" class="toggle-view-btn" data-target="projects-carousel" data-analytics="toggle_projects_view">Compact list</button>
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <a href="https://www.jolibrain.com" target="_blank" rel="noopener noreferrer">
+                                <img loading="lazy" src="assets/logos/logo_jolibrain.png" alt="JoliBrain logo" class="timeline-logo">
+                            </a>
+                            <div>
+                                <h3>Machine Learning Engineer Intern</h3>
+                                <p class="timeline-subtitle">JoliBrain</p>
+                                <p class="timeline-meta">February 2023 - July 2023</p>
+                            </div>
+                        </div>
+                        <ul class="detail-list">
+                            <li>Integrated ControlNet-style controls and zero-shot detection models into joliGEN.</li>
+                            <li>Helped ship documentation and product-facing material around the tool.</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <a href="https://www.agreste.agriculture.gouv.fr/agreste-web/" target="_blank" rel="noopener noreferrer">
+                                <img loading="lazy" src="assets/logos/logo_ministere.png" alt="French Ministry of Agriculture logo" class="timeline-logo">
+                            </a>
+                            <div>
+                                <h3>Software Developer Intern</h3>
+                                <p class="timeline-subtitle">French Ministry of Agriculture</p>
+                                <p class="timeline-meta">May 2022 - August 2022</p>
+                            </div>
+                        </div>
+                        <ul class="detail-list">
+                            <li>Created <a href="https://ksteunou.pages.lab.sspcloud.fr/agreste/" target="_blank" rel="noopener noreferrer">agreste</a>, an R package and R Shiny workflow for statistical publication automation.</li>
+                            <li>Handled the project end to end, from requirements gathering to delivery.</li>
+                        </ul>
+                    </article>
+                </div>
             </div>
-            <div class="glider-contain neural-carousel reveal" data-reveal="fade-up" id="projects-carousel" data-carousel-label="Project">
-                <button class="carousel-button prev" id="projects-prev" aria-label="View previous project">‹</button>
-                <div class="glider" id="projects-glider" role="region" aria-label="Projects carousel" tabindex="0">
-                    <div class="carousel-item">
-                        <img loading="lazy" src="https://github.com/killian31/NailBiteMenu/blob/main/docs/logo.png?raw=true" alt="Nail Bite Menu App" class="project-pic">
-                        <h3 class="project-title">Nail Bite Detection App</h3>
-                        <img loading="lazy" src="https://img.shields.io/github/downloads/killian31/NailBiteMenu/total?style=for-the-badge&logo=apple&color=violet" alt="Number of downloads" style="max-height:50px; width:auto;">
-                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/NailBiteMenu.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                        <p>
-                            A MacOS menu bar app that uses computer vision to detect nail biting
-                            behavior in real-time using your webcam, helping users become aware of
-                            and reduce this habit.
-                        </p>
-                        <a href="https://github.com/killian31/NailBiteMenu" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
-                        </a>
-                        <a href="https://killian31.github.io/NailBiteMenu/" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20App%20Website-blue?style=for-the-badge&logo=safari" alt="Open App Website">
-                        </a>
+        </section>
+
+        <section id="education" class="scene scene-muted">
+            <div class="scene-shell">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Education</p>
+                        <h2 class="section-title">A mathematics and statistics foundation, refined through machine learning and vision research.</h2>
                     </div>
-                    <div class="carousel-item">
-                        <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription" class="project-pic">
-                        <h3 class="project-title">Audio Visual Transcription</h3>
-                        <p>
-                            AVT is a tool that lets you subtitle audio/video content in 
-                            minutes, powered by OpenAI Whisper.
-                        </p>
-                        <a href="https://github.com/killian31/AudioVisualTranscription" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub">
-                        </a>
-                        <a href="https://huggingface.co/spaces/nelikCode/AudioVisualTranscription" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20Spaces-blue?style=for-the-badge&logo=huggingface" alt="Open in Spaces">
-                        </a>
+                </div>
+                <div class="timeline-grid">
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <a href="https://www.ip-paris.fr" target="_blank" rel="noopener noreferrer">
+                                <img loading="lazy" src="assets/logos/logo_ip_paris.png" alt="Institut Polytechnique de Paris logo" class="timeline-logo">
+                            </a>
+                            <div>
+                                <h3>Machine Learning PhD</h3>
+                                <p class="timeline-subtitle">Institut Polytechnique de Paris</p>
+                                <p class="timeline-meta">November 2025 - Present</p>
+                            </div>
+                        </div>
+                        <ul class="detail-list">
+                            <li>Research topic: efficient omni-modal learning for generalized video understanding.</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <img loading="lazy" src="assets/logos/logo_ens.jpg" alt="ENS Paris-Saclay logo" class="timeline-logo">
+                            <div>
+                                <h3>Master 2 Mathématiques, Vision, Apprentissage</h3>
+                                <p class="timeline-subtitle">ENS Paris-Saclay</p>
+                                <p class="timeline-meta">September 2024 - March 2025</p>
+                            </div>
+                        </div>
+                        <ul class="detail-list">
+                            <li>Optimal transport, convex optimization, deep learning, graphical models, and generative models.</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="Toulouse School of Economics logo" class="timeline-logo">
+                            <div>
+                                <h3>Master 1 Applied Mathematics and Statistics</h3>
+                                <p class="timeline-subtitle">Toulouse School of Economics</p>
+                                <p class="timeline-meta">September 2023 - April 2024</p>
+                            </div>
+                        </div>
+                        <ul class="detail-list">
+                            <li>Econometrics, probability, optimization for ML, time series, and data science in Python.</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <img loading="lazy" src="assets/logos/ku_logo_uk_h.png" alt="University of Copenhagen logo" class="timeline-logo">
+                            <div>
+                                <h3>Gap Year</h3>
+                                <p class="timeline-subtitle">University of Copenhagen</p>
+                                <p class="timeline-meta">September 2022 - January 2023</p>
+                            </div>
+                        </div>
+                        <ul class="detail-list">
+                            <li>Natural language processing, blockchain business development, energy economics, and tax policy.</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-card reveal">
+                        <div class="timeline-header">
+                            <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="Toulouse School of Economics logo" class="timeline-logo">
+                            <div>
+                                <h3>Double Bachelor: Applied Mathematics and Economics</h3>
+                                <p class="timeline-subtitle">Toulouse School of Economics</p>
+                                <p class="timeline-meta">September 2019 - April 2022</p>
+                            </div>
+                        </div>
+                        <ul class="detail-list">
+                            <li>Linear algebra, analysis, statistics, econometrics, optimization, programming, and economics.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="scene scene-dark">
+            <div class="scene-shell">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Research</p>
+                        <h2 class="section-title">Selected work across adversarial robustness, generative modeling, test-time adaptation, and 3D vision.</h2>
                     </div>
-                    <div class="carousel-item">
-                        <img loading="lazy" src="assets/projects/vbr.gif" alt="video-background-removal" class="project-pic"/>
-                        <h3 class="project-title">Video Background Removal</h3>
-                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/VideoBackgroundRemoval.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                        <p class="project-details">
-                            A video background removal tool using Mobile SAM (Segment-Anything Model)
-                            to automatically segment and remove the background from videos.
-                        </p>
-                        <a href="https://github.com/killian31/VideoBackgroundRemoval" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                        </a>
+                    <a href="research.html" class="button button-secondary">View all research</a>
+                </div>
+                <div class="story-grid">
+                    <article class="story-card reveal">
+                        <div class="story-meta">2025 / Robustness</div>
+                        <h3>Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
+                        <p>We show, theoretically and empirically, that SPCA-based classifiers can be more robust than PCA-based alternatives under adversarial attack.</p>
+                        <div class="story-links">
+                            <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer">Preprint</a>
+                            <a href="https://github.com/killian31/SPCARobustness" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </article>
+
+                    <article class="story-card reveal">
+                        <div class="story-meta">2024 / Generative Modeling</div>
+                        <h3>Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
+                        <p>I reproduced the SCONES framework and evaluated how score-based modeling changes the behavior of regularized transport on synthetic distributions.</p>
+                        <div class="story-links">
+                            <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                            <a href="https://github.com/killian31/scones-synthetic" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </article>
+
+                    <article class="story-card reveal">
+                        <div class="story-meta">2024 / Adaptation</div>
+                        <h3>Test Time Training with Masked Autoencoders</h3>
+                        <p>I extended TTT-MAE with an online setting and studied how adaptation behaves when distribution shift keeps evolving at inference time.</p>
+                        <div class="story-links">
+                            <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                            <a href="https://github.com/killian31/ttt_mae_online" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </article>
+
+                    <article class="story-card reveal">
+                        <div class="story-meta">2023 / 3D Vision</div>
+                        <h3>An End-to-End Transformer Model for 3D Object Detection</h3>
+                        <p>We reproduced 3DETR on SUN RGB-D and explored how a lean transformer detector behaves when extended with RGB information.</p>
+                        <div class="story-links">
+                            <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                            <a href="research.html">More research</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="scene">
+            <div class="scene-shell">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Projects</p>
+                        <h2 class="section-title">Tools, experiments, and interfaces that turn research ideas into usable artifacts.</h2>
                     </div>
-                    <div class="carousel-item">
-                        <img loading="lazy" src="assets/projects/balloon_opti.gif" alt="Object Detection" class="project-pic">
-                        <h3 class="project-title">Video Object Detection</h3>
-                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/VideoObjectDetection.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                        <p class="project-details">
-                            Implementation of Google Owl-ViT's model for zero-shot object detection in
-                            videos using natural language prompts.
-                        </p>
-                        <a href="https://github.com/killian31/VideoObjectDetection" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                        </a>
+                </div>
+                <div class="portfolio-grid">
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-media">
+                            <img loading="lazy" src="https://github.com/killian31/NailBiteMenu/blob/main/docs/logo.png?raw=true" alt="Nail Bite Menu project">
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">macOS</span>
+                                <span class="tag">Computer vision</span>
+                            </div>
+                            <h3>Nail Bite Detection App</h3>
+                            <p>A macOS menu bar app that detects nail biting from your webcam in real time to make the habit visible and measurable.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/NailBiteMenu" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a href="https://killian31.github.io/NailBiteMenu/" target="_blank" rel="noopener noreferrer">Website</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-media">
+                            <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription project">
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Whisper</span>
+                                <span class="tag">Speech</span>
+                            </div>
+                            <h3>Audio Visual Transcription</h3>
+                            <p>A tool for quickly subtitling audio and video content with OpenAI Whisper, exposed through a simple demo interface.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a href="https://huggingface.co/spaces/nelikCode/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">Live demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-media">
+                            <img loading="lazy" src="assets/projects/vbr.gif" alt="Video Background Removal project">
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Segmentation</span>
+                                <span class="tag">Video</span>
+                            </div>
+                            <h3>Video Background Removal</h3>
+                            <p>A background removal workflow based on Mobile SAM, designed to automatically segment and clean video streams.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/VideoBackgroundRemoval" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a href="demo_vbr.html">Open demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-media">
+                            <img loading="lazy" src="assets/projects/balloon_opti.gif" alt="Video object detection project">
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Detection</span>
+                                <span class="tag">Zero-shot</span>
+                            </div>
+                            <h3>Video Object Detection</h3>
+                            <p>An implementation of Owl-ViT for zero-shot object detection in videos using natural-language prompts.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/VideoObjectDetection" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-media">
+                            <img loading="lazy" src="assets/projects/joligen.svg" alt="joliGEN contribution project">
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Open source</span>
+                                <span class="tag">Generative AI</span>
+                            </div>
+                            <h3>Contribution to joliGEN</h3>
+                            <p>I integrated ControlNet-inspired edge controls and SAM-based masking into joliGEN, then helped improve its documentation.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/jolibrain/joliGEN" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-media">
+                            <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz project">
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Education</span>
+                                <span class="tag">Visualization</span>
+                            </div>
+                            <h3>MathViz</h3>
+                            <p>A Streamlit application that visualizes ideas from mathematics, statistics, machine learning, and algorithms.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/MathViz" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a href="demo_mathviz.html">Open demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-media">
+                            <img loading="lazy" src="assets/projects/wiki.jpg" alt="Wikipedia Graph project">
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Graph</span>
+                                <span class="tag">Scraping</span>
+                            </div>
+                            <h3>Wikipedia Graph</h3>
+                            <p>A French-language concept graph built by scraping linked Wikipedia topics and exporting the result for graph exploration.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/Wikipedia-Map" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-media">
+                            <img loading="lazy" src="assets/projects/ladder.webp" alt="Word Ladder Generator project">
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Language</span>
+                                <span class="tag">Algorithms</span>
+                            </div>
+                            <h3>Word Ladder Generator</h3>
+                            <p>A French word-ladder generator that computes the shortest sequence of one-letter edits between two words.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/Word-Ladder-Generator" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="scene scene-muted">
+            <div class="scene-shell spotlight-grid">
+                <div class="reveal">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Writing</p>
+                            <h2 class="section-title">Long-form notes that turn research trends and evaluation tools into something easier to reason about.</h2>
+                        </div>
+                        <a href="blog.html" class="button button-secondary">Browse articles</a>
                     </div>
-                    <div class="carousel-item">
-                        <img loading="lazy" src="assets/projects/joligen.svg" alt="Contribution to joliGEN" class="project-pic">
-                        <h3 class="project-title">Contribution to joliGEN</h3>
-                        <img loading="lazy" src="https://img.shields.io/github/stars/jolibrain/joliGEN.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                        <p class="project-details">
-                            I integrated edge detection methods into joliGEN (from ControlNET). I also added
-                            Segment-Anything Model from Meta for precise masking.
-                        </p>
-                        <a href="https://github.com/jolibrain/joliGEN" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                        </a>
+                    <div class="panel-stack">
+                        <article class="story-card">
+                            <div class="story-meta">February 2026 / Research analysis</div>
+                            <h3>Efficiency Follows Capability: A Decade of Video Understanding Research Trends</h3>
+                            <p>An analysis of how efficiency moved from the margins to the center of video understanding research from 2015 to 2025.</p>
+                            <div class="story-links">
+                                <a href="blog/efficiency_video_understanding.html">Read article</a>
+                            </div>
+                        </article>
+                        <article class="story-card">
+                            <div class="story-meta">April 2026 / Visual guide</div>
+                            <h3>NLP Metrics for Image &amp; Video Captioning: A Visual Guide</h3>
+                            <p>A worked visual walkthrough of n-grams, TF-IDF, BLEU, ROUGE-L, METEOR, and CIDEr for captioning research.</p>
+                            <div class="story-links">
+                                <a href="blog/nlp_metrics_visual_guide.html">Read article</a>
+                            </div>
+                        </article>
                     </div>
-                    <div class="carousel-item">
-                        <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz" class="project-pic">
-                        <h3 class="project-title">MathViz</h3>
-                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/MathViz.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                        <p class="project-details">
-                            MathViz is a Streamlit app that allows you to visualize
-                            concepts from Mathematics, Statistics, Machine Learning or
-                            Algorithms.
-                        </p>
-                        <a href="https://github.com/killian31/MathViz" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                        </a>
-                        <a href= "https://mathviz.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit" class="project-badge">
-                        </a>
+                </div>
+
+                <div class="reveal">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Demos</p>
+                            <h2 class="section-title">Interactive spaces for testing models and interfaces beyond the paper.</h2>
+                        </div>
+                        <a href="demos.html" class="button button-secondary">See all demos</a>
                     </div>
-                    <div class="carousel-item">
-                        <img loading="lazy" src="assets/projects/wiki.jpg" alt="Wikipedia Graph" class="project-pic">
-                        <h3 class="project-title">Wikipedia Graph</h3>
-                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/Wikipedia-Map.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                        <p class="project-details">
-                            Scraping Wikipedia to create a structured graph of the concepts around a
-                            base word (in French). The output data can be loaded in Gephi
-                            to visualize the graph.
-                        </p>
-                        <a href="https://github.com/killian31/Wikipedia-Map" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
-                        </a>
+                    <div class="demo-container">
+                        <article class="demo-item">
+                            <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription demo" class="demo-image">
+                            <h3 class="demo-title">Audio Visual Transcription</h3>
+                            <p>Whisper-powered subtitling for audio and video with a fast demo workflow.</p>
+                            <div class="inline-actions">
+                                <a href="demo_avt.html">Open demo</a>
+                            </div>
+                        </article>
+                        <article class="demo-item">
+                            <img loading="lazy" src="assets/projects/vbr.gif" alt="Video Background Removal demo" class="demo-image">
+                            <h3 class="demo-title">Video Background Removal</h3>
+                            <p>Interactive segmentation-based background removal for video.</p>
+                            <div class="inline-actions">
+                                <a href="demo_vbr.html">Open demo</a>
+                            </div>
+                        </article>
+                        <article class="demo-item">
+                            <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz demo" class="demo-image">
+                            <h3 class="demo-title">MathViz</h3>
+                            <p>Visual explanations for mathematics, statistics, machine learning, and algorithms.</p>
+                            <div class="inline-actions">
+                                <a href="demo_mathviz.html">Open demo</a>
+                            </div>
+                        </article>
                     </div>
-                    <div class="carousel-item">
-                        <img loading="lazy" src="assets/projects/ladder.webp" alt="Word Ladder Generator" class="project-pic">
-                        <h3 class="project-title">Word Ladder Generator</h3>
-                        <img loading="lazy" src="https://img.shields.io/github/stars/killian31/Word-Ladder-Generator.svg" alt="GitHub stars" style="max-height:50px; width:auto;">
-                        <p class="project-details">
-                            Word Ladder Generator is a game that generates the shortest path
-                            between two words by changing one letter at a time. In French.
-                        </p>
-                        <a href="https://github.com/killian31/Word-Ladder-Generator" target="_blank" rel="noopener noreferrer" class="project-badge">
-                            <img loading="lazy" src="https://img.shields.io/badge/Open%20in%20GitHub-blue?style=for-the-badge&logo=github" alt="Open in GitHub" class="project-badge">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="scene scene-dark">
+            <div class="scene-shell contact-layout">
+                <div class="reveal">
+                    <p class="eyebrow">Contact</p>
+                    <h2 class="section-title">If you care about efficient vision systems, robust evaluation, or research that has to ship, we should talk.</h2>
+                    <p class="section-copy">
+                        I am always interested in thoughtful conversations around machine learning research, multimodal systems, visual understanding,
+                        and the engineering decisions that make models usable outside the lab.
+                    </p>
+                    <div class="pill-row">
+                        <span class="pill">Video understanding</span>
+                        <span class="pill">Computer vision</span>
+                        <span class="pill">Multimodal ML</span>
+                        <span class="pill">Research collaborations</span>
+                    </div>
+                    <div class="social-pills" style="margin-top: 1.2rem;">
+                        <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img loading="lazy" src="assets/logos/LI-In-Bug.png" alt="LinkedIn"> LinkedIn
+                        </a>
+                        <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img loading="lazy" src="assets/logos/github-mark-white.png" alt="GitHub"> GitHub
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img loading="lazy" src="assets/logos/logo_google_scholar.png" alt="Google Scholar"> Scholar
                         </a>
                     </div>
                 </div>
-                <button class="carousel-button next" id="projects-next" aria-label="View next project">›</button>
-                <div class="carousel-meta">
-                    <p class="carousel-status" id="projects-status" aria-live="polite" data-label="Project">Projects carousel</p>
-                    <div class="dots" id="projects-dots" aria-label="Project navigation" role="tablist"></div>
+                <div class="contact-panel reveal" data-reveal="fade-left">
+                    <form action="https://formspree.io/f/xdoqokzg" method="POST" class="contact-form" autocomplete="on">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Name</label>
+                                <input type="text" id="contact-name" name="sender-name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" name="sender-email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject</label>
+                            <input type="text" id="contact-subject" name="subject" placeholder="What are you working on?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" placeholder="Tell me a bit about the topic, project, or question." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send message</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="contact" class="section contact reveal" data-reveal="fade-up">
-      <div class="section-content">
-        <h2>Get In Touch With Me</h2>
-        <form action="https://formspree.io/f/xdoqokzg" method="POST" class="contact-form neural-form" autocomplete="on">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="contact-name">Name</label>
-              <input type="text" id="contact-name" name="sender-name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-              <label for="contact-email">Email</label>
-              <input type="email" id="contact-email" name="sender-email" placeholder="Your Email" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="contact-subject">Subject</label>
-            <input type="text" id="contact-subject" name="subject" placeholder="Subject" required>
-          </div>
-          <div class="form-group">
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" placeholder="Your Message" rows="7" required></textarea>
-          </div>
-          <button type="submit" class="submit-btn" data-analytics="contact_submit_attempt">Send Message</button>
-        </form>
-      </div>
-    </section>
+        </section>
     </main>
-    <footer class="reveal" data-reveal="fade-up">
-      <div class="footer-content">
-        <div class="footer-social">
-          <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
-          </a>
-          <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
-          </a>
-          <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-            <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
-          </a>
-        </div>
-        <p>&copy; 2025 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
-        <p class="footer-note">Built with ❤️ and vanilla JS</p>
-        <div id="wcb" class="carbonbadge"></div>
-        <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
-        <div>
-            <a href='https://clustrmaps.com/site/1c0xj' title='Visit tracker'>
-                <img loading="lazy" src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=l-eulRo4m9kWX0-DiNfpf3VdUzMYdgScLET0G4NP4yQ&co=2d78ad&ct=ffffff' alt="Visitor map for Killian Steunou's site">
-            </a>
-        </div>
-      </div>
-    </footer>
-    <script src="script.js"></script>
 
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div>
+                    <p class="footer-brand">Killian Steunou</p>
+                    <p class="footer-note">Machine learning research, visual systems, and clear engineering.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+                        <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <p>&copy; 2026 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
+                <p class="footer-note">Built with plain HTML, CSS, and JavaScript.</p>
+            </div>
+            <div id="wcb" class="carbonbadge"></div>
+            <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+            <div>
+                <a href="https://clustrmaps.com/site/1c0xj" title="Visit tracker">
+                    <img loading="lazy" src="//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=l-eulRo4m9kWX0-DiNfpf3VdUzMYdgScLET0G4NP4yQ&co=2d78ad&ct=ffffff" alt="Visitor map for Killian Steunou's site">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
