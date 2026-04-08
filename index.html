@@ -20,6 +20,7 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
+    <canvas id="neural-bg" aria-hidden="true"></canvas>
     <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-content">
             <div class="navbar-logo">
@@ -55,7 +56,7 @@
                 <div class="hero-copy reveal">
                     <span class="eyebrow-chip">Industrial PhD / Computer Vision / Multimodal Learning</span>
                     <p class="eyebrow">Killian Steunou</p>
-                    <h1 class="display">Building efficient visual systems for the messy, multimodal world.</h1>
+                    <h1 class="display">Building efficient visual systems for the multimodal world.</h1>
                     <p class="hero-lead">
                         I am an industrial PhD student at Institut Polytechnique de Paris and Moments Lab,
                         working on efficient omni-modal learning for generalized video understanding.
@@ -150,91 +151,101 @@
                     </div>
                     <a href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer" class="button button-secondary">Download CV</a>
                 </div>
-                <div class="timeline-grid">
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <a href="https://www.momentslab.com" target="_blank" rel="noopener noreferrer">
-                                <img loading="lazy" src="assets/logos/logo_moments_lab.png" alt="Moments Lab logo" class="timeline-logo">
-                            </a>
-                            <div>
-                                <h3>Machine Learning PhD Student</h3>
-                                <p class="timeline-subtitle">Moments Lab</p>
-                                <p class="timeline-meta">November 2025 - Present</p>
+                <div class="journey-track">
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <a href="https://www.momentslab.com" target="_blank" rel="noopener noreferrer">
+                                    <img loading="lazy" src="assets/logos/logo_moments_lab.png" alt="Moments Lab logo" class="timeline-logo">
+                                </a>
+                                <div>
+                                    <h3>Machine Learning PhD Student</h3>
+                                    <p class="timeline-subtitle">Moments Lab</p>
+                                    <p class="timeline-meta">November 2025 - Present</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Researching efficient omni-modal learning strategies for generalized video understanding.</li>
-                            <li>Working on problems where representation quality, inference cost, and deployment realism all matter.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Researching efficient omni-modal learning strategies for generalized video understanding.</li>
+                                <li>Working on problems where representation quality, inference cost, and deployment realism all matter.</li>
+                            </ul>
+                        </article>
+                    </div>
 
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <a href="https://www.idemia.com/business/idemia-public-security" target="_blank" rel="noopener noreferrer">
-                                <img loading="lazy" src="assets/logos/logo_idemia.png" alt="Idemia logo" class="timeline-logo">
-                            </a>
-                            <div>
-                                <h3>Deep Learning Research Engineer Intern</h3>
-                                <p class="timeline-subtitle">Idemia</p>
-                                <p class="timeline-meta">April 2025 - October 2025</p>
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <a href="https://www.idemia.com/business/idemia-public-security" target="_blank" rel="noopener noreferrer">
+                                    <img loading="lazy" src="assets/logos/logo_idemia.png" alt="Idemia logo" class="timeline-logo">
+                                </a>
+                                <div>
+                                    <h3>Deep Learning Research Engineer Intern</h3>
+                                    <p class="timeline-subtitle">Idemia</p>
+                                    <p class="timeline-meta">April 2025 - October 2025</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Explored how SAM 2 can strengthen end-to-end multi-object tracking systems.</li>
-                            <li>Built segmentation-aware and proposal-aware tracking variants around MOTIP-style models.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Explored how SAM 2 can strengthen end-to-end multi-object tracking systems.</li>
+                                <li>Built segmentation-aware and proposal-aware tracking variants around MOTIP-style models.</li>
+                            </ul>
+                        </article>
+                    </div>
 
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <a href="https://www.cls.fr" target="_blank" rel="noopener noreferrer">
-                                <img loading="lazy" src="assets/logos/logo_cls.png" alt="CLS logo" class="timeline-logo">
-                            </a>
-                            <div>
-                                <h3>AI Research Intern</h3>
-                                <p class="timeline-subtitle">Collecte Localisation Satellites</p>
-                                <p class="timeline-meta">April 2024 - August 2024</p>
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <a href="https://www.cls.fr" target="_blank" rel="noopener noreferrer">
+                                    <img loading="lazy" src="assets/logos/logo_cls.png" alt="CLS logo" class="timeline-logo">
+                                </a>
+                                <div>
+                                    <h3>AI Research Intern</h3>
+                                    <p class="timeline-subtitle">Collecte Localisation Satellites</p>
+                                    <p class="timeline-meta">April 2024 - August 2024</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Developed tooling to fine-tune foundation models on remote sensing datasets.</li>
-                            <li>Benchmarked segmentation performance and summarized the rapidly changing literature.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Developed tooling to fine-tune foundation models on remote sensing datasets.</li>
+                                <li>Benchmarked segmentation performance and summarized the rapidly changing literature.</li>
+                            </ul>
+                        </article>
+                    </div>
 
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <a href="https://www.jolibrain.com" target="_blank" rel="noopener noreferrer">
-                                <img loading="lazy" src="assets/logos/logo_jolibrain.png" alt="JoliBrain logo" class="timeline-logo">
-                            </a>
-                            <div>
-                                <h3>Machine Learning Engineer Intern</h3>
-                                <p class="timeline-subtitle">JoliBrain</p>
-                                <p class="timeline-meta">February 2023 - July 2023</p>
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <a href="https://www.jolibrain.com" target="_blank" rel="noopener noreferrer">
+                                    <img loading="lazy" src="assets/logos/logo_jolibrain.png" alt="JoliBrain logo" class="timeline-logo">
+                                </a>
+                                <div>
+                                    <h3>Machine Learning Engineer Intern</h3>
+                                    <p class="timeline-subtitle">JoliBrain</p>
+                                    <p class="timeline-meta">February 2023 - July 2023</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Integrated ControlNet-style controls and zero-shot detection models into joliGEN.</li>
-                            <li>Helped ship documentation and product-facing material around the tool.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Integrated ControlNet-style controls and zero-shot detection models into joliGEN.</li>
+                                <li>Helped ship documentation and product-facing material around the tool.</li>
+                            </ul>
+                        </article>
+                    </div>
 
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <a href="https://www.agreste.agriculture.gouv.fr/agreste-web/" target="_blank" rel="noopener noreferrer">
-                                <img loading="lazy" src="assets/logos/logo_ministere.png" alt="French Ministry of Agriculture logo" class="timeline-logo">
-                            </a>
-                            <div>
-                                <h3>Software Developer Intern</h3>
-                                <p class="timeline-subtitle">French Ministry of Agriculture</p>
-                                <p class="timeline-meta">May 2022 - August 2022</p>
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <a href="https://www.agreste.agriculture.gouv.fr/agreste-web/" target="_blank" rel="noopener noreferrer">
+                                    <img loading="lazy" src="assets/logos/logo_ministere.png" alt="French Ministry of Agriculture logo" class="timeline-logo">
+                                </a>
+                                <div>
+                                    <h3>Software Developer Intern</h3>
+                                    <p class="timeline-subtitle">French Ministry of Agriculture</p>
+                                    <p class="timeline-meta">May 2022 - August 2022</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Created <a href="https://ksteunou.pages.lab.sspcloud.fr/agreste/" target="_blank" rel="noopener noreferrer">agreste</a>, an R package and R Shiny workflow for statistical publication automation.</li>
-                            <li>Handled the project end to end, from requirements gathering to delivery.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Created <a href="https://ksteunou.pages.lab.sspcloud.fr/agreste/" target="_blank" rel="noopener noreferrer">agreste</a>, an R package and R Shiny workflow for statistical publication automation.</li>
+                                <li>Handled the project end to end, from requirements gathering to delivery.</li>
+                            </ul>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -247,78 +258,88 @@
                         <h2 class="section-title">A mathematics and statistics foundation, refined through machine learning and vision research.</h2>
                     </div>
                 </div>
-                <div class="timeline-grid">
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <a href="https://www.ip-paris.fr" target="_blank" rel="noopener noreferrer">
-                                <img loading="lazy" src="assets/logos/logo_ip_paris.png" alt="Institut Polytechnique de Paris logo" class="timeline-logo">
-                            </a>
-                            <div>
-                                <h3>Machine Learning PhD</h3>
-                                <p class="timeline-subtitle">Institut Polytechnique de Paris</p>
-                                <p class="timeline-meta">November 2025 - Present</p>
+                <div class="journey-track">
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <a href="https://www.ip-paris.fr" target="_blank" rel="noopener noreferrer">
+                                    <img loading="lazy" src="assets/logos/logo_ip_paris.png" alt="Institut Polytechnique de Paris logo" class="timeline-logo">
+                                </a>
+                                <div>
+                                    <h3>Machine Learning PhD</h3>
+                                    <p class="timeline-subtitle">Institut Polytechnique de Paris</p>
+                                    <p class="timeline-meta">November 2025 - Present</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Research topic: efficient omni-modal learning for generalized video understanding.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Research topic: efficient omni-modal learning for generalized video understanding.</li>
+                            </ul>
+                        </article>
+                    </div>
 
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <img loading="lazy" src="assets/logos/logo_ens.jpg" alt="ENS Paris-Saclay logo" class="timeline-logo">
-                            <div>
-                                <h3>Master 2 Mathématiques, Vision, Apprentissage</h3>
-                                <p class="timeline-subtitle">ENS Paris-Saclay</p>
-                                <p class="timeline-meta">September 2024 - March 2025</p>
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <img loading="lazy" src="assets/logos/logo_ens.jpg" alt="ENS Paris-Saclay logo" class="timeline-logo">
+                                <div>
+                                    <h3>Master 2 Mathématiques, Vision, Apprentissage</h3>
+                                    <p class="timeline-subtitle">ENS Paris-Saclay</p>
+                                    <p class="timeline-meta">September 2024 - March 2025</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Optimal transport, convex optimization, deep learning, graphical models, and generative models.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Optimal transport, convex optimization, deep learning, graphical models, and generative models.</li>
+                            </ul>
+                        </article>
+                    </div>
 
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="Toulouse School of Economics logo" class="timeline-logo">
-                            <div>
-                                <h3>Master 1 Applied Mathematics and Statistics</h3>
-                                <p class="timeline-subtitle">Toulouse School of Economics</p>
-                                <p class="timeline-meta">September 2023 - April 2024</p>
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="Toulouse School of Economics logo" class="timeline-logo">
+                                <div>
+                                    <h3>Master 1 Applied Mathematics and Statistics</h3>
+                                    <p class="timeline-subtitle">Toulouse School of Economics</p>
+                                    <p class="timeline-meta">September 2023 - April 2024</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Econometrics, probability, optimization for ML, time series, and data science in Python.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Econometrics, probability, optimization for ML, time series, and data science in Python.</li>
+                            </ul>
+                        </article>
+                    </div>
 
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <img loading="lazy" src="assets/logos/ku_logo_uk_h.png" alt="University of Copenhagen logo" class="timeline-logo">
-                            <div>
-                                <h3>Gap Year</h3>
-                                <p class="timeline-subtitle">University of Copenhagen</p>
-                                <p class="timeline-meta">September 2022 - January 2023</p>
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <img loading="lazy" src="assets/logos/ku_logo_uk_h.png" alt="University of Copenhagen logo" class="timeline-logo">
+                                <div>
+                                    <h3>Gap Year</h3>
+                                    <p class="timeline-subtitle">University of Copenhagen</p>
+                                    <p class="timeline-meta">September 2022 - January 2023</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Natural language processing, blockchain business development, energy economics, and tax policy.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Natural language processing, blockchain business development, energy economics, and tax policy.</li>
+                            </ul>
+                        </article>
+                    </div>
 
-                    <article class="timeline-card reveal">
-                        <div class="timeline-header">
-                            <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="Toulouse School of Economics logo" class="timeline-logo">
-                            <div>
-                                <h3>Double Bachelor: Applied Mathematics and Economics</h3>
-                                <p class="timeline-subtitle">Toulouse School of Economics</p>
-                                <p class="timeline-meta">September 2019 - April 2022</p>
+                    <div class="journey-entry">
+                        <article class="timeline-card reveal">
+                            <div class="timeline-header">
+                                <img loading="lazy" src="assets/logos/TSE_Logo_2019.png" alt="Toulouse School of Economics logo" class="timeline-logo">
+                                <div>
+                                    <h3>Double Bachelor: Applied Mathematics and Economics</h3>
+                                    <p class="timeline-subtitle">Toulouse School of Economics</p>
+                                    <p class="timeline-meta">September 2019 - April 2022</p>
+                                </div>
                             </div>
-                        </div>
-                        <ul class="detail-list">
-                            <li>Linear algebra, analysis, statistics, econometrics, optimization, programming, and economics.</li>
-                        </ul>
-                    </article>
+                            <ul class="detail-list">
+                                <li>Linear algebra, analysis, statistics, econometrics, optimization, programming, and economics.</li>
+                            </ul>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -386,8 +407,8 @@
                 </div>
                 <div class="portfolio-grid">
                     <article class="portfolio-card reveal">
-                        <div class="portfolio-media">
-                            <img loading="lazy" src="https://github.com/killian31/NailBiteMenu/blob/main/docs/logo.png?raw=true" alt="Nail Bite Menu project">
+                        <div class="portfolio-thumb">
+                            <img loading="lazy" src="https://github.com/killian31/NailBiteMenu/blob/main/docs/logo.png?raw=true" alt="Nail Bite Menu">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
@@ -396,6 +417,10 @@
                             </div>
                             <h3>Nail Bite Detection App</h3>
                             <p>A macOS menu bar app that detects nail biting from your webcam in real time to make the habit visible and measurable.</p>
+                            <div class="portfolio-stats">
+                                <img loading="lazy" src="https://img.shields.io/github/stars/killian31/NailBiteMenu.svg?style=flat&label=Stars" alt="GitHub stars">
+                                <img loading="lazy" src="https://img.shields.io/github/downloads/killian31/NailBiteMenu/total?style=flat&label=Downloads" alt="Total downloads">
+                            </div>
                             <div class="inline-actions">
                                 <a href="https://github.com/killian31/NailBiteMenu" target="_blank" rel="noopener noreferrer">GitHub</a>
                                 <a href="https://killian31.github.io/NailBiteMenu/" target="_blank" rel="noopener noreferrer">Website</a>
@@ -404,8 +429,8 @@
                     </article>
 
                     <article class="portfolio-card reveal">
-                        <div class="portfolio-media">
-                            <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription project">
+                        <div class="portfolio-thumb">
+                            <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
@@ -422,8 +447,8 @@
                     </article>
 
                     <article class="portfolio-card reveal">
-                        <div class="portfolio-media">
-                            <img loading="lazy" src="assets/projects/vbr.gif" alt="Video Background Removal project">
+                        <div class="portfolio-thumb">
+                            <img loading="lazy" src="assets/projects/vbr.gif" alt="Video Background Removal">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
@@ -432,6 +457,9 @@
                             </div>
                             <h3>Video Background Removal</h3>
                             <p>A background removal workflow based on Mobile SAM, designed to automatically segment and clean video streams.</p>
+                            <div class="portfolio-stats">
+                                <img loading="lazy" src="https://img.shields.io/github/stars/killian31/VideoBackgroundRemoval.svg?style=flat&label=Stars" alt="GitHub stars">
+                            </div>
                             <div class="inline-actions">
                                 <a href="https://github.com/killian31/VideoBackgroundRemoval" target="_blank" rel="noopener noreferrer">GitHub</a>
                                 <a href="demo_vbr.html">Open demo</a>
@@ -440,8 +468,8 @@
                     </article>
 
                     <article class="portfolio-card reveal">
-                        <div class="portfolio-media">
-                            <img loading="lazy" src="assets/projects/balloon_opti.gif" alt="Video object detection project">
+                        <div class="portfolio-thumb">
+                            <img loading="lazy" src="assets/projects/balloon_opti.gif" alt="Video Object Detection">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
@@ -450,6 +478,9 @@
                             </div>
                             <h3>Video Object Detection</h3>
                             <p>An implementation of Owl-ViT for zero-shot object detection in videos using natural-language prompts.</p>
+                            <div class="portfolio-stats">
+                                <img loading="lazy" src="https://img.shields.io/github/stars/killian31/VideoObjectDetection.svg?style=flat&label=Stars" alt="GitHub stars">
+                            </div>
                             <div class="inline-actions">
                                 <a href="https://github.com/killian31/VideoObjectDetection" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
@@ -457,8 +488,8 @@
                     </article>
 
                     <article class="portfolio-card reveal">
-                        <div class="portfolio-media">
-                            <img loading="lazy" src="assets/projects/joligen.svg" alt="joliGEN contribution project">
+                        <div class="portfolio-thumb">
+                            <img loading="lazy" src="assets/projects/joligen.svg" alt="joliGEN">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
@@ -467,6 +498,9 @@
                             </div>
                             <h3>Contribution to joliGEN</h3>
                             <p>I integrated ControlNet-inspired edge controls and SAM-based masking into joliGEN, then helped improve its documentation.</p>
+                            <div class="portfolio-stats">
+                                <img loading="lazy" src="https://img.shields.io/github/stars/jolibrain/joliGEN.svg?style=flat&label=Stars" alt="GitHub stars">
+                            </div>
                             <div class="inline-actions">
                                 <a href="https://github.com/jolibrain/joliGEN" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
@@ -474,8 +508,8 @@
                     </article>
 
                     <article class="portfolio-card reveal">
-                        <div class="portfolio-media">
-                            <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz project">
+                        <div class="portfolio-thumb">
+                            <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
@@ -484,6 +518,9 @@
                             </div>
                             <h3>MathViz</h3>
                             <p>A Streamlit application that visualizes ideas from mathematics, statistics, machine learning, and algorithms.</p>
+                            <div class="portfolio-stats">
+                                <img loading="lazy" src="https://img.shields.io/github/stars/killian31/MathViz.svg?style=flat&label=Stars" alt="GitHub stars">
+                            </div>
                             <div class="inline-actions">
                                 <a href="https://github.com/killian31/MathViz" target="_blank" rel="noopener noreferrer">GitHub</a>
                                 <a href="demo_mathviz.html">Open demo</a>
@@ -492,8 +529,8 @@
                     </article>
 
                     <article class="portfolio-card reveal">
-                        <div class="portfolio-media">
-                            <img loading="lazy" src="assets/projects/wiki.jpg" alt="Wikipedia Graph project">
+                        <div class="portfolio-thumb">
+                            <img loading="lazy" src="assets/projects/wiki.jpg" alt="Wikipedia Graph">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
@@ -502,6 +539,9 @@
                             </div>
                             <h3>Wikipedia Graph</h3>
                             <p>A French-language concept graph built by scraping linked Wikipedia topics and exporting the result for graph exploration.</p>
+                            <div class="portfolio-stats">
+                                <img loading="lazy" src="https://img.shields.io/github/stars/killian31/Wikipedia-Map.svg?style=flat&label=Stars" alt="GitHub stars">
+                            </div>
                             <div class="inline-actions">
                                 <a href="https://github.com/killian31/Wikipedia-Map" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
@@ -509,8 +549,8 @@
                     </article>
 
                     <article class="portfolio-card reveal">
-                        <div class="portfolio-media">
-                            <img loading="lazy" src="assets/projects/ladder.webp" alt="Word Ladder Generator project">
+                        <div class="portfolio-thumb">
+                            <img loading="lazy" src="assets/projects/ladder.webp" alt="Word Ladder Generator">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
@@ -519,6 +559,9 @@
                             </div>
                             <h3>Word Ladder Generator</h3>
                             <p>A French word-ladder generator that computes the shortest sequence of one-letter edits between two words.</p>
+                            <div class="portfolio-stats">
+                                <img loading="lazy" src="https://img.shields.io/github/stars/killian31/Word-Ladder-Generator.svg?style=flat&label=Stars" alt="GitHub stars">
+                            </div>
                             <div class="inline-actions">
                                 <a href="https://github.com/killian31/Word-Ladder-Generator" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
