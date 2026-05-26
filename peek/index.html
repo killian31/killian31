@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="PEEK: Picking Essential frames via Efficient Knowledge distillation - Killian Steunou, Anas Filali Razzouki, Mounîm A. El-Yacoubi, Khalil Guetari and Yannis Tevissen">
+  <meta name="description" content="PEEK distills caption-conditioned frame scores from a strong vision-language teacher into a lightweight query-free selector, improving video captioning.">
+  <meta name="keywords" content="video understanding, video captioning, frame selection, keyframe selection, vision-language models, knowledge distillation, efficient inference, temporal modeling, multimodal learning, video-language models, machine learning, computer vision, AI">
+  <meta name="author" content="Killian Steunou, Anas Filali Razzouki, Mounîm A. El-Yacoubi, Khalil Guetari and Yannis Tevissen">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Institut Polytechnique de Paris & Moments Lab">
+  <meta property="og:title" content="PEEK: Picking Essential frames via Efficient Knowledge distillation">
+  <meta property="og:description" content="PEEK distills caption-conditioned frame scores from a strong vision-language teacher into a lightweight query-free selector, improving video captioning.">
+  <meta property="og:url" content="https://www.killian-steunou.com/peek">
+  <meta property="og:image" content="https://www.killian-steunou.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PEEK - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="Killian Steunou">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="video understanding">
+  <meta property="article:tag" content="video captioning">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PEEK: Picking Essential frames via Efficient Knowledge distillation">
+  <meta name="citation_author" content="Steunou, Killian">
+  <meta name="citation_author" content="Filali Razzouki, Anas">
+  <meta name="citation_author" content="El-Yacoubi, Mounîm A.">
+  <meta name="citation_author" content="Guetari, Khalil">
+  <meta name="citation_author" content="Tevissen, Yannis">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="arXiv preprint">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/<TODO>.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <title>PEEK: Picking Essential frames via Efficient Knowledge distillation - Killian Steunou, Anas Filali Razzouki, Mounîm A. El-Yacoubi, Khalil Guetari, Yannis Tevissen | Academic Research</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PEEK: Picking Essential frames via Efficient Knowledge distillation",
+    "description": "PEEK distills caption-conditioned frame scores from a strong vision-language teacher into a lightweight query-free selector, improving video captioning.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Killian Steunou",
+        "affiliation": [
+          {
+            "@type": "Organization",
+            "name": "Institut Polytechnique de Paris"
+          },
+          {
+            "@type": "Organization",
+            "name": "Moments Lab"
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "name": "Anas Filali Razzouki",
+        "affiliation": [
+          { 
+            "@type": "Organization",
+            "name": "Institut Polytechnique de Paris"
+          },
+          {
+            "@type": "Organization",
+            "name": "Moments Lab"
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "name": "Mounîm A. El-Yacoubi",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Institut Polytechnique de Paris"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Khalil Guetari",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Moments Lab"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Yannis Tevissen",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Moments Lab"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://www.killian-steunou.com/peek",
+    "image": "https://www.killian-steunou.com/static/images/social_preview.png",
+    "keywords": [
+      "video understanding",
+      "video captioning",
+      "frame selection",
+      "keyframe selection",
+      "vision-language models",
+      "knowledge distillation",
+      "efficient inference",
+      "temporal modeling",
+      "multimodal learning",
+      "video-language models",
+      "machine learning",
+      "computer vision",
+      "AI"
+    ],
+    "abstract": "Video-language models can process only a limited number of frames, making frame selection a key bottleneck for efficient video captioning. Most captioning pipelines still rely on uniform sampling, which is computationally cheap but agnostic to visual content. Adaptive frame sampling has recently emerged as a promising approach for selecting the most informative frames from a video; however, existing methods remain computationally expensive. We introduce PEEK, an efficient dynamic frame sampling method that distills caption-conditioned frame relevance rankings from a stronger teacher model into a lightweight temporal model that operates only on visual content. We find that, overall, on ActivityNet Captions and MSR-VTT, our method outperforms the compared methods across all evaluated downstream vision language models, especially with one or two frames, obtaining the best CIDEr for most frame budgets. On ActivityNet Captions, PEEK is particularly strong, winning 14 out of 16 configurations. Our zero-shot evaluation on MSR-VTT shows that our model transfers best at low frame budgets, while results at four and eight frames are more mixed as temporal coverage and visual diversity become increasingly competitive. Compared with recent adaptive baselines, PEEK is both more accurate in the low-budget regime and more efficient: it adds only to the captioning time, compared with for CSTA and for MaxInfo.",
+    "citation": "@article{steunou2026peek, title={PEEK: Picking Essential frames via Efficient Knowledge distillation}, author={Steunou, Killian and Filali Razzouki, Anas and El-Yacoubi, Mounîm A. and Guetari, Khalil and Tevissen, Yannis}, journal={arXiv preprint}, year={2026}, url={https://arxiv.org/abs/TODO}}",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://www.killian-steunou.com/peek"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Institut Polytechnique de Paris & Moments Lab",
+    "url": "https://momentslab.com",
+    "logo": "https://cdn.prod.website-files.com/65e09abf952724557f01dd94/65f1e6cd3877f4d3a9ed712d_Moments_Lab_Favicon.png",
+    "sameAs": [
+      "https://github.com/momentslab"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://arxiv.org/abs/2509.14769" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Frame Sampling Strategies Matter: A Benchmark for small vision language models</h5>
+            <p>We propose the first frame-accurate benchmark of state-of-the-art small VLMs for video question-answering, evaluated under controlled frame-sampling strategies.</p>
+            <span class="work-venue">arXiv preprint</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://drive.google.com/file/d/1vURo8A0jYlSJZpo-LVMAqOz5kh5KI5jY/view" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Vision and Language Models for Enhanced Archive Video Management</h5>
+            <p>We propose a novel approach that combines vision and language models to automatically detect transition frames and segment archive videos into distinct stories.</p>
+            <span class="work-venue">Proceedings of the 2025 NAB Broadcast Engineering and Information Technology (BEIT) Conference</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/2406.14938" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Towards Retrieval Augmented Generation over Large Video Libraries</h5>
+            <p>We introduce the task of Video Library Question Answering (VLQA) through an interoperable architecture that applies Retrieval Augmented Generation (RAG) to video libraries.</p>
+            <span class="work-venue">IEEE HSI 2024</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">PEEK: Picking Essential frames via Efficient Knowledge distillation</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://www.killian-steunou.com" target="_blank">Killian Steunou</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="https://www.linkedin.com/in/anas-filali-phd-11301815a/" target="_blank">Anas Filali Razzouki</a>,</span>
+                  <span class="author-block">
+                    <a href="https://elyacoubi.wp.imt.fr/" target="_blank">Mounîm A. El-Yacoubi</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://www.linkedin.com/in/khalil-guetari-00a61415a/" target="_blank">Khalil Guetari</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://yannistevissen.fr/" target="_blank">Yannis Tevissen</a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><a href="https://samovar.telecom-sudparis.eu/index.php/en/accueil-2/" target="_blank">Télécom SudParis, Institut Polytechnique de Paris, France</a><br><a href="https://momentslab.com/" target="_blank">Moments Lab</a><br>arXiv 2026 (in submission)</span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates primary contribution</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/TODO.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <span class="link-block">
+                      <a href="static/pdfs/peek_supplementary.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="https://github.com/momentslab/peek" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/TODO" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
+        <source src="static/videos/banner_video.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        PEEK distills caption-conditioned frame scores from a strong vision-language teacher into a lightweight query-free selector, improving video captioning.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Video-language models can process only a limited number of frames, making frame selection a key bottleneck for efficient video captioning. Most captioning pipelines still rely on uniform sampling, which is computationally cheap but agnostic to visual content. Adaptive frame sampling has recently emerged as a promising approach for selecting the most informative frames from a video; however, existing methods remain computationally expensive. We introduce PEEK, an efficient dynamic frame sampling method that distills caption-conditioned frame relevance rankings from a stronger teacher model into a lightweight temporal model that operates only on visual content. We find that, overall, on ActivityNet Captions and MSR-VTT, our method outperforms the compared methods across all evaluated downstream vision language models, especially with one or two frames, obtaining the best CIDEr for most frame budgets. On ActivityNet Captions, PEEK is particularly strong, winning 14 out of 16 configurations. Our zero-shot evaluation on MSR-VTT shows that our model transfers best at low frame budgets, while results at four and eight frames are more mixed as temporal coverage and visual diversity become increasingly competitive. Compared with recent adaptive baselines, PEEK is both more accurate in the low-budget regime and more efficient: it adds only to the captioning time, compared with for CSTA and for MaxInfo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <img src="static/images/peek_phase1.jpg" alt="First research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+          In Stage 1, a frozen SigLIP 2 dual encoder acts as an Oracle teacher, producing per-frame relevance targets from ground-truth captions. 
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/peek_phase2.jpg" alt="Second research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+          In Stage 2, a small Transformer distills the teacher's ranking into a query-free selector operating on MobileCLIP2 visual embeddings alone.
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/peek_inference.jpg" alt="Third research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+         At inference, the segment is split into $k$ equal temporal windows and the highest-scoring frame within each (blue dot) is kept.
+       </h2>
+     </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+
+
+
+<!-- Youtube video -->
+<!-- <section class="hero is-small is-light"> -->
+  <!-- <div class="hero-body"> -->
+    <!-- <div class="container"> -->
+      <!-- Paper video. -->
+      <!-- <h2 class="title is-3">Video Presentation</h2> -->
+      <!-- <div class="columns is-centered has-text-centered"> -->
+        <!-- <div class="column is-four-fifths"> -->
+          
+          <!-- <div class="publication-video"> -->
+            <!-- <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </section> -->
+<!-- End youtube video -->
+
+
+<!-- Results carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Results</h2>
+      <div id="quantitative-results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <img src="static/images/anc_results.png" alt="ActivityNet Captions quantitative results table" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            <strong>ActivityNet Captions</strong> test captioning metrics with different downstream VLMs and frame budgets. PEEK uses the same ActivityNet-trained checkpoint for all downstream VLMs. Oracle scores frames against the ground-truth caption.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/msrvtt_results.png" alt="MSR-VTT quantitative results table" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            <strong>Zero-shot MSR-VTT</strong> test captioning metrics with different downstream VLMs and frame budgets. PEEK uses the same query-free ActivityNet-trained selector for all downstream VLMs. Oracle scores frames against the ground-truth caption.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/peek_efficiency.png" alt="Efficiency comparison table" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Selection and end-to-end captioning time on the full ActivityNet Captions evaluation split with 17,505 segments, with SmolVLM2-2.2B-Instruct. Timings are measured on 4 x NVIDIA A10G GPUs. 
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End results carousel -->
+
+
+
+
+
+
+<!-- Paper poster -->
+<!-- <section class="hero is-small is-light"> -->
+  <!-- <div class="hero-body"> -->
+    <!-- <div class="container"> -->
+      <!-- <h2 class="title">Poster</h2> -->
+
+      <!-- <iframe  src="static/pdfs/sample.pdf" width="100%" height="550"> -->
+          <!-- </iframe> -->
+        
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </section> -->
+<!--End paper poster -->
+
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{steunou2026peek,
+  title={PEEK: Picking Essential frames via Efficient Knowledge distillation},
+  author={Steunou, Killian and Filali Razzouki, Anas and El-Yacoubi, Moun{\^i}m A. and Guetari, Khalil and Tevissen, Yannis},
+  journal={arXiv preprint},
+  year={2026},
+  url={TODO}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
