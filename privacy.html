@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Politique de confidentialité — Anonymiseur</title>
+    <style>
+      :root { color-scheme: light; }
+      body {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6; color: #1a1a1a; max-width: 760px;
+        margin: 40px auto; padding: 0 20px;
+      }
+      h1 { font-size: 26px; }
+      h2 { font-size: 19px; margin-top: 28px; }
+      .updated { color: #6b7280; font-size: 14px; }
+      .note {
+        background: #fef3c7; border-left: 4px solid #92400e;
+        padding: 10px 14px; border-radius: 6px;
+      }
+      code { background: #f3f4f6; padding: 1px 5px; border-radius: 4px; }
+      a { color: #2563eb; }
+    </style>
+  </head>
+  <body>
+    <h1>Politique de confidentialité — Anonymiseur</h1>
+    <p class="updated">Dernière mise à jour : 29 mai 2026</p>
+
+    <p>
+      <strong>Anonymiseur</strong> est une extension Chrome conçue précisément pour
+      <strong>protéger la confidentialité</strong>. Son fonctionnement repose sur un
+      principe simple et vérifiable.
+    </p>
+
+    <h2>Aucune collecte, aucune transmission de données</h2>
+    <ul>
+      <li>L'extension fonctionne <strong>100&nbsp;% en local</strong>, dans votre navigateur.</li>
+      <li>Elle n'effectue <strong>aucun appel réseau</strong> : aucun serveur, aucune API externe, aucune télémétrie, aucun outil d'analyse.</li>
+      <li><strong>Aucune donnée n'est collectée, stockée à distance, vendue ou partagée.</strong> Ni vos textes, ni vos glossaires, ni la moindre information personnelle ne quittent votre ordinateur.</li>
+    </ul>
+
+    <h2>Données traitées et stockées localement</h2>
+    <ul>
+      <li>Les textes que vous saisissez sont traités <strong>en mémoire</strong> pour produire la version anonymisée, puis ne sont pas conservés.</li>
+      <li>Votre <strong>glossaire</strong> (termes sensibles, genre/nombre), votre <strong>liste de termes ignorés</strong> et la <strong>dernière correspondance</strong> servant à la restauration sont enregistrés <strong>localement</strong> via <code>chrome.storage.local</code>, uniquement sur votre appareil. Vous pouvez les supprimer à tout moment en retirant les termes ou en désinstallant l'extension.</li>
+    </ul>
+
+    <h2>Autorisations demandées et leur justification</h2>
+    <ul>
+      <li><code>storage</code> : enregistrer localement votre glossaire, vos termes ignorés et la correspondance de restauration.</li>
+      <li><code>sidePanel</code> : afficher l'interface dans le panneau latéral de Chrome.</li>
+      <li><code>scripting</code> + accès à <code>chatgpt.com</code> / <code>chat.openai.com</code> (facultatif, demandé uniquement au moment où vous cliquez sur «&nbsp;Coller dans ChatGPT&nbsp;») : insérer le texte <strong>déjà anonymisé</strong> dans la zone de saisie de ChatGPT. Cet accès sert exclusivement à écrire ce texte dans la page ; il ne lit ni ne transmet aucune donnée ailleurs.</li>
+    </ul>
+
+    <h2>Modèle de confidentialité</h2>
+    <p>
+      Le seul texte qui peut atteindre ChatGPT est la version <strong>anonymisée</strong>
+      que vous avez vérifiée. Les noms réels et les chiffres sensibles restent dans le
+      panneau, sur votre machine.
+    </p>
+    <p class="note">
+      Avertissement : l'anonymisation est une <strong>aide</strong>, pas une garantie
+      absolue. Vérifiez toujours le récapitulatif des changements avant d'envoyer un texte.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Pour toute question relative à cette politique :
+      <a href="mailto:contact@killian-steunou.com">contact@killian-steunou.com</a>.
+    </p>
+  </body>
+</html>
