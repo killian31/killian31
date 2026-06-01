@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research - Killian Steunou</title>
-    <meta name="description" content="Research projects and replications by Killian Steunou across robustness, generative modeling, adaptation, and multimodal learning.">
+    <title>Publications - Killian Steunou</title>
+    <meta name="description" content="Publications by Killian Steunou on efficient video understanding, frame selection, and adversarial robustness.">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -28,7 +28,7 @@
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#experience">Experience</a></li>
                 <li><a href="index.html#education">Education</a></li>
-                <li><a href="research.html">Research</a></li>
+                <li><a href="research.html">Publications</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="demos.html">Demos</a></li>
@@ -44,37 +44,96 @@
     <main>
         <header class="page-hero">
             <div class="page-shell">
-                <p class="eyebrow">Research</p>
-                <h1>Replications, reports, and original work across robustness, adaptation, and generative modeling.</h1>
+                <p class="eyebrow">Publications</p>
+                <h1>Original research in efficient video understanding and adversarial robustness.</h1>
                 <p class="page-copy">
-                    This page collects the projects where I used research as a craft: reading closely, reproducing carefully,
-                    testing assumptions, and trying to understand what really changes when a method leaves the paper.
+                    Preprints and papers from my PhD and earlier research. I focus on reducing computational cost
+                    without sacrificing model quality — whether that means smarter frame selection, sparse representations,
+                    or better understanding of robustness trade-offs.
                 </p>
                 <div class="stat-row">
-                    <span class="stat-chip">Robustness</span>
-                    <span class="stat-chip">Optimal transport</span>
-                    <span class="stat-chip">Adaptation</span>
-                    <span class="stat-chip">3D detection</span>
+                    <span class="stat-chip">Video understanding</span>
+                    <span class="stat-chip">Knowledge distillation</span>
+                    <span class="stat-chip">Adversarial robustness</span>
+                    <span class="stat-chip">Efficient inference</span>
                 </div>
             </div>
         </header>
 
-        <section class="scene scene-muted">
+        <section class="scene scene-dark">
             <div class="page-shell">
-                <div class="research-grid">
-                    <article class="research-card reveal">
-                        <div class="story-meta">2025 / Original work</div>
-                        <h3>Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
-                        <p>Killian Steunou, Théo Druilhe, Sigurd Saue</p>
-                        <p>We revisit linear dimensionality reduction as a defense and compare PCA with Sparse PCA as front-end feature extractors for adversarial robustness.</p>
-                        <div class="story-links">
-                            <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer">Preprint</a>
-                            <a href="https://github.com/killian31/SPCARobustness" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <div class="pub-list">
+
+                    <article class="pub-card reveal">
+                        <div class="pub-year">2026</div>
+                        <div class="pub-body">
+                            <span class="pub-venue">arXiv Preprint · in submission</span>
+                            <h3 class="pub-title">PEEK: Picking Essential frames via Efficient Knowledge distillation</h3>
+                            <p class="pub-authors"><strong>Killian Steunou</strong>, Anas Filali Razzouki, Mounîm A. El-Yacoubi, Khalil Guetari, Yannis Tevissen</p>
+                            <p class="pub-abstract">
+                                We propose PEEK, a training-efficient frame selection method that distills knowledge from
+                                vision-language teachers to identify the most informative frames for video captioning.
+                                PEEK achieves competitive performance with significantly fewer processed frames, making
+                                dense video understanding more practical at scale.
+                            </p>
+                            <div class="pub-tags">
+                                <span class="pub-tag">Video Understanding</span>
+                                <span class="pub-tag">Knowledge Distillation</span>
+                                <span class="pub-tag">Frame Selection</span>
+                                <span class="pub-tag">Video Captioning</span>
+                                <span class="pub-tag">Efficiency</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="peek/index.html" class="pub-link pub-link-primary">Project page</a>
+                                <a href="https://arxiv.org/abs/2605.31029" target="_blank" rel="noopener noreferrer" class="pub-link">arXiv</a>
+                                <a href="https://arxiv.org/pdf/2605.31029.pdf" target="_blank" rel="noopener noreferrer" class="pub-link">PDF</a>
+                                <a href="https://github.com/momentslab/peek" target="_blank" rel="noopener noreferrer" class="pub-link">Code</a>
+                                <a href="https://huggingface.co/momentslab/peek" target="_blank" rel="noopener noreferrer" class="pub-link">Model</a>
+                            </div>
                         </div>
                     </article>
 
+                    <article class="pub-card reveal">
+                        <div class="pub-year">2025</div>
+                        <div class="pub-body">
+                            <span class="pub-venue">arXiv Preprint</span>
+                            <h3 class="pub-title">Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
+                            <p class="pub-authors"><strong>Killian Steunou</strong>, Théo Druilhe, Sigurd Saue</p>
+                            <p class="pub-abstract">
+                                We revisit linear dimensionality reduction as a defense mechanism and show, both theoretically
+                                and empirically, that SPCA-based classifiers are more robust than PCA-based alternatives
+                                under adversarial attack. The analysis provides a principled explanation for when and why
+                                sparsity helps at the feature extraction stage.
+                            </p>
+                            <div class="pub-tags">
+                                <span class="pub-tag">Adversarial Robustness</span>
+                                <span class="pub-tag">Sparse Representations</span>
+                                <span class="pub-tag">Dimensionality Reduction</span>
+                                <span class="pub-tag">Computer Vision</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer" class="pub-link pub-link-primary">arXiv</a>
+                                <a href="https://arxiv.org/pdf/2509.21130.pdf" target="_blank" rel="noopener noreferrer" class="pub-link">PDF</a>
+                                <a href="https://github.com/killian31/SPCARobustness" target="_blank" rel="noopener noreferrer" class="pub-link">Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="scene scene-muted">
+            <div class="page-shell">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Coursework &amp; Reproductions</p>
+                        <h2 class="section-title">Reports from my Master's — reproductions, adaptations, and applied projects.</h2>
+                    </div>
+                </div>
+                <div class="research-grid">
                     <article class="research-card reveal">
-                        <div class="story-meta">2024 / Reproduction</div>
+                        <div class="story-meta">2025 / Reproduction</div>
                         <h3>Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
                         <p>Original paper by Max Daniels, Tyler Maunu, Paul Hand</p>
                         <p>I reproduced the hybrid score-based transport approach and studied how regularization and sampling affect the quality of recovered maps.</p>
@@ -86,7 +145,7 @@
                     </article>
 
                     <article class="research-card reveal">
-                        <div class="story-meta">2024 / Adaptation</div>
+                        <div class="story-meta">2025 / Adaptation</div>
                         <h3>Test Time Training with Masked Autoencoders</h3>
                         <p>Original paper by Yossi Gandelsman, Yu Sun, Xinlei Chen, Alexei A. Efros</p>
                         <p>I evaluated TTT-MAE on corruption benchmarks and explored an online variant that retains encoder updates between samples.</p>
@@ -98,7 +157,7 @@
                     </article>
 
                     <article class="research-card reveal">
-                        <div class="story-meta">2023 / Robustness</div>
+                        <div class="story-meta">2024 / Robustness</div>
                         <h3>Are Generative Classifiers More Robust to Adversarial Attacks?</h3>
                         <p>Original paper by Yingzhen Li, John Bradshaw, Yash Sharma</p>
                         <p>I revisited the robustness claims around generative classifiers and extended the original setup beyond MNIST to a more realistic dataset.</p>
@@ -110,7 +169,7 @@
                     </article>
 
                     <article class="research-card reveal">
-                        <div class="story-meta">2023 / Applied ML</div>
+                        <div class="story-meta">2025 / Applied ML</div>
                         <h3>Toxic Gas Characterization</h3>
                         <p>Independent applied project</p>
                         <p>I studied domain shift caused by humidity changes and combined multi-task learning with adversarial adaptation for more stable gas characterization.</p>
@@ -121,7 +180,7 @@
                     </article>
 
                     <article class="research-card reveal">
-                        <div class="story-meta">2023 / Optimization</div>
+                        <div class="story-meta">2025 / Optimization</div>
                         <h3>Convergence of SGD for Training Neural Networks with Sliced Wasserstein Losses</h3>
                         <p>Original paper by Eloi Tanguy</p>
                         <p>We verified convergence behavior for sliced Wasserstein training on toy distributions and Fashion-MNIST, including a look at Noise Projected SGD.</p>
@@ -133,7 +192,7 @@
                     </article>
 
                     <article class="research-card reveal">
-                        <div class="story-meta">2023 / 3D Vision</div>
+                        <div class="story-meta">2025 / 3D Vision</div>
                         <h3>An End-to-End Transformer Model for 3D Object Detection</h3>
                         <p>Original paper by Ishan Misra, Rohit Girdhar, Armand Joulin</p>
                         <p>I reproduced 3DETR on SUN RGB-D and explored how an RGB-enhanced variant compares to the original point-cloud-only pipeline.</p>

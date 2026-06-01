@@ -37,7 +37,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
-                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="blog.html">Blog <span class="nav-external" aria-hidden="true">↗</span></a></li>
                 <li><a href="demos.html">Demos <span class="nav-external" aria-hidden="true">↗</span></a></li>
@@ -62,7 +62,7 @@
                         working on efficient omni-modal learning for generalized video understanding.
                     </p>
                     <div class="hero-actions">
-                        <a href="#research" class="button button-primary">View research</a>
+                        <a href="#publications" class="button button-primary">View publications</a>
                         <a href="#contact" class="button button-secondary">Start a conversation</a>
                     </div>
                     <div class="hero-facts">
@@ -97,6 +97,30 @@
                         <strong>Working style</strong>
                         <p>Scientific rigor, clear writing, reproducible pipelines, and pragmatic engineering.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="scene scene-muted">
+            <div class="scene-shell">
+                <p class="eyebrow">News</p>
+                <div class="news-list">
+                    <article class="news-item reveal">
+                        <div class="news-date">
+                            <span class="news-dot"></span>
+                            <time datetime="2026-05">May 2026</time>
+                        </div>
+                        <div class="news-body">
+                            <p class="news-headline">New preprint: PEEK — frame selection for efficient video captioning</p>
+                            <p class="news-text">We open sourced the code and model weights on HuggingFace, and released a live demo you can try in the browser.</p>
+                            <div class="news-links">
+                                <a href="https://arxiv.org/abs/2605.31029" target="_blank" rel="noopener noreferrer">arXiv</a>
+                                <a href="peek/index.html">Paper page</a>
+                                <a href="https://github.com/momentslab/peek" target="_blank" rel="noopener noreferrer">Code</a>
+                                <a href="demo_peek.html">Demo</a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -344,53 +368,56 @@
             </div>
         </section>
 
-        <section id="research" class="scene scene-dark">
+        <section id="publications" class="scene scene-dark">
             <div class="scene-shell">
                 <div class="section-head">
                     <div>
-                        <p class="eyebrow">Research</p>
-                        <h2 class="section-title">Selected work across adversarial robustness, generative modeling, test-time adaptation, and 3D vision.</h2>
+                        <p class="eyebrow">Publications</p>
+                        <h2 class="section-title">Preprint and Accepted Papers</h2>
                     </div>
-                    <a href="research.html" class="button button-secondary">View all research</a>
+                    <a href="research.html" class="button button-secondary">View all</a>
                 </div>
-                <div class="story-grid">
-                    <article class="story-card reveal">
-                        <div class="story-meta">2025 / Robustness</div>
-                        <h3>Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
-                        <p>We show, theoretically and empirically, that SPCA-based classifiers can be more robust than PCA-based alternatives under adversarial attack.</p>
-                        <div class="story-links">
-                            <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer">Preprint</a>
-                            <a href="https://github.com/killian31/SPCARobustness" target="_blank" rel="noopener noreferrer">Code</a>
+                <div class="pub-list">
+                    <article class="pub-card reveal">
+                        <div class="pub-year">2026</div>
+                        <div class="pub-body">
+                            <span class="pub-venue">arXiv Preprint</span>
+                            <h3 class="pub-title">PEEK: Picking Essential frames via Efficient Knowledge distillation</h3>
+                            <p class="pub-authors"><strong>Killian Steunou</strong>, Anas Filali Razzouki, Mounîm A. El-Yacoubi, Khalil Guetari, Yannis Tevissen</p>
+                            <p class="pub-abstract">We propose PEEK, a training-efficient frame selection method that distills knowledge from vision-language teachers to identify the most informative frames for video captioning — achieving competitive performance while significantly reducing the number of processed frames.</p>
+                            <div class="pub-tags">
+                                <span class="pub-tag">Video Understanding</span>
+                                <span class="pub-tag">Knowledge Distillation</span>
+                                <span class="pub-tag">Frame Selection</span>
+                                <span class="pub-tag">Efficiency</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="peek/index.html" class="pub-link pub-link-primary">Project page</a>
+                                <a href="https://arxiv.org/abs/2605.31029" target="_blank" rel="noopener noreferrer" class="pub-link">arXiv</a>
+                                <a href="https://arxiv.org/pdf/2605.31029.pdf" target="_blank" rel="noopener noreferrer" class="pub-link">PDF</a>
+                                <a href="https://github.com/momentslab/peek" target="_blank" rel="noopener noreferrer" class="pub-link">Code</a>
+                                <a href="https://huggingface.co/momentslab/peek" target="_blank" rel="noopener noreferrer" class="pub-link">Model</a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="story-card reveal">
-                        <div class="story-meta">2024 / Generative Modeling</div>
-                        <h3>Score-Based Generative Neural Networks for Large-Scale Optimal Transport</h3>
-                        <p>I reproduced the SCONES framework and evaluated how score-based modeling changes the behavior of regularized transport on synthetic distributions.</p>
-                        <div class="story-links">
-                            <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
-                            <a href="https://github.com/killian31/scones-synthetic" target="_blank" rel="noopener noreferrer">Code</a>
-                        </div>
-                    </article>
-
-                    <article class="story-card reveal">
-                        <div class="story-meta">2024 / Adaptation</div>
-                        <h3>Test Time Training with Masked Autoencoders</h3>
-                        <p>I extended TTT-MAE with an online setting and studied how adaptation behaves when distribution shift keeps evolving at inference time.</p>
-                        <div class="story-links">
-                            <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
-                            <a href="https://github.com/killian31/ttt_mae_online" target="_blank" rel="noopener noreferrer">Code</a>
-                        </div>
-                    </article>
-
-                    <article class="story-card reveal">
-                        <div class="story-meta">2023 / 3D Vision</div>
-                        <h3>An End-to-End Transformer Model for 3D Object Detection</h3>
-                        <p>We reproduced 3DETR on SUN RGB-D and explored how a lean transformer detector behaves when extended with RGB information.</p>
-                        <div class="story-links">
-                            <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
-                            <a href="research.html">More research</a>
+                    <article class="pub-card reveal">
+                        <div class="pub-year">2025</div>
+                        <div class="pub-body">
+                            <span class="pub-venue">arXiv Preprint</span>
+                            <h3 class="pub-title">Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</h3>
+                            <p class="pub-authors"><strong>Killian Steunou</strong>, Théo Druilhe, Sigurd Saue</p>
+                            <p class="pub-abstract">We show, theoretically and empirically, that SPCA-based classifiers are more robust than PCA-based alternatives under adversarial attack, providing a new perspective on linear dimensionality reduction as a defense mechanism.</p>
+                            <div class="pub-tags">
+                                <span class="pub-tag">Adversarial Robustness</span>
+                                <span class="pub-tag">Sparse Representations</span>
+                                <span class="pub-tag">Computer Vision</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer" class="pub-link pub-link-primary">arXiv</a>
+                                <a href="https://arxiv.org/pdf/2509.21130.pdf" target="_blank" rel="noopener noreferrer" class="pub-link">PDF</a>
+                                <a href="https://github.com/killian31/SPCARobustness" target="_blank" rel="noopener noreferrer" class="pub-link">Code</a>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -402,46 +429,26 @@
                 <div class="section-head">
                     <div>
                         <p class="eyebrow">Projects</p>
-                        <h2 class="section-title">Tools, experiments, and interfaces that turn research ideas into usable artifacts.</h2>
+                        <h2 class="section-title">Tools, experiments, reproductions, and interfaces that turn research ideas into usable artifacts.</h2>
                     </div>
                 </div>
                 <div class="portfolio-grid">
                     <article class="portfolio-card reveal">
                         <div class="portfolio-thumb">
-                            <img loading="lazy" src="https://github.com/killian31/NailBiteMenu/blob/main/docs/logo.png?raw=true" alt="Nail Bite Menu">
+                            <img loading="lazy" src="assets/projects/joligen.svg" alt="joliGEN">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
-                                <span class="tag">macOS</span>
-                                <span class="tag">Computer vision</span>
+                                <span class="tag">Open source</span>
+                                <span class="tag">Generative AI</span>
                             </div>
-                            <h3>Nail Bite Detection App</h3>
-                            <p>A macOS menu bar app that detects nail biting from your webcam in real time to make the habit visible and measurable.</p>
+                            <h3>Contribution to joliGEN</h3>
+                            <p>I integrated ControlNet-inspired edge controls and SAM-based masking into joliGEN, then helped improve its documentation.</p>
                             <div class="portfolio-stats">
-                                <img loading="lazy" src="https://img.shields.io/github/stars/killian31/NailBiteMenu.svg?style=flat&label=Stars" alt="GitHub stars">
-                                <img loading="lazy" src="https://img.shields.io/github/downloads/killian31/NailBiteMenu/total?style=flat&label=Downloads" alt="Total downloads">
+                                <img loading="lazy" src="https://img.shields.io/github/stars/jolibrain/joliGEN.svg?style=flat&label=Stars" alt="GitHub stars">
                             </div>
                             <div class="inline-actions">
-                                <a href="https://github.com/killian31/NailBiteMenu" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                <a href="https://killian31.github.io/NailBiteMenu/" target="_blank" rel="noopener noreferrer">Website</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="portfolio-card reveal">
-                        <div class="portfolio-thumb">
-                            <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription">
-                        </div>
-                        <div class="portfolio-body">
-                            <div class="portfolio-tags">
-                                <span class="tag">Whisper</span>
-                                <span class="tag">Speech</span>
-                            </div>
-                            <h3>Audio Visual Transcription</h3>
-                            <p>A tool for quickly subtitling audio and video content with OpenAI Whisper, exposed through a simple demo interface.</p>
-                            <div class="inline-actions">
-                                <a href="https://github.com/killian31/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                <a href="https://huggingface.co/spaces/nelikCode/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">Live demo</a>
+                                <a href="https://github.com/jolibrain/joliGEN" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
                         </div>
                     </article>
@@ -489,20 +496,129 @@
 
                     <article class="portfolio-card reveal">
                         <div class="portfolio-thumb">
-                            <img loading="lazy" src="assets/projects/joligen.svg" alt="joliGEN">
+                            <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription">
                         </div>
                         <div class="portfolio-body">
                             <div class="portfolio-tags">
-                                <span class="tag">Open source</span>
-                                <span class="tag">Generative AI</span>
+                                <span class="tag">Whisper</span>
+                                <span class="tag">Speech</span>
                             </div>
-                            <h3>Contribution to joliGEN</h3>
-                            <p>I integrated ControlNet-inspired edge controls and SAM-based masking into joliGEN, then helped improve its documentation.</p>
+                            <h3>Audio Visual Transcription</h3>
+                            <p>A tool for quickly subtitling audio and video content with OpenAI Whisper, exposed through a simple demo interface.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a href="https://huggingface.co/spaces/nelikCode/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">Live demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-thumb">
+                            <img loading="lazy" src="https://github.com/killian31/NailBiteMenu/blob/main/docs/logo.png?raw=true" alt="Nail Bite Menu">
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">macOS</span>
+                                <span class="tag">Computer vision</span>
+                            </div>
+                            <h3>Nail Bite Detection App</h3>
+                            <p>A macOS menu bar app that detects nail biting from your webcam in real time to make the habit visible and measurable.</p>
                             <div class="portfolio-stats">
-                                <img loading="lazy" src="https://img.shields.io/github/stars/jolibrain/joliGEN.svg?style=flat&label=Stars" alt="GitHub stars">
+                                <img loading="lazy" src="https://img.shields.io/github/stars/killian31/NailBiteMenu.svg?style=flat&label=Stars" alt="GitHub stars">
+                                <img loading="lazy" src="https://img.shields.io/github/downloads/killian31/NailBiteMenu/total?style=flat&label=Downloads" alt="Total downloads">
                             </div>
                             <div class="inline-actions">
-                                <a href="https://github.com/jolibrain/joliGEN" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a href="https://github.com/killian31/NailBiteMenu" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a href="https://killian31.github.io/NailBiteMenu/" target="_blank" rel="noopener noreferrer">Website</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Research report</span>
+                                <span class="tag">Optimal transport</span>
+                            </div>
+                            <h3>Score-Based Generative Networks for Large-Scale Optimal Transport</h3>
+                            <p>I reproduced the SCONES framework and evaluated how score-based modeling changes the behavior of regularized transport on synthetic distributions.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                                <a href="https://github.com/killian31/scones-synthetic" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Research report</span>
+                                <span class="tag">Test-time adaptation</span>
+                            </div>
+                            <h3>Test Time Training with Masked Autoencoders</h3>
+                            <p>I extended TTT-MAE with an online setting and studied how adaptation behaves when distribution shift keeps evolving at inference time.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                                <a href="https://github.com/killian31/ttt_mae_online" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Research report</span>
+                                <span class="tag">3D vision</span>
+                            </div>
+                            <h3>An End-to-End Transformer Model for 3D Object Detection</h3>
+                            <p>We reproduced 3DETR on SUN RGB-D and explored how a lean transformer detector behaves when extended with RGB information.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Research report</span>
+                                <span class="tag">Robustness</span>
+                            </div>
+                            <h3>Are Generative Classifiers More Robust to Adversarial Attacks?</h3>
+                            <p>I revisited the robustness claims around generative classifiers and extended the original setup beyond MNIST to a more realistic dataset.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                                <a href="https://github.com/killian31/DeepBayesTorch" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Research report</span>
+                                <span class="tag">Applied ML</span>
+                            </div>
+                            <h3>Toxic Gas Characterization</h3>
+                            <p>I studied domain shift caused by humidity changes and combined multi-task learning with adversarial adaptation for more stable gas characterization.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                                <a href="https://github.com/killian31/IdGas" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-body">
+                            <div class="portfolio-tags">
+                                <span class="tag">Research report</span>
+                                <span class="tag">Optimization</span>
+                            </div>
+                            <h3>Convergence of SGD for Training with Sliced Wasserstein Losses</h3>
+                            <p>We verified convergence behavior for sliced Wasserstein training on toy distributions and Fashion-MNIST, including a look at Noise Projected SGD.</p>
+                            <div class="inline-actions">
+                                <a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">Report</a>
+                                <a href="https://github.com/francklaborde/Generative-modeling-project" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
                         </div>
                     </article>
@@ -611,6 +727,14 @@
                     </div>
                     <div class="demo-container">
                         <article class="demo-item">
+                            <img loading="lazy" src="peek/static/images/social_preview.png" alt="PEEK demo" class="demo-image">
+                            <h3 class="demo-title">PEEK — Frame Selection for Video Captioning</h3>
+                            <p>Select the most informative frames from a video, distilled from vision-language teachers.</p>
+                            <div class="inline-actions">
+                                <a href="demo_peek.html">Open demo</a>
+                            </div>
+                        </article>
+                        <article class="demo-item">
                             <img loading="lazy" src="https://github.com/killian31/AudioVisualTranscription/blob/main/app_ex.png?raw=true" alt="Audio Visual Transcription demo" class="demo-image">
                             <h3 class="demo-title">Audio Visual Transcription</h3>
                             <p>Whisper-powered subtitling for audio and video with a fast demo workflow.</p>
@@ -624,14 +748,6 @@
                             <p>Interactive segmentation-based background removal for video.</p>
                             <div class="inline-actions">
                                 <a href="demo_vbr.html">Open demo</a>
-                            </div>
-                        </article>
-                        <article class="demo-item">
-                            <img loading="lazy" src="assets/projects/mathviz.png" alt="MathViz demo" class="demo-image">
-                            <h3 class="demo-title">MathViz</h3>
-                            <p>Visual explanations for mathematics, statistics, machine learning, and algorithms.</p>
-                            <div class="inline-actions">
-                                <a href="demo_mathviz.html">Open demo</a>
                             </div>
                         </article>
                     </div>

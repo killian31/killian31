@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathViz Demo</title>
-    <meta name="description" content="Interactive MathViz demo by Killian Steunou.">
+    <title>PEEK Demo</title>
+    <meta name="description" content="Live demo of PEEK: Picking Essential frames via Efficient Knowledge distillation — a frame selection model for video captioning.">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -42,13 +42,15 @@
         <header class="page-hero">
             <div class="page-shell">
                 <p class="eyebrow">Demo</p>
-                <h1>MathViz</h1>
+                <h1>PEEK: Picking Essential frames via Efficient Knowledge distillation</h1>
                 <p class="page-copy">
-                    A visualization-first interface for exploring mathematics, statistics, algorithms, and machine learning concepts.
+                    Upload a video and let PEEK select the most informative frames for captioning — without watching every frame.
+                    The model is distilled from vision-language teachers to identify what matters, fast.
                 </p>
                 <div class="hero-actions">
-                    <a href="https://mathviz.streamlit.app" target="_blank" rel="noopener noreferrer" class="button button-primary">Open live app</a>
-                    <a href="https://github.com/killian31/MathViz" target="_blank" rel="noopener noreferrer" class="button button-secondary">View GitHub</a>
+                    <a href="https://huggingface.co/spaces/momentslab/peek" target="_blank" rel="noopener noreferrer" class="button button-primary">Open on HuggingFace</a>
+                    <a href="peek/index.html" class="button button-secondary">Paper page</a>
+                    <a href="https://github.com/momentslab/peek" target="_blank" rel="noopener noreferrer" class="button button-secondary">GitHub</a>
                 </div>
             </div>
         </header>
@@ -57,8 +59,8 @@
             <div class="page-shell">
                 <div class="embed-shell reveal">
                     <iframe
-                        src="https://mathviz.streamlit.app?embed=true"
-                        title="MathViz demo"
+                        src="https://momentslab-peek.hf.space"
+                        title="PEEK frame selection demo"
                         loading="lazy"
                     ></iframe>
                 </div>
