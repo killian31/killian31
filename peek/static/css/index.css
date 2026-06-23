@@ -223,6 +223,113 @@ body {
   box-shadow: var(--shadow-xl);
 }
 
+/* Teaser + demo video framing */
+.teaser-video,
+.demo-video {
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  background: #000;
+  line-height: 0;
+}
+
+.teaser-video video,
+.demo-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-lg);
+}
+
+.teaser .subtitle,
+.demo-video + .subtitle {
+  max-width: 760px;
+  margin: 1.75rem auto 0;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Highlights strip */
+.highlights-section .hero-body {
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.highlight-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 1.5rem;
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+}
+
+.highlight-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--border-radius);
+  background: var(--background-accent);
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.highlight-stat {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.highlight-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary-color);
+  margin: 0.35rem 0 0.6rem;
+}
+
+.highlight-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+@media screen and (max-width: 900px) {
+  .highlights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Modern Video and Carousel Styling */
 .publication-video {
     position: relative;
