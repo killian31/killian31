@@ -50,7 +50,7 @@ It should read like the personal page of a working researcher, not a product lan
 - No emoji as icons; no badge/pill tag clouds; no "Let's connect!" copy.
 - Don't add a second accent color or cool-toned grays — everything stays warm.
 - Don't move News/Publications below the fold order: hero → news → publications is the researcher-first hierarchy.
-- Footer keeps: carbon badge, ClustrMaps visitor map, copyright. They're deliberate.
+- Footer keeps: carbon badge, copyright. (A ClustrMaps visitor map lived here until Jul 2026, when the service died and its domain was parked by a squatter — removed. If a visitor map returns, mapmyvisitors.com is the closest live equivalent.)
 
 ## Maintenance map
 
