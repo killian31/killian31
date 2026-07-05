@@ -360,9 +360,9 @@ document.addEventListener("DOMContentLoaded", () => {
       function getColors() {
         const isDark = root.dataset.theme === "dark";
         return {
-          // terracotta nodes, sage lines
-          node: isDark ? "rgba(209,132,104," : "rgba(182,93,72,",
-          line: isDark ? "rgba(165,180,158," : "rgba(141,160,134,",
+          // terracotta nodes, sage lines (keep in sync with --accent-rgb / --sage-rgb)
+          node: isDark ? "rgba(214,138,110," : "rgba(176,88,66,",
+          line: isDark ? "rgba(160,176,152," : "rgba(130,150,124,",
         };
       }
 

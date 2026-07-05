@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PEEK Demo</title>
+    <title>PEEK Demo - Killian Steunou</title>
     <meta name="description" content="Live demo of PEEK: Picking Essential frames via Efficient Knowledge distillation — a frame selection model for video captioning.">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -12,10 +12,10 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
+    <canvas id="neural-bg" aria-hidden="true"></canvas>
     <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-content">
             <div class="navbar-logo">
-                <img loading="lazy" src="assets/logos/logo_K.png" alt="Killian Steunou logo" id="navbar-logo-img">
                 <a href="index.html">Killian Steunou</a>
             </div>
             <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
@@ -24,11 +24,11 @@
                 <span class="bar"></span>
             </button>
             <ul class="nav-links" id="nav-links">
-                <li><a href="index.html#hero">Home</a></li>
-                <li><a href="research.html">Publications</a></li>
+                <li><a href="index.html#news">News</a></li>
+                <li><a href="index.html#publications">Publications</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="demos.html">Demos</a></li>
+                <li><a href="index.html#demos">Demos</a></li>
+                <li><a href="index.html#writing">Writing</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
             <div class="nav-actions">
@@ -41,38 +41,36 @@
     <main>
         <header class="page-hero">
             <div class="page-shell">
-                <p class="eyebrow">Demo</p>
-                <h1>PEEK: Picking Essential frames via Efficient Knowledge distillation</h1>
+                <h2 class="section-label">Demo</h2>
+                <h1 style="margin-top: 0.9rem;">PEEK: frame selection for video captioning</h1>
                 <p class="page-copy">
-                    Upload a video and let PEEK select the most informative frames for captioning — without watching every frame.
-                    The model is distilled from vision-language teachers to identify what matters, fast.
+                    Upload a video and let PEEK pick the most informative frames — distilled from
+                    vision-language teachers, without watching every frame.
                 </p>
-                <div class="hero-actions">
-                    <a href="https://huggingface.co/spaces/momentslab/peek" target="_blank" rel="noopener noreferrer" class="button button-primary">Open on HuggingFace</a>
-                    <a href="peek/index.html" class="button button-secondary">Paper page</a>
-                    <a href="https://github.com/momentslab/peek" target="_blank" rel="noopener noreferrer" class="button button-secondary">GitHub</a>
+                <div class="link-row">
+                    <a href="https://huggingface.co/spaces/momentslab/peek" target="_blank" rel="noopener noreferrer">open on HuggingFace</a>
+                    <a href="peek/index.html">paper page</a>
+                    <a href="https://arxiv.org/abs/2605.31029" target="_blank" rel="noopener noreferrer">arXiv</a>
+                    <a href="https://github.com/momentslab/peek" target="_blank" rel="noopener noreferrer">code</a>
                 </div>
             </div>
         </header>
-
-        <section class="scene scene-muted">
-            <div class="page-shell">
-                <div class="embed-shell reveal">
-                    <iframe
-                        src="https://momentslab-peek.hf.space"
-                        title="PEEK frame selection demo"
-                        loading="lazy"
-                    ></iframe>
-                </div>
+        <div class="page-shell">
+            <div class="embed-shell">
+                <iframe
+                    src="https://momentslab-peek.hf.space"
+                    title="PEEK frame selection demo"
+                    loading="lazy"
+                ></iframe>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-meta">
                 <p>&copy; 2026 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
-                <p class="footer-note">Built with plain HTML, CSS, and JavaScript.</p>
+                <p class="footer-note">Plain HTML, CSS &amp; JS.</p>
             </div>
         </div>
     </footer>
