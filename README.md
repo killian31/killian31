@@ -6,7 +6,7 @@
 
 Currently in Paris, France. ML PhD Student at Moments Lab and IP Paris.
 
-Come have a look at my [website](https://www.killian-steunou.com) for more information!
+Come have a look at my [website](https://www.killian-steunou.com/peek?utm_source=github&utm_medium=readme) for more information!
 
 <a href="https://github.com/killian31">
   <img src="https://github-stats-alpha.vercel.app/api?username=killian31&cc=22272e&tc=37BCF6&ic=fff&bc=0000">
