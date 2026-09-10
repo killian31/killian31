@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-04EMWV24G9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-04EMWV24G9');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Why Is Video Still So Expensive? A Survey of Inference-Efficiency Mechanisms in Video and Audiovisual LLMs - Killian Steunou, Yannis Tevissen, Mounîm A. El-Yacoubi">
+  <meta name="description" content="A survey of 125 inference-efficiency mechanisms for video and audiovisual LLMs, organized by the encoder-connector-LLM pipeline stage at which they reduce cost.">
+  <meta name="keywords" content="efficient video understanding, VideoLLM, video large language models, multimodal large language models, computational efficiency, token pruning, token merging, frame selection, KV cache compression, audiovisual LLM, survey, inference efficiency">
+  <meta name="author" content="Killian Steunou, Yannis Tevissen, Mounîm A. El-Yacoubi">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Institut Polytechnique de Paris &amp; Moments Lab">
+  <meta property="og:title" content="Why Is Video Still So Expensive? A Survey of Inference-Efficiency Mechanisms in Video and Audiovisual LLMs">
+  <meta property="og:description" content="A survey of 125 inference-efficiency mechanisms for video and audiovisual LLMs, organized by the encoder-connector-LLM pipeline stage at which they reduce cost.">
+  <meta property="og:url" content="https://www.killian-steunou.com/videollm-survey">
+  <meta property="og:image" content="https://www.killian-steunou.com/videollm-survey/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The encoder-connector-LLM pipeline surveyed for inference efficiency">
+  <meta property="article:published_time" content="2026-09-09T00:00:00.000Z">
+  <meta property="article:author" content="Killian Steunou">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="video understanding">
+  <meta property="article:tag" content="efficient inference">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="Why Is Video Still So Expensive? A Survey of Inference-Efficiency Mechanisms in Video and Audiovisual LLMs">
+  <meta name="citation_author" content="Steunou, Killian">
+  <meta name="citation_author" content="Tevissen, Yannis">
+  <meta name="citation_author" content="El-Yacoubi, Mounîm A.">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2609.10355.pdf">
+
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>Why Is Video Still So Expensive? A Survey of Inference-Efficiency Mechanisms in Video and Audiovisual LLMs - Killian Steunou, Yannis Tevissen, Mounîm A. El-Yacoubi | Academic Research</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Vendor CSS/JS are shared with the PEEK project page (same Academic Project Page Template);
+       only this page's images and PDFs live under videollm-survey/static/. -->
+  <link rel="stylesheet" href="../peek/static/css/bulma.min.css">
+  <link rel="stylesheet" href="../peek/static/css/index.css">
+
+  <link rel="preload" href="../peek/static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../peek/static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../peek/static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="../peek/static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="../peek/static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="../peek/static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="../peek/static/js/fontawesome.all.min.js"></script>
+  <script defer src="../peek/static/js/bulma-carousel.min.js"></script>
+  <script defer src="../peek/static/js/bulma-slider.min.js"></script>
+  <script defer src="../peek/static/js/index.js"></script>
+
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Why Is Video Still So Expensive? A Survey of Inference-Efficiency Mechanisms in Video and Audiovisual LLMs",
+    "description": "A survey of 125 inference-efficiency mechanisms for video and audiovisual LLMs, organized by the encoder-connector-LLM pipeline stage at which they reduce cost.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Killian Steunou",
+        "affiliation": [
+          { "@type": "Organization", "name": "Institut Polytechnique de Paris" },
+          { "@type": "Organization", "name": "Moments Lab" }
+        ]
+      },
+      {
+        "@type": "Person",
+        "name": "Yannis Tevissen",
+        "affiliation": { "@type": "Organization", "name": "Moments Lab" }
+      },
+      {
+        "@type": "Person",
+        "name": "Mounîm A. El-Yacoubi",
+        "affiliation": { "@type": "Organization", "name": "Institut Polytechnique de Paris" }
+      }
+    ],
+    "datePublished": "2026-09-09",
+    "url": "https://www.killian-steunou.com/videollm-survey",
+    "image": "https://www.killian-steunou.com/videollm-survey/static/images/social_preview.png",
+    "keywords": [
+      "efficient video understanding",
+      "VideoLLMs",
+      "multimodal large language models",
+      "computational efficiency",
+      "token pruning",
+      "frame selection",
+      "KV cache compression",
+      "audiovisual LLMs"
+    ],
+    "abstract": "Video understanding has rapidly evolved toward video large language models (VideoLLMs): systems that couple video representations with pretrained large language models and condition generation on a textual prompt. Their strong performance on captioning, question answering, retrieval and temporal grounding comes at a computation and memory cost that grows with frame count and context length, limiting deployment in real-time, mobile and resource-constrained settings. This survey covers inference-efficiency mechanisms for visual and audiovisual VideoLLMs that report concrete reductions in parameter count, FLOPs per input, latency, memory, or visual and audio token count.",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://www.killian-steunou.com/videollm-survey"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Institut Polytechnique de Paris & Moments Lab",
+    "url": "https://momentslab.com",
+    "logo": "https://cdn.prod.website-files.com/65e09abf952724557f01dd94/65f1e6cd3877f4d3a9ed712d_Moments_Lab_Favicon.png",
+    "sameAs": [ "https://github.com/momentslab" ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="../peek/index.html" class="work-item">
+          <div class="work-info">
+            <h5>PEEK: Picking Essential frames via Efficient Knowledge distillation</h5>
+            <p>We distill caption-conditioned frame relevance from a strong teacher into a lightweight query-free selector, adding only +5.2% to captioning time.</p>
+            <span class="work-venue">BMVC 2026</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/2509.14769" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Frame Sampling Strategies Matter: A Benchmark for small vision language models</h5>
+            <p>We propose the first frame-accurate benchmark of state-of-the-art small VLMs for video question-answering, evaluated under controlled frame-sampling strategies.</p>
+            <span class="work-venue">arXiv preprint</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/2406.14938" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Towards Retrieval Augmented Generation over Large Video Libraries</h5>
+            <p>We introduce the task of Video Library Question Answering (VLQA) through an interoperable architecture that applies Retrieval Augmented Generation (RAG) to video libraries.</p>
+            <span class="work-venue">IEEE HSI 2024</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Why Is Video Still So Expensive?<br>A Survey of Inference-Efficiency Mechanisms in Video and Audiovisual LLMs</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://www.killian-steunou.com" target="_blank">Killian Steunou</a>,</span>
+              <span class="author-block">
+                <a href="https://yannistevissen.fr/" target="_blank">Yannis Tevissen</a>,</span>
+              <span class="author-block">
+                <a href="https://elyacoubi.wp.imt.fr/" target="_blank">Mounîm A. El-Yacoubi</a>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://samovar.telecom-sudparis.eu/index.php/en/accueil-2/" target="_blank">Télécom SudParis, Institut Polytechnique de Paris, France</a><br><a href="https://momentslab.com/" target="_blank">Moments Lab</a><br>Preprint &mdash; under review</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2609.10355.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="static/pdfs/videollm_survey_supplementary.pdf" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>Supplementary</span>
+              </a>
+            </span>
+
+            <span class="link-block">
+              <a href="https://github.com/momentslab/awesome-efficient-videollm" target="_blank"
+              class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Repository</span>
+            </a>
+          </span>
+
+          <span class="link-block">
+            <a href="https://arxiv.org/abs/2609.10355" target="_blank"
+            class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="ai ai-arxiv"></i>
+            </span>
+            <span>arXiv</span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- News -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4">News</h2>
+      <div class="content">
+        <ul>
+          <li><b>Sep 2026</b> &mdash; Preprint released on <a href="https://arxiv.org/abs/2609.10355" target="_blank">arXiv</a>, together with the companion <a href="https://github.com/momentslab/awesome-efficient-videollm" target="_blank">awesome-efficient-videollm</a> repository listing every surveyed method.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End news -->
+
+
+<!-- Teaser -->
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <a href="static/images/timeline.png" target="_blank" title="Open full resolution"><img src="static/images/timeline.png" alt="Chronology of the reviewed inventory of efficiency methods, colored by pipeline stage"></a>
+      <h2 class="subtitle has-text-centered">
+        Chronology of the reviewed inventory. Colors denote the stage at which a method reduces cost, and gray denotes methods acting at several stages. The year axis is non-linear.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser -->
+
+<!-- Highlights -->
+<section class="hero is-small highlights-section">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="highlights">
+        <div class="highlight-card">
+          <span class="highlight-icon"><i class="fas fa-book-open"></i></span>
+          <span class="highlight-stat">125</span>
+          <span class="highlight-label">Papers surveyed</span>
+          <p>Screened from several hundred candidates, read in full, and placed in a single taxonomy covering methods up to August 2026.</p>
+        </div>
+        <div class="highlight-card">
+          <span class="highlight-icon"><i class="fas fa-layer-group"></i></span>
+          <span class="highlight-stat">4</span>
+          <span class="highlight-label">Pipeline stages</span>
+          <p>Every mechanism is assigned to the stage whose computation it removes: input construction, encoder, connector, or LLM execution and state.</p>
+        </div>
+        <div class="highlight-card">
+          <span class="highlight-icon"><i class="fas fa-table"></i></span>
+          <span class="highlight-stat">6</span>
+          <span class="highlight-label">Comparison tables</span>
+          <p>Literature-reported accuracy&ndash;cost results, with shared-host, shared-protocol comparisons kept separate from heterogeneous cross-paper numbers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End highlights -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Video understanding has rapidly evolved toward video large language models (VideoLLMs): systems that couple video representations with pretrained large language models and condition generation on a textual prompt. Their strong performance on captioning, question answering, retrieval and temporal grounding comes at a computation and memory cost that grows with frame count and context length, limiting deployment in real-time, mobile and resource-constrained settings. This survey covers inference-efficiency mechanisms for visual and audiovisual VideoLLMs that report concrete reductions in parameter count, FLOPs per input, latency, memory, or visual and audio token count. We analyze bottlenecks across frame sampling, modality encoding, connector-level token reduction, and LLM prefilling and decoding. We organize methods by the pipeline stage at which they act, covering VideoLLMs developed since late 2022 together with earlier frame-sampling and vision-encoder mechanisms that remain components of current pipelines. We assemble literature-reported accuracy&ndash;cost comparisons under shared host models and input protocols wherever available, distinguish them from heterogeneous cross-paper evidence, and identify gaps in audiovisual efficiency and standardized evaluation. We maintain a repository at <a href="https://github.com/momentslab/awesome-efficient-videollm" target="_blank">github.com/momentslab/awesome-efficient-videollm</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Method carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">The pipeline and where cost goes</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <img src="static/images/videollm.png" alt="Video Embedder x LLM paradigm diagram" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            We scope the survey to the <strong>encoder&ndash;connector&ndash;LLM</strong> family: a video encoder turns sampled frames into continuous features, a connector projects or compresses them into LLM token space, and the LLM conditions on them together with a textual prompt.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/bottlenecks.png" alt="Token and compute scaling across the encoder-connector-LLM pipeline" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Token and compute scaling across the pipeline. Frame count and resolution set encoder cost and the number of modality tokens; connector compression controls how many of them reach the LLM; the resulting context length sets prefilling cost and KV-cache memory.
+          </h2>
+        </div>
+        <div class="item">
+          <a href="static/images/taxonomy.png" target="_blank" title="Open full resolution"><img src="static/images/taxonomy.png" alt="Taxonomy of efficiency mechanisms across four pipeline stages" loading="lazy"/></a>
+          <h2 class="subtitle has-text-centered">
+            The full taxonomy: every surveyed method, placed at the stage whose computation it removes. Methods that reduce cost at several stages appear at each of them.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method carousel -->
+
+
+<!-- Results carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Comparisons</h2>
+      <div id="quantitative-results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <a href="static/images/table_context.png" target="_blank" title="Open full resolution"><img src="static/images/table_context.png" alt="Reported operating points for representation reduction before and within the LLM" loading="lazy"/></a>
+          <h2 class="subtitle has-text-centered">
+            <strong>Representation reduction before and within the LLM.</strong> Reported metrics grouped by operation family. Hosts, inputs and protocols differ, so these rows are indicative of what each budget buys, and they do not rank methods.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/backbones.png" alt="Kinetics-400 accuracy versus inference compute for video backbones" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            <strong>Encoder accuracy versus compute.</strong> Reported Kinetics-400 top-1 against per-view GFLOPs times evaluation views. Pooling-attention transformers span the widest range and reach the highest accuracies; the plot is illustrative, since training data and test protocols differ.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End results carousel -->
+
+
+<!-- Takeaways -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Takeaways</h2>
+        <div class="content">
+          <ul>
+            <li><b>Efficiency is a system-level trade-off.</b> Gains must be read together with semantic performance, input coverage, compute, latency and memory.</li>
+            <li><b>Fixing one stage moves the bottleneck.</b> Once LLM prefilling and cache costs are reduced, vision encoding becomes the limiting stage.</li>
+            <li><b>Saved compute is often reinvested.</b> In video, cheaper tokens usually mean more frames, so a reported speed-up has to be interpreted alongside temporal coverage and the cost of encoding those extra frames.</li>
+            <li><b>Comparison is the open problem.</b> Progress needs a reproducible accuracy-compute protocol with common backbones, inputs and FLOP-accounting boundaries, complemented by system measurements on a shared reference stack.</li>
+            <li><b>Audio is the underexplored lever.</b> Learned audiovisual allocation is a promising avenue: audio is widely available in video, yet barely represented in the efficiency literature.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End takeaways -->
+
+
+<!-- Companion repository -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">A living companion repository</h2>
+      <div class="content has-text-centered">
+        <p>
+          We maintain and keep up to date a companion repository at
+          <a href="https://github.com/momentslab/awesome-efficient-videollm" target="_blank"><b>awesome-efficient-videollm</b></a>,
+          which mirrors the taxonomy above and is built to be extended: each method is one row, tagged with the pipeline
+          stage it acts on. <b>If we missed your method, or you publish a new one, we would be happy to include it!</b>
+          Adding an entry should take a couple of minutes, and the repository is meant to stay current long after
+          the paper does not.
+        </p>
+        <a href="https://github.com/momentslab/awesome-efficient-videollm" target="_blank"
+           class="external-link button is-normal is-rounded is-dark">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Contribute a method</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End companion repository -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{steunou2026video,
+  title={Why Is Video Still So Expensive? A Survey of Inference-Efficiency Mechanisms in Video and Audiovisual LLMs},
+  author={Steunou, Killian and Tevissen, Yannis and El-Yacoubi, Moun{\^i}m A.},
+  journal={arXiv preprint arXiv:2609.10355},
+  year={2026},
+  url={https://arxiv.org/abs/2609.10355}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+</main>
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+  </html>
