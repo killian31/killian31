@@ -9,6 +9,7 @@
       gtag('js', new Date());
       gtag('config', 'G-04EMWV24G9');
     </script>
+    <meta name="color-scheme" content="light dark">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
@@ -18,7 +19,9 @@
       name="description"
       content="An analysis of how computational efficiency has evolved from a marginal concern to a core research priority in video understanding, based on arXiv publication trends from 2015 to 2025."
     />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,29 +30,10 @@
     <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
   </head>
   <body>
-    <nav class="navbar" aria-label="Primary navigation">
-      <div class="nav-content">
-        <div class="navbar-logo">
-          <a href="../index.html">Killian Steunou</a>
-        </div>
-        <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-        <ul class="nav-links" id="nav-links">
-          <li><a href="../index.html#news">News</a></li>
-          <li><a href="../index.html#publications">Publications</a></li>
-          <li><a href="../index.html#projects">Projects</a></li>
-          <li><a href="../index.html#demos">Demos</a></li>
-          <li><a href="../index.html#writing">Writing</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-        <div class="nav-actions">
-          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Dark</button>
-        </div>
-      </div>
-    </nav>
+    <header class="site-top wrap">
+      <a href="../index.html">Killian Steunou</a>
+      <a class="mono" href="../index.html#writing">writing</a>
+    </header>
 
     <div class="blog-article">
       <a href="../index.html#writing" class="back-to-blog">Back to Writing</a>
@@ -587,25 +571,7 @@
         </div>
     </div><!-- /.blog-article -->
 
-    <footer>
-      <div class="footer-content">
-        <div class="footer-social">
-          <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <img src="../assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
-          </a>
-          <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <img src="../assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
-          </a>
-          <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-            <img src="../assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
-          </a>
-        </div>
-        <p>&copy; 2026 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
-        <p class="footer-note">Built with plain HTML, CSS, and JavaScript.</p>
-      </div>
-    </footer>
-
-    <script src="../script.js"></script>
+    <footer class="site-foot wrap mono"><span>© 2026 Killian Steunou</span></footer>
     <script>
       const yearLabels = [
         2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,

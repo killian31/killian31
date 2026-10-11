@@ -10,9 +10,13 @@
       gtag('config', 'G-04EMWV24G9');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audio Visual Transcription Demo - Killian Steunou</title>
-    <meta name="description" content="Live demo of Audio Visual Transcription — Whisper-powered subtitling for audio and video.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Audio Visual Transcription Demo, Killian Steunou</title>
+    <meta name="description" content="Live demo of Audio Visual Transcription: Whisper-powered subtitling for audio and video.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -20,66 +24,21 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-    <canvas id="neural-bg" aria-hidden="true"></canvas>
-    <nav class="navbar" aria-label="Primary navigation">
-        <div class="nav-content">
-            <div class="navbar-logo">
-                <a href="index.html">Killian Steunou</a>
-            </div>
-            <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html#news">News</a></li>
-                <li><a href="index.html#publications">Publications</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="index.html#demos">Demos</a></li>
-                <li><a href="index.html#writing">Writing</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <a class="nav-pill" href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer">CV</a>
-                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Dark</button>
-            </div>
-        </div>
-    </nav>
-
-    <main>
-        <header class="page-hero">
-            <div class="page-shell">
-                <h2 class="section-label">Demo</h2>
-                <h1 style="margin-top: 0.9rem;">Audio Visual Transcription</h1>
-                <p class="page-copy">
-                    Subtitle audio and video content quickly with OpenAI Whisper, through a simple interface.
-                </p>
-                <div class="link-row">
-                    <a href="https://huggingface.co/spaces/nelikCode/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">open on HuggingFace</a>
-                    <a href="https://github.com/killian31/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">code</a>
-                </div>
-            </div>
-        </header>
-        <div class="page-shell">
-            <div class="embed-shell">
-                <iframe
-                    src="https://nelikcode-audiovisualtranscription.hf.space"
-                    title="Audio Visual Transcription demo"
-                    loading="lazy"
-                ></iframe>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-meta">
-                <p>&copy; 2026 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a></p>
-                <p class="footer-note">Plain HTML, CSS &amp; JS.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<main class="wrap">
+    <header class="site-top">
+        <a href="index.html">Killian Steunou</a>
+        <a class="mono" href="index.html#projects">all projects</a>
+    </header>
+    <div class="page-hero">
+        <p class="mono">demo</p>
+        <h1>Audio Visual Transcription</h1>
+        <p>Subtitle audio and video files with OpenAI Whisper.</p>
+        <p class="links"><a href="https://huggingface.co/spaces/nelikCode/AudioVisualTranscription">open on HuggingFace</a> <a href="https://github.com/killian31/AudioVisualTranscription">code</a></p>
+    </div>
+    <div class="embed">
+        <iframe src="https://nelikcode-audiovisualtranscription.hf.space" title="Audio Visual Transcription demo" loading="lazy"></iframe>
+    </div>
+    <footer class="site-foot mono"><span>© 2026 Killian Steunou</span></footer>
+</main>
 </body>
 </html>

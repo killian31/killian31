@@ -1,421 +1,98 @@
-const THEME_KEY = "ks-theme";
+// Halftone portrait: one dot per grid cell, sized by how dark the photo is there.
+// On load the dots print in from top to bottom; afterwards they flee the pointer and spring back.
+(() => {
+  const cv = document.getElementById('portrait');
+  if (!cv) return;
+  const ctx = cv.getContext('2d');
+  const img = new Image();
+  img.src = 'assets/profile/profile-picture.jpg';
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const darkMq = matchMedia('(prefers-color-scheme: dark)');
+  let dots = [], W = 0, H = 0, ink = '', ptr = null, raf = 0, t0 = 0;
+  const PRINT_MS = 1100;
 
-function getPreferredTheme() {
-  const storedTheme = window.localStorage.getItem(THEME_KEY);
-  if (storedTheme === "light" || storedTheme === "dark") {
-    return storedTheme;
-  }
-
-  return window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
-
-function applyTheme(theme) {
-  const resolvedTheme = theme === "dark" ? "dark" : "light";
-  const root = document.documentElement;
-  const body = document.body;
-
-  root.dataset.theme = resolvedTheme;
-
-  if (body) {
-    body.classList.toggle("dark-mode", resolvedTheme === "dark");
-    body.classList.toggle("light-mode", resolvedTheme === "light");
-  }
-
-  document.querySelectorAll("#theme-toggle").forEach((button) => {
-    button.textContent = resolvedTheme === "dark" ? "Light" : "Dark";
-    button.setAttribute(
-      "aria-label",
-      resolvedTheme === "dark"
-        ? "Switch to light theme"
-        : "Switch to dark theme",
-    );
-    button.setAttribute(
-      "aria-pressed",
-      String(resolvedTheme === "dark"),
-    );
-    button.setAttribute(
-      "title",
-      resolvedTheme === "dark"
-        ? "Switch to light theme"
-        : "Switch to dark theme",
-    );
-  });
-}
-
-applyTheme(getPreferredTheme());
-
-document.addEventListener("DOMContentLoaded", () => {
-  const root = document.documentElement;
-  const body = document.body;
-  const nav = document.querySelector(".navbar");
-  const navToggle = document.getElementById("navbar-toggle");
-  const navLinks = document.getElementById("nav-links");
-  const themeButtons = document.querySelectorAll("#theme-toggle");
-  const prefersReducedMotion =
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const colorSchemeQuery =
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)");
-
-  let currentTheme = root.dataset.theme || getPreferredTheme();
-
-  const setTheme = (theme, persist = true) => {
-    currentTheme = theme === "dark" ? "dark" : "light";
-    applyTheme(currentTheme);
-    if (persist) {
-      window.localStorage.setItem(THEME_KEY, currentTheme);
-    }
-  };
-
-  const hasStoredTheme = () => {
-    const stored = window.localStorage.getItem(THEME_KEY);
-    return stored === "light" || stored === "dark";
-  };
-
-  const syncNavHeight = () => {
-    if (!nav) {
-      return;
-    }
-
-    root.style.setProperty("--nav-height", `${nav.offsetHeight}px`);
-  };
-
-  const syncNavState = () => {
-    if (!nav) {
-      return;
-    }
-
-    nav.classList.toggle("scrolled", window.scrollY > 12);
-  };
-
-  const closeMenu = () => {
-    if (!navToggle || !navLinks) {
-      return;
-    }
-
-    navToggle.classList.remove("active");
-    navLinks.classList.remove("open");
-    navToggle.setAttribute("aria-expanded", "false");
-    body.classList.remove("nav-open");
-  };
-
-  const openMenu = () => {
-    if (!navToggle || !navLinks) {
-      return;
-    }
-
-    navToggle.classList.add("active");
-    navLinks.classList.add("open");
-    navToggle.setAttribute("aria-expanded", "true");
-    body.classList.add("nav-open");
-  };
-
-  if (navToggle && navLinks) {
-    navToggle.addEventListener("click", () => {
-      if (navLinks.classList.contains("open")) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        closeMenu();
-      });
-    });
-
-    document.addEventListener("click", (event) => {
-      if (
-        !navLinks.classList.contains("open") ||
-        navLinks.contains(event.target) ||
-        navToggle.contains(event.target)
-      ) {
-        return;
-      }
-
-      closeMenu();
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-    });
-
-    window.addEventListener("resize", () => {
-      syncNavHeight();
-      if (window.innerWidth > 980) {
-        closeMenu();
-      }
-    });
-  }
-
-  themeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      setTheme(currentTheme === "dark" ? "light" : "dark");
-    });
-  });
-
-  if (colorSchemeQuery) {
-    const handleColorSchemeChange = (event) => {
-      if (!hasStoredTheme()) {
-        applyTheme(event.matches ? "dark" : "light");
-        currentTheme = root.dataset.theme;
-      }
-    };
-
-    if (typeof colorSchemeQuery.addEventListener === "function") {
-      colorSchemeQuery.addEventListener("change", handleColorSchemeChange);
-    } else if (typeof colorSchemeQuery.addListener === "function") {
-      colorSchemeQuery.addListener(handleColorSchemeChange);
+  function build() {
+    const dpr = devicePixelRatio || 1, box = cv.getBoundingClientRect();
+    W = cv.width = Math.round(box.width * dpr);
+    H = cv.height = Math.round(box.height * dpr);
+    ink = getComputedStyle(cv).color;
+    // Dark mode prints light ink on blue, so dots mark the light parts of the photo instead.
+    const dark = darkMq.matches;
+    const step = Math.max(5, W / 42);
+    const cols = Math.ceil(W / step), rows = Math.ceil(H / step);
+    const s = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+    s.canvas.width = cols; s.canvas.height = rows;
+    s.drawImage(img, 0, 0, cols, rows);
+    const px = s.getImageData(0, 0, cols, rows).data;
+    dots = [];
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const k = (j * cols + i) * 4;
+      const lum = (0.3 * px[k] + 0.59 * px[k + 1] + 0.11 * px[k + 2]) / 255;
+      const r = (dark ? lum : 1 - lum) ** 1.2 * step * 0.62;
+      if (r < 0.4) continue;
+      const hx = (i + 0.5) * step + (j % 2 ? step / 2 : 0), hy = (j + 0.5) * step;
+      dots.push({ hx, hy, x: hx, y: hy, vx: 0, vy: 0, r, delay: (hy / H) * 0.6 + Math.random() * 0.15 });
     }
   }
 
-  const getSamePageHashTarget = (link) => {
-    try {
-      const url = new URL(link.getAttribute("href"), window.location.href);
-      if (url.pathname !== window.location.pathname || !url.hash) {
-        return null;
+  function draw(now) {
+    const p = still ? 1 : Math.min(1, (now - t0) / PRINT_MS);
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = ink;
+    ctx.beginPath();
+    for (const d of dots) {
+      const q = p >= 1 ? 1 : Math.max(0, Math.min(1, (p - d.delay) / 0.25));
+      if (!q) continue;
+      const r = d.r * (1 - (1 - q) ** 3);
+      ctx.moveTo(d.x + r, d.y);
+      ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
+    }
+    ctx.fill();
+    return p < 1;
+  }
+
+  function tick(now) {
+    let moving = false;
+    const R = W * 0.22;
+    for (const d of dots) {
+      if (ptr) {
+        const dx = d.x - ptr.x, dy = d.y - ptr.y, dist = Math.hypot(dx, dy) || 1;
+        if (dist < R) { const f = (1 - dist / R) * 2.2; d.vx += (dx / dist) * f; d.vy += (dy / dist) * f; }
       }
-
-      const targetId = decodeURIComponent(url.hash.slice(1));
-      return document.getElementById(targetId);
-    } catch {
-      return null;
+      d.vx = (d.vx + (d.hx - d.x) * 0.06) * 0.82;
+      d.vy = (d.vy + (d.hy - d.y) * 0.06) * 0.82;
+      d.x += d.vx; d.y += d.vy;
+      if (Math.abs(d.vx) + Math.abs(d.vy) > 0.05) moving = true;
     }
-  };
+    const printing = draw(now);
+    raf = moving || printing || ptr ? requestAnimationFrame(tick) : 0;
+  }
 
-  document.querySelectorAll('a[href*="#"]').forEach((link) => {
-    const target = getSamePageHashTarget(link);
-    if (!target) {
-      return;
-    }
+  function start() {
+    build();
+    lastW = cv.getBoundingClientRect().width;
+    t0 = performance.now();
+    if (still) draw(t0);
+    else if (!raf) raf = requestAnimationFrame(tick);
+  }
 
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      closeMenu();
-
-      const top =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        (nav ? nav.offsetHeight + 16 : 0);
-
-      window.scrollTo({
-        top,
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-      });
-
-      window.history.replaceState(null, "", `#${target.id}`);
+  if (!still) {
+    cv.addEventListener('pointermove', e => {
+      const box = cv.getBoundingClientRect(), k = W / box.width;
+      ptr = { x: (e.clientX - box.left) * k, y: (e.clientY - box.top) * k };
+      if (!raf) raf = requestAnimationFrame(tick);
     });
-  });
+    cv.addEventListener('pointerleave', () => { ptr = null; });
+  }
 
-  const navAnchors = Array.from(
-    document.querySelectorAll(".nav-links a"),
-  );
-
-  const clearCurrentLinks = () => {
-    navAnchors.forEach((link) => link.classList.remove("is-current"));
+  let lastW = 0;
+  const redraw = (force) => {
+    const w = cv.getBoundingClientRect().width;
+    if (!img.complete || !dots.length || (w === lastW && force !== true)) return;
+    lastW = w; build(); draw(Infinity);
   };
-
-  const samePageSections = navAnchors
-    .map((link) => {
-      const target = getSamePageHashTarget(link);
-      return target ? { link, section: target } : null;
-    })
-    .filter(Boolean);
-
-  if (samePageSections.length > 0) {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (!visibleEntries.length) {
-          return;
-        }
-
-        const activeSection = samePageSections.find(
-          ({ section }) => section === visibleEntries[0].target,
-        );
-
-        if (!activeSection) {
-          return;
-        }
-
-        clearCurrentLinks();
-        activeSection.link.classList.add("is-current");
-      },
-      {
-        rootMargin: "-42% 0px -42% 0px",
-        threshold: [0.18, 0.36, 0.6],
-      },
-    );
-
-    samePageSections.forEach(({ section }) => sectionObserver.observe(section));
-
-    if (!window.location.hash) {
-      const heroLink =
-        samePageSections.find(({ section }) => section.id === "hero") ||
-        samePageSections[0];
-      clearCurrentLinks();
-      heroLink.link.classList.add("is-current");
-    }
-  } else {
-    navAnchors.forEach((link) => {
-      try {
-        const url = new URL(link.href, window.location.href);
-        if (url.pathname === window.location.pathname && !url.hash) {
-          link.classList.add("is-current");
-        }
-      } catch {
-        // Ignore malformed links.
-      }
-    });
-  }
-
-  const revealElements = document.querySelectorAll(".reveal");
-  if (!prefersReducedMotion && revealElements.length > 0) {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          entry.target.classList.add("revealed");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px",
-      },
-    );
-
-    revealElements.forEach((element) => revealObserver.observe(element));
-  } else {
-    revealElements.forEach((element) => element.classList.add("revealed"));
-  }
-
-  syncNavHeight();
-  syncNavState();
-
-  window.addEventListener("scroll", syncNavState, { passive: true });
-  window.addEventListener("resize", syncNavHeight);
-
-  // ------ Back to Top Button ------
-  const backToTopBtn = document.createElement("button");
-  backToTopBtn.type = "button";
-  backToTopBtn.id = "back-to-top-btn";
-  backToTopBtn.innerHTML = "↑";
-  backToTopBtn.setAttribute("aria-label", "Back to top");
-  document.body.appendChild(backToTopBtn);
-
-  window.addEventListener("scroll", () => {
-    backToTopBtn.classList.toggle("visible", window.scrollY > 300);
-  }, { passive: true });
-
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // ------ Neural Network Particle Canvas ------
-  if (!prefersReducedMotion) {
-    const canvas = document.getElementById("neural-bg");
-    if (canvas) {
-      const ctx = canvas.getContext("2d");
-      let particles = [];
-      let animId = null;
-      const PARTICLE_COUNT = 75;
-      const CONNECTION_DIST = 130;
-      const dpr = window.devicePixelRatio || 1;
-
-      function resizeCanvas() {
-        canvas.width = window.innerWidth * dpr;
-        canvas.height = window.innerHeight * dpr;
-        canvas.style.width = window.innerWidth + "px";
-        canvas.style.height = window.innerHeight + "px";
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-
-      function createParticles() {
-        particles = [];
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-          particles.push({
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            vx: (Math.random() - 0.5) * 0.45,
-            vy: (Math.random() - 0.5) * 0.45,
-            r: Math.random() * 1.8 + 1.2,
-          });
-        }
-      }
-
-      function getColors() {
-        const isDark = root.dataset.theme === "dark";
-        return {
-          // terracotta nodes, sage lines (keep in sync with --accent-rgb / --sage-rgb)
-          node: isDark ? "rgba(214,138,110," : "rgba(176,88,66,",
-          line: isDark ? "rgba(160,176,152," : "rgba(130,150,124,",
-        };
-      }
-
-      function drawParticles() {
-        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        const c = getColors();
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < CONNECTION_DIST) {
-              const alpha = (1 - dist / CONNECTION_DIST) * 0.18;
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = c.line + alpha.toFixed(3) + ")";
-              ctx.lineWidth = 0.7;
-              ctx.stroke();
-            }
-          }
-        }
-
-        for (const p of particles) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = c.node + "0.3)";
-          ctx.fill();
-        }
-
-        for (const p of particles) {
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0 || p.x > w) p.vx *= -1;
-          if (p.y < 0 || p.y > h) p.vy *= -1;
-        }
-
-        animId = requestAnimationFrame(drawParticles);
-      }
-
-      resizeCanvas();
-      createParticles();
-      drawParticles();
-
-      window.addEventListener("resize", () => {
-        if (animId) cancelAnimationFrame(animId);
-        resizeCanvas();
-        createParticles();
-        drawParticles();
-      });
-    }
-  }
-});
+  img.onload = start;
+  if (img.complete && img.naturalWidth) start();
+  new ResizeObserver(redraw).observe(cv);
+  darkMq.addEventListener('change', () => redraw(true));
+})();

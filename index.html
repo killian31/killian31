@@ -9,10 +9,14 @@
       gtag('config', 'G-04EMWV24G9');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Killian Steunou, machine learning, computer vision, multimodal learning, video understanding, PhD, researcher">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
     <title>Killian Steunou</title>
-    <meta name="description" content="Killian Steunou — PhD student in machine learning at Institut Polytechnique de Paris and Moments Lab, working on efficient multimodal learning for video understanding.">
+    <meta name="description" content="Killian Steunou, PhD student in machine learning at Institut Polytechnique de Paris and Moments Lab. Efficient multimodal learning for video understanding.">
+    <meta name="keywords" content="Killian Steunou, machine learning, computer vision, multimodal learning, video understanding, PhD, researcher">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -20,573 +24,164 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-    <canvas id="neural-bg" aria-hidden="true"></canvas>
-    <nav class="navbar" aria-label="Primary navigation">
-        <div class="nav-content">
-            <div class="navbar-logo">
-                <a href="#top">Killian Steunou</a>
-            </div>
-            <button type="button" class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#news">News</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#background">Background</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#writing">Writing</a></li>
-                <li><a href="#contact">Contact</a></li>
+<main class="wrap">
+    <header class="hero">
+        <h1>Killian<br>Steunou</h1>
+        <canvas id="portrait" role="img" aria-label="Portrait of Killian Steunou, printed as halftone dots" width="250" height="280"></canvas>
+    </header>
+
+    <div class="lede">
+        <div>
+            <p>
+                Hi! I'm a PhD student in machine learning at <a href="https://www.ip-paris.fr">Institut Polytechnique de Paris</a> and
+                <a href="https://www.momentslab.com">Moments&nbsp;Lab</a>, and these days I'm trying to find ways for models to understand
+                the world through video. For me that means omni-modal models that see and hear at the same time, run efficiently, and
+                keep working on footage that looks nothing like their training data. So far it has led to a way of picking the frames
+                that matter<span class="cite"> <a href="#r2">[2]</a><span class="cite-card" role="tooltip"><span class="thumb"><img src="peek/static/images/social_preview.png" alt="" width="420" height="284"></span><b>PEEK</b>, BMVC 2026. Frame selection distilled from vision-language teachers.</span></span> and a survey of what actually makes video LLMs cheaper<span class="cite"> <a href="#r1">[1]</a><span class="cite-card" role="tooltip"><span class="thumb"><img src="videollm-survey/static/images/social_preview.png" alt="" width="420" height="221"></span><b>Why is video still so expensive?</b> A survey of 125 inference-efficiency methods for video LLMs.</span></span>.
+            </p>
+            <p>
+                Before the PhD, I studied maths and statistics at Toulouse School of Economics and then did the MVA master
+                at ENS Paris-Saclay, with research internships at Idemia, CLS and JoliBrain along the way. I care about open
+                code and results that other people can reproduce.
+            </p>
+        </div>
+        <nav class="mono" aria-label="Links">
+            <a href="mailto:contact@killian-steunou.com">email</a>
+            <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ">scholar</a>
+            <a href="https://github.com/killian31">github</a>
+            <a href="https://www.linkedin.com/in/killian-steunou">linkedin</a>
+            <a href="assets/CV_KS.pdf">cv.pdf</a>
+        </nav>
+    </div>
+
+    <section id="news" class="section">
+        <h2>News</h2>
+        <div>
+            <ul class="list dated">
+                <li><time datetime="2026-09">2026.09</time><p>Our survey <a href="videollm-survey/index.html">Why Is Video Still So Expensive?</a> is on arXiv! It sorts 125 inference-efficiency methods for video and audiovisual LLMs by the pipeline stage where they cut cost, and comes with a companion <a href="https://github.com/momentslab/awesome-efficient-videollm">repository</a>.</p></li>
+                <li><time datetime="2026-08">2026.08</time><p><a href="peek/index.html">PEEK</a> was accepted at <a href="https://bmvc2026.bmva.org/">BMVC 2026</a> and the camera-ready version is on <a href="https://arxiv.org/abs/2605.31029">arXiv</a>. See you in Lancaster in November!</p></li>
+                <li><time datetime="2026-05">2026.05</time><p>The PEEK preprint is out, with <a href="https://github.com/momentslab/peek">code</a>, <a href="https://huggingface.co/momentslab/peek">weights</a> and a <a href="demo_peek.html">demo</a> you can try in the browser.</p></li>
+                <li><time datetime="2026-04">2026.04</time><p>Blog post: <a href="blog/nlp_metrics_visual_guide.html">a visual guide to captioning metrics</a>, from n-grams to CIDEr.</p></li>
+                <li><time datetime="2026-02">2026.02</time><p>Blog post: <a href="blog/efficiency_video_understanding.html">Efficiency follows capability</a>, ten years of video understanding papers mined from arXiv.</p></li>
             </ul>
-            <div class="nav-actions">
-                <a class="nav-pill" href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer">CV</a>
-                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Dark</button>
+            <details>
+                <summary>older</summary>
+                <ul class="list dated">
+                    <li><time datetime="2025-11">2025.11</time><p>Started my industrial PhD between Institut Polytechnique de Paris and Moments Lab.</p></li>
+                    <li><time datetime="2025-09">2025.09</time><p>Preprint: <a href="https://arxiv.org/abs/2509.21130">Sparse representations improve adversarial robustness of neural network classifiers</a>, with Théo Druilhe and Sigurd Saue.</p></li>
+                    <li><time datetime="2025-04">2025.04</time><p>Joined Idemia as a research intern, working on SAM 2 for multi-object tracking.</p></li>
+                    <li><time datetime="2025-03">2025.03</time><p>Finished the MVA master at ENS Paris-Saclay.</p></li>
+                </ul>
+            </details>
+        </div>
+    </section>
+
+    <section id="publications" class="section">
+        <h2>Publications</h2>
+        <div>
+            <ol class="pubs">
+                <li class="pub" id="r1">
+                    <a class="thumb" href="videollm-survey/index.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="videollm-survey/static/images/social_preview.png" alt="" width="420" height="221"></a>
+                    <div>
+                        <p class="meta"><span class="tag">preprint</span>2026</p>
+                        <h3><a href="videollm-survey/index.html">Why Is Video Still So Expensive? A Survey of Inference-Efficiency Mechanisms in Video and Audiovisual LLMs</a></h3>
+                        <p class="authors"><b>Killian Steunou</b>, Yannis Tevissen, Mounîm A. El-Yacoubi</p>
+                        <p class="links"><a href="videollm-survey/index.html">page</a><a href="https://arxiv.org/abs/2609.10355">arxiv</a><a href="https://arxiv.org/pdf/2609.10355.pdf">pdf</a><a href="https://github.com/momentslab/awesome-efficient-videollm">repo</a></p>
+                    </div>
+                </li>
+                <li class="pub" id="r2">
+                    <a class="thumb" href="peek/index.html" tabindex="-1" aria-hidden="true"><img loading="lazy" src="peek/static/images/social_preview.png" alt="" width="420" height="284"></a>
+                    <div>
+                        <p class="meta"><span class="tag">BMVC</span>2026</p>
+                        <h3><a href="peek/index.html">PEEK: Picking Essential Frames via Efficient Knowledge Distillation</a></h3>
+                        <p class="authors"><b>Killian Steunou</b>, Anas Filali Razzouki, Mounîm A. El-Yacoubi, Khalil Guetari, Yannis Tevissen</p>
+                        <p class="links"><a href="peek/index.html">page</a><a href="https://arxiv.org/abs/2605.31029">arxiv</a><a href="https://arxiv.org/pdf/2605.31029.pdf">pdf</a><a href="https://github.com/momentslab/peek">code</a><a href="https://huggingface.co/momentslab/peek">model</a><a href="demo_peek.html">demo</a></p>
+                    </div>
+                </li>
+                <li class="pub no-thumb" id="r3">
+                    <div>
+                        <p class="meta"><span class="tag">preprint</span>2025</p>
+                        <h3><a href="https://arxiv.org/abs/2509.21130">Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</a></h3>
+                        <p class="authors"><b>Killian Steunou</b>, Théo Druilhe, Sigurd Saue</p>
+                        <p class="links"><a href="https://arxiv.org/abs/2509.21130">arxiv</a><a href="https://arxiv.org/pdf/2509.21130.pdf">pdf</a><a href="https://github.com/killian31/SPCARobustness">code</a></p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="background" class="section">
+        <h2>Background</h2>
+        <div class="cv">
+            <div>
+                <p class="sub">Work</p>
+                <ul class="list dated rule">
+                    <li><span>2025–</span><div><p><a href="https://www.momentslab.com">PhD student, Moments Lab</a></p><p class="note">Efficient omni-modal learning for video understanding.</p></div></li>
+                    <li><span>2025</span><div><p><a href="https://www.idemia.com/business/idemia-public-security">Research intern, Idemia</a></p><p class="note">SAM 2 for end-to-end multi-object tracking.</p></div></li>
+                    <li><span>2024</span><div><p><a href="https://www.cls.fr">AI research intern, CLS</a></p><p class="note">Fine-tuning foundation models on remote sensing data.</p></div></li>
+                    <li><span>2023</span><div><p><a href="https://www.jolibrain.com">ML engineer intern, JoliBrain</a></p><p class="note">ControlNet-style controls and zero-shot detection in joliGEN.</p></div></li>
+                    <li><span>2022</span><div><p><a href="https://ksteunou.pages.lab.sspcloud.fr/agreste/">Developer intern, Ministry of Agriculture</a></p><p class="note">agreste, an R package for statistical publications.</p></div></li>
+                </ul>
+            </div>
+            <div>
+                <p class="sub">Education</p>
+                <ul class="list dated rule">
+                    <li><span>2025–</span><div><p>PhD in machine learning, Institut Polytechnique de Paris</p></div></li>
+                    <li><span>2024–25</span><div><p>Master MVA, ENS Paris-Saclay</p><p class="note">Optimal transport, convex optimization, generative models.</p></div></li>
+                    <li><span>2023–24</span><div><p>M1 applied maths and statistics, Toulouse School of Economics</p></div></li>
+                    <li><span>2022–23</span><div><p>Exchange semester, University of Copenhagen</p></div></li>
+                    <li><span>2019–22</span><div><p>Bachelor in maths and economics, Toulouse School of Economics</p></div></li>
+                </ul>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <main id="top">
-        <header class="hero shell">
-            <div class="hero-grid">
-                <div>
-                    <p class="hero-kicker">PhD student · machine learning &amp; computer vision</p>
-                    <h1>Killian <em>Steunou</em></h1>
-                    <p class="hero-bio">
-                        I'm a PhD student at <a href="https://www.ip-paris.fr" target="_blank" rel="noopener noreferrer">Institut Polytechnique de Paris</a>
-                        and <a href="https://www.momentslab.com" target="_blank" rel="noopener noreferrer">Moments Lab</a>, where I work on efficient
-                        omni-modal learning for generalized video understanding — in short: how to make video models that see enough while computing less.
-                    </p>
-                    <p class="hero-bio">
-                        Before the PhD, I studied mathematics and statistics (Toulouse School of Economics), then vision and learning
-                        (Master MVA, ENS Paris-Saclay), with research internships at Idemia, CLS, and JoliBrain. I care about reproducible
-                        research, open source, and models that survive contact with the real world.
-                    </p>
-                    <div class="hero-links">
-                        <a href="mailto:contact@killian-steunou.com">Email</a>
-                        <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-                        <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
-                    </div>
-                </div>
-                <figure class="hero-portrait">
-                    <img src="assets/profile/profile-picture.jpg" alt="Portrait of Killian Steunou" width="250" height="280">
-                    <figcaption>Paris, France</figcaption>
-                </figure>
-            </div>
-        </header>
-
-        <section id="news" class="section">
-            <div class="shell">
-                <div class="section-head">
-                    <h2 class="section-label">News</h2>
-                </div>
-                <div class="news-list">
-                    <article class="news-item latest">
-                        <p class="news-date"><time datetime="2026-09">Sep 2026</time></p>
-                        <p class="news-body">
-                            Our survey <a href="videollm-survey/index.html">Why Is Video Still So Expensive?</a> is on arXiv! 125 inference-efficiency
-                            mechanisms for video and audiovisual LLMs, organised by the pipeline stage where they cut cost, with a
-                            <a href="videollm-survey/index.html">project page</a> and a companion
-                            <a href="https://github.com/momentslab/awesome-efficient-videollm" target="_blank" rel="noopener noreferrer">repository</a>.
-                        </p>
-                    </article>
-                    <article class="news-item">
-                        <p class="news-date"><time datetime="2026-08">Aug 2026</time></p>
-                        <p class="news-body">
-                            <a href="peek/index.html">PEEK</a> has been accepted at <a href="https://bmvc2026.bmva.org/" target="_blank" rel="noopener noreferrer">BMVC 2026</a> —
-                            see you in Lancaster in November! The camera-ready version is on <a href="https://arxiv.org/abs/2605.31029" target="_blank" rel="noopener noreferrer">arXiv</a>.
-                        </p>
-                    </article>
-                    <article class="news-item">
-                        <p class="news-date"><time datetime="2026-05">May 2026</time></p>
-                        <p class="news-body">
-                            Our preprint <a href="https://arxiv.org/abs/2605.31029" target="_blank" rel="noopener noreferrer">PEEK: Picking Essential frames via Efficient Knowledge distillation</a>
-                            is out on arXiv — with <a href="https://github.com/momentslab/peek" target="_blank" rel="noopener noreferrer">code</a>,
-                            <a href="https://huggingface.co/momentslab/peek" target="_blank" rel="noopener noreferrer">model weights</a>,
-                            a <a href="peek/index.html">project page</a>, and a <a href="demo_peek.html">live demo</a> you can try in the browser.
-                        </p>
-                    </article>
-                    <article class="news-item">
-                        <p class="news-date"><time datetime="2026-04">Apr 2026</time></p>
-                        <p class="news-body">
-                            New blog post: <a href="blog/nlp_metrics_visual_guide.html">NLP metrics for image &amp; video captioning — a visual guide</a>
-                            (n-grams, TF-IDF, BLEU, ROUGE-L, METEOR, CIDEr, with worked examples).
-                        </p>
-                    </article>
-                    <article class="news-item">
-                        <p class="news-date"><time datetime="2026-02">Feb 2026</time></p>
-                        <p class="news-body">
-                            New blog post: <a href="blog/efficiency_video_understanding.html">Efficiency follows capability</a> — a decade of
-                            video understanding research trends, mined from arXiv (2015–2025).
-                        </p>
-                    </article>
-                    <details class="news-older">
-                        <summary>older news</summary>
-                        <article class="news-item">
-                            <p class="news-date"><time datetime="2025-11">Nov 2025</time></p>
-                            <p class="news-body">
-                                Started my industrial PhD on efficient omni-modal learning for generalized video understanding,
-                                joint between Institut Polytechnique de Paris and Moments Lab.
-                            </p>
-                        </article>
-                        <article class="news-item">
-                            <p class="news-date"><time datetime="2025-09">Sep 2025</time></p>
-                            <p class="news-body">
-                                Preprint: <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer">Sparse representations improve adversarial robustness of neural network classifiers</a>,
-                                with Théo Druilhe and Sigurd Saue.
-                            </p>
-                        </article>
-                        <article class="news-item">
-                            <p class="news-date"><time datetime="2025-04">Apr 2025</time></p>
-                            <p class="news-body">
-                                Joined Idemia as a deep learning research intern, working on SAM 2 for end-to-end multi-object tracking.
-                            </p>
-                        </article>
-                        <article class="news-item">
-                            <p class="news-date"><time datetime="2025-03">Mar 2025</time></p>
-                            <p class="news-body">
-                                Completed the MVA master's (Mathématiques, Vision, Apprentissage) at ENS Paris-Saclay.
-                            </p>
-                        </article>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <section id="publications" class="section">
-            <div class="shell">
-                <div class="section-head">
-                    <h2 class="section-label">Publications</h2>
-                    <p class="section-aside">also on <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></p>
-                </div>
-                <div class="pub-list">
-                    <article class="pub-card">
-                        <a class="pub-thumb" href="videollm-survey/index.html" aria-label="VideoLLM efficiency survey project page">
-                            <img loading="lazy" src="videollm-survey/static/images/social_preview.png" alt="VideoLLM efficiency survey preview" width="420" height="221">
-                        </a>
-                        <div>
-                            <p class="pub-meta"><span class="pub-venue">preprint, under review</span><span>2026</span></p>
-                            <h3 class="pub-title"><a href="videollm-survey/index.html">Why Is Video Still So Expensive? A Survey of Inference-Efficiency Mechanisms in Video and Audiovisual LLMs</a></h3>
-                            <p class="pub-authors"><strong>Killian Steunou</strong>, Yannis Tevissen, Mounîm A. El-Yacoubi</p>
-                            <p class="pub-tldr">
-                                125 methods that make video-language inference cheaper, placed at the pipeline stage where they actually
-                                remove computation — frame sampling, encoding, connector compression, LLM prefilling and KV cache — with
-                                the comparisons that survive a shared protocol, and the ones that don't.
-                            </p>
-                            <div class="link-row">
-                                <a href="videollm-survey/index.html">project page</a>
-                                <a href="https://arxiv.org/abs/2609.10355" target="_blank" rel="noopener noreferrer">arXiv</a>
-                                <a href="https://arxiv.org/pdf/2609.10355.pdf" target="_blank" rel="noopener noreferrer">pdf</a>
-                                <a href="https://github.com/momentslab/awesome-efficient-videollm" target="_blank" rel="noopener noreferrer">repository</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a class="pub-thumb" href="peek/index.html" aria-label="PEEK project page">
-                            <img loading="lazy" src="peek/static/images/social_preview.png" alt="PEEK paper preview" width="420" height="284">
-                        </a>
-                        <div>
-                            <p class="pub-meta"><span class="pub-venue">BMVC 2026</span><span>2026</span></p>
-                            <h3 class="pub-title"><a href="peek/index.html">PEEK: Picking Essential frames via Efficient Knowledge distillation</a></h3>
-                            <p class="pub-authors"><strong>Killian Steunou</strong>, Anas Filali Razzouki, Mounîm A. El-Yacoubi, Khalil Guetari, Yannis Tevissen</p>
-                            <p class="pub-tldr">
-                                A training-efficient frame selection method distilled from vision-language teachers: it finds the frames that matter
-                                for video captioning, matching heavier pipelines while processing far fewer frames.
-                            </p>
-                            <div class="link-row">
-                                <a href="peek/index.html">project page</a>
-                                <a href="https://arxiv.org/abs/2605.31029" target="_blank" rel="noopener noreferrer">arXiv</a>
-                                <a href="https://arxiv.org/pdf/2605.31029.pdf" target="_blank" rel="noopener noreferrer">pdf</a>
-                                <a href="https://github.com/momentslab/peek" target="_blank" rel="noopener noreferrer">code</a>
-                                <a href="https://huggingface.co/momentslab/peek" target="_blank" rel="noopener noreferrer">model</a>
-                                <a href="demo_peek.html">demo</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="pub-card no-thumb">
-                        <div>
-                            <p class="pub-meta"><span class="pub-venue">arXiv preprint</span><span>2025</span></p>
-                            <h3 class="pub-title"><a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer">Sparse Representations Improve Adversarial Robustness of Neural Network Classifiers</a></h3>
-                            <p class="pub-authors"><strong>Killian Steunou</strong>, Théo Druilhe, Sigurd Saue</p>
-                            <p class="pub-tldr">
-                                We show, theoretically and empirically, that SPCA-based classifiers are more robust than PCA-based ones under
-                                adversarial attack — a new angle on linear dimensionality reduction as a defense.
-                            </p>
-                            <div class="link-row">
-                                <a href="https://arxiv.org/abs/2509.21130" target="_blank" rel="noopener noreferrer">arXiv</a>
-                                <a href="https://arxiv.org/pdf/2509.21130.pdf" target="_blank" rel="noopener noreferrer">pdf</a>
-                                <a href="https://github.com/killian31/SPCARobustness" target="_blank" rel="noopener noreferrer">code</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="background" class="section">
-            <div class="shell">
-                <div class="section-head">
-                    <h2 class="section-label">Background</h2>
-                    <p class="section-aside">full details in the <a href="assets/CV_KS.pdf" target="_blank" rel="noopener noreferrer">CV</a></p>
-                </div>
-                <div class="cv-columns">
-                    <div>
-                        <p class="cv-subhead">Experience</p>
-                        <div class="cv-list">
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/logo_moments_lab.png" alt="Moments Lab logo">
-                                <div>
-                                    <p class="cv-role"><a href="https://www.momentslab.com" target="_blank" rel="noopener noreferrer">PhD student — Moments Lab</a></p>
-                                    <p class="cv-dates">Nov 2025 – present</p>
-                                    <p class="cv-note">Efficient omni-modal learning for generalized video understanding, in an industrial research setting.</p>
-                                </div>
-                            </article>
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/logo_idemia.png" alt="Idemia logo">
-                                <div>
-                                    <p class="cv-role"><a href="https://www.idemia.com/business/idemia-public-security" target="_blank" rel="noopener noreferrer">Deep learning research intern — Idemia</a></p>
-                                    <p class="cv-dates">Apr – Oct 2025</p>
-                                    <p class="cv-note">SAM 2 for end-to-end multi-object tracking; segmentation- and proposal-aware MOTIP variants.</p>
-                                </div>
-                            </article>
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/logo_cls.png" alt="CLS logo">
-                                <div>
-                                    <p class="cv-role"><a href="https://www.cls.fr" target="_blank" rel="noopener noreferrer">AI research intern — CLS</a></p>
-                                    <p class="cv-dates">Apr – Aug 2024</p>
-                                    <p class="cv-note">Fine-tuning foundation models on remote sensing data; segmentation benchmarks.</p>
-                                </div>
-                            </article>
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/logo_jolibrain.png" alt="JoliBrain logo">
-                                <div>
-                                    <p class="cv-role"><a href="https://www.jolibrain.com" target="_blank" rel="noopener noreferrer">ML engineer intern — JoliBrain</a></p>
-                                    <p class="cv-dates">Feb – Jul 2023</p>
-                                    <p class="cv-note">ControlNet-style controls and zero-shot detection in joliGEN.</p>
-                                </div>
-                            </article>
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/logo_ministere.png" alt="French Ministry of Agriculture logo">
-                                <div>
-                                    <p class="cv-role"><a href="https://ksteunou.pages.lab.sspcloud.fr/agreste/" target="_blank" rel="noopener noreferrer">Software developer intern — Ministry of Agriculture</a></p>
-                                    <p class="cv-dates">May – Aug 2022</p>
-                                    <p class="cv-note">Built agreste, an R package automating statistical publications.</p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="cv-subhead">Education</p>
-                        <div class="cv-list">
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/logo_ip_paris.png" alt="Institut Polytechnique de Paris logo">
-                                <div>
-                                    <p class="cv-role">PhD, machine learning — Institut Polytechnique de Paris</p>
-                                    <p class="cv-dates">Nov 2025 – present</p>
-                                </div>
-                            </article>
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/logo_ens.jpg" alt="ENS Paris-Saclay logo">
-                                <div>
-                                    <p class="cv-role">Master MVA (Mathématiques, Vision, Apprentissage) — ENS Paris-Saclay</p>
-                                    <p class="cv-dates">2024 – 2025</p>
-                                    <p class="cv-note">Optimal transport, convex optimization, deep learning, graphical &amp; generative models.</p>
-                                </div>
-                            </article>
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/TSE_Logo_2019.png" alt="Toulouse School of Economics logo">
-                                <div>
-                                    <p class="cv-role">M1 applied mathematics &amp; statistics — Toulouse School of Economics</p>
-                                    <p class="cv-dates">2023 – 2024</p>
-                                </div>
-                            </article>
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/ku_logo_uk_h.png" alt="University of Copenhagen logo">
-                                <div>
-                                    <p class="cv-role">Exchange semester — University of Copenhagen</p>
-                                    <p class="cv-dates">2022 – 2023</p>
-                                    <p class="cv-note">NLP, energy economics, blockchain business development.</p>
-                                </div>
-                            </article>
-                            <article class="cv-item">
-                                <img loading="lazy" class="cv-logo" src="assets/logos/TSE_Logo_2019.png" alt="Toulouse School of Economics logo">
-                                <div>
-                                    <p class="cv-role">Double bachelor, applied mathematics &amp; economics — Toulouse School of Economics</p>
-                                    <p class="cv-dates">2019 – 2022</p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section">
-            <div class="shell">
-                <div class="section-head">
-                    <h2 class="section-label">Projects</h2>
-                    <p class="section-aside">more on <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-                </div>
-                <div class="project-grid">
-                    <article class="project-card">
-                        <div class="project-thumb">
-                            <img loading="lazy" src="assets/projects/vbr.gif" alt="Video Background Removal in action">
-                        </div>
-                        <h3>Video Background Removal</h3>
-                        <p>Automatic video background removal built on Mobile SAM, with an interactive demo.</p>
-                        <p class="project-tags">segmentation · video</p>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/VideoBackgroundRemoval" target="_blank" rel="noopener noreferrer">code</a>
-                            <a href="demo_vbr.html">demo</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-thumb">
-                            <img loading="lazy" src="assets/projects/joligen.svg" alt="joliGEN logo">
-                        </div>
-                        <h3>joliGEN (contributor)</h3>
-                        <p>Integrated ControlNet-inspired edge controls and SAM-based masking into JoliBrain's generative toolkit.</p>
-                        <p class="project-tags">generative AI · open source</p>
-                        <div class="link-row">
-                            <a href="https://github.com/jolibrain/joliGEN" target="_blank" rel="noopener noreferrer">code</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-thumb">
-                            <img loading="lazy" src="assets/projects/balloon_opti.gif" alt="Zero-shot video object detection">
-                        </div>
-                        <h3>Video Object Detection</h3>
-                        <p>Zero-shot object detection in videos with Owl-ViT, driven by natural-language prompts.</p>
-                        <p class="project-tags">detection · zero-shot</p>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/VideoObjectDetection" target="_blank" rel="noopener noreferrer">code</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <h3>Nail Bite Detection</h3>
-                        <p>A macOS menu-bar app that spots nail biting from the webcam in real time, to make the habit visible.</p>
-                        <p class="project-tags">macOS · computer vision</p>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/NailBiteMenu" target="_blank" rel="noopener noreferrer">code</a>
-                            <a href="https://killian31.github.io/NailBiteMenu/" target="_blank" rel="noopener noreferrer">website</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <h3>Audio Visual Transcription</h3>
-                        <p>Fast subtitling for audio and video with OpenAI Whisper, behind a simple interface.</p>
-                        <p class="project-tags">speech · whisper</p>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/AudioVisualTranscription" target="_blank" rel="noopener noreferrer">code</a>
-                            <a href="demo_avt.html">demo</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <h3>MathViz</h3>
-                        <p>A Streamlit app visualizing ideas from mathematics, statistics, ML, and algorithms.</p>
-                        <p class="project-tags">education · visualization</p>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/MathViz" target="_blank" rel="noopener noreferrer">code</a>
-                            <a href="demo_mathviz.html">demo</a>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="report-list">
-                    <p class="cv-subhead">Research reports (MVA &amp; TSE coursework)</p>
-                    <article class="report-item">
-                        <div>
-                            <p class="report-title">Score-based generative networks for large-scale optimal transport</p>
-                            <span class="report-topic">SCONES reproduction · optimal transport</span>
-                        </div>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">report</a>
-                            <a href="https://github.com/killian31/scones-synthetic" target="_blank" rel="noopener noreferrer">code</a>
-                        </div>
-                    </article>
-                    <article class="report-item">
-                        <div>
-                            <p class="report-title">Test-time training with masked autoencoders, online</p>
-                            <span class="report-topic">TTT-MAE extension · test-time adaptation</span>
-                        </div>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true" target="_blank" rel="noopener noreferrer">report</a>
-                            <a href="https://github.com/killian31/ttt_mae_online" target="_blank" rel="noopener noreferrer">code</a>
-                        </div>
-                    </article>
-                    <article class="report-item">
-                        <div>
-                            <p class="report-title">An end-to-end transformer model for 3D object detection</p>
-                            <span class="report-topic">3DETR reproduction · 3D vision</span>
-                        </div>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">report</a>
-                        </div>
-                    </article>
-                    <article class="report-item">
-                        <div>
-                            <p class="report-title">Are generative classifiers more robust to adversarial attacks?</p>
-                            <span class="report-topic">robustness · generative classifiers</span>
-                        </div>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">report</a>
-                            <a href="https://github.com/killian31/DeepBayesTorch" target="_blank" rel="noopener noreferrer">code</a>
-                        </div>
-                    </article>
-                    <article class="report-item">
-                        <div>
-                            <p class="report-title">Toxic gas characterization under humidity-driven domain shift</p>
-                            <span class="report-topic">multi-task learning · adversarial adaptation</span>
-                        </div>
-                        <div class="link-row">
-                            <a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">report</a>
-                            <a href="https://github.com/killian31/IdGas" target="_blank" rel="noopener noreferrer">code</a>
-                        </div>
-                    </article>
-                    <article class="report-item">
-                        <div>
-                            <p class="report-title">Convergence of SGD for training with sliced Wasserstein losses</p>
-                            <span class="report-topic">optimization · generative modeling</span>
-                        </div>
-                        <div class="link-row">
-                            <a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true" target="_blank" rel="noopener noreferrer">report</a>
-                            <a href="https://github.com/francklaborde/Generative-modeling-project" target="_blank" rel="noopener noreferrer">code</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="demos" class="section">
-            <div class="shell">
-                <div class="section-head">
-                    <h2 class="section-label">Demos</h2>
-                    <p class="section-aside">try the models in your browser</p>
-                </div>
-                <div class="demo-grid">
-                    <a class="demo-card" href="demo_peek.html">
-                        <h3>PEEK</h3>
-                        <p>Pick the most informative frames of a video for captioning.</p>
-                        <span class="demo-open">open demo →</span>
-                    </a>
-                    <a class="demo-card" href="demo_vbr.html">
-                        <h3>Background Removal</h3>
-                        <p>Segment and remove video backgrounds interactively.</p>
-                        <span class="demo-open">open demo →</span>
-                    </a>
-                    <a class="demo-card" href="demo_avt.html">
-                        <h3>Transcription</h3>
-                        <p>Subtitle audio and video with Whisper.</p>
-                        <span class="demo-open">open demo →</span>
-                    </a>
-                    <a class="demo-card" href="demo_mathviz.html">
-                        <h3>MathViz</h3>
-                        <p>Interactive visual explanations of math and ML ideas.</p>
-                        <span class="demo-open">open demo →</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="writing" class="section">
-            <div class="shell">
-                <div class="section-head">
-                    <h2 class="section-label">Writing</h2>
-                </div>
-                <div class="writing-list">
-                    <article class="writing-item">
-                        <p class="writing-date"><time datetime="2026-04">Apr 2026</time></p>
-                        <div>
-                            <h3><a href="blog/nlp_metrics_visual_guide.html">NLP Metrics for Image &amp; Video Captioning: A Visual Guide</a></h3>
-                            <p>N-grams, TF-IDF, BLEU, ROUGE-L, METEOR, and CIDEr, worked through visually for captioning research.</p>
-                        </div>
-                    </article>
-                    <article class="writing-item">
-                        <p class="writing-date"><time datetime="2026-02">Feb 2026</time></p>
-                        <div>
-                            <h3><a href="blog/efficiency_video_understanding.html">Efficiency Follows Capability: A Decade of Video Understanding Research Trends</a></h3>
-                            <p>How efficiency moved from the margins to the center of video understanding research, 2015–2025.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section">
-            <div class="shell">
-                <div class="section-head">
-                    <h2 class="section-label">Contact</h2>
-                </div>
-                <div class="contact-grid">
-                    <div>
-                        <p class="contact-lead">
-                            Happy to talk about efficient vision systems, multimodal learning, evaluation,
-                            or research collaborations. The fastest way to reach me is email.
-                        </p>
-                        <a class="contact-email" href="mailto:contact@killian-steunou.com">contact@killian-steunou.com</a>
-                        <p class="contact-note">Or use the form — it lands in the same inbox.</p>
-                    </div>
-                    <form action="https://formspree.io/f/xdoqokzg" method="POST" class="contact-form" autocomplete="on">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="contact-name">Name</label>
-                                <input type="text" id="contact-name" name="sender-name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-email">Email</label>
-                                <input type="email" id="contact-email" name="sender-email" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-subject">Subject</label>
-                            <input type="text" id="contact-subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-message">Message</label>
-                            <textarea id="contact-message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="button button-primary">Send</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-top">
-                <div>
-                    <p class="footer-brand">Killian Steunou</p>
-                    <p class="footer-note">Machine learning research, efficient visual systems, open code.</p>
-                </div>
-                <div class="footer-social">
-                    <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <img src="assets/logos/github-mark-white.png" alt="GitHub" class="footer-social-icon">
-                    </a>
-                    <a href="https://www.linkedin.com/in/killian-steunou" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <img src="assets/logos/LI-In-Bug.png" alt="LinkedIn" class="footer-social-icon">
-                    </a>
-                    <a href="https://scholar.google.com/citations?user=xR_UgaYAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-                        <img src="assets/logos/logo_google_scholar.png" alt="Google Scholar" class="footer-social-icon">
-                    </a>
-                </div>
-            </div>
-            <div class="footer-meta">
-                <p>&copy; 2026 <a href="https://github.com/killian31" target="_blank" rel="noopener noreferrer">Killian Steunou</a> · plain HTML, CSS &amp; JS — no build, no tracker-heavy framework</p>
-            </div>
-            <div id="wcb" class="carbonbadge"></div>
-            <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div>
+            <ul class="list projects rule">
+                <li><h3>Video background removal</h3><p>Removes the background of a whole video with Mobile SAM.</p><span class="links"><a href="https://github.com/killian31/VideoBackgroundRemoval">code</a><a href="demo_vbr.html">demo</a></span></li>
+                <li><h3>joliGEN</h3><p>Contributed edge controls and SAM-based masking to JoliBrain's generative toolkit.</p><span class="links"><a href="https://github.com/jolibrain/joliGEN">code</a></span></li>
+                <li><h3>Video object detection</h3><p>Zero-shot detection in videos with OWL-ViT and text prompts.</p><span class="links"><a href="https://github.com/killian31/VideoObjectDetection">code</a></span></li>
+                <li><h3>Nail bite detection</h3><p>A macOS menu-bar app that notices nail biting through the webcam.</p><span class="links"><a href="https://github.com/killian31/NailBiteMenu">code</a><a href="https://killian31.github.io/NailBiteMenu/">site</a></span></li>
+                <li><h3>Audio-visual transcription</h3><p>Subtitles for audio and video files with Whisper.</p><span class="links"><a href="https://github.com/killian31/AudioVisualTranscription">code</a><a href="demo_avt.html">demo</a></span></li>
+                <li><h3>MathViz</h3><p>Interactive visualisations of maths, statistics and ML ideas.</p><span class="links"><a href="https://github.com/killian31/MathViz">code</a><a href="demo_mathviz.html">demo</a></span></li>
+            </ul>
+            <details>
+                <summary>coursework reports</summary>
+                <ul class="list projects rule">
+                    <li><h3>Score-based generative networks for large-scale optimal transport</h3><p>SCONES reproduction.</p><span class="links"><a href="https://github.com/killian31/scones-synthetic/blob/main/Report.pdf?raw=true">report</a><a href="https://github.com/killian31/scones-synthetic">code</a></span></li>
+                    <li><h3>Online test-time training with masked autoencoders</h3><p>TTT-MAE extension.</p><span class="links"><a href="https://github.com/killian31/ttt_mae_online/blob/main/report.pdf?raw=true">report</a><a href="https://github.com/killian31/ttt_mae_online">code</a></span></li>
+                    <li><h3>An end-to-end transformer for 3D object detection</h3><p>3DETR reproduction.</p><span class="links"><a href="https://github.com/killian31/3detr/blob/main/Report.pdf?raw=true">report</a></span></li>
+                    <li><h3>Are generative classifiers more robust to adversarial attacks?</h3><p>Adversarial robustness.</p><span class="links"><a href="https://github.com/killian31/DeepBayesTorch/blob/main/Report.pdf?raw=true">report</a><a href="https://github.com/killian31/DeepBayesTorch">code</a></span></li>
+                    <li><h3>Toxic gas characterisation under humidity shift</h3><p>Multi-task learning and adversarial domain adaptation.</p><span class="links"><a href="https://github.com/killian31/IdGas/blob/main/Report.pdf?raw=true">report</a><a href="https://github.com/killian31/IdGas">code</a></span></li>
+                    <li><h3>Convergence of SGD with sliced Wasserstein losses</h3><p>Optimisation for generative modelling.</p><span class="links"><a href="https://github.com/francklaborde/Generative-modeling-project/blob/main/Report.pdf?raw=true">report</a><a href="https://github.com/francklaborde/Generative-modeling-project">code</a></span></li>
+                </ul>
+            </details>
         </div>
+    </section>
+
+    <section id="writing" class="section">
+        <h2>Writing</h2>
+        <ul class="list dated">
+            <li><time datetime="2026-04">2026.04</time><div><h3><a href="blog/nlp_metrics_visual_guide.html">NLP metrics for image and video captioning: a visual guide</a></h3><p class="note">BLEU, ROUGE-L, METEOR and CIDEr, worked through on examples.</p></div></li>
+            <li><time datetime="2026-02">2026.02</time><div><h3><a href="blog/efficiency_video_understanding.html">Efficiency follows capability</a></h3><p class="note">How efficiency moved to the centre of video understanding research, 2015 to 2025.</p></div></li>
+        </ul>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <div>
+            <p class="contact"><a href="mailto:contact@killian-steunou.com">contact@killian-steunou.com</a></p>
+            <p>I'm always happy to talk about efficient video models, multimodal learning, evaluation, or a possible collaboration.</p>
+        </div>
+    </section>
+
+    <footer class="site-foot mono">
+        <span>© 2026 Killian Steunou, Paris</span>
+        <span>Plain HTML and CSS, printed in one ink.</span>
     </footer>
-
-    <script src="script.js"></script>
+</main>
+<script src="script.js"></script>
 </body>
 </html>
