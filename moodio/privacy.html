@@ -2,106 +2,12 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moodio : politique de confidentialité</title>
-    <style>
-      :root { color-scheme: light; }
-      body {
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-        line-height: 1.6; color: #1a1a1a; background: #fff; max-width: 760px;
-        margin: 40px auto; padding: 0 20px;
-      }
-      h1 { font-size: 26px; }
-      h2 { font-size: 19px; margin-top: 28px; }
-      .updated, .lang { color: #6b7280; font-size: 14px; }
-      hr { margin: 48px 0; border: 0; border-top: 1px solid #e5e7eb; }
-      a { color: #2563eb; }
-    </style>
+    <title>moodio : page déplacée</title>
+    <link rel="canonical" href="https://moodio.katai.fr/privacy" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="0; url=https://moodio.katai.fr/privacy" />
   </head>
   <body>
-    <p class="lang"><a href="#en">English version below</a></p>
-    <section id="fr" lang="fr">
-<h1>Moodio : politique de confidentialité</h1>
-<p class="updated">Dernière mise à jour : 27 octobre 2026</p>
-<p>Moodio est une application iPhone qui propose des titres de musique à partir d'une photo. Elle est éditée par Killian Steunou, développeur indépendant, qui est responsable des données décrites ici. Contact : <a href="mailto:contact@killian-steunou.com">contact@killian-steunou.com</a>.</p>
-<h2>En bref</h2>
-<ul>
-  <li>Pas de compte Moodio : ni nom, ni e-mail, ni mot de passe.</li>
-  <li>Vos photos sont envoyées à notre serveur pour être analysées, puis supprimées.</li>
-  <li>Votre historique et vos goûts restent sur votre iPhone.</li>
-  <li>Nous utilisons Firebase (statistiques d'usage et rapports de plantage) et Google AdMob (publicité).</li>
-</ul>
-<h2>Les photos</h2>
-<p>Quand vous lancez une analyse, la photo (réduite à 1440 pixels maximum) est envoyée à notre serveur, hébergé par Google Cloud en Belgique. Si la photo est déjà petite, elle part telle quelle, avec ses métadonnées (date, position GPS).</p>
-<p>Le serveur réduit la photo, retire ses métadonnées et l'envoie à un modèle d'intelligence artificielle via OpenRouter, qui la transmet à l'hébergeur du modèle (aujourd'hui Google, avec un modèle Gemini). Le modèle décrit l'ambiance de la photo. Pour choisir les titres dans notre catalogue, cette description, sans la photo, est ensuite envoyée via OpenRouter à deux autres modèles : l'un la compare au catalogue (Voyage AI), l'autre trie les titres retenus (Google). Ces prestataires peuvent se trouver hors de l'Union européenne.</p>
-<p>Le fichier est effacé de notre serveur dès la fin de l'analyse. Nous n'en gardons aucune copie et ne l'utilisons pour entraîner aucun modèle.</p>
-<p>Les photos prises avec l'appareil photo de Moodio sont aussi enregistrées dans votre photothèque. Vous pouvez désactiver cette option dans les Réglages.</p>
-<h2>La position</h2>
-<p>Moodio n'accède pas à la position de votre iPhone. Si une photo contient une position, l'app en déduit le nom de la ville ou de la région, sur l'iPhone, grâce au service de cartes d'Apple. Seul ce nom de lieu est envoyé à notre serveur, pour adapter les titres au contexte.</p>
-<h2>Vos goûts (facultatif)</h2>
-<p>Si vous activez « Personnaliser avec mes goûts », l'app envoie avec la photo un résumé de vos goûts : les styles et artistes que vous avez likés, leur nombre, et une empreinte calculée à partir de vos titres likés. Les styles et artistes de ce résumé sont transmis au modèle qui trie les titres (Google, via OpenRouter). Ce résumé ne contient aucun identifiant et n'est pas conservé après l'analyse. L'option est désactivée par défaut.</p>
-<h2>Ce qui reste sur votre iPhone</h2>
-<p>Votre historique (photos et titres proposés), vos titres likés, votre profil de goûts et vos réglages sont enregistrés uniquement sur votre iPhone. « Effacer les données » dans les Réglages les supprime, tout comme la désinstallation de l'app.</p>
-<h2>Statistiques et plantages</h2>
-<p>Moodio utilise Google Firebase Analytics et Crashlytics. L'app crée un identifiant aléatoire, sans lien avec votre identité, conservé dans le trousseau de l'iPhone. Il sert à compter les usages (analyse lancée, titre ouvert, swipe, intro terminée, achat Premium) et à comprendre les plantages. Firebase collecte aussi des informations techniques : modèle d'iPhone, version d'iOS, pays approximatif.</p>
-<h2>Publicité</h2>
-<p>La version gratuite affiche des publicités Google AdMob. Google peut utiliser des identifiants de l'appareil et des données d'usage pour afficher et mesurer les publicités. Au premier lancement, l'app vous demande votre consentement (formulaire de Google), puis l'autorisation de suivi d'Apple. Si vous refusez, vous ne verrez que des publicités non personnalisées. Vous pouvez changer d'avis à tout moment dans Réglages, « Choix de confidentialité ». Moodio Premium supprime les publicités.</p>
-<h2>Achats</h2>
-<p>L'abonnement Moodio Premium passe par l'App Store. Apple traite le paiement et nous ne recevons aucune donnée bancaire.</p>
-<h2>Services de musique</h2>
-<p>Moodio n'a accès à aucun compte Spotify, Apple Music ou Deezer. Les boutons « Ouvrir dans… » ouvrent le titre dans l'app choisie. Les extraits audio et les pochettes viennent d'Apple (iTunes). Pour les obtenir, l'app envoie à Apple uniquement le titre et l'artiste du morceau.</p>
-<h2>Le journal des analyses</h2>
-<p>Pour chaque analyse, notre serveur garde une ligne de journal : la description de la photo faite par le modèle (scène, ambiance, mots-clés), l'heure de prise de vue, le fuseau horaire et la langue de l'iPhone, l'app de musique choisie, le nombre de titres likés si la personnalisation est activée, et les titres proposés. Elle ne contient ni la photo, ni le nom de lieu, ni votre adresse IP. Elle porte un numéro d'analyse, que l'app joint aussi à ses statistiques d'usage. Nous la conservons 12 mois pour mesurer et améliorer la qualité des recommandations.</p>
-<h2>Journaux techniques</h2>
-<p>Notre hébergeur Google Cloud enregistre des journaux techniques (adresse IP, date, adresse appelée, qui peut contenir le nom de lieu décrit plus haut). Ils servent à faire fonctionner et sécuriser le service et sont conservés au maximum 30 jours.</p>
-<h2>Bases légales</h2>
-<p>Nous traitons ces données pour vous fournir le service (analyse des photos), sur la base de notre intérêt légitime (statistiques, rapports de plantage, sécurité, qualité des recommandations) et, pour la publicité personnalisée et la personnalisation, sur la base de votre consentement.</p>
-<h2>Vos droits</h2>
-<p>Vous pouvez demander l'accès, la rectification ou l'effacement de vos données, vous opposer à un traitement ou retirer votre consentement en écrivant à <a href="mailto:contact@killian-steunou.com">contact@killian-steunou.com</a>. Comme nous ne connaissons pas votre identité, nous aurons peut-être besoin de l'identifiant de l'app pour retrouver vos données. Vous pouvez aussi saisir la CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p>
-<h2>Modifications</h2>
-<p>Nous mettrons cette page à jour si l'app change. La date en haut de page indique la dernière version.</p>
-    </section>
-    <hr />
-    <section id="en" lang="en">
-<h1>Moodio: privacy policy</h1>
-<p class="updated">Last updated: October 27, 2026</p>
-<p>Moodio is an iPhone app that suggests songs from a photo. It is published by Killian Steunou, an independent developer, who is responsible for the data described here. Contact: <a href="mailto:contact@killian-steunou.com">contact@killian-steunou.com</a>.</p>
-<h2>In short</h2>
-<ul>
-  <li>No Moodio account: no name, email or password.</li>
-  <li>Your photos are sent to our server for analysis, then deleted.</li>
-  <li>Your history and taste stay on your iPhone.</li>
-  <li>We use Firebase (usage statistics and crash reports) and Google AdMob (ads).</li>
-</ul>
-<h2>Photos</h2>
-<p>When you start an analysis, the photo (scaled down to 1440 pixels at most) is sent to our server, hosted by Google Cloud in Belgium. If the photo is already small, it is sent as is, with its metadata (date, GPS location).</p>
-<p>The server shrinks the photo, removes its metadata and sends it to an AI model through OpenRouter, which passes it to the model's host (currently Google, with a Gemini model). The model describes the photo's mood. To pick songs from our catalog, that description, without the photo, then goes through OpenRouter to two more models: one compares it with the catalog (Voyage AI), the other sorts the songs it found (Google). These providers may be outside the European Union.</p>
-<p>The file is deleted from our server as soon as the analysis ends. We keep no copy and don't use it to train any model.</p>
-<p>Photos taken with Moodio's camera are also saved to your photo library. You can turn this off in Settings.</p>
-<h2>Location</h2>
-<p>Moodio does not access your iPhone's location. If a photo contains a location, the app derives the city or region name on your iPhone, using Apple's maps service. Only that place name is sent to our server, to fit the songs to the context.</p>
-<h2>Your taste (optional)</h2>
-<p>If you turn on "Personalize with my taste", the app sends a summary of your taste with the photo: the styles and artists you liked, how many songs you liked, and a fingerprint computed from your liked songs. The styles and artists in this summary are passed to the model that sorts the songs (Google, through OpenRouter). The summary contains no identifier and is not kept after the analysis. The option is off by default.</p>
-<h2>What stays on your iPhone</h2>
-<p>Your history (photos and suggested songs), liked songs, taste profile and settings are stored only on your iPhone. "Delete data" in Settings removes them, and so does deleting the app.</p>
-<h2>Statistics and crashes</h2>
-<p>Moodio uses Google Firebase Analytics and Crashlytics. The app creates a random identifier, not tied to your identity, kept in the iPhone's keychain. It is used to count usage (analysis started, song opened, swipe, intro finished, Premium purchase) and to understand crashes. Firebase also collects technical information: iPhone model, iOS version, approximate country.</p>
-<h2>Ads</h2>
-<p>The free version shows Google AdMob ads. Google may use device identifiers and usage data to show and measure ads. On first launch, the app asks for your consent (Google's form), then for Apple's tracking permission. If you refuse, you will only see non-personalized ads. You can change your mind at any time in Settings, "Privacy Choices". Moodio Premium removes ads.</p>
-<h2>Purchases</h2>
-<p>Moodio Premium is sold through the App Store. Apple handles the payment and we receive no card details.</p>
-<h2>Music services</h2>
-<p>Moodio has no access to any Spotify, Apple Music or Deezer account. The "Open in…" buttons open the song in the chosen app. Audio previews and artwork come from Apple (iTunes). To fetch them, the app sends Apple only the song title and artist.</p>
-<h2>Analysis log</h2>
-<p>For each analysis, our server keeps one log line: the model's description of the photo (scene, mood, keywords), when the photo was taken, the iPhone's time zone and language, the music app you chose, how many songs you liked if personalization is on, and the songs suggested. It contains neither the photo, nor the place name, nor your IP address. It carries an analysis number, which the app also attaches to its usage statistics. We keep it for 12 months to measure and improve the quality of the recommendations.</p>
-<h2>Server logs</h2>
-<p>Our host, Google Cloud, records technical logs (IP address, time, requested address, which may include the place name described above). They are used to run and secure the service and are kept for 30 days at most.</p>
-<h2>Legal bases</h2>
-<p>We process this data to provide the service (photo analysis), on the basis of our legitimate interest (statistics, crash reports, security, recommendation quality) and, for personalized ads and personalization, on the basis of your consent.</p>
-<h2>Your rights</h2>
-<p>You can ask to access, correct or delete your data, object to processing or withdraw your consent by writing to <a href="mailto:contact@killian-steunou.com">contact@killian-steunou.com</a>. Since we don't know who you are, we may need the app's identifier to find your data. You can also complain to your data protection authority (in France, the CNIL, <a href="https://www.cnil.fr">cnil.fr</a>).</p>
-<h2>Changes</h2>
-<p>We will update this page if the app changes. The date at the top shows the latest version.</p>
-    </section>
+    <p>Cette page a déménagé : <a href="https://moodio.katai.fr/privacy">moodio.katai.fr/privacy</a>.<br />This page moved: <a href="https://moodio.katai.fr/privacy">moodio.katai.fr/privacy</a>.</p>
   </body>
 </html>
